@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "516187552464",
+    "project_id": "airport-app-20516",
+    "storage_bucket": "airport-app-20516.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:516187552464:android:f88003ebc1553364bf7cd5",
+        "android_client_info": {
+          "package_name": "com.example.airport_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "516187552464-gs9rp5q53qa7f5ep9hh1tedd5d8et5au.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxfD-Ef-bA_wl_-bElqmKRxdBZ-DPB46g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "516187552464-gs9rp5q53qa7f5ep9hh1tedd5d8et5au.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "516187552464-5g0g4ra1pnfjurr46jtni0t9k6u42apb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mustafa.airportApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
