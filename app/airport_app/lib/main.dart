@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'firebase_options.dart';
+import 'preferences.dart';
 import 'theme/app_theme.dart';
 import 'screens/explore_screen.dart';
 import 'screens/airport_search_screen.dart';
@@ -11,7 +13,7 @@ import 'screens/createaccount_screen.dart';
 import 'screens/more_screen.dart';
 import 'screens/restaurant_detail_screen.dart';
 import 'screens/welcome_screen.dart';
-import 'screens/loading_screen.dart';
+import 'screens/loading_screen.dart' hide kTeal, kGold, kGoldLight, kInk, kPage;
 import 'screens/login_screen.dart';
 import 'screens/forgot_password_screen.dart';
 
@@ -110,15 +112,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Concourse',
-      debugShowCheckedModeBanner: false,
-      theme: appTheme,
-      routerConfig: _router,
+    return ListenableBuilder(
+      listenable: AppPreferences.instance,
+      builder: (context, _) {
+        return MaterialApp.router(
+          title: 'Concourse',
+          debugShowCheckedModeBanner: false,
+          theme: appTheme,
+          darkTheme: darkAppTheme,
+          themeMode: AppPreferences.instance.darkMode ? ThemeMode.dark : ThemeMode.light,
+          routerConfig: _router,
+        );
+      },
     );
   }
 }
 
+// ─────────────────────────────────────────────────────────────
+//  SCAFFOLD WITH CUSTOM NAV BAR
+// ─────────────────────────────────────────────────────────────
 class ScaffoldWithNavBar extends StatelessWidget {
   final Widget child;
 
@@ -133,46 +145,93 @@ class ScaffoldWithNavBar extends StatelessWidget {
     return 0;
   }
 
+  void _onTap(BuildContext context, int index) {
+    switch (index) {
+      case 0: context.go('/explore');
+      case 1: context.go('/airport-search');
+      case 2: context.go('/account');
+      case 3: context.go('/more');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final selectedIndex = _calculateSelectedIndex(context);
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final bgColor = isDark ? const Color(0xFF161B1E) : Colors.white;
+    final borderColor = isDark ? kGoldLight.withValues(alpha: 0.12) : kGoldLight.withValues(alpha: 0.30);
+    final unselectedColor = isDark ? Colors.white.withValues(alpha: 0.35) : kInk.withValues(alpha: 0.35);
+
+    final tabs = [
+      (Icons.explore_outlined, Icons.explore_rounded, 'Explore'),
+      (Icons.search_rounded, Icons.search_rounded, 'Search'),
+      (Icons.person_outline_rounded, Icons.person_rounded, 'Account'),
+      (Icons.more_horiz_rounded, Icons.more_horiz_rounded, 'More'),
+    ];
+
     return Scaffold(
       body: child,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _calculateSelectedIndex(context),
-        onDestinationSelected: (index) {
-          switch (index) {
-            case 0:
-              context.go('/explore');
-            case 1:
-              context.go('/airport-search');
-            case 2:
-              context.go('/account');
-            case 3:
-              context.go('/more');
-          }
-        },
-        destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.explore_outlined),
-            selectedIcon: Icon(Icons.explore),
-            label: 'Explore',
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: bgColor,
+          border: Border(top: BorderSide(color: borderColor, width: 1)),
+          boxShadow: [
+            BoxShadow(
+              color: kInk.withValues(alpha: isDark ? 0.20 : 0.06),
+              blurRadius: 12,
+              offset: const Offset(0, -2),
+            ),
+          ],
+        ),
+        child: SafeArea(
+          top: false,
+          child: SizedBox(
+            height: 62,
+            child: Row(
+              children: List.generate(tabs.length, (i) {
+                final isSelected = i == selectedIndex;
+                final (outlinedIcon, filledIcon, label) = tabs[i];
+                return Expanded(
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () => _onTap(context, i),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Teal indicator line above selected tab
+                        AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          width: isSelected ? 24 : 0,
+                          height: 2,
+                          margin: const EdgeInsets.only(bottom: 6),
+                          decoration: BoxDecoration(
+                            color: kTeal,
+                            borderRadius: BorderRadius.circular(1),
+                          ),
+                        ),
+                        Icon(
+                          isSelected ? filledIcon : outlinedIcon,
+                          size: 22,
+                          color: isSelected ? kTeal : unselectedColor,
+                        ),
+                        const SizedBox(height: 3),
+                        Text(
+                          label,
+                          style: GoogleFonts.jost(
+                            fontSize: 10,
+                            fontWeight: isSelected ? FontWeight.w500 : FontWeight.w300,
+                            letterSpacing: 0.5,
+                            color: isSelected ? kTeal : unselectedColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }),
+            ),
           ),
-          NavigationDestination(
-            icon: Icon(Icons.search_outlined),
-            selectedIcon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.person_outline),
-            selectedIcon: Icon(Icons.person),
-            label: 'Account',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.more_horiz_outlined),
-            selectedIcon: Icon(Icons.more_horiz),
-            label: 'More',
-          ),
-        ],
+        ),
       ),
     );
   }

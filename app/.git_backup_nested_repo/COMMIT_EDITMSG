@@ -1,0 +1,22 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	new file:   airport_app/assets/images/splash.png
+#	modified:   airport_app/ios/Podfile
+#	modified:   airport_app/ios/Podfile.lock
+#	modified:   airport_app/ios/Runner.xcodeproj/project.pbxproj
+#	new file:   airport_app/ios/build/ios/XCBuildData/PIFCache/project/PROJECT@v11_mod=bfcc35515e5cb128d3f217382861d42a_hash=bfdfe7dc352907fc980b868725387e98plugins=1OJSG6M1FOV3XYQCBH7Z29RZ0FPR9XDE1-json
+#	new file:   airport_app/ios/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=44f2bcd1b9e14dd469417bd00cdcee48-json
+#	new file:   airport_app/ios/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=9fdeb7fde9e16d9a37a3970d7b07d501-json
+#	new file:   airport_app/ios/build/ios/XCBuildData/PIFCache/target/TARGET@v11_hash=b2108f06ad43d562b2cc9ec142bacce3-json
+#	new file:   airport_app/ios/build/ios/XCBuildData/PIFCache/workspace/WORKSPACE@v11_hash=(null)_subobjects=043fc38660dc90d2a6c2a10c53d44fb9-json
+#	modified:   airport_app/lib/main.dart
+#	modified:   airport_app/lib/screens/airport_detail_screen.dart
+#	modified:   airport_app/lib/screens/airport_search_screen.dart
+#	new file:   airport_app/lib/screens/restaurant_detail_screen.dart
+#

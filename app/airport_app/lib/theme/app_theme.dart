@@ -4,12 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 // ─────────────────────────────────────────────────────────────
 //  COLOUR PALETTE (matches welcome_screen.dart)
 // ─────────────────────────────────────────────────────────────
-const Color kTeal      = Color(0xFF1AABAB);
-const Color kTealDeep  = Color(0xFF0F7A7A);
-const Color kGold      = Color(0xFFA8834A);
+const Color kTeal = Color(0xFF1AABAB);
+const Color kTealDeep = Color(0xFF0F7A7A);
+const Color kGold = Color(0xFFA8834A);
 const Color kGoldLight = Color(0xFFC9A96E);
-const Color kInk       = Color(0xFF0F1214);
-const Color kPage      = Color(0xFFFAF8F4);
+const Color kInk = Color(0xFF0F1214);
+const Color kPage = Color(0xFFFAF8F4);
 
 // ─────────────────────────────────────────────────────────────
 //  APP THEME
@@ -70,9 +70,7 @@ ThemeData get appTheme => ThemeData(
       backgroundColor: kTeal,
       foregroundColor: Colors.white,
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(3),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
       textStyle: GoogleFonts.jost(
         fontSize: 11,
         fontWeight: FontWeight.w400,
@@ -84,9 +82,7 @@ ThemeData get appTheme => ThemeData(
     style: OutlinedButton.styleFrom(
       foregroundColor: kInk,
       side: BorderSide(color: kGoldLight.withOpacity(0.4)),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(3),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
       textStyle: GoogleFonts.jost(
         fontSize: 11,
         fontWeight: FontWeight.w400,
@@ -97,9 +93,7 @@ ThemeData get appTheme => ThemeData(
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
     fillColor: kPage,
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(3),
-    ),
+    border: OutlineInputBorder(borderRadius: BorderRadius.circular(3)),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(3),
       borderSide: BorderSide(color: kGoldLight.withOpacity(0.3)),
@@ -108,23 +102,24 @@ ThemeData get appTheme => ThemeData(
       borderRadius: BorderRadius.circular(3),
       borderSide: const BorderSide(color: kTeal, width: 1.5),
     ),
-    hintStyle: GoogleFonts.jost(
-      fontSize: 14,
-      color: kInk.withOpacity(0.4),
-    ),
+    hintStyle: GoogleFonts.jost(fontSize: 14, color: kInk.withOpacity(0.4)),
     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
   ),
   navigationBarTheme: NavigationBarThemeData(
     backgroundColor: kPage,
     indicatorColor: kTeal.withOpacity(0.15),
-    labelTextStyle: MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.selected)) {
-        return GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w500, color: kTeal);
+    labelTextStyle: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
+        return GoogleFonts.jost(
+          fontSize: 12,
+          fontWeight: FontWeight.w500,
+          color: kTeal,
+        );
       }
       return GoogleFonts.jost(fontSize: 12, color: kInk.withOpacity(0.6));
     }),
-    iconTheme: MaterialStateProperty.resolveWith((states) {
-      if (states.contains(MaterialState.selected)) {
+    iconTheme: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.selected)) {
         return const IconThemeData(color: kTeal, size: 24);
       }
       return IconThemeData(color: kInk.withOpacity(0.6), size: 24);
@@ -138,6 +133,87 @@ ThemeData get appTheme => ThemeData(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(3),
       side: BorderSide(color: kGoldLight.withOpacity(0.2)),
+    ),
+  ),
+);
+
+// ─────────────────────────────────────────────────────────────
+//  DARK THEME
+// ─────────────────────────────────────────────────────────────
+const Color kDarkPage = Color(0xFF0D1012);
+const Color kDarkSurface = Color(0xFF161B1E);
+const Color kDarkCard = Color(0xFF1C2226);
+
+ThemeData get darkAppTheme => ThemeData(
+  useMaterial3: true,
+  scaffoldBackgroundColor: kDarkPage,
+  colorScheme: ColorScheme.dark(
+    primary: kTeal,
+    onPrimary: Colors.white,
+    secondary: kGoldLight,
+    onSecondary: kDarkPage,
+    surface: kDarkSurface,
+    onSurface: Colors.white,
+    error: const Color(0xFFCF6679),
+    onError: Colors.white,
+  ),
+  appBarTheme: AppBarTheme(
+    backgroundColor: kDarkPage,
+    foregroundColor: Colors.white,
+    elevation: 0,
+    titleTextStyle: GoogleFonts.jost(
+      fontSize: 18,
+      fontWeight: FontWeight.w500,
+      color: Colors.white,
+    ),
+    iconTheme: const IconThemeData(color: Colors.white),
+  ),
+  textTheme: TextTheme(
+    headlineLarge: GoogleFonts.cormorant(
+      fontSize: 24,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+    ),
+    headlineMedium: GoogleFonts.jost(
+      fontSize: 20,
+      fontWeight: FontWeight.w500,
+      color: Colors.white,
+    ),
+    bodyLarge: GoogleFonts.jost(
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+      color: Colors.white,
+    ),
+    bodyMedium: GoogleFonts.jost(
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
+      color: Colors.white,
+    ),
+    bodySmall: GoogleFonts.jost(
+      fontSize: 12,
+      fontWeight: FontWeight.w400,
+      color: Colors.white70,
+    ),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: kTeal,
+      foregroundColor: Colors.white,
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+      textStyle: GoogleFonts.jost(
+        fontSize: 11,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 2.2,
+      ),
+    ),
+  ),
+  cardTheme: CardThemeData(
+    color: kDarkCard,
+    elevation: 0,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(3),
+      side: BorderSide(color: kGoldLight.withOpacity(0.15)),
     ),
   ),
 );
