@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,198 +26,192 @@ class RestaurantDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kPage,
-      appBar: AppBar(
-        title: Text(name),
-        backgroundColor: kPage,
-        foregroundColor: kInk,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => context.pop(),
-        ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Header image/logo
-            Container(
-              width: double.infinity,
-              height: 200,
-              color: kTeal.withOpacity(0.1),
-              child: Center(
-                child: Image.network(
-                  logoUrl,
-                  height: 120,
-                  fit: BoxFit.contain,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Icon(
-                      _getRestaurantIcon(cuisine),
-                      size: 80,
-                      color: kTeal,
-                    );
-                  },
+      body: Stack(
+        children: [
+          const _Background(),
+          SafeArea(
+            child: CustomScrollView(
+              slivers: [
+                // Header
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 12, 24, 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Back button row
+                        Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () => context.pop(),
+                              child: Container(
+                                padding: const EdgeInsets.all(9),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(3),
+                                  border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+                                  boxShadow: [BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 6, offset: const Offset(0, 2))],
+                                ),
+                                child: Icon(Icons.arrow_back_ios_new, size: 13, color: kInk.withValues(alpha: 0.55)),
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Text(
+                                cuisine,
+                                style: GoogleFonts.jost(
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w300,
+                                  letterSpacing: 2.0,
+                                  color: kInk.withValues(alpha: 0.40),
+                                ),
+                              ),
+                            ),
+                            // Status indicator
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Container(
+                                  width: 6, height: 6,
+                                  decoration: BoxDecoration(color: isOpen ? kTeal : kGold, shape: BoxShape.circle),
+                                ),
+                                const SizedBox(width: 5),
+                                Text(
+                                  isOpen ? 'Open' : 'Closed',
+                                  style: GoogleFonts.jost(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w300,
+                                    letterSpacing: 1.0,
+                                    color: isOpen ? kTeal : kGold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 14),
+                        // Gold rule
+                        Container(
+                          height: 1,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Colors.transparent, kGoldLight.withValues(alpha: 0.28), kInk.withValues(alpha: 0.08), Colors.transparent],
+                              stops: const [0.0, 0.3, 0.7, 1.0],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-            ),
 
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Name and status
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Text(
+                // Logo header
+                SliverToBoxAdapter(
+                  child: Container(
+                    width: double.infinity,
+                    height: 180,
+                    margin: const EdgeInsets.fromLTRB(24, 16, 24, 0),
+                    decoration: BoxDecoration(
+                      color: kTeal.withValues(alpha: 0.06),
+                      borderRadius: BorderRadius.circular(3),
+                      border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(3),
+                      child: Stack(
+                        children: [
+                          // Teal accent line
+                          Positioned(
+                            top: 0, left: 0, right: 0,
+                            child: Container(
+                              height: 2,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(colors: [kTeal.withValues(alpha: 0.5), Colors.transparent]),
+                              ),
+                            ),
+                          ),
+                          Center(
+                            child: Container(
+                              width: 96, height: 96,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(6),
+                                border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+                                boxShadow: [BoxShadow(color: kInk.withValues(alpha: 0.06), blurRadius: 12, offset: const Offset(0, 4))],
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(6),
+                                child: Image.network(
+                                  logoUrl,
+                                  fit: BoxFit.contain,
+                                  errorBuilder: (context, error, stackTrace) => Center(
+                                    child: Icon(_getRestaurantIcon(cuisine), size: 40, color: kTeal),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                // Content
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 20, 24, 40),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Name
+                        Text(
                           name,
-                          style: GoogleFonts.jost(
-                            fontSize: 26,
-                            fontWeight: FontWeight.w600,
+                          style: GoogleFonts.cormorant(
+                            fontSize: 30,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: 0.2,
                             color: kInk,
                           ),
                         ),
-                      ),
-                      const SizedBox(width: 12),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                        decoration: BoxDecoration(
-                          color: isOpen ? Colors.green : Colors.red,
-                          borderRadius: BorderRadius.circular(16),
+                        const SizedBox(height: 18),
+
+                        // Details section
+                        const _SectionHeader(title: 'Details'),
+                        const SizedBox(height: 14),
+                        _InfoCard(icon: Icons.restaurant_menu_rounded, label: 'Cuisine', value: cuisine),
+                        const SizedBox(height: 10),
+                        _InfoCard(icon: Icons.location_on_outlined, label: 'Location', value: location),
+                        if (airportName.isNotEmpty) ...[
+                          const SizedBox(height: 10),
+                          _InfoCard(icon: Icons.flight_rounded, label: 'Airport', value: airportName),
+                        ],
+                        const SizedBox(height: 24),
+
+                        // Menu section
+                        const _SectionHeader(title: 'Menu'),
+                        const SizedBox(height: 14),
+                        _PlaceholderCard(
+                          icon: Icons.menu_book_rounded,
+                          message: 'Menu coming soon',
+                          subtitle: 'Full menus will be available in a future update',
                         ),
-                        child: Text(
-                          isOpen ? 'Open' : 'Closed',
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                        const SizedBox(height: 24),
 
-                  const SizedBox(height: 20),
-
-                  // Info cards
-                  _buildInfoRow(Icons.restaurant_menu, 'Cuisine', cuisine),
-                  const SizedBox(height: 12),
-                  _buildInfoRow(Icons.location_on_outlined, 'Location', location),
-                  if (airportName.isNotEmpty) ...[
-                    const SizedBox(height: 12),
-                    _buildInfoRow(Icons.flight, 'Airport', airportName),
-                  ],
-
-                  const SizedBox(height: 28),
-
-                  // Menu section placeholder
-                  const Text(
-                    'Menu',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: kInk,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: kGoldLight.withOpacity(0.2)),
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.white,
-                    ),
-                    child: Column(
-                      children: [
-                        Icon(Icons.menu_book, size: 48, color: kInk.withOpacity(0.4)),
-                        const SizedBox(height: 12),
-                        Text(
-                          'Menu coming soon',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: kInk.withOpacity(0.6),
-                          ),
+                        // Reviews section
+                        const _SectionHeader(title: 'Reviews'),
+                        const SizedBox(height: 14),
+                        _PlaceholderCard(
+                          icon: Icons.rate_review_outlined,
+                          message: 'No reviews yet',
+                          subtitle: 'Be the first to review this restaurant',
                         ),
                       ],
                     ),
                   ),
-
-                  const SizedBox(height: 28),
-
-                  // Reviews section placeholder
-                  const Text(
-                    'Reviews',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: kInk,
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: kGoldLight.withOpacity(0.2)),
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.white,
-                    ),
-                    child: Column(
-                      children: [
-                        Icon(Icons.rate_review_outlined, size: 48, color: kInk.withOpacity(0.4)),
-                        const SizedBox(height: 12),
-                        Text(
-                          'No reviews yet',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: kInk.withOpacity(0.6),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildInfoRow(IconData icon, String label, String value) {
-    return Container(
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        border: Border.all(color: kGoldLight.withOpacity(0.2)),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Row(
-        children: [
-          Icon(icon, color: kTeal, size: 22),
-          const SizedBox(width: 12),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                label,
-                style: GoogleFonts.jost(fontSize: 12, color: kInk.withOpacity(0.5)),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                value,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                  color: kInk,
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
@@ -225,26 +220,146 @@ class RestaurantDetailScreen extends StatelessWidget {
 
   IconData _getRestaurantIcon(String cuisine) {
     switch (cuisine.toLowerCase()) {
-      case 'coffee':
-        return Icons.coffee;
-      case 'pub' || 'bar':
-        return Icons.local_bar;
-      case 'pizza':
-        return Icons.local_pizza;
-      case 'burger':
-        return Icons.fastfood;
-      case 'asian':
-        return Icons.ramen_dining;
-      case 'breakfast':
-        return Icons.breakfast_dining;
-      case 'sandwich':
-        return Icons.lunch_dining;
-      case 'dessert':
-        return Icons.cake;
-      case 'juice bar':
-        return Icons.local_drink;
-      default:
-        return Icons.restaurant;
+      case 'coffee': return Icons.coffee;
+      case 'pub' || 'bar': return Icons.local_bar;
+      case 'pizza': return Icons.local_pizza;
+      case 'burger': return Icons.fastfood;
+      case 'asian': return Icons.ramen_dining;
+      case 'breakfast': return Icons.breakfast_dining;
+      case 'sandwich': return Icons.lunch_dining;
+      case 'dessert': return Icons.cake;
+      case 'juice bar': return Icons.local_drink;
+      default: return Icons.restaurant;
     }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  INFO CARD
+// ─────────────────────────────────────────────────────────────
+class _InfoCard extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final String value;
+
+  const _InfoCard({required this.icon, required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(3),
+        border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+        boxShadow: [BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 8, offset: const Offset(0, 2))],
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 38, height: 38,
+            decoration: BoxDecoration(color: kTeal.withValues(alpha: 0.10), borderRadius: BorderRadius.circular(3)),
+            child: Icon(icon, color: kTeal, size: 18),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  label,
+                  style: GoogleFonts.jost(fontSize: 10, fontWeight: FontWeight.w300, letterSpacing: 1.8, color: kInk.withValues(alpha: 0.35)),
+                ),
+                const SizedBox(height: 2),
+                Text(
+                  value,
+                  style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: kInk),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  PLACEHOLDER CARD
+// ─────────────────────────────────────────────────────────────
+class _PlaceholderCard extends StatelessWidget {
+  final IconData icon;
+  final String message;
+  final String subtitle;
+
+  const _PlaceholderCard({required this.icon, required this.message, required this.subtitle});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(3),
+        border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+        boxShadow: [BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 8, offset: const Offset(0, 2))],
+      ),
+      child: Column(
+        children: [
+          Icon(icon, size: 36, color: kInk.withValues(alpha: 0.25)),
+          const SizedBox(height: 12),
+          Text(message, style: GoogleFonts.cormorant(fontSize: 18, fontWeight: FontWeight.w300, color: kInk.withValues(alpha: 0.40))),
+          const SizedBox(height: 4),
+          Text(subtitle, style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w300, color: kInk.withValues(alpha: 0.30), letterSpacing: 0.3), textAlign: TextAlign.center),
+        ],
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  SECTION HEADER
+// ─────────────────────────────────────────────────────────────
+class _SectionHeader extends StatelessWidget {
+  final String title;
+  const _SectionHeader({required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(title, style: GoogleFonts.cormorant(fontSize: 22, fontWeight: FontWeight.w400, color: kInk, letterSpacing: 0.2)),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Container(
+            height: 1,
+            decoration: BoxDecoration(gradient: LinearGradient(colors: [kGoldLight.withValues(alpha: 0.28), Colors.transparent])),
+          ),
+        ),
+        const SizedBox(width: 6),
+        Transform.rotate(angle: math.pi / 4, child: Container(width: 4, height: 4, color: kGoldLight.withValues(alpha: 0.6))),
+      ],
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  BACKGROUND
+// ─────────────────────────────────────────────────────────────
+class _Background extends StatelessWidget {
+  const _Background();
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFFFDFBF6), Color(0xFFF8F5EE), Color(0xFFF2EDE3)],
+          stops: [0.0, 0.55, 1.0],
+        ),
+      ),
+    );
   }
 }
