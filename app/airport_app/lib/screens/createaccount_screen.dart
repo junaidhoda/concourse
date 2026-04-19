@@ -138,12 +138,9 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> with TickerPr
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
-      ),
+      value: appSystemUiOverlayStyle(context),
       child: Scaffold(
-        backgroundColor: kPage,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           surfaceTintColor: Colors.transparent,
@@ -169,7 +166,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> with TickerPr
           leading: IconButton(
             iconSize: 18,
             padding: EdgeInsets.zero,
-            icon: Icon(Icons.arrow_back_rounded, color: kInk.withOpacity(0.75)),
+            icon: Icon(Icons.arrow_back_rounded, color: context.appOnSurface.withValues(alpha: 0.75)),
             onPressed: () => context.pop(),
           ),
           actions: [
@@ -183,7 +180,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> with TickerPr
               child: Text(
                 'skip',
                 style: GoogleFonts.jost(
-                  fontSize: 10.5,
+                  fontSize: 11,
                   fontWeight: FontWeight.w500,
                   letterSpacing: 2.0,
                   color: kTeal.withOpacity(0.75),
@@ -195,7 +192,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> with TickerPr
         ),
         body: Stack(
           children: [
-            const _Background(),
+            _Background(),
             SafeArea(
               child: Column(
                 children: [
@@ -282,8 +279,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> with TickerPr
                                 _SocialButton(
                                   label: 'Continue with Google',
                                   icon: Icons.g_mobiledata_rounded,
-                                  backgroundColor: Colors.white,
-                                  foregroundColor: kInk,
+                                  backgroundColor: appCardSurface(context),
+                                  foregroundColor: context.appOnSurface,
                                   hasBorder: true,
                                   onTap: _handleGoogle,
                                 ),
@@ -291,7 +288,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> with TickerPr
                                 _SocialButton(
                                   label: 'Continue with Apple',
                                   icon: Icons.apple_rounded,
-                                  backgroundColor: kInk,
+                                  backgroundColor: Theme.of(context).brightness == Brightness.dark ? kDarkSurface : kInk,
                                   foregroundColor: Colors.white,
                                   onTap: () => ScaffoldMessenger.of(context).showSnackBar(
                                     _snackBar('Apple sign in requires an Apple Developer account.'),
@@ -321,8 +318,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> with TickerPr
                                     'Already have an account?  ',
                                     style: GoogleFonts.jost(
                                       fontSize: 13,
-                                      fontWeight: FontWeight.w300,
-                                      color: kInk.withOpacity(0.45),
+                                      fontWeight: FontWeight.w400,
+                                      color: context.appMutedFg(0.45),
                                     ),
                                   ),
                                   GestureDetector(
@@ -361,16 +358,15 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> with TickerPr
 //  BACKGROUND
 // ─────────────────────────────────────────────────────────────
 class _Background extends StatelessWidget {
-  const _Background();
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFFFDFBF6), Color(0xFFF8F5EE), Color(0xFFF2EDE3)],
-          stops: [0.0, 0.55, 1.0],
+          colors: appPageGradientColors(context),
+          stops: const [0.0, 0.55, 1.0],
         ),
       ),
     );
@@ -398,7 +394,7 @@ class _Header extends StatelessWidget {
                   fontSize: 36,
                   fontWeight: FontWeight.w600,
                   letterSpacing: 2.2,
-                  color: kInk.withOpacity(0.80),
+                  color: context.appOnSurface.withValues(alpha: 0.80),
                 ),
               ),
               const SizedBox(height: 0),
@@ -426,7 +422,7 @@ class _Header extends StatelessWidget {
                   colors: [
                     Colors.transparent,
                     kGoldLight.withOpacity(0.28),
-                    kInk.withOpacity(0.08),
+                    context.appOnSurface.withValues(alpha: 0.08),
                     Colors.transparent,
                   ],
                   stops: const [0.0, 0.3, 0.7, 1.0],
@@ -440,8 +436,8 @@ class _Header extends StatelessWidget {
           'Create account',
           style: GoogleFonts.cormorant(
             fontSize: 28,
-            fontWeight: FontWeight.w300,
-            color: kInk,
+            fontWeight: FontWeight.w400,
+            color: context.appOnSurface,
             letterSpacing: 0.3,
           ),
         ),
@@ -450,8 +446,8 @@ class _Header extends StatelessWidget {
           'Save favourite airports and get\npersonalised dining recommendations.',
           style: GoogleFonts.jost(
             fontSize: 13,
-            fontWeight: FontWeight.w300,
-            color: kInk.withOpacity(0.45),
+            fontWeight: FontWeight.w400,
+            color: context.appMutedFg(0.45),
             height: 1.6,
             letterSpacing: 0.2,
           ),
@@ -517,10 +513,10 @@ class _PremiumFieldState extends State<_PremiumField> {
         Text(
           widget.label.toUpperCase(),
           style: GoogleFonts.jost(
-            fontSize: 9,
-            fontWeight: FontWeight.w300,
+            fontSize: 10,
+            fontWeight: FontWeight.w400,
             letterSpacing: 2.0,
-            color: _focused ? kTeal : kInk.withOpacity(0.45),
+            color: _focused ? kTeal : context.appMutedFg(0.45),
           ),
         ),
         const SizedBox(height: 6),
@@ -533,34 +529,34 @@ class _PremiumFieldState extends State<_PremiumField> {
           enabled: widget.enabled,
           style: GoogleFonts.jost(
             fontSize: 14,
-            fontWeight: FontWeight.w300,
-            color: kInk,
+            fontWeight: FontWeight.w400,
+            color: context.appOnSurface,
           ),
           decoration: InputDecoration(
             hintText: widget.hint,
             hintStyle: GoogleFonts.jost(
               fontSize: 14,
-              fontWeight: FontWeight.w300,
-              color: kInk.withOpacity(0.30),
+              fontWeight: FontWeight.w400,
+              color: context.appMutedFg(0.38),
             ),
             errorStyle: GoogleFonts.jost(
-              fontSize: 11,
-              fontWeight: FontWeight.w300,
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
               color: Colors.red.shade400,
             ),
             prefixIcon: Icon(
               widget.prefixIcon,
               size: 16,
-              color: _focused ? kTeal : kInk.withOpacity(0.35),
+              color: _focused ? kTeal : context.appMutedFg(0.42),
             ),
             suffixIcon: widget.suffixIcon != null
                 ? GestureDetector(
                     onTap: widget.onSuffixTap,
-                    child: Icon(widget.suffixIcon, size: 16, color: kInk.withOpacity(0.35)),
+                    child: Icon(widget.suffixIcon, size: 16, color: context.appMutedFg(0.42)),
                   )
                 : null,
             filled: true,
-            fillColor: Colors.white,
+            fillColor: appInputFill(context),
             contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(3),
@@ -740,7 +736,7 @@ class _SocialButtonState extends State<_SocialButton> {
             color: widget.backgroundColor,
             borderRadius: BorderRadius.circular(3),
             border: widget.hasBorder ? Border.all(color: kGoldLight.withOpacity(0.28)) : null,
-            boxShadow: widget.hasBorder ? [BoxShadow(color: kInk.withOpacity(0.04), blurRadius: 8, offset: const Offset(0, 2))] : [],
+            boxShadow: widget.hasBorder ? [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))] : [],
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -751,7 +747,7 @@ class _SocialButtonState extends State<_SocialButton> {
                 widget.label,
                 style: GoogleFonts.jost(
                   fontSize: 13,
-                  fontWeight: FontWeight.w300,
+                  fontWeight: FontWeight.w400,
                   letterSpacing: 0.4,
                   color: widget.foregroundColor,
                 ),

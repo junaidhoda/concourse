@@ -100,7 +100,7 @@ class MoreScreen extends StatelessWidget {
           backgroundColor: isDark ? kDarkPage : kPage,
           body: Stack(
             children: [
-              _Background(isDark: isDark),
+              const _Background(),
               SafeArea(
                 child: ListView(
                   padding: const EdgeInsets.fromLTRB(24, 12, 24, 40),
@@ -119,10 +119,10 @@ class MoreScreen extends StatelessWidget {
                     Text(
                       'Settings & information',
                       style: GoogleFonts.jost(
-                        fontSize: 11,
-                        fontWeight: FontWeight.w300,
-                        letterSpacing: 2.2,
-                        color: textColor.withValues(alpha: 0.40),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: 2.0,
+                        color: context.appMutedFg(0.44),
                       ),
                     ),
                     const SizedBox(height: 14),
@@ -145,7 +145,7 @@ class MoreScreen extends StatelessWidget {
                           'Change',
                           style: GoogleFonts.jost(
                             fontSize: 12,
-                            fontWeight: FontWeight.w300,
+                            fontWeight: FontWeight.w500,
                             color: kTeal,
                             letterSpacing: 0.5,
                           ),
@@ -166,7 +166,7 @@ class MoreScreen extends StatelessWidget {
                           'Change',
                           style: GoogleFonts.jost(
                             fontSize: 12,
-                            fontWeight: FontWeight.w300,
+                            fontWeight: FontWeight.w500,
                             color: kTeal,
                             letterSpacing: 0.5,
                           ),
@@ -247,17 +247,17 @@ class MoreScreen extends StatelessWidget {
                               fontSize: 22,
                               fontWeight: FontWeight.w600,
                               letterSpacing: 2.0,
-                              color: textColor.withValues(alpha: 0.25),
+                              color: textColor.withValues(alpha: 0.34),
                             ),
                           ),
                           const SizedBox(height: 2),
                           Text(
                             'airport dining guide',
                             style: GoogleFonts.jost(
-                              fontSize: 9,
-                              fontWeight: FontWeight.w300,
-                              letterSpacing: 3.0,
-                              color: textColor.withValues(alpha: 0.20),
+                              fontSize: 10,
+                              fontWeight: FontWeight.w400,
+                              letterSpacing: 2.6,
+                              color: textColor.withValues(alpha: 0.32),
                             ),
                           ),
                         ],
@@ -367,8 +367,8 @@ class _MoreCardState extends State<_MoreCard> {
                       widget.subtitle,
                       style: GoogleFonts.jost(
                         fontSize: 12,
-                        fontWeight: FontWeight.w300,
-                        color: textColor.withValues(alpha: 0.40),
+                        fontWeight: FontWeight.w400,
+                        color: context.appMutedFg(0.44),
                       ),
                     ),
                   ],
@@ -434,8 +434,7 @@ class _SectionHeader extends StatelessWidget {
 //  BACKGROUND
 // ─────────────────────────────────────────────────────────────
 class _Background extends StatelessWidget {
-  final bool isDark;
-  const _Background({required this.isDark});
+  const _Background();
 
   @override
   Widget build(BuildContext context) {
@@ -444,9 +443,7 @@ class _Background extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: isDark
-              ? [const Color(0xFF0D1012), const Color(0xFF111518), const Color(0xFF141A1E)]
-              : [const Color(0xFFFDFBF6), const Color(0xFFF8F5EE), const Color(0xFFF2EDE3)],
+          colors: appPageGradientColors(context),
           stops: const [0.0, 0.55, 1.0],
         ),
       ),

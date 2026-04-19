@@ -10,7 +10,7 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPage,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Stack(
         children: [
           const _Background(),
@@ -25,21 +25,21 @@ class AccountScreen extends StatelessWidget {
                     fontSize: 36,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 0.3,
-                    color: kInk,
+                    color: context.appOnSurface,
                   ),
                 ),
                 const SizedBox(height: 1),
                 Text(
                   'Sign in to save your favourites',
                   style: GoogleFonts.jost(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w300,
-                    letterSpacing: 2.2,
-                    color: kInk.withValues(alpha: 0.40),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    letterSpacing: 2.0,
+                    color: context.appMutedFg(0.44),
                   ),
                 ),
                 const SizedBox(height: 14),
-                _rule(),
+                _rule(context),
                 const SizedBox(height: 28),
 
                 // Avatar
@@ -83,7 +83,7 @@ class AccountScreen extends StatelessWidget {
                     style: GoogleFonts.cormorant(
                       fontSize: 26,
                       fontWeight: FontWeight.w400,
-                      color: kInk,
+                      color: context.appOnSurface,
                       letterSpacing: 0.2,
                     ),
                   ),
@@ -93,10 +93,10 @@ class AccountScreen extends StatelessWidget {
                   child: Text(
                     'Not signed in',
                     style: GoogleFonts.jost(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w300,
-                      letterSpacing: 1.8,
-                      color: kInk.withValues(alpha: 0.35),
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      letterSpacing: 1.6,
+                      color: context.appMutedFg(0.42),
                     ),
                   ),
                 ),
@@ -106,11 +106,11 @@ class AccountScreen extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: appCardSurface(context),
                     borderRadius: BorderRadius.circular(3),
                     border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
                     boxShadow: [
-                      BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 8, offset: const Offset(0, 2)),
+                      BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2)),
                     ],
                   ),
                   child: Column(
@@ -132,7 +132,7 @@ class AccountScreen extends StatelessWidget {
                         style: GoogleFonts.cormorant(
                           fontSize: 22,
                           fontWeight: FontWeight.w500,
-                          color: kInk,
+                          color: context.appOnSurface,
                           letterSpacing: 0.2,
                         ),
                       ),
@@ -141,8 +141,8 @@ class AccountScreen extends StatelessWidget {
                         'Save favourite airports, bookmark restaurants, and get personalised dining recommendations.',
                         style: GoogleFonts.jost(
                           fontSize: 13,
-                          fontWeight: FontWeight.w300,
-                          color: kInk.withValues(alpha: 0.55),
+                          fontWeight: FontWeight.w400,
+                          color: context.appMutedFg(0.58),
                           height: 1.6,
                         ),
                       ),
@@ -176,7 +176,7 @@ class AccountScreen extends StatelessWidget {
                         child: OutlinedButton(
                           onPressed: () => context.push('/login'),
                           style: OutlinedButton.styleFrom(
-                            foregroundColor: kInk,
+                            foregroundColor: context.appOnSurface,
                             padding: const EdgeInsets.symmetric(vertical: 14),
                             side: BorderSide(color: kGoldLight.withValues(alpha: 0.50)),
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
@@ -187,7 +187,7 @@ class AccountScreen extends StatelessWidget {
                               fontSize: 11,
                               fontWeight: FontWeight.w400,
                               letterSpacing: 2.2,
-                              color: kInk.withValues(alpha: 0.70),
+                              color: context.appOnSurface.withValues(alpha: 0.70),
                             ),
                           ),
                         ),
@@ -225,7 +225,7 @@ class AccountScreen extends StatelessWidget {
     );
   }
 
-  Widget _rule() {
+  Widget _rule(BuildContext context) {
     return Container(
       height: 1,
       decoration: BoxDecoration(
@@ -233,7 +233,7 @@ class AccountScreen extends StatelessWidget {
           colors: [
             Colors.transparent,
             kGoldLight.withValues(alpha: 0.28),
-            kInk.withValues(alpha: 0.08),
+            context.appOnSurface.withValues(alpha: 0.08),
             Colors.transparent,
           ],
           stops: const [0.0, 0.3, 0.7, 1.0],
@@ -259,11 +259,11 @@ class _BenefitRow extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: appCardSurface(context),
         borderRadius: BorderRadius.circular(3),
         border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
         boxShadow: [
-          BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 8, offset: const Offset(0, 2)),
+          BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2)),
         ],
       ),
       child: Row(
@@ -287,7 +287,7 @@ class _BenefitRow extends StatelessWidget {
                   style: GoogleFonts.jost(
                     fontSize: 15,
                     fontWeight: FontWeight.w400,
-                    color: kInk,
+                    color: context.appOnSurface,
                   ),
                 ),
                 const SizedBox(height: 2),
@@ -295,8 +295,8 @@ class _BenefitRow extends StatelessWidget {
                   subtitle,
                   style: GoogleFonts.jost(
                     fontSize: 12,
-                    fontWeight: FontWeight.w300,
-                    color: kInk.withValues(alpha: 0.40),
+                    fontWeight: FontWeight.w400,
+                    color: context.appMutedFg(0.44),
                   ),
                 ),
               ],
@@ -324,7 +324,7 @@ class _SectionHeader extends StatelessWidget {
           style: GoogleFonts.cormorant(
             fontSize: 22,
             fontWeight: FontWeight.w400,
-            color: kInk,
+            color: context.appOnSurface,
             letterSpacing: 0.2,
           ),
         ),
@@ -361,12 +361,12 @@ class _Background extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFFFDFBF6), Color(0xFFF8F5EE), Color(0xFFF2EDE3)],
-          stops: [0.0, 0.55, 1.0],
+          colors: appPageGradientColors(context),
+          stops: const [0.0, 0.55, 1.0],
         ),
       ),
     );

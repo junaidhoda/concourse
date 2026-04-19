@@ -124,10 +124,10 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
   // ─── LOADING ─────────────────────────────────────────────
   Widget _buildLoadingScreen(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPage,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Stack(
         children: [
-          const _Background(),
+          _Background(),
           SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,10 +158,10 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
     final filterHeight = hasTerminals ? 164.0 : 96.0;
 
     return Scaffold(
-      backgroundColor: kPage,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Stack(
         children: [
-          const _Background(),
+          _Background(),
           SafeArea(
             child: CustomScrollView(
               slivers: [
@@ -179,8 +179,8 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(name, style: GoogleFonts.cormorant(fontSize: 24, fontWeight: FontWeight.w600, letterSpacing: 0.2, color: kInk)),
-                                  Text(location, style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w300, letterSpacing: 1.5, color: kInk.withValues(alpha: 0.40))),
+                                  Text(name, style: GoogleFonts.cormorant(fontSize: 24, fontWeight: FontWeight.w600, letterSpacing: 0.2, color: context.appOnSurface)),
+                                  Text(location, style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 1.5, color: context.appMutedFg(0.40))),
                                 ],
                               ),
                             ),
@@ -200,35 +200,35 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
                     minHeight: filterHeight,
                     maxHeight: filterHeight,
                     child: Container(
-                      color: kPage,
+                      color: Theme.of(context).scaffoldBackgroundColor,
                       padding: const EdgeInsets.fromLTRB(24, 10, 24, 8),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           if (hasTerminals) ...[
-                            Text('Terminal', style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w300, letterSpacing: 2.0, color: kInk.withValues(alpha: 0.40))),
+                            Text('Terminal', style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 2.0, color: context.appMutedFg(0.40))),
                             const SizedBox(height: 5),
                             Container(
                               padding: const EdgeInsets.symmetric(horizontal: 14),
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: appCardSurface(context),
                                 border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
                                 borderRadius: BorderRadius.circular(3),
-                                boxShadow: [BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 8, offset: const Offset(0, 2))],
+                                boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
                               ),
                               child: DropdownButtonHideUnderline(
                                 child: DropdownButton<String?>(
                                   value: _selectedFirebaseTerminalId,
                                   isExpanded: true,
                                   isDense: true,
-                                  style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w300, color: kInk),
-                                  hint: Text('All terminals', style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w300, color: kInk.withValues(alpha: 0.40))),
+                                  style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appOnSurface),
+                                  hint: Text('All terminals', style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appMutedFg(0.40))),
                                   items: [
-                                    DropdownMenuItem<String?>(value: null, child: Text('All terminals', style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w300, color: kInk))),
+                                    DropdownMenuItem<String?>(value: null, child: Text('All terminals', style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appOnSurface))),
                                     ..._firebaseTerminalEntries.map((t) => DropdownMenuItem<String?>(
                                       value: t.id,
-                                      child: Text(t.name, style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w300, color: kInk)),
+                                      child: Text(t.name, style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appOnSurface)),
                                     )),
                                   ],
                                   onChanged: _setSelectedFirebaseTerminal,
@@ -237,32 +237,32 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
                             ),
                             const SizedBox(height: 8),
                           ],
-                          Text('Search', style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w300, letterSpacing: 2.0, color: kInk.withValues(alpha: 0.40))),
+                          Text('Search', style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 2.0, color: context.appMutedFg(0.40))),
                           const SizedBox(height: 5),
                           AnimatedContainer(
                             duration: const Duration(milliseconds: 150),
                             height: 40,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: appCardSurface(context),
                               borderRadius: BorderRadius.circular(3),
                               border: Border.all(color: _searchFocused ? kTeal : kGoldLight.withValues(alpha: 0.28)),
                               boxShadow: _searchFocused
                                   ? [BoxShadow(color: kTeal.withValues(alpha: 0.10), blurRadius: 0, spreadRadius: 2)]
-                                  : [BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 8, offset: const Offset(0, 2))],
+                                  : [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
                             ),
                             child: Row(
                               children: [
                                 const SizedBox(width: 12),
-                                Icon(Icons.search_rounded, size: 15, color: kInk.withValues(alpha: 0.40)),
+                                Icon(Icons.search_rounded, size: 15, color: context.appMutedFg(0.40)),
                                 const SizedBox(width: 8),
                                 Expanded(
                                   child: TextField(
                                     controller: _restaurantSearchController,
                                     focusNode: _searchFocus,
-                                    style: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w300, color: kInk),
+                                    style: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w400, color: context.appOnSurface),
                                     decoration: InputDecoration(
                                       hintText: 'Name or cuisine...',
-                                      hintStyle: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w300, color: kInk.withValues(alpha: 0.40)),
+                                      hintStyle: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w400, color: context.appMutedFg(0.40)),
                                       border: InputBorder.none,
                                       enabledBorder: InputBorder.none,
                                       focusedBorder: InputBorder.none,
@@ -274,7 +274,7 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
                                 if (_restaurantSearchController.text.isNotEmpty)
                                   GestureDetector(
                                     onTap: () { _restaurantSearchController.clear(); setState(() {}); },
-                                    child: Padding(padding: const EdgeInsets.symmetric(horizontal: 10), child: Icon(Icons.close_rounded, size: 15, color: kInk.withValues(alpha: 0.40))),
+                                    child: Padding(padding: const EdgeInsets.symmetric(horizontal: 10), child: Icon(Icons.close_rounded, size: 15, color: context.appMutedFg(0.40))),
                                   )
                                 else
                                   const SizedBox(width: 12),
@@ -349,7 +349,7 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
             const SizedBox(height: 16),
             Text(
               hasQuery ? 'No restaurants match your search' : 'No restaurants here',
-              style: GoogleFonts.cormorant(fontSize: 20, fontWeight: FontWeight.w300, color: kInk.withValues(alpha: 0.40)),
+              style: GoogleFonts.cormorant(fontSize: 20, fontWeight: FontWeight.w400, color: context.appMutedFg(0.44)),
               textAlign: TextAlign.center,
             ),
           ],
@@ -361,10 +361,10 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
   // ─── LONDON GATWICK SCREEN ────────────────────────────────
   Widget _buildLondonGatwickScreen(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPage,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Stack(
         children: [
-          const _Background(),
+          _Background(),
           SafeArea(
             child: CustomScrollView(
               slivers: [
@@ -382,8 +382,8 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('London Gatwick', style: GoogleFonts.cormorant(fontSize: 24, fontWeight: FontWeight.w600, color: kInk)),
-                                  Text('London, United Kingdom', style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w300, letterSpacing: 1.5, color: kInk.withValues(alpha: 0.40))),
+                                  Text('London Gatwick', style: GoogleFonts.cormorant(fontSize: 24, fontWeight: FontWeight.w600, color: context.appOnSurface)),
+                                  Text('London, United Kingdom', style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 1.5, color: context.appMutedFg(0.40))),
                                 ],
                               ),
                             ),
@@ -436,10 +436,10 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
   // ─── PLACEHOLDER SCREEN ───────────────────────────────────
   Widget _buildPlaceholderScreen(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPage,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Stack(
         children: [
-          const _Background(),
+          _Background(),
           SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -454,10 +454,10 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
                         Container(
                           padding: const EdgeInsets.all(28),
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: appCardSurface(context),
                             borderRadius: BorderRadius.circular(3),
                             border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-                            boxShadow: [BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 8, offset: const Offset(0, 2))],
+                            boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
                           ),
                           child: Column(
                             children: [
@@ -467,12 +467,12 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
                                 child: const Icon(Icons.construction_rounded, color: kTeal, size: 24),
                               ),
                               const SizedBox(height: 16),
-                              Text('Coming Soon', style: GoogleFonts.cormorant(fontSize: 22, fontWeight: FontWeight.w400, color: kInk)),
+                              Text('Coming Soon', style: GoogleFonts.cormorant(fontSize: 22, fontWeight: FontWeight.w400, color: context.appOnSurface)),
                               const SizedBox(height: 6),
                               Text(
                                 'Detailed dining information for this airport will be available soon.',
                                 textAlign: TextAlign.center,
-                                style: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w300, color: kInk.withValues(alpha: 0.50), height: 1.6),
+                                style: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w400, color: context.appMutedFg(0.52), height: 1.6),
                               ),
                               const SizedBox(height: 20),
                               SizedBox(
@@ -519,8 +519,8 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title, style: GoogleFonts.cormorant(fontSize: 24, fontWeight: FontWeight.w600, color: kInk)),
-                    Text(subtitle, style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w300, letterSpacing: 1.5, color: kInk.withValues(alpha: 0.40))),
+                    Text(title, style: GoogleFonts.cormorant(fontSize: 24, fontWeight: FontWeight.w600, color: context.appOnSurface)),
+                    Text(subtitle, style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 1.5, color: context.appMutedFg(0.40))),
                   ],
                 ),
               ),
@@ -539,12 +539,12 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
       child: Container(
         padding: const EdgeInsets.all(9),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: appCardSurface(context),
           borderRadius: BorderRadius.circular(3),
           border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-          boxShadow: [BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 6, offset: const Offset(0, 2))],
+          boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 6, offset: const Offset(0, 2))],
         ),
-        child: Icon(Icons.arrow_back_ios_new, size: 13, color: kInk.withValues(alpha: 0.55)),
+        child: Icon(Icons.arrow_back_ios_new, size: 13, color: context.appOnSurface.withValues(alpha: 0.55)),
       ),
     );
   }
@@ -554,7 +554,7 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
       height: 1,
       decoration: BoxDecoration(
         gradient: LinearGradient(
-          colors: [Colors.transparent, kGoldLight.withValues(alpha: 0.28), kInk.withValues(alpha: 0.08), Colors.transparent],
+          colors: [Colors.transparent, kGoldLight.withValues(alpha: 0.28), context.appOnSurface.withValues(alpha: 0.08), Colors.transparent],
           stops: const [0.0, 0.3, 0.7, 1.0],
         ),
       ),
@@ -568,16 +568,16 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
         duration: const Duration(milliseconds: 150),
         padding: const EdgeInsets.symmetric(vertical: 16),
         decoration: BoxDecoration(
-          color: isSelected ? kTeal.withValues(alpha: 0.08) : Colors.white,
+          color: isSelected ? kTeal.withValues(alpha: 0.08) : appCardSurface(context),
           borderRadius: BorderRadius.circular(3),
           border: Border.all(color: isSelected ? kTeal : kGoldLight.withValues(alpha: 0.28), width: isSelected ? 1.5 : 1),
-          boxShadow: [BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 8, offset: const Offset(0, 2))],
+          boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
         ),
         child: Column(
           children: [
-            Text(code, style: GoogleFonts.cormorant(fontSize: 28, fontWeight: FontWeight.w600, color: isSelected ? kTeal : kInk.withValues(alpha: 0.35))),
+            Text(code, style: GoogleFonts.cormorant(fontSize: 28, fontWeight: FontWeight.w600, color: isSelected ? kTeal : context.appMutedFg(0.35))),
             const SizedBox(height: 4),
-            Text(label, style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w300, letterSpacing: 0.5, color: isSelected ? kTeal : kInk.withValues(alpha: 0.40))),
+            Text(label, style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.5, color: isSelected ? kTeal : context.appMutedFg(0.40))),
           ],
         ),
       ),
@@ -611,16 +611,16 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
         margin: const EdgeInsets.only(bottom: 10),
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: appCardSurface(context),
           borderRadius: BorderRadius.circular(3),
           border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-          boxShadow: [BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 8, offset: const Offset(0, 2))],
+          boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
         ),
         child: Row(
           children: [
             Container(
               width: 48, height: 48,
-              decoration: BoxDecoration(color: kPage, borderRadius: BorderRadius.circular(3), border: Border.all(color: kGoldLight.withValues(alpha: 0.28))),
+              decoration: BoxDecoration(color: Theme.of(context).scaffoldBackgroundColor, borderRadius: BorderRadius.circular(3), border: Border.all(color: kGoldLight.withValues(alpha: 0.28))),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(3),
                 child: Image.network(
@@ -636,12 +636,12 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(restaurant.name, style: GoogleFonts.jost(fontSize: 15, fontWeight: FontWeight.w400, color: kInk)),
+                  Text(restaurant.name, style: GoogleFonts.jost(fontSize: 15, fontWeight: FontWeight.w400, color: context.appOnSurface)),
                   const SizedBox(height: 2),
-                  Text(restaurant.cuisine, style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w300, color: kInk.withValues(alpha: 0.40))),
+                  Text(restaurant.cuisine, style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, color: context.appMutedFg(0.40))),
                   if (restaurant.location.isNotEmpty) ...[
                     const SizedBox(height: 2),
-                    Text(restaurant.location, style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w300, color: kInk.withValues(alpha: 0.35))),
+                    Text(restaurant.location, style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, color: context.appMutedFg(0.35))),
                   ],
                 ],
               ),
@@ -657,12 +657,12 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
                     const SizedBox(width: 5),
                     Text(
                       restaurant.isOpen ? 'Open' : 'Closed',
-                      style: GoogleFonts.jost(fontSize: 10, fontWeight: FontWeight.w300, letterSpacing: 0.5, color: restaurant.isOpen ? kTeal : kGold),
+                      style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w400, letterSpacing: 0.5, color: restaurant.isOpen ? kTeal : kGold),
                     ),
                   ],
                 ),
                 const SizedBox(height: 6),
-                Icon(Icons.chevron_right_rounded, size: 16, color: kInk.withValues(alpha: 0.35)),
+                Icon(Icons.chevron_right_rounded, size: 16, color: context.appMutedFg(0.35)),
               ],
             ),
           ],
@@ -739,7 +739,7 @@ class _SectionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(title, style: GoogleFonts.cormorant(fontSize: 22, fontWeight: FontWeight.w400, color: kInk, letterSpacing: 0.2)),
+        Text(title, style: GoogleFonts.cormorant(fontSize: 22, fontWeight: FontWeight.w400, color: context.appOnSurface, letterSpacing: 0.2)),
         const SizedBox(width: 10),
         Expanded(child: Container(height: 1, decoration: BoxDecoration(gradient: LinearGradient(colors: [kGoldLight.withValues(alpha: 0.28), Colors.transparent])))),
         const SizedBox(width: 6),
@@ -753,16 +753,15 @@ class _SectionHeader extends StatelessWidget {
 //  BACKGROUND
 // ─────────────────────────────────────────────────────────────
 class _Background extends StatelessWidget {
-  const _Background();
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFFFDFBF6), Color(0xFFF8F5EE), Color(0xFFF2EDE3)],
-          stops: [0.0, 0.55, 1.0],
+          colors: appPageGradientColors(context),
+          stops: const [0.0, 0.55, 1.0],
         ),
       ),
     );

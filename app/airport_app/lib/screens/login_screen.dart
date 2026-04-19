@@ -157,12 +157,9 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
-      ),
+      value: appSystemUiOverlayStyle(context),
       child: Scaffold(
-        backgroundColor: kPage,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           surfaceTintColor: Colors.transparent,
@@ -172,7 +169,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
           leading: IconButton(
             iconSize: 18,
             padding: EdgeInsets.zero,
-            icon: Icon(Icons.arrow_back_rounded, color: kInk.withOpacity(0.75)),
+            icon: Icon(Icons.arrow_back_rounded, color: context.appOnSurface.withValues(alpha: 0.75)),
             onPressed: () => context.pop(),
           ),
           actions: [
@@ -186,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
               child: Text(
                 'skip',
                 style: GoogleFonts.jost(
-                  fontSize: 10.5,
+                  fontSize: 11,
                   fontWeight: FontWeight.w500,
                   letterSpacing: 2.0,
                   color: kTeal.withOpacity(0.75),
@@ -214,7 +211,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
         ),
         body: Stack(
           children: [
-            const _Background(),
+            _Background(),
             SafeArea(
               top: false,
               child: Column(
@@ -273,7 +270,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                                         'Forgot password?',
                                         style: GoogleFonts.jost(
                                           fontSize: 12,
-                                          fontWeight: FontWeight.w300,
+                                          fontWeight: FontWeight.w400,
                                           color: kTeal.withOpacity(0.85),
                                           letterSpacing: 0.3,
                                           decoration: TextDecoration.underline,
@@ -302,8 +299,8 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                                 _SocialButton(
                                   label: 'Continue with Google',
                                   icon: Icons.g_mobiledata_rounded,
-                                  backgroundColor: Colors.white,
-                                  foregroundColor: kInk,
+                                  backgroundColor: appCardSurface(context),
+                                  foregroundColor: context.appOnSurface,
                                   hasBorder: true,
                                   isLoading: _isLoading,
                                   onTap: _isLoading ? null : _signInWithGoogle,
@@ -322,8 +319,8 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                                     "Don't have an account?  ",
                                     style: GoogleFonts.jost(
                                       fontSize: 13,
-                                      fontWeight: FontWeight.w300,
-                                      color: kInk.withOpacity(0.45),
+                                      fontWeight: FontWeight.w400,
+                                      color: context.appMutedFg(0.45),
                                     ),
                                   ),
                                   GestureDetector(
@@ -362,15 +359,14 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
 //  BACKGROUND
 // ─────────────────────────────────────────────────────────────
 class _Background extends StatelessWidget {
-  const _Background();
   @override
   Widget build(BuildContext context) => Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFFFDFBF6), Color(0xFFF8F5EE), Color(0xFFF2EDE3)],
-            stops: [0.0, 0.55, 1.0],
+            colors: appPageGradientColors(context),
+            stops: const [0.0, 0.55, 1.0],
           ),
         ),
       );
@@ -395,7 +391,7 @@ class _Header extends StatelessWidget {
                     fontSize: 36,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 2.2,
-                    color: kInk.withOpacity(0.80),
+                    color: context.appOnSurface.withValues(alpha: 0.80),
                   ),
                 ),
                 const SizedBox(height: 0),
@@ -423,7 +419,7 @@ class _Header extends StatelessWidget {
                     colors: [
                       Colors.transparent,
                       kGoldLight.withOpacity(0.28),
-                      kInk.withOpacity(0.08),
+                      context.appOnSurface.withValues(alpha: 0.08),
                       Colors.transparent,
                     ],
                     stops: const [0.0, 0.3, 0.7, 1.0],
@@ -437,8 +433,8 @@ class _Header extends StatelessWidget {
             'Welcome back',
             style: GoogleFonts.cormorant(
               fontSize: 28,
-              fontWeight: FontWeight.w300,
-              color: kInk,
+              fontWeight: FontWeight.w400,
+              color: context.appOnSurface,
               letterSpacing: 0.3,
             ),
           ),
@@ -447,8 +443,8 @@ class _Header extends StatelessWidget {
             'Sign in to continue your journey.',
             style: GoogleFonts.jost(
               fontSize: 13,
-              fontWeight: FontWeight.w300,
-              color: kInk.withOpacity(0.45),
+              fontWeight: FontWeight.w400,
+              color: context.appMutedFg(0.45),
               height: 1.6,
               letterSpacing: 0.2,
             ),
@@ -511,10 +507,10 @@ class _PremiumFieldState extends State<_PremiumField> {
           Text(
             widget.label.toUpperCase(),
             style: GoogleFonts.jost(
-              fontSize: 9,
-              fontWeight: FontWeight.w300,
+              fontSize: 10,
+              fontWeight: FontWeight.w400,
               letterSpacing: 2.0,
-              color: _focused ? kTeal : kInk.withOpacity(0.45),
+              color: _focused ? kTeal : context.appMutedFg(0.45),
             ),
           ),
           const SizedBox(height: 6),
@@ -525,24 +521,24 @@ class _PremiumFieldState extends State<_PremiumField> {
             obscureText: widget.obscureText,
             validator: widget.validator,
             enabled: widget.enabled,
-            style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w300, color: kInk),
+            style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appOnSurface),
             decoration: InputDecoration(
               hintText: widget.hint,
               hintStyle: GoogleFonts.jost(
                 fontSize: 14,
-                fontWeight: FontWeight.w300,
-                color: kInk.withOpacity(0.30),
+                fontWeight: FontWeight.w400,
+                color: context.appMutedFg(0.38),
               ),
-              errorStyle: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w300, color: Colors.red.shade400),
-              prefixIcon: Icon(widget.prefixIcon, size: 16, color: _focused ? kTeal : kInk.withOpacity(0.35)),
+              errorStyle: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.red.shade400),
+              prefixIcon: Icon(widget.prefixIcon, size: 16, color: _focused ? kTeal : context.appMutedFg(0.42)),
               suffixIcon: widget.suffixIcon != null
                   ? GestureDetector(
                       onTap: widget.onSuffixTap,
-                      child: Icon(widget.suffixIcon, size: 16, color: kInk.withOpacity(0.35)),
+                      child: Icon(widget.suffixIcon, size: 16, color: context.appMutedFg(0.42)),
                     )
                   : null,
               filled: true,
-              fillColor: Colors.white,
+              fillColor: appInputFill(context),
               contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(3),
@@ -713,7 +709,7 @@ class _SocialButtonState extends State<_SocialButton> {
               color: widget.backgroundColor,
               borderRadius: BorderRadius.circular(3),
               border: widget.hasBorder ? Border.all(color: kGoldLight.withOpacity(0.28)) : null,
-              boxShadow: widget.hasBorder ? [BoxShadow(color: kInk.withOpacity(0.04), blurRadius: 8, offset: const Offset(0, 2))] : [],
+              boxShadow: widget.hasBorder ? [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))] : [],
             ),
             child: Center(
               child: widget.isLoading
@@ -734,7 +730,7 @@ class _SocialButtonState extends State<_SocialButton> {
                           widget.label,
                           style: GoogleFonts.jost(
                             fontSize: 13,
-                            fontWeight: FontWeight.w300,
+                            fontWeight: FontWeight.w400,
                             letterSpacing: 0.4,
                             color: widget.foregroundColor,
                           ),

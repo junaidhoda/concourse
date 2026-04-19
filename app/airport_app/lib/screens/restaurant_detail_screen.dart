@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
@@ -24,12 +25,14 @@ class RestaurantDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kPage,
-      body: Stack(
-        children: [
-          const _Background(),
-          SafeArea(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: appSystemUiOverlayStyle(context),
+      child: Scaffold(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        body: Stack(
+          children: [
+            _Background(),
+            SafeArea(
             child: CustomScrollView(
               slivers: [
                 // Header
@@ -47,12 +50,12 @@ class RestaurantDetailScreen extends StatelessWidget {
                               child: Container(
                                 padding: const EdgeInsets.all(9),
                                 decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: appCardSurface(context),
                                   borderRadius: BorderRadius.circular(3),
                                   border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-                                  boxShadow: [BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 6, offset: const Offset(0, 2))],
+                                  boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 6, offset: const Offset(0, 2))],
                                 ),
-                                child: Icon(Icons.arrow_back_ios_new, size: 13, color: kInk.withValues(alpha: 0.55)),
+                                child: Icon(Icons.arrow_back_ios_new, size: 13, color: context.appOnSurface.withValues(alpha: 0.55)),
                               ),
                             ),
                             const SizedBox(width: 12),
@@ -60,10 +63,10 @@ class RestaurantDetailScreen extends StatelessWidget {
                               child: Text(
                                 cuisine,
                                 style: GoogleFonts.jost(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w300,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400,
                                   letterSpacing: 2.0,
-                                  color: kInk.withValues(alpha: 0.40),
+                                  color: context.appMutedFg(0.40),
                                 ),
                               ),
                             ),
@@ -79,8 +82,8 @@ class RestaurantDetailScreen extends StatelessWidget {
                                 Text(
                                   isOpen ? 'Open' : 'Closed',
                                   style: GoogleFonts.jost(
-                                    fontSize: 11,
-                                    fontWeight: FontWeight.w300,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
                                     letterSpacing: 1.0,
                                     color: isOpen ? kTeal : kGold,
                                   ),
@@ -95,7 +98,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                           height: 1,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
-                              colors: [Colors.transparent, kGoldLight.withValues(alpha: 0.28), kInk.withValues(alpha: 0.08), Colors.transparent],
+                              colors: [Colors.transparent, kGoldLight.withValues(alpha: 0.28), context.appOnSurface.withValues(alpha: 0.08), Colors.transparent],
                               stops: const [0.0, 0.3, 0.7, 1.0],
                             ),
                           ),
@@ -134,10 +137,10 @@ class RestaurantDetailScreen extends StatelessWidget {
                             child: Container(
                               width: 96, height: 96,
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color: appCardSurface(context),
                                 borderRadius: BorderRadius.circular(6),
                                 border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-                                boxShadow: [BoxShadow(color: kInk.withValues(alpha: 0.06), blurRadius: 12, offset: const Offset(0, 4))],
+                                boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 12, offset: const Offset(0, 4))],
                               ),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(6),
@@ -171,13 +174,13 @@ class RestaurantDetailScreen extends StatelessWidget {
                             fontSize: 30,
                             fontWeight: FontWeight.w500,
                             letterSpacing: 0.2,
-                            color: kInk,
+                            color: context.appOnSurface,
                           ),
                         ),
                         const SizedBox(height: 18),
 
                         // Details section
-                        const _SectionHeader(title: 'Details'),
+                        _SectionHeader(title: 'Details'),
                         const SizedBox(height: 14),
                         _InfoCard(icon: Icons.restaurant_menu_rounded, label: 'Cuisine', value: cuisine),
                         const SizedBox(height: 10),
@@ -189,7 +192,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                         const SizedBox(height: 24),
 
                         // Menu section
-                        const _SectionHeader(title: 'Menu'),
+                        _SectionHeader(title: 'Menu'),
                         const SizedBox(height: 14),
                         _PlaceholderCard(
                           icon: Icons.menu_book_rounded,
@@ -199,7 +202,7 @@ class RestaurantDetailScreen extends StatelessWidget {
                         const SizedBox(height: 24),
 
                         // Reviews section
-                        const _SectionHeader(title: 'Reviews'),
+                        _SectionHeader(title: 'Reviews'),
                         const SizedBox(height: 14),
                         _PlaceholderCard(
                           icon: Icons.rate_review_outlined,
@@ -215,6 +218,7 @@ class RestaurantDetailScreen extends StatelessWidget {
           ),
         ],
       ),
+    ),
     );
   }
 
@@ -249,10 +253,10 @@ class _InfoCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: appCardSurface(context),
         borderRadius: BorderRadius.circular(3),
         border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-        boxShadow: [BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 8, offset: const Offset(0, 2))],
+        boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
       ),
       child: Row(
         children: [
@@ -268,12 +272,12 @@ class _InfoCard extends StatelessWidget {
               children: [
                 Text(
                   label,
-                  style: GoogleFonts.jost(fontSize: 10, fontWeight: FontWeight.w300, letterSpacing: 1.8, color: kInk.withValues(alpha: 0.35)),
+                  style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w400, letterSpacing: 1.8, color: context.appMutedFg(0.38)),
                 ),
                 const SizedBox(height: 2),
                 Text(
                   value,
-                  style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: kInk),
+                  style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appOnSurface),
                 ),
               ],
             ),
@@ -300,18 +304,18 @@ class _PlaceholderCard extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: appCardSurface(context),
         borderRadius: BorderRadius.circular(3),
         border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-        boxShadow: [BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 8, offset: const Offset(0, 2))],
+        boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
       ),
       child: Column(
         children: [
-          Icon(icon, size: 36, color: kInk.withValues(alpha: 0.25)),
+          Icon(icon, size: 36, color: context.appMutedFg(0.28, relaxed: true)),
           const SizedBox(height: 12),
-          Text(message, style: GoogleFonts.cormorant(fontSize: 18, fontWeight: FontWeight.w300, color: kInk.withValues(alpha: 0.40))),
+          Text(message, style: GoogleFonts.cormorant(fontSize: 18, fontWeight: FontWeight.w400, color: context.appMutedFg(0.44))),
           const SizedBox(height: 4),
-          Text(subtitle, style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w300, color: kInk.withValues(alpha: 0.30), letterSpacing: 0.3), textAlign: TextAlign.center),
+          Text(subtitle, style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, color: context.appMutedFg(0.36), letterSpacing: 0.3), textAlign: TextAlign.center),
         ],
       ),
     );
@@ -329,7 +333,7 @@ class _SectionHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(title, style: GoogleFonts.cormorant(fontSize: 22, fontWeight: FontWeight.w400, color: kInk, letterSpacing: 0.2)),
+        Text(title, style: GoogleFonts.cormorant(fontSize: 22, fontWeight: FontWeight.w400, color: context.appOnSurface, letterSpacing: 0.2)),
         const SizedBox(width: 10),
         Expanded(
           child: Container(
@@ -348,16 +352,15 @@ class _SectionHeader extends StatelessWidget {
 //  BACKGROUND
 // ─────────────────────────────────────────────────────────────
 class _Background extends StatelessWidget {
-  const _Background();
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFFFDFBF6), Color(0xFFF8F5EE), Color(0xFFF2EDE3)],
-          stops: [0.0, 0.55, 1.0],
+          colors: appPageGradientColors(context),
+          stops: const [0.0, 0.55, 1.0],
         ),
       ),
     );
