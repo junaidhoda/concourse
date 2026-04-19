@@ -135,12 +135,9 @@ class _ExploreScreenState extends State<ExploreScreen> with TickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
-      ),
+      value: appSystemUiOverlayStyle(context),
       child: Scaffold(
-        backgroundColor: kPage,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: Stack(
           children: [
             // Background gradient
@@ -201,8 +198,8 @@ class _ExploreScreenState extends State<ExploreScreen> with TickerProviderStateM
               'No airports found',
               style: GoogleFonts.cormorant(
                 fontSize: 20,
-                fontWeight: FontWeight.w300,
-                color: kInk.withOpacity(0.40),
+                fontWeight: FontWeight.w400,
+                color: context.appMutedFg(0.44),
               ),
             ),
             const SizedBox(height: 4),
@@ -210,9 +207,9 @@ class _ExploreScreenState extends State<ExploreScreen> with TickerProviderStateM
               'Try a different search term',
               style: GoogleFonts.jost(
                 fontSize: 12,
-                fontWeight: FontWeight.w300,
+                fontWeight: FontWeight.w400,
                 letterSpacing: 0.6,
-                color: kInk.withOpacity(0.40),
+                color: context.appMutedFg(0.40),
               ),
             ),
           ],
@@ -309,12 +306,12 @@ class _Background extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFFFDFBF6), Color(0xFFF8F5EE), Color(0xFFF2EDE3)],
-          stops: [0.0, 0.55, 1.0],
+          colors: appPageGradientColors(context),
+          stops: const [0.0, 0.55, 1.0],
         ),
       ),
     );
@@ -358,7 +355,7 @@ class _Header extends StatelessWidget {
               fontSize: 36,
               fontWeight: FontWeight.w600,
               letterSpacing: 2.2,
-              color: kInk.withOpacity(0.80),
+              color: context.appOnSurface.withValues(alpha: 0.80),
             ),
           ),
           const SizedBox(height: 0),
@@ -384,7 +381,7 @@ class _Header extends StatelessWidget {
                     colors: [
                       Colors.transparent,
                       kGoldLight.withOpacity(0.28),
-                      kInk.withOpacity(0.08),
+                      context.appOnSurface.withValues(alpha: 0.08),
                       Colors.transparent,
                     ],
                     stops: const [0.0, 0.3, 0.7, 1.0],
@@ -400,10 +397,10 @@ class _Header extends StatelessWidget {
             child: Text(
               'Find airports around the world',
               style: GoogleFonts.jost(
-                fontSize: 11,
-                fontWeight: FontWeight.w300,
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
                 letterSpacing: 2.2,
-                color: kInk.withOpacity(0.40),
+                color: context.appMutedFg(0.40),
               ),
             ),
           ),
@@ -462,7 +459,7 @@ class _SearchBarState extends State<_SearchBar> {
       duration: const Duration(milliseconds: 150),
       height: 44,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: appCardSurface(context),
         borderRadius: BorderRadius.circular(3),
         border: Border.all(
           color: _focused ? kTeal : kGoldLight.withOpacity(0.28),
@@ -473,7 +470,7 @@ class _SearchBarState extends State<_SearchBar> {
       child: Row(
         children: [
           const SizedBox(width: 13),
-          Icon(Icons.search_rounded, size: 16, color: kInk.withOpacity(0.40)),
+          Icon(Icons.search_rounded, size: 16, color: context.appMutedFg(0.40)),
           const SizedBox(width: 8),
           Expanded(
             child: TextField(
@@ -482,15 +479,15 @@ class _SearchBarState extends State<_SearchBar> {
               onChanged: widget.onChanged,
               style: GoogleFonts.jost(
                 fontSize: 14,
-                fontWeight: FontWeight.w300,
-                color: kInk,
+                fontWeight: FontWeight.w400,
+                color: context.appOnSurface,
               ),
               decoration: InputDecoration(
                 hintText: 'Search airports, cities...',
                 hintStyle: GoogleFonts.jost(
                   fontSize: 14,
-                  fontWeight: FontWeight.w300,
-                  color: kInk.withOpacity(0.40),
+                  fontWeight: FontWeight.w400,
+                  color: context.appMutedFg(0.40),
                 ),
                 filled: false,
                 fillColor: Colors.transparent,
@@ -508,7 +505,7 @@ class _SearchBarState extends State<_SearchBar> {
               onTap: widget.onClear,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Icon(Icons.close_rounded, size: 16, color: kInk.withOpacity(0.40)),
+                child: Icon(Icons.close_rounded, size: 16, color: context.appMutedFg(0.40)),
               ),
             )
           else
@@ -535,7 +532,7 @@ class _SectionHeader extends StatelessWidget {
           style: GoogleFonts.cormorant(
             fontSize: 22,
             fontWeight: FontWeight.w400,
-            color: kInk,
+            color: context.appOnSurface,
             letterSpacing: 0.2,
           ),
         ),
@@ -598,12 +595,12 @@ class _ActionCardState extends State<_ActionCard> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: appCardSurface(context),
             borderRadius: BorderRadius.circular(3),
             border: Border.all(color: kGoldLight.withOpacity(0.28)),
             boxShadow: _pressed
                 ? []
-                : [BoxShadow(color: kInk.withOpacity(0.04), blurRadius: 8, offset: const Offset(0, 2))],
+                : [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
           ),
           child: Row(
             children: [
@@ -628,7 +625,7 @@ class _ActionCardState extends State<_ActionCard> {
                       style: GoogleFonts.jost(
                         fontSize: 15,
                         fontWeight: FontWeight.w400,
-                        color: kInk,
+                        color: context.appOnSurface,
                       ),
                     ),
                     const SizedBox(height: 2),
@@ -636,14 +633,14 @@ class _ActionCardState extends State<_ActionCard> {
                       widget.subtitle,
                       style: GoogleFonts.jost(
                         fontSize: 12,
-                        fontWeight: FontWeight.w300,
-                        color: kInk.withOpacity(0.40),
+                        fontWeight: FontWeight.w400,
+                        color: context.appMutedFg(0.40),
                       ),
                     ),
                   ],
                 ),
               ),
-              Icon(Icons.chevron_right_rounded, size: 18, color: kInk.withOpacity(0.35)),
+              Icon(Icons.chevron_right_rounded, size: 18, color: context.appMutedFg(0.35)),
             ],
           ),
         ),
@@ -668,10 +665,10 @@ class _FeaturedCard extends StatelessWidget {
         width: 128,
         padding: const EdgeInsets.fromLTRB(12, 12, 12, 9),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: appCardSurface(context),
           borderRadius: BorderRadius.circular(3),
           border: Border.all(color: kGoldLight.withOpacity(0.28)),
-          boxShadow: [BoxShadow(color: kInk.withOpacity(0.04), blurRadius: 8, offset: const Offset(0, 2))],
+          boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -708,7 +705,7 @@ class _FeaturedCard extends StatelessWidget {
                   style: GoogleFonts.cormorant(
                     fontSize: 18,
                     fontWeight: FontWeight.w400,
-                    color: kInk,
+                    color: context.appOnSurface,
                     letterSpacing: -0.2,
                   ),
                 ),
@@ -717,9 +714,9 @@ class _FeaturedCard extends StatelessWidget {
                   airport.city,
                   overflow: TextOverflow.ellipsis,
                   style: GoogleFonts.jost(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w300,
-                    color: kInk.withOpacity(0.40),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: context.appMutedFg(0.40),
                     letterSpacing: 0.6,
                   ),
                 ),
@@ -745,9 +742,9 @@ class _FeaturedCard extends StatelessWidget {
                     Text(
                       'restaurants',
                       style: GoogleFonts.jost(
-                        fontSize: 9,
-                        fontWeight: FontWeight.w300,
-                        color: kInk.withOpacity(0.40),
+                        fontSize: 10,
+                        fontWeight: FontWeight.w400,
+                        color: context.appMutedFg(0.40),
                         letterSpacing: 1.2,
                       ),
                     ),
@@ -778,10 +775,10 @@ class _ResultCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 10),
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: appCardSurface(context),
           borderRadius: BorderRadius.circular(3),
           border: Border.all(color: kGoldLight.withOpacity(0.28)),
-          boxShadow: [BoxShadow(color: kInk.withOpacity(0.04), blurRadius: 8, offset: const Offset(0, 2))],
+          boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
         ),
         child: Row(
           children: [
@@ -819,7 +816,7 @@ class _ResultCard extends StatelessWidget {
                     style: GoogleFonts.jost(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: kInk,
+                      color: context.appOnSurface,
                     ),
                   ),
                   const SizedBox(height: 1),
@@ -827,8 +824,8 @@ class _ResultCard extends StatelessWidget {
                     '${airport.city}, ${airport.country}',
                     style: GoogleFonts.jost(
                       fontSize: 12,
-                      fontWeight: FontWeight.w300,
-                      color: kInk.withOpacity(0.40),
+                      fontWeight: FontWeight.w400,
+                      color: context.appMutedFg(0.40),
                     ),
                   ),
                 ],
@@ -849,16 +846,16 @@ class _ResultCard extends StatelessWidget {
                 Text(
                   'venues',
                   style: GoogleFonts.jost(
-                    fontSize: 8.5,
-                    fontWeight: FontWeight.w300,
-                    color: kInk.withOpacity(0.40),
+                    fontSize: 10,
+                    fontWeight: FontWeight.w400,
+                    color: context.appMutedFg(0.40),
                     letterSpacing: 1.2,
                   ),
                 ),
               ],
             ),
             const SizedBox(width: 10),
-            Icon(Icons.chevron_right_rounded, size: 16, color: kInk.withOpacity(0.35)),
+            Icon(Icons.chevron_right_rounded, size: 16, color: context.appMutedFg(0.35)),
           ],
         ),
       ),

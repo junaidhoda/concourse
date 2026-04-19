@@ -206,13 +206,13 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         title: Text(widget.restaurantId == null || widget.restaurantId == 'new' 
             ? 'Add Restaurant' 
             : 'Edit Restaurant'),
-        backgroundColor: Colors.white,
-        foregroundColor: const Color(0xFF3E6BC1),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        foregroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.white : const Color(0xFF3E6BC1),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),

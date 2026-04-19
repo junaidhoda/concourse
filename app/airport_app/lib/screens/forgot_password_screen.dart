@@ -102,12 +102,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Ticker
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
-      ),
+      value: appSystemUiOverlayStyle(context),
       child: Scaffold(
-        backgroundColor: kPage,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           surfaceTintColor: Colors.transparent,
@@ -117,7 +114,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Ticker
           leading: IconButton(
             iconSize: 18,
             padding: EdgeInsets.zero,
-            icon: Icon(Icons.arrow_back_rounded, color: kInk.withOpacity(0.75)),
+            icon: Icon(Icons.arrow_back_rounded, color: context.appOnSurface.withValues(alpha: 0.75)),
             onPressed: () => context.pop(),
           ),
           bottom: PreferredSize(
@@ -139,7 +136,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Ticker
         ),
         body: Stack(
           children: [
-            const _Background(),
+            _Background(),
             SafeArea(
               top: false,
               child: SingleChildScrollView(
@@ -185,8 +182,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Ticker
                   "We'll send a reset link to this address.",
                   style: GoogleFonts.jost(
                     fontSize: 12,
-                    fontWeight: FontWeight.w300,
-                    color: kInk.withOpacity(0.40),
+                    fontWeight: FontWeight.w400,
+                    color: context.appMutedFg(0.44),
                     letterSpacing: 0.2,
                   ),
                 ),
@@ -213,8 +210,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Ticker
                   'Remember your password?  ',
                   style: GoogleFonts.jost(
                     fontSize: 13,
-                    fontWeight: FontWeight.w300,
-                    color: kInk.withOpacity(0.45),
+                    fontWeight: FontWeight.w400,
+                    color: context.appMutedFg(0.45),
                   ),
                 ),
                 GestureDetector(
@@ -255,8 +252,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Ticker
                 'Check your inbox',
                 style: GoogleFonts.cormorant(
                   fontSize: 26,
-                  fontWeight: FontWeight.w300,
-                  color: kInk,
+                  fontWeight: FontWeight.w400,
+                  color: context.appOnSurface,
                   letterSpacing: 0.3,
                 ),
               ),
@@ -266,8 +263,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Ticker
                 textAlign: TextAlign.center,
                 style: GoogleFonts.jost(
                   fontSize: 13,
-                  fontWeight: FontWeight.w300,
-                  color: kInk.withOpacity(0.45),
+                  fontWeight: FontWeight.w400,
+                  color: context.appMutedFg(0.45),
                   height: 1.7,
                   letterSpacing: 0.2,
                 ),
@@ -279,8 +276,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Ticker
                 "Didn't receive it?",
                 style: GoogleFonts.jost(
                   fontSize: 12,
-                  fontWeight: FontWeight.w300,
-                  color: kInk.withOpacity(0.40),
+                  fontWeight: FontWeight.w400,
+                  color: context.appMutedFg(0.44),
                   letterSpacing: 0.2,
                 ),
               ),
@@ -406,15 +403,14 @@ class _CheckPainter extends CustomPainter {
 //  BACKGROUND
 // ─────────────────────────────────────────────────────────────
 class _Background extends StatelessWidget {
-  const _Background();
   @override
   Widget build(BuildContext context) => Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFFFDFBF6), Color(0xFFF8F5EE), Color(0xFFF2EDE3)],
-            stops: [0.0, 0.55, 1.0],
+            colors: appPageGradientColors(context),
+            stops: const [0.0, 0.55, 1.0],
           ),
         ),
       );
@@ -440,7 +436,7 @@ class _Header extends StatelessWidget {
                     fontSize: 36,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 2.2,
-                    color: kInk.withOpacity(0.80),
+                    color: context.appOnSurface.withValues(alpha: 0.80),
                   ),
                 ),
                 const SizedBox(height: 0),
@@ -468,7 +464,7 @@ class _Header extends StatelessWidget {
                     colors: [
                       Colors.transparent,
                       kGoldLight.withOpacity(0.28),
-                      kInk.withOpacity(0.08),
+                      context.appOnSurface.withValues(alpha: 0.08),
                       Colors.transparent,
                     ],
                     stops: const [0.0, 0.3, 0.7, 1.0],
@@ -482,8 +478,8 @@ class _Header extends StatelessWidget {
             'Reset password',
             style: GoogleFonts.cormorant(
               fontSize: 28,
-              fontWeight: FontWeight.w300,
-              color: kInk,
+              fontWeight: FontWeight.w400,
+              color: context.appOnSurface,
               letterSpacing: 0.3,
             ),
           ),
@@ -492,8 +488,8 @@ class _Header extends StatelessWidget {
             "Enter the email associated with your account\nand we'll send you a reset link.",
             style: GoogleFonts.jost(
               fontSize: 13,
-              fontWeight: FontWeight.w300,
-              color: kInk.withOpacity(0.45),
+              fontWeight: FontWeight.w400,
+              color: context.appMutedFg(0.45),
               height: 1.65,
               letterSpacing: 0.2,
             ),
@@ -551,10 +547,10 @@ class _PremiumFieldState extends State<_PremiumField> {
           Text(
             widget.label.toUpperCase(),
             style: GoogleFonts.jost(
-              fontSize: 9,
-              fontWeight: FontWeight.w300,
+              fontSize: 10,
+              fontWeight: FontWeight.w400,
               letterSpacing: 2.0,
-              color: _focused ? kTeal : kInk.withOpacity(0.45),
+              color: _focused ? kTeal : context.appMutedFg(0.45),
             ),
           ),
           const SizedBox(height: 6),
@@ -564,14 +560,14 @@ class _PremiumFieldState extends State<_PremiumField> {
             keyboardType: widget.keyboardType,
             validator: widget.validator,
             enabled: widget.enabled,
-            style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w300, color: kInk),
+            style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appOnSurface),
             decoration: InputDecoration(
               hintText: widget.hint,
-              hintStyle: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w300, color: kInk.withOpacity(0.30)),
-              errorStyle: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w300, color: Colors.red.shade400),
-              prefixIcon: Icon(widget.prefixIcon, size: 16, color: _focused ? kTeal : kInk.withOpacity(0.35)),
+              hintStyle: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appMutedFg(0.38)),
+              errorStyle: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, color: Colors.red.shade400),
+              prefixIcon: Icon(widget.prefixIcon, size: 16, color: _focused ? kTeal : context.appMutedFg(0.42)),
               filled: true,
-              fillColor: Colors.white,
+              fillColor: appInputFill(context),
               contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(3),

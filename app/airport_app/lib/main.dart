@@ -13,7 +13,7 @@ import 'screens/createaccount_screen.dart';
 import 'screens/more_screen.dart';
 import 'screens/restaurant_detail_screen.dart';
 import 'screens/welcome_screen.dart';
-import 'screens/loading_screen.dart' hide kTeal, kGold, kGoldLight, kInk, kPage;
+import 'screens/loading_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/forgot_password_screen.dart';
 
@@ -115,12 +115,14 @@ class MyApp extends StatelessWidget {
     return ListenableBuilder(
       listenable: AppPreferences.instance,
       builder: (context, _) {
+        final prefs = AppPreferences.instance;
         return MaterialApp.router(
           title: 'Concourse',
           debugShowCheckedModeBanner: false,
           theme: appTheme,
           darkTheme: darkAppTheme,
-          themeMode: AppPreferences.instance.darkMode ? ThemeMode.dark : ThemeMode.light,
+          themeMode: prefs.darkMode ? ThemeMode.dark : ThemeMode.light,
+          themeAnimationDuration: Duration.zero,
           routerConfig: _router,
         );
       },
@@ -160,7 +162,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bgColor = isDark ? const Color(0xFF161B1E) : Colors.white;
     final borderColor = isDark ? kGoldLight.withValues(alpha: 0.12) : kGoldLight.withValues(alpha: 0.30);
-    final unselectedColor = isDark ? Colors.white.withValues(alpha: 0.35) : kInk.withValues(alpha: 0.35);
+    final unselectedColor = isDark ? Colors.white.withValues(alpha: 0.48) : kInk.withValues(alpha: 0.42);
 
     final tabs = [
       (Icons.explore_outlined, Icons.explore_rounded, 'Explore'),
@@ -218,8 +220,8 @@ class ScaffoldWithNavBar extends StatelessWidget {
                         Text(
                           label,
                           style: GoogleFonts.jost(
-                            fontSize: 10,
-                            fontWeight: isSelected ? FontWeight.w500 : FontWeight.w300,
+                            fontSize: 11,
+                            fontWeight: isSelected ? FontWeight.w500 : FontWeight.w400,
                             letterSpacing: 0.5,
                             color: isSelected ? kTeal : unselectedColor,
                           ),

@@ -48,11 +48,11 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         title: const Text('Admin Dashboard'),
-        backgroundColor: Colors.white,
-        foregroundColor: const Color(0xFF3E6BC1),
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        foregroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.white : const Color(0xFF3E6BC1),
         elevation: 0,
         actions: [
           IconButton(

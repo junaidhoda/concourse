@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // ─────────────────────────────────────────────────────────────
@@ -60,9 +61,9 @@ ThemeData get appTheme => ThemeData(
       color: kInk,
     ),
     bodySmall: GoogleFonts.jost(
-      fontSize: 12,
+      fontSize: 13,
       fontWeight: FontWeight.w400,
-      color: kInk.withOpacity(0.7),
+      color: kInk.withValues(alpha: 0.78),
     ),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
@@ -72,9 +73,9 @@ ThemeData get appTheme => ThemeData(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
       textStyle: GoogleFonts.jost(
-        fontSize: 11,
-        fontWeight: FontWeight.w400,
-        letterSpacing: 2.2,
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 2.0,
       ),
     ),
   ),
@@ -84,9 +85,9 @@ ThemeData get appTheme => ThemeData(
       side: BorderSide(color: kGoldLight.withOpacity(0.4)),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
       textStyle: GoogleFonts.jost(
-        fontSize: 11,
-        fontWeight: FontWeight.w400,
-        letterSpacing: 2.2,
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 2.0,
       ),
     ),
   ),
@@ -102,7 +103,7 @@ ThemeData get appTheme => ThemeData(
       borderRadius: BorderRadius.circular(3),
       borderSide: const BorderSide(color: kTeal, width: 1.5),
     ),
-    hintStyle: GoogleFonts.jost(fontSize: 14, color: kInk.withOpacity(0.4)),
+    hintStyle: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: kInk.withValues(alpha: 0.52)),
     contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
   ),
   navigationBarTheme: NavigationBarThemeData(
@@ -116,13 +117,13 @@ ThemeData get appTheme => ThemeData(
           color: kTeal,
         );
       }
-      return GoogleFonts.jost(fontSize: 12, color: kInk.withOpacity(0.6));
+      return GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w400, color: kInk.withValues(alpha: 0.72));
     }),
     iconTheme: WidgetStateProperty.resolveWith((states) {
       if (states.contains(WidgetState.selected)) {
         return const IconThemeData(color: kTeal, size: 24);
       }
-      return IconThemeData(color: kInk.withOpacity(0.6), size: 24);
+      return IconThemeData(color: kInk.withValues(alpha: 0.72), size: 24);
     }),
     height: 64,
     elevation: 0,
@@ -190,9 +191,9 @@ ThemeData get darkAppTheme => ThemeData(
       color: Colors.white,
     ),
     bodySmall: GoogleFonts.jost(
-      fontSize: 12,
+      fontSize: 13,
       fontWeight: FontWeight.w400,
-      color: Colors.white70,
+      color: Colors.white.withValues(alpha: 0.84),
     ),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
@@ -202,9 +203,9 @@ ThemeData get darkAppTheme => ThemeData(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
       textStyle: GoogleFonts.jost(
-        fontSize: 11,
-        fontWeight: FontWeight.w400,
-        letterSpacing: 2.2,
+        fontSize: 12,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 2.0,
       ),
     ),
   ),
@@ -217,3 +218,55 @@ ThemeData get darkAppTheme => ThemeData(
     ),
   ),
 );
+
+// ─────────────────────────────────────────────────────────────
+//  THEME HELPERS (user-controlled light/dark via app toggle)
+// ─────────────────────────────────────────────────────────────
+
+const List<Color> _kLightPageGradient = [
+  Color(0xFFFDFBF6),
+  Color(0xFFF8F5EE),
+  Color(0xFFF2EDE3),
+];
+
+const List<Color> _kDarkPageGradient = [
+  Color(0xFF0D1012),
+  Color(0xFF111518),
+  Color(0xFF141A1E),
+];
+
+List<Color> appPageGradientColors(BuildContext context) {
+  return Theme.of(context).brightness == Brightness.dark ? _kDarkPageGradient : _kLightPageGradient;
+}
+
+Color appCardSurface(BuildContext context) {
+  return Theme.of(context).brightness == Brightness.dark ? kDarkCard : Colors.white;
+}
+
+Color appInputFill(BuildContext context) {
+  return Theme.of(context).brightness == Brightness.dark ? kDarkSurface : Colors.white;
+}
+
+SystemUiOverlayStyle appSystemUiOverlayStyle(BuildContext context) {
+  final dark = Theme.of(context).brightness == Brightness.dark;
+  return SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: dark ? Brightness.light : Brightness.dark,
+    systemNavigationBarColor: dark ? kDarkSurface : kPage,
+    systemNavigationBarIconBrightness: dark ? Brightness.light : Brightness.dark,
+  );
+}
+
+extension AppThemeContext on BuildContext {
+  Color get appOnSurface => Theme.of(this).colorScheme.onSurface;
+
+  /// Secondary labels, hints, and chrome icons — lifts very low opacities so small Jost type stays readable.
+  Color appMutedFg(double alpha, {bool relaxed = false}) {
+    final dark = Theme.of(this).brightness == Brightness.dark;
+    final floor = relaxed
+        ? (dark ? 0.40 : 0.34)
+        : (dark ? 0.52 : 0.46);
+    final a = alpha < floor ? floor : alpha;
+    return appOnSurface.withValues(alpha: a);
+  }
+}

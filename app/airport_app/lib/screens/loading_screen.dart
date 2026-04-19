@@ -3,14 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-// ─────────────────────────────────────────────────────────────
-//  COLOURS
-// ─────────────────────────────────────────────────────────────
-const Color kTeal      = Color(0xFF1AABAB);
-const Color kGold      = Color(0xFFA8834A);
-const Color kGoldLight = Color(0xFFC9A96E);
-const Color kInk       = Color(0xFF0F1214);
-const Color kPage      = Color(0xFFFAF8F4);
+import '../theme/app_theme.dart';
 
 // ─────────────────────────────────────────────────────────────
 //  ROUTE / RESTAURANT DATA
@@ -251,13 +244,13 @@ class _LoadingScreenState extends State<LoadingScreen>
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(statusBarColor: Colors.transparent, statusBarIconBrightness: Brightness.dark),
+      value: appSystemUiOverlayStyle(context),
       child: Scaffold(
-        backgroundColor: kPage,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: Stack(
           children: [
             // Background gradient
-            const _Background(),
+            _Background(),
             // Gold inset frame
             const _GoldFrame(),
             // Main content
@@ -289,8 +282,10 @@ class _LoadingScreenState extends State<LoadingScreen>
                                 _hubCtrl, _orbit1Ctrl, _orbit2Ctrl, _planeCtrl,
                                 ..._nodeCtrl, ..._routeCtrl,
                               ]),
-                              builder: (_, __) => CustomPaint(
+                              builder: (ctx, __) => CustomPaint(
                                 painter: _NetworkPainter(
+                                  surfaceColor: Theme.of(ctx).scaffoldBackgroundColor,
+                                  onSurfaceColor: Theme.of(ctx).colorScheme.onSurface,
                                   hubOpacity:    _hubCtrl.value,
                                   nodeOpacities: _nodeCtrl.map((c) => c.value).toList(),
                                   routeProgress: _routeCtrl.map((c) => c.value).toList(),
@@ -313,8 +308,8 @@ class _LoadingScreenState extends State<LoadingScreen>
                             _statusLabel,
                             key: ValueKey(_statusLabel),
                             style: GoogleFonts.jost(
-                              fontSize: 10.5, fontWeight: FontWeight.w300,
-                              letterSpacing: 2.4, color: kInk.withOpacity(0.30),
+                              fontSize: 11, fontWeight: FontWeight.w400,
+                              letterSpacing: 2.2, color: context.appMutedFg(0.38),
                             ),
                           ),
                         ),
@@ -372,16 +367,15 @@ class _LoadingScreenState extends State<LoadingScreen>
 //  BACKGROUND
 // ─────────────────────────────────────────────────────────────
 class _Background extends StatelessWidget {
-  const _Background();
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFFFDFBF6), Color(0xFFF8F5EE), Color(0xFFF2EDE3)],
-          stops: [0.0, 0.5, 1.0],
+          colors: appPageGradientColors(context),
+          stops: const [0.0, 0.55, 1.0],
         ),
       ),
     );
@@ -423,7 +417,7 @@ class _Wordmark extends StatelessWidget {
           'concourse',
           style: GoogleFonts.cormorant(
             fontSize: 44, fontWeight: FontWeight.w600,
-            letterSpacing: 2.2, color: kInk.withOpacity(0.80),
+            letterSpacing: 2.2, color: context.appOnSurface.withValues(alpha: 0.80),
           ),
         ),
         const SizedBox(height: 2),
@@ -443,6 +437,8 @@ class _Wordmark extends StatelessWidget {
 //  NETWORK PAINTER
 // ─────────────────────────────────────────────────────────────
 class _NetworkPainter extends CustomPainter {
+  final Color surfaceColor;
+  final Color onSurfaceColor;
   final double hubOpacity;
   final List<double> nodeOpacities;   // 4 values
   final List<double> routeProgress;   // 4 values 0→1
@@ -453,6 +449,8 @@ class _NetworkPainter extends CustomPainter {
   final bool planeVisible;
 
   const _NetworkPainter({
+    required this.surfaceColor,
+    required this.onSurfaceColor,
     required this.hubOpacity,
     required this.nodeOpacities,
     required this.routeProgress,
@@ -516,7 +514,7 @@ class _NetworkPainter extends CustomPainter {
       canvas.drawCircle(hub, _sx(16, size), Paint()..color = kTeal.withOpacity(0.08 * hubOpacity));
       // Circle
       canvas.drawCircle(hub, _sx(18, size),
-          Paint()..color = kPage.withOpacity(hubOpacity)..style = PaintingStyle.fill);
+          Paint()..color = surfaceColor.withOpacity(hubOpacity)..style = PaintingStyle.fill);
       canvas.drawCircle(hub, _sx(18, size),
           Paint()..color = kTeal.withOpacity(hubOpacity)..strokeWidth = 1..style = PaintingStyle.stroke);
       canvas.drawCircle(hub, _sx(21, size),
@@ -535,7 +533,7 @@ class _NetworkPainter extends CustomPainter {
         final r = _sx(13, size);
         final op = nodeOpacities[i];
         // Circle
-        canvas.drawCircle(pos, r, Paint()..color = kPage.withOpacity(op * 0.8));
+        canvas.drawCircle(pos, r, Paint()..color = surfaceColor.withOpacity(op * 0.8));
         canvas.drawCircle(pos, r,
             Paint()..color = kGoldLight.withOpacity(0.8 * op)..strokeWidth = 0.8..style = PaintingStyle.stroke);
         // Icon
@@ -649,9 +647,9 @@ class _NetworkPainter extends CustomPainter {
         text: text,
         style: TextStyle(
           fontFamily: 'Jost', fontSize: _sx(6, size),
-          fontWeight: FontWeight.w300,
+          fontWeight: FontWeight.w500,
           letterSpacing: _sx(0.72, size),
-          color: kGold.withOpacity(0.7 * opacity),
+          color: kGold.withOpacity(0.88 * opacity),
         ),
       ),
       textDirection: TextDirection.ltr,
@@ -729,7 +727,7 @@ class _NetworkPainter extends CustomPainter {
   }
 
   void _paintPlane(Canvas canvas, double op) {
-    final fill = Paint()..color = kInk.withOpacity(0.55 * op)..style = PaintingStyle.fill;
+    final fill = Paint()..color = onSurfaceColor.withOpacity(0.55 * op)..style = PaintingStyle.fill;
     // Fuselage
     final fuse = Path()
       ..moveTo(-8, 0)
@@ -750,7 +748,7 @@ class _NetworkPainter extends CustomPainter {
     canvas.drawPath(Path()..moveTo(1.5,-2)..lineTo(-2,-8.5)..lineTo(0.5,-8)..lineTo(4.5,-2.2)..close(), fill);
     canvas.drawPath(Path()..moveTo(1.5, 2)..lineTo(-2, 8.5)..lineTo(0.5, 8)..lineTo(4.5, 2.2)..close(), fill);
     // Engine nacelles
-    final engine = Paint()..color = kInk.withOpacity(0.55 * op);
+    final engine = Paint()..color = onSurfaceColor.withOpacity(0.55 * op);
     canvas.save();
     canvas.translate(0, -5.8); canvas.rotate(-8 * math.pi / 180);
     canvas.drawOval(Rect.fromCenter(center: Offset.zero, width: 3.8, height: 1.7), engine);
@@ -768,6 +766,8 @@ class _NetworkPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_NetworkPainter old) =>
+      old.surfaceColor != surfaceColor ||
+      old.onSurfaceColor != onSurfaceColor ||
       old.hubOpacity != hubOpacity ||
       old.planeT != planeT ||
       old.orbit1Angle != orbit1Angle ||
@@ -873,16 +873,16 @@ class _FinderStrip extends StatelessWidget {
           ),
           child: Column(
             children: [
-              _row('Terminal', restaurant.terminal, isTeal: true),
+              _row(context, 'Terminal', restaurant.terminal, isTeal: true),
               const SizedBox(height: 2),
               Container(height: 1, color: kGoldLight.withOpacity(0.25)),
               const SizedBox(height: 12),
-              _row('Cuisine', restaurant.cuisine),
+              _row(context, 'Cuisine', restaurant.cuisine),
               const SizedBox(height: 12),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Status', style: _labelStyle),
+                  Text('Status', style: _labelStyle(context)),
                   Row(children: [
                     if (restaurant.open)
                       AnimatedBuilder(
@@ -905,7 +905,7 @@ class _FinderStrip extends StatelessWidget {
                     Text(
                       restaurant.open ? 'Open now' : 'Closes soon',
                       style: GoogleFonts.jost(
-                        fontSize: 12, fontWeight: FontWeight.w300,
+                        fontSize: 12, fontWeight: FontWeight.w500,
                         letterSpacing: 1.8,
                         color: restaurant.open ? kTeal : kGold,
                       ),
@@ -923,24 +923,24 @@ class _FinderStrip extends StatelessWidget {
     );
   }
 
-  Widget _row(String label, String value, {bool isTeal = false}) {
+  Widget _row(BuildContext context, String label, String value, {bool isTeal = false}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(label, style: _labelStyle),
+        Text(label, style: _labelStyle(context)),
         Text(
           value,
           style: isTeal
-              ? GoogleFonts.jost(fontSize: 16, fontWeight: FontWeight.w300, letterSpacing: 0.6, color: kTeal)
-              : GoogleFonts.cormorant(fontSize: 18, fontWeight: FontWeight.w400, letterSpacing: 0.15, color: kInk),
+              ? GoogleFonts.jost(fontSize: 16, fontWeight: FontWeight.w500, letterSpacing: 0.6, color: kTeal)
+              : GoogleFonts.cormorant(fontSize: 18, fontWeight: FontWeight.w400, letterSpacing: 0.15, color: context.appOnSurface),
         ),
       ],
     );
   }
 
-  static final _labelStyle = GoogleFonts.jost(
-    fontSize: 11, fontWeight: FontWeight.w300,
-    letterSpacing: 2.0, color: kInk.withOpacity(0.30),
+  TextStyle _labelStyle(BuildContext context) => GoogleFonts.jost(
+    fontSize: 12, fontWeight: FontWeight.w400,
+    letterSpacing: 1.8, color: context.appMutedFg(0.38),
   );
 
   Widget _corner(bool topLeft) => SizedBox(

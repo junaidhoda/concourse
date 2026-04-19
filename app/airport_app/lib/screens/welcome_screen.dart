@@ -86,16 +86,13 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark,
-      ),
+      value: appSystemUiOverlayStyle(context),
       child: Scaffold(
-        backgroundColor: kPage,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         body: Stack(
           children: [
             // 1 — Background gradient
-            const _Background(),
+            _Background(),
 
             // 2 — Gold inset frame
             FadeTransition(
@@ -187,16 +184,15 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 //  BACKGROUND
 // ─────────────────────────────────────────────────────────────
 class _Background extends StatelessWidget {
-  const _Background();
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFFFDFBF6), Color(0xFFF8F5EE), Color(0xFFF2EDE3)],
-          stops: [0.0, 0.5, 1.0],
+          colors: appPageGradientColors(context),
+          stops: const [0.0, 0.55, 1.0],
         ),
       ),
     );
@@ -864,9 +860,9 @@ class _CategoryPill extends StatelessWidget {
           Text(
             'AIRPORT DINING GUIDE',
             style: GoogleFonts.jost(
-              fontSize: 9.5,
-              fontWeight: FontWeight.w300,
-              letterSpacing: 2.6,
+              fontSize: 10,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 2.4,
               color: kGold,
             ),
           ),
@@ -884,9 +880,9 @@ class _HeroText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final muted = GoogleFonts.cormorant(
-      fontSize: 35, fontWeight: FontWeight.w300,
+      fontSize: 35, fontWeight: FontWeight.w400,
       height: 1.20, letterSpacing: -0.35,
-      color: kInk.withOpacity(0.65),
+      color: context.appMutedFg(0.72),
     );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -902,7 +898,7 @@ class _HeroText extends StatelessWidget {
                 fontSize: 38, fontWeight: FontWeight.w400,
                 fontStyle: FontStyle.italic,
                 height: 1.20, letterSpacing: -0.38,
-                color: kInk,
+                color: context.appOnSurface,
               ),
             ),
             // Gold underline drawn via a positioned container
@@ -937,9 +933,9 @@ class _SubCopy extends StatelessWidget {
       child: Text(
         'Restaurants, menus and live opening hours — wherever your flight takes you.',
         style: GoogleFonts.jost(
-          fontSize: 12.5, fontWeight: FontWeight.w300,
+          fontSize: 13, fontWeight: FontWeight.w400,
           height: 1.72, letterSpacing: 0.3,
-          color: kInk.withOpacity(0.40),
+          color: context.appMutedFg(0.44),
         ),
       ),
     );
@@ -1004,20 +1000,20 @@ class _StatsBand extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 18),
           child: Row(
             children: [
-              _stat('500+', 'Airports'),
-              _divider(),
-              _stat('12k', 'Restaurants'),
-              _divider(),
-              _stat('Live', 'Opening hours'),
+              _stat(context, '500+', 'Airports'),
+              _divider(context),
+              _stat(context, '12k', 'Restaurants'),
+              _divider(context),
+              _stat(context, 'Live', 'Opening hours'),
             ],
           ),
         ),
-        Container(height: 1, color: kInk.withOpacity(0.08)),
+        Container(height: 1, color: context.appOnSurface.withValues(alpha: 0.08)),
       ],
     );
   }
 
-  Widget _stat(String number, String label) => Expanded(
+  Widget _stat(BuildContext context, String number, String label) => Expanded(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -1028,7 +1024,7 @@ class _StatsBand extends StatelessWidget {
                 text: number.replaceAll(RegExp(r'[+k]'), ''),
                 style: GoogleFonts.cormorant(
                   fontSize: 27, fontWeight: FontWeight.w400,
-                  color: kInk, letterSpacing: -0.5, height: 1,
+                  color: context.appOnSurface, letterSpacing: -0.5, height: 1,
                 ),
               ),
               if (number.contains('+') || number.contains('k'))
@@ -1046,17 +1042,17 @@ class _StatsBand extends StatelessWidget {
         Text(
           label.toUpperCase(),
           style: GoogleFonts.jost(
-            fontSize: 9, fontWeight: FontWeight.w300,
-            letterSpacing: 1.8, color: kInk.withOpacity(0.40),
+            fontSize: 10, fontWeight: FontWeight.w400,
+            letterSpacing: 1.8, color: context.appMutedFg(0.44),
           ),
         ),
       ],
     ),
   );
 
-  Widget _divider() => Container(
+  Widget _divider(BuildContext context) => Container(
     width: 1, height: 44,
-    color: kInk.withOpacity(0.08),
+    color: context.appOnSurface.withValues(alpha: 0.08),
     margin: const EdgeInsets.only(right: 18),
   );
 }
@@ -1095,12 +1091,12 @@ class _CtaButtons extends StatelessWidget {
               child: Text(
                 'Continue as guest',
                 style: GoogleFonts.jost(
-                  fontSize: 10.5,
-                  fontWeight: FontWeight.w300,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w400,
                   letterSpacing: 1.8,
-                  color: kInk.withOpacity(0.40),
+                  color: context.appMutedFg(0.44),
                   decoration: selectedCta == 'guest' ? TextDecoration.underline : null,
-                  decorationColor: kInk.withOpacity(0.40),
+                  decorationColor: context.appMutedFg(0.44),
                 ),
               ),
             ),
@@ -1192,10 +1188,10 @@ class _GoldOutlineButton extends StatelessWidget {
                 child: Text(
                   label.toUpperCase(),
                   style: GoogleFonts.jost(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w400,
-                    letterSpacing: 2.2,
-                    color: kInk.withOpacity(0.65),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 2.0,
+                    color: context.appMutedFg(0.70),
                   ),
                 ),
               ),

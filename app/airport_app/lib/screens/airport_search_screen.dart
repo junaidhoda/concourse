@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
@@ -132,17 +133,19 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> {
   // ─── BUILD ───────────────────────────────────────────────
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kPage,
-      body: Stack(
-        children: [
-          const _Background(),
-          SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                _buildHeader(),
-                Expanded(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: appSystemUiOverlayStyle(context),
+      child: Scaffold(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        body: Stack(
+          children: [
+            const _Background(),
+            SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  _buildHeader(context),
+                  Expanded(
                   child: _hasQuery
                       ? _buildSearchResults()
                       : AnimatedSwitcher(
@@ -169,16 +172,17 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> {
                                   child: _buildContinentList(),
                                 ),
                         ),
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(24, 12, 24, 0),
       child: Column(
@@ -190,17 +194,17 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> {
               fontSize: 30,
               fontWeight: FontWeight.w600,
               letterSpacing: 0.3,
-              color: kInk,
+              color: context.appOnSurface,
             ),
           ),
           const SizedBox(height: 1),
           Text(
             'Search by airport, city or code',
             style: GoogleFonts.jost(
-              fontSize: 11,
-              fontWeight: FontWeight.w300,
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
               letterSpacing: 2.2,
-              color: kInk.withValues(alpha: 0.40),
+              color: context.appMutedFg(0.40),
             ),
           ),
           const SizedBox(height: 12),
@@ -260,14 +264,14 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> {
                 child: Container(
                   padding: const EdgeInsets.all(9),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: appCardSurface(context),
                     borderRadius: BorderRadius.circular(3),
                     border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
                     boxShadow: [
-                      BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 6, offset: const Offset(0, 2)),
+                      BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 6, offset: const Offset(0, 2)),
                     ],
                   ),
-                  child: Icon(Icons.arrow_back_ios_new, size: 13, color: kInk.withValues(alpha: 0.55)),
+                  child: Icon(Icons.arrow_back_ios_new, size: 13, color: context.appOnSurface.withValues(alpha: 0.55)),
                 ),
               ),
               const SizedBox(width: 12),
@@ -309,8 +313,8 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> {
               'No airports found',
               style: GoogleFonts.cormorant(
                 fontSize: 20,
-                fontWeight: FontWeight.w300,
-                color: kInk.withValues(alpha: 0.40),
+                fontWeight: FontWeight.w400,
+                color: context.appMutedFg(0.44),
               ),
             ),
             const SizedBox(height: 4),
@@ -318,9 +322,9 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> {
               'Try a different search term',
               style: GoogleFonts.jost(
                 fontSize: 12,
-                fontWeight: FontWeight.w300,
+                fontWeight: FontWeight.w400,
                 letterSpacing: 0.6,
-                color: kInk.withValues(alpha: 0.40),
+                color: context.appMutedFg(0.40),
               ),
             ),
           ],
@@ -343,12 +347,12 @@ class _Background extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-          colors: [Color(0xFFFDFBF6), Color(0xFFF8F5EE), Color(0xFFF2EDE3)],
-          stops: [0.0, 0.55, 1.0],
+          colors: appPageGradientColors(context),
+          stops: const [0.0, 0.55, 1.0],
         ),
       ),
     );
@@ -394,7 +398,7 @@ class _SearchBarState extends State<_SearchBar> {
       duration: const Duration(milliseconds: 150),
       height: 44,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: appCardSurface(context),
         borderRadius: BorderRadius.circular(3),
         border: Border.all(
           color: _focused ? kTeal : kGoldLight.withValues(alpha: 0.28),
@@ -407,7 +411,7 @@ class _SearchBarState extends State<_SearchBar> {
       child: Row(
         children: [
           const SizedBox(width: 13),
-          Icon(Icons.search_rounded, size: 16, color: kInk.withValues(alpha: 0.40)),
+          Icon(Icons.search_rounded, size: 16, color: context.appMutedFg(0.40)),
           const SizedBox(width: 8),
           Expanded(
             child: TextField(
@@ -416,15 +420,15 @@ class _SearchBarState extends State<_SearchBar> {
               onChanged: widget.onChanged,
               style: GoogleFonts.jost(
                 fontSize: 14,
-                fontWeight: FontWeight.w300,
-                color: kInk,
+                fontWeight: FontWeight.w400,
+                color: context.appOnSurface,
               ),
               decoration: InputDecoration(
                 hintText: 'Search airports, cities...',
                 hintStyle: GoogleFonts.jost(
                   fontSize: 14,
-                  fontWeight: FontWeight.w300,
-                  color: kInk.withValues(alpha: 0.40),
+                  fontWeight: FontWeight.w400,
+                  color: context.appMutedFg(0.40),
                 ),
                 filled: false,
                 fillColor: Colors.transparent,
@@ -442,7 +446,7 @@ class _SearchBarState extends State<_SearchBar> {
               onTap: widget.onClear,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Icon(Icons.close_rounded, size: 16, color: kInk.withValues(alpha: 0.40)),
+                child: Icon(Icons.close_rounded, size: 16, color: context.appMutedFg(0.40)),
               ),
             )
           else
@@ -469,7 +473,7 @@ class _SectionHeader extends StatelessWidget {
           style: GoogleFonts.cormorant(
             fontSize: 22,
             fontWeight: FontWeight.w400,
-            color: kInk,
+            color: context.appOnSurface,
             letterSpacing: 0.2,
           ),
         ),
@@ -536,12 +540,12 @@ class _ContinentCardState extends State<_ContinentCard> {
         child: Container(
           height: 112,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: appCardSurface(context),
             borderRadius: BorderRadius.circular(3),
             border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
             boxShadow: _pressed
                 ? []
-                : [BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 8, offset: const Offset(0, 2))],
+                : [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(3),
@@ -574,7 +578,7 @@ class _ContinentCardState extends State<_ContinentCard> {
                               style: GoogleFonts.cormorant(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w400,
-                                color: kInk,
+                                color: context.appOnSurface,
                                 letterSpacing: 0.2,
                               ),
                             ),
@@ -582,9 +586,9 @@ class _ContinentCardState extends State<_ContinentCard> {
                             Text(
                               widget.subtitle,
                               style: GoogleFonts.jost(
-                                fontSize: 11,
-                                fontWeight: FontWeight.w300,
-                                color: kInk.withValues(alpha: 0.40),
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400,
+                                color: context.appMutedFg(0.40),
                                 letterSpacing: 0.4,
                               ),
                             ),
@@ -603,9 +607,9 @@ class _ContinentCardState extends State<_ContinentCard> {
                                 Text(
                                   'airport${widget.count == 1 ? '' : 's'}',
                                   style: GoogleFonts.jost(
-                                    fontSize: 9,
-                                    fontWeight: FontWeight.w300,
-                                    color: kInk.withValues(alpha: 0.40),
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w400,
+                                    color: context.appMutedFg(0.40),
                                     letterSpacing: 1.2,
                                   ),
                                 ),
@@ -639,7 +643,7 @@ class _ContinentCardState extends State<_ContinentCard> {
                   child: Container(
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
-                      color: kInk.withValues(alpha: 0.30),
+                      color: Colors.black.withValues(alpha: 0.40),
                       borderRadius: BorderRadius.circular(2),
                     ),
                     child: Icon(Icons.chevron_right_rounded, size: 14, color: Colors.white.withValues(alpha: 0.85)),
@@ -669,10 +673,10 @@ class _AirportCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 10),
         padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: appCardSurface(context),
           borderRadius: BorderRadius.circular(3),
           border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-          boxShadow: [BoxShadow(color: kInk.withValues(alpha: 0.04), blurRadius: 8, offset: const Offset(0, 2))],
+          boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
         ),
         child: Row(
           children: [
@@ -707,7 +711,7 @@ class _AirportCard extends StatelessWidget {
                     style: GoogleFonts.jost(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: kInk,
+                      color: context.appOnSurface,
                     ),
                   ),
                   const SizedBox(height: 1),
@@ -715,14 +719,14 @@ class _AirportCard extends StatelessWidget {
                     '${airport.city}, ${airport.country}',
                     style: GoogleFonts.jost(
                       fontSize: 12,
-                      fontWeight: FontWeight.w300,
-                      color: kInk.withValues(alpha: 0.40),
+                      fontWeight: FontWeight.w400,
+                      color: context.appMutedFg(0.40),
                     ),
                   ),
                 ],
               ),
             ),
-            Icon(Icons.chevron_right_rounded, size: 16, color: kInk.withValues(alpha: 0.35)),
+            Icon(Icons.chevron_right_rounded, size: 16, color: context.appMutedFg(0.35)),
           ],
         ),
       ),
