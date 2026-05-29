@@ -221,7 +221,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> with TickerPr
                                     enabled: !_isSubmitting,
                                     validator: (v) {
                                       if (v == null || v.isEmpty) return 'Please enter your email';
-                                      if (!RegExp(r'^[\\w\\-.]+@([\\w-]+\\.)+[\\w-]{2,4}\$').hasMatch(v)) {
+                                      if (!RegExp(r'^[\w\-.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(v)) {
                                         return 'Please enter a valid email';
                                       }
                                       return null;

@@ -16,12 +16,14 @@ import 'screens/welcome_screen.dart';
 import 'screens/loading_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/forgot_password_screen.dart';
+import 'services/auth_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await AppPreferences.instance.load();
   runApp(const MyApp());
 }
 
@@ -31,7 +33,13 @@ final GoRouter _router = GoRouter(
     GoRoute(
       path: '/loading',
       builder: (context, state) => LoadingScreen(
-        onComplete: () => context.go('/welcome'),
+        onComplete: () {
+          if (AuthService.currentUser != null) {
+            context.go('/explore');
+          } else {
+            context.go('/welcome');
+          }
+        },
       ),
     ),
     GoRoute(

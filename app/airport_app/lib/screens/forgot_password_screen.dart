@@ -171,7 +171,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with Ticker
                   enabled: !_isLoading,
                   validator: (v) {
                     if (v == null || v.isEmpty) return 'Please enter your email';
-                    if (!RegExp(r'^[\\w\\-.]+@([\\w-]+\\.)+[\\w-]{2,4}\$').hasMatch(v)) {
+                    if (!RegExp(r'^[\w\-.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(v)) {
                       return 'Please enter a valid email';
                     }
                     return null;

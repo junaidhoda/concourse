@@ -39,12 +39,31 @@ class AirportSearchScreen extends StatefulWidget {
   State<AirportSearchScreen> createState() => _AirportSearchScreenState();
 }
 
-class _AirportSearchScreenState extends State<AirportSearchScreen> {
+class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerProviderStateMixin {
   final TextEditingController _searchCtrl = TextEditingController();
   final FocusNode _searchFocus = FocusNode();
   List<Airport> _results = [];
   bool _hasQuery = false;
   String? _selectedContinent;
+
+  late final AnimationController _headerCtrl;
+  late final AnimationController _contentCtrl;
+
+  void _delayed(int ms, AnimationController c) =>
+      Future.delayed(Duration(milliseconds: ms), () {
+        if (mounted) c.forward();
+      });
+
+  Widget _fadeUp(Widget child, AnimationController ctrl) {
+    return FadeTransition(
+      opacity: CurvedAnimation(parent: ctrl, curve: Curves.easeOutQuart),
+      child: SlideTransition(
+        position: Tween(begin: const Offset(0, 0.06), end: Offset.zero)
+            .animate(CurvedAnimation(parent: ctrl, curve: Curves.easeOutQuart)),
+        child: child,
+      ),
+    );
+  }
 
   final Map<String, List<Airport>> _airportsByContinent = const {
     'Europe': [
@@ -90,6 +109,13 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> {
   @override
   void initState() {
     super.initState();
+    const dur = Duration(milliseconds: 900);
+    _headerCtrl  = AnimationController(vsync: this, duration: dur);
+    _contentCtrl = AnimationController(vsync: this, duration: dur);
+
+    _delayed(150, _headerCtrl);
+    _delayed(300, _contentCtrl);
+
     if (widget.initialQuery.isNotEmpty) {
       _searchCtrl.text = widget.initialQuery;
       _onSearchChanged(widget.initialQuery);
@@ -98,6 +124,8 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> {
 
   @override
   void dispose() {
+    _headerCtrl.dispose();
+    _contentCtrl.dispose();
     _searchCtrl.dispose();
     _searchFocus.dispose();
     super.dispose();
@@ -144,11 +172,11 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  _buildHeader(context),
+                  _fadeUp(_buildHeader(context), _headerCtrl),
                   Expanded(
                   child: _hasQuery
                       ? _buildSearchResults()
-                      : AnimatedSwitcher(
+                      : _fadeUp(AnimatedSwitcher(
                           duration: const Duration(milliseconds: 300),
                           switchInCurve: Curves.easeOut,
                           switchOutCurve: Curves.easeIn,
@@ -171,7 +199,7 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> {
                                   key: const ValueKey('continents'),
                                   child: _buildContinentList(),
                                 ),
-                        ),
+                        ), _contentCtrl),
                   ),
                 ],
               ),

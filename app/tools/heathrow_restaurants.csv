@@ -1,39 +1,40 @@
 name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
-Big Smoke,Terminal 2,pub,,4,,51.4691296,-0.4485977,,,,,,,,4527215244,node
-Black Sheep Coffee,Terminal 2,cafe,,,coffee_shop,51.47112,-0.4526124,,,https://blacksheepcoffee.co.uk/blogs/locations/heathrow-central-bus-station,,,yes,Black Sheep Coffee,10895531122,node
-Caffè Nero,Terminal 2,cafe,,1,coffee_shop,51.4706965,-0.4429419,,,https://www.caffenero.com/uk/stores/heathrow-terminal-2b-hub,Mo-Su 05:00-22:00,,yes,Caffè Nero,4527219250,node
-Costa,Terminal 2,cafe,,5,coffee_shop,51.4704732,-0.4511005,,,,24/7,,yes,Costa,5349696327,node
-jones the grocer,Terminal 2,restaurant,,5,,51.4700001,-0.4483085,,,,,,,,4527208594,node
+Caffe Nero,Terminal 2,,,,,,,,,,,,,,,
+Jones the Grocer,Terminal 2,restaurant,,5,,51.4700001,-0.4483085,,,,,,,,4527208594,node
+Le Cafe Louis Vuitton,Terminal 2,,,,,,,,,,,,,,,
 LEON,Terminal 2,fast_food,,4,"burger, sandwich",51.4698996,-0.4482501,,,,,,yes,LEON,10289480205,node
-London's Pride,Terminal 2,pub,,5,,51.4692303,-0.4487541,,,https://www.londonspride.com/,,yes,,Fuller's,4527208488,node
+London's Pride by Fullers,Terminal 2,pub,,5,,51.4692303,-0.4487541,,,https://www.londonspride.com/,,yes,,Fuller's,4527208488,node
+Pret a Manger,Terminal 2,,,,,,,,,,,,,,,
 Shan Shui,Terminal 2,restaurant,,5,chinese,51.4690902,-0.4482374,,,,,,,,4527208485,node
+Starbucks,Terminal 2,,,,,,,,,,,,,,,
 The Queen's Arms,Terminal 2,pub,,5,,51.4689781,-0.4511445,TW6 1EW,,,,,,Fuller's,4525422451,node
 The Vinery,Terminal 2,restaurant,,4,,51.4696725,-0.4482408,,,,,,,,4527215251,node
-United Club,Terminal 2,bar,,,,51.4716794,-0.4433346,,,,Mo-Su 05:00-22:00,yes,,,13813243152,node
-Caviar House and Prunier Oyster Bar,Terminal 3,restaurant,,,,51.470264,-0.459161,,,,,,,,394223358,way
-Caviar House and Prunier Seafood Bar,Terminal 3,restaurant,,,,51.4701056,-0.4589986,,,,,,,,394223359,way
-Emirates Lounge,Terminal 3,cafe,,,,51.4688636,-0.4581548,,,https://emirates.com,,,,,13725687260,node
-Giraff,Terminal 3,restaurant,,0,,51.4714862,-0.4584872,,,,,,,,435056791,way
-Giraffe,Terminal 3,restaurant,,,"international, burger",51.4707102,-0.4594941,,,,,,,Giraffe,394223379,way
-Spuntino,Terminal 3,restaurant,,,regional,51.470802,-0.4593156,,,,24/7,,,,394223393,way
+YO!,Terminal 2,,,,,,,,,,,,,,,
+Aura Bar,Terminal 3,,,,,,,,,,,,,,,
+Black Sheep Coffee,Terminal 3,,,,,,,,,,,,,,,
+Caffe Nero,Terminal 3,,,,,,,,,,,,,,,
+Giraffe,Terminal 3,restaurant,,0,,51.4714862,-0.4584872,,,,,,,,435056791,way
+Pret a Manger,Terminal 3,,,,,,,,,,,,,,,
 The Curator,Terminal 3,pub,,,,51.4706338,-0.458597,,,,,,,,394223353,way
-The Evergreen,Terminal 3,restaurant,,,,51.470537,-0.4597624,,,,,,,,394223373,way
-The Market Gardner,Terminal 3,pub,,0,,51.4713979,-0.4586955,,,,,,,,435056790,way
-The Three Bells,Terminal 3,pub,,1,,51.4701559,-0.4563948,,,,,,,,431737163,way
-YO! Sushi,Terminal 3,restaurant,,,sushi,51.4706649,-0.4587789,,,https://yosushi.com/restaurants/heathrow-t3,,yes,,YO! Sushi,394223392,way
-Caviar House & Prunier Seafood Bar,Terminal 4,restaurant,,,,51.4603763,-0.4469492,,,,,,,,358388633,way
-Costa coffee,Terminal 4,cafe,,,,51.4593838,-0.4466366,,,,,,,,13250033501,node
-Prince of Wales,Terminal 4,bar,,,,51.4603166,-0.4467465,,,,,yes,,,358388630,way
-Star Light Weatherspoon,Terminal 4,restaurant,,,,51.4613965,-0.4455402,,,,,,,Wetherspoon,358385140,way
-The Commission,Terminal 4,restaurant,,,,51.4591387,-0.4482862,,,,,,,,358388640,way
+The Evergreen Bar and Restaurant,Terminal 3,restaurant,,,,51.470537,-0.4597624,,,,,,,,394223373,way
+The Oceanic,Terminal 3,,,,,,,,,,,,,,,
+YO!,Terminal 3,restaurant,,,sushi,51.4706649,-0.4587789,,,https://yosushi.com/restaurants/heathrow-t3,,yes,,YO! Sushi,394223392,way
+Co-Pilots,Terminal 4,,,,,,,,,,,,,,,
+Costa,Terminal 4,cafe,,,,51.4593838,-0.4466366,,,,,,,,13250033501,node
+Pret a Manger,Terminal 4,,,,,,,,,,,,,,,
+Star Light,Terminal 4,restaurant,,,,51.4613965,-0.4455402,,,,,,,Wetherspoon,358385140,way
+Wafflemeister,Terminal 4,,,,,,,,,,,,,,,
 Wild Olive,Terminal 4,restaurant,,,,51.4593388,-0.4483083,,,,,,,,12997262848,node
-YO! To Go,Terminal 4,fast_food,,,sushi,51.4610497,-0.4462924,,,,,,yes,,358379518,way
+YO!,Terminal 4,fast_food,,,sushi,51.4610497,-0.4462924,,,,,,yes,,358379518,way
+Caffe Nero,Terminal 5,,,,,,,,,,,,,,,
 Five Guys,Terminal 5,fast_food,True,3,burger,51.4730962,-0.4874057,,,,,,yes,Five Guys,13538554315,node
-Fortnum & Mason,Terminal 5,bar,,2,,51.4705781,-0.4877842,,,,,,,,438299680,way
-Gordon Ramsay Plane Food,Terminal 5,restaurant,True,3,,51.4712606,-0.4870465,,,,,,,,438299684,way
+Fortnum & Mason Bar,Terminal 5,bar,,2,,51.4705781,-0.4877842,,,,,,,,438299680,way
+Giraffe,Terminal 5,,,,,,,,,,,,,,,
+Gordon Ramsay Plane Food Market,Terminal 5,restaurant,True,3,,51.4712606,-0.4870465,,,,,,,,438299684,way
 itsu,Terminal 5,fast_food,,2,asian,51.4708581,-0.4870893,,,https://www.itsu.com/location/hounslow/heathrow-terminal-5/,,,yes,itsu,438299691,way
-Pret A Manger,Terminal 5,fast_food,,2,sandwich,51.472423,-0.487465,"Terminal 5 Departures Level 1 (airside), Wellington Road, TW6 2GA",,,,yes,yes,Pret A Manger,438299699,way
-The Crown Rivers,Terminal 5,pub,,2,,51.4730756,-0.4878455,,,https://www.jdwetherspoon.com/pubs/all-pubs/england/middlesex/the-crown-rivers-after-security-terminal-5,,yes,,Wetherspoon,438299712,way
+Pilots Bar and Kitchen,Terminal 5,,,,,,,,,,,,,,,
+Pret a Manger,Terminal 5,fast_food,,2,sandwich,51.472423,-0.487465,"Terminal 5 Departures Level 1 (airside), Wellington Road, TW6 2GA",,,,yes,yes,Pret A Manger,438299699,way
+Starbucks,Terminal 5,,,,,,,,,,,,,,,
+The Crown Rivers Wetherspoon,Terminal 5,pub,,2,,51.4730756,-0.4878455,,,https://www.jdwetherspoon.com/pubs/all-pubs/england/middlesex/the-crown-rivers-after-security-terminal-5,,yes,,Wetherspoon,438299712,way
 The Globe,Terminal 5,pub,,3,,51.4708919,-0.4885418,,,,,,,,438299710,way
-Vagabond,Terminal 5,restaurant,,3,,51.4730881,-0.488049,,,,,yes,,,438299690,way
-Wagamama,Terminal 5,restaurant,True,3,asian,51.4719425,-0.4870727,,,https://www.wagamama.com/restaurants/heathrow/heathrow-t5,,,,Wagamama,438299732,way
+wagamama,Terminal 5,restaurant,True,3,asian,51.4719425,-0.4870727,,,https://www.wagamama.com/restaurants/heathrow/heathrow-t5,,,,Wagamama,438299732,way
