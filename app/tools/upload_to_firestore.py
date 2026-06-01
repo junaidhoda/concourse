@@ -21,6 +21,12 @@ BHX_CSV      = "bhx_restaurants.csv"
 MAN_CSV      = "man_restaurants.csv"
 CDG_CSV      = "cdg_restaurants.csv"
 FRA_CSV      = "fra_restaurants.csv"
+DXB_CSV      = "dxb_restaurants.csv"
+JFK_CSV      = "jfk_restaurants.csv"
+LAX_CSV      = "lax_restaurants.csv"
+SIN_CSV      = "sin_restaurants.csv"
+IST_CSV      = "ist_restaurants.csv"
+BKK_CSV      = "bkk_restaurants.csv"
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -180,7 +186,7 @@ def main():
     with open(MAN_CSV, encoding="utf-8") as f:
         man_rows = list(csv.DictReader(f))
 
-    for terminal_name in ["Terminal 2", "Terminal 3", "Lounges"]:
+    for terminal_name in ["Terminal 1", "Terminal 2", "Terminal 3"]:
         rows = [r for r in man_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Manchester"}) for r in rows]
         upload(db, "manchester", man_meta, terminal_name, docs)
@@ -221,14 +227,125 @@ def main():
         fra_rows = list(csv.DictReader(f))
 
     for terminal_name in [
-        "Terminal 1, Area A", "Terminal 1, Area B",
-        "Terminal 1, Area C", "Terminal 1, Area Z",
-        "Terminal 2, Area D", "Terminal 2, Area E",
-        "Terminal 3, Area H", "Terminal 3, Area J",
+        "Terminal 1 Area A", "Terminal 1 Area B",
+        "Terminal 1 Area C", "Terminal 1 Area Z",
+        "Terminal 2 Area D", "Terminal 2 Area E",
     ]:
         rows = [r for r in fra_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Frankfurt"}) for r in rows]
         upload(db, "fra", fra_meta, terminal_name, docs)
+
+    # ── Dubai ─────────────────────────────────────────────────────────────
+    print("Uploading Dubai …")
+    dxb_meta = {
+        "name":    "Dubai International Airport",
+        "code":    "DXB",
+        "city":    "Dubai",
+        "country": "UAE",
+        "lat":     25.2532,
+        "lon":     55.3658,
+    }
+    with open(DXB_CSV, encoding="utf-8") as f:
+        dxb_rows = list(csv.DictReader(f))
+
+    for terminal_name in ["Terminal 1", "Terminal 2", "Terminal 3"]:
+        rows = [r for r in dxb_rows if r["terminal"] == terminal_name]
+        docs = [clean(r, {"airport": "Dubai"}) for r in rows]
+        upload(db, "dubai", dxb_meta, terminal_name, docs)
+
+    # ── JFK ───────────────────────────────────────────────────────────────
+    print("Uploading JFK …")
+    jfk_meta = {
+        "name":    "John F. Kennedy International Airport",
+        "code":    "JFK",
+        "city":    "New York",
+        "country": "USA",
+        "lat":     40.6413,
+        "lon":     -73.7781,
+    }
+    with open(JFK_CSV, encoding="utf-8") as f:
+        jfk_rows = list(csv.DictReader(f))
+
+    for terminal_name in ["Terminal 1", "Terminal 4", "Terminal 5", "Terminal 7", "Terminal 8"]:
+        rows = [r for r in jfk_rows if r["terminal"] == terminal_name]
+        docs = [clean(r, {"airport": "JFK"}) for r in rows]
+        upload(db, "jfk", jfk_meta, terminal_name, docs)
+
+    # ── LAX ───────────────────────────────────────────────────────────────
+    print("Uploading LAX …")
+    lax_meta = {
+        "name":    "Los Angeles International Airport",
+        "code":    "LAX",
+        "city":    "Los Angeles",
+        "country": "USA",
+        "lat":     33.9425,
+        "lon":     -118.4081,
+    }
+    with open(LAX_CSV, encoding="utf-8") as f:
+        lax_rows = list(csv.DictReader(f))
+
+    for terminal_name in [
+        "Terminal 1", "Terminal 2", "Terminal 3", "Terminal 4",
+        "Terminal 5", "Terminal 6", "Terminal 7", "Terminal 8",
+        "Tom Bradley International",
+    ]:
+        rows = [r for r in lax_rows if r["terminal"] == terminal_name]
+        docs = [clean(r, {"airport": "LAX"}) for r in rows]
+        upload(db, "lax", lax_meta, terminal_name, docs)
+
+    # ── Singapore ─────────────────────────────────────────────────────────
+    print("Uploading Singapore Changi …")
+    sin_meta = {
+        "name":    "Singapore Changi Airport",
+        "code":    "SIN",
+        "city":    "Singapore",
+        "country": "Singapore",
+        "lat":     1.3545,
+        "lon":     103.9890,
+    }
+    with open(SIN_CSV, encoding="utf-8") as f:
+        sin_rows = list(csv.DictReader(f))
+
+    for terminal_name in ["Terminal 1", "Terminal 2", "Terminal 3", "Terminal 4"]:
+        rows = [r for r in sin_rows if r["terminal"] == terminal_name]
+        docs = [clean(r, {"airport": "Singapore Changi"}) for r in rows]
+        upload(db, "singapore", sin_meta, terminal_name, docs)
+
+    # ── Istanbul ──────────────────────────────────────────────────────────
+    print("Uploading Istanbul …")
+    ist_meta = {
+        "name":    "Istanbul Airport",
+        "code":    "IST",
+        "city":    "Istanbul",
+        "country": "Turkey",
+        "lat":     41.2617,
+        "lon":     28.7436,
+    }
+    with open(IST_CSV, encoding="utf-8") as f:
+        ist_rows = list(csv.DictReader(f))
+
+    for terminal_name in ["Main Terminal", "GAP Terminal"]:
+        rows = [r for r in ist_rows if r["terminal"] == terminal_name]
+        docs = [clean(r, {"airport": "Istanbul"}) for r in rows]
+        upload(db, "istanbul", ist_meta, terminal_name, docs)
+
+    # ── Bangkok ───────────────────────────────────────────────────────────
+    print("Uploading Bangkok Suvarnabhumi …")
+    bkk_meta = {
+        "name":    "Suvarnabhumi Airport",
+        "code":    "BKK",
+        "city":    "Bangkok",
+        "country": "Thailand",
+        "lat":     13.6900,
+        "lon":     100.7501,
+    }
+    with open(BKK_CSV, encoding="utf-8") as f:
+        bkk_rows = list(csv.DictReader(f))
+
+    for terminal_name in ["Main Terminal", "Satellite Terminal SAT-1"]:
+        rows = [r for r in bkk_rows if r["terminal"] == terminal_name]
+        docs = [clean(r, {"airport": "Bangkok Suvarnabhumi"}) for r in rows]
+        upload(db, "bangkok", bkk_meta, terminal_name, docs)
 
     print("\nDone.")
 
