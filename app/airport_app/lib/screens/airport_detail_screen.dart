@@ -14,7 +14,17 @@ class AirportDetailScreen extends StatefulWidget {
 }
 
 class _AirportDetailScreenState extends State<AirportDetailScreen> {
-  Set<String> _selectedTerminals = {'north', 'south'};
+  static const _assetImages = {
+    'LHR': 'assets/images/airports/london.jpg',
+    'LGW': 'assets/images/airports/london.jpg',
+    'BHX': 'assets/images/airports/bhx.jpg',
+    'MAN': 'assets/images/airports/man.jpg',
+    'CDG': 'assets/images/airports/cdg.jpg',
+    'FRA': 'assets/images/airports/fra.jpg',
+  };
+
+  final Set<String> _selectedTerminals = {'north', 'south'};
+  int _tabIndex = 0; // 0 = Restaurants & Cafés, 1 = Lounges
   bool _isLoading = true;
   Map<String, dynamic>? _airportData;
   List<Restaurant> _firebaseRestaurants = [];
@@ -63,15 +73,20 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
   Restaurant _mapToRestaurant(Map<String, dynamic> map) {
     final terminalId = map['_terminalId'] as String? ?? '';
     final terminalName = map['_terminalName'] as String? ?? terminalId;
+    final categories = _stringFromMap(map, ['categories']) ?? '';
+
+    // A venue is a lounge if its categories or terminal name say so.
+    final isLounge = categories.toLowerCase().contains('lounge') ||
+        terminalName.toLowerCase().contains('lounge') ||
+        terminalId.toLowerCase().contains('lounge');
 
     // Prefer specific cuisine; fall back to categories (e.g. "Restaurant, Gluten-free")
     String cuisine = _stringFromMap(map, ['cuisine']) ?? '';
     if (cuisine.isEmpty) {
-      final cats = _stringFromMap(map, ['categories']) ?? '';
       // Strip dietary tags to keep only the venue type
-      cuisine = cats.split(',').map((s) => s.trim()).firstWhere(
+      cuisine = categories.split(',').map((s) => s.trim()).firstWhere(
         (s) => !{'Gluten-free', 'Halal', 'Vegan', 'Vegetarian'}.contains(s),
-        orElse: () => cats,
+        orElse: () => categories,
       );
     }
 
@@ -93,6 +108,7 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
       terminalId: terminalId,
       terminalShort: terminalId,
       terminalName: terminalName,
+      isLounge: isLounge,
     );
   }
 
@@ -113,6 +129,59 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
 
   void _setSelectedFirebaseTerminal(String? terminalId) =>
       setState(() => _selectedFirebaseTerminalId = terminalId);
+
+  Widget _buildTabBar(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(24, 12, 24, 0),
+      child: Row(
+        children: [
+          Expanded(child: _buildTabSegment(
+            context, Icons.restaurant_menu_rounded, 'Restaurants & Cafés', 0)),
+          const SizedBox(width: 10),
+          Expanded(child: _buildTabSegment(
+            context, Icons.airline_seat_recline_extra_rounded, 'Lounges', 1)),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTabSegment(BuildContext context, IconData icon, String label, int index) {
+    final selected = _tabIndex == index;
+    return GestureDetector(
+      onTap: () => setState(() {
+        _tabIndex = index;
+        _selectedFirebaseTerminalId = null;
+      }),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        height: 38,
+        decoration: BoxDecoration(
+          color: appCardSurface(context),
+          borderRadius: BorderRadius.circular(4),
+          border: Border.all(
+            color: selected ? kTeal : kGoldLight.withValues(alpha: 0.28),
+            width: selected ? 1.5 : 1.0,
+          ),
+          boxShadow: selected
+              ? [BoxShadow(color: kTeal.withValues(alpha: 0.14), blurRadius: 8, offset: const Offset(0, 2))]
+              : [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.05), blurRadius: 5, offset: const Offset(0, 1))],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 14, color: selected ? kTeal : context.appMutedFg(0.42)),
+            const SizedBox(width: 6),
+            Text(label, style: GoogleFonts.jost(
+              fontSize: 12,
+              fontWeight: selected ? FontWeight.w500 : FontWeight.w400,
+              letterSpacing: 0.3,
+              color: selected ? kTeal : context.appMutedFg(0.42),
+            )),
+          ],
+        ),
+      ),
+    );
+  }
 
   String? _stringFromMap(Map<String, dynamic> map, List<String> keys) {
     for (final k in keys) {
@@ -141,6 +210,7 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
   }
 
   // ─── LOADING ─────────────────────────────────────────────
+
   Widget _buildLoadingScreen(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -173,166 +243,310 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
   Widget _buildFirebaseAirportScreen(BuildContext context) {
     final name = _airportData?['name'] as String? ?? FirebaseService.getAirportName(widget.airportId);
     final location = _airportData?['location'] as String? ?? FirebaseService.getAirportLocation(widget.airportId);
+    final code = _airportData?['code'] as String? ?? widget.airportId.toUpperCase();
     final hasTerminals = _firebaseTerminalEntries.isNotEmpty;
 
+    final imageUrl  = _airportData?['image_url'] as String?;
+    final assetPath = _assetImages[widget.airportId];
+
+    final terminalCount   = _firebaseTerminalEntries
+        .where((t) => !t.name.toLowerCase().contains('lounge') && !t.id.toLowerCase().contains('lounge'))
+        .length;
+    final restaurantCount = _firebaseRestaurants.where((r) => !r.isLounge).length;
+    final loungeCount     = _firebaseRestaurants.where((r) => r.isLounge).length;
+
+    final bg = Theme.of(context).scaffoldBackgroundColor;
+
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: bg,
       body: Stack(
         children: [
           _Background(),
-          SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // ── Fixed header ──────────────────────────────
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(24, 12, 24, 0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          _backButton(context),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(name, style: GoogleFonts.cormorant(fontSize: 24, fontWeight: FontWeight.w600, letterSpacing: 0.2, color: context.appOnSurface)),
-                                Text(location, style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 1.5, color: context.appMutedFg(0.40))),
-                              ],
-                            ),
-                          ),
-                          Text(widget.airportId, style: GoogleFonts.cormorant(fontSize: 18, fontWeight: FontWeight.w400, color: kTeal, letterSpacing: 0.5)),
-                        ],
-                      ),
-                      const SizedBox(height: 14),
-                      _rule(),
-                    ],
+          CustomScrollView(
+            slivers: [
+              // ── Collapsing hero (FlexibleSpaceBar handles animation) ──
+              SliverAppBar(
+                expandedHeight: 280,
+                pinned: true,
+                stretch: true,
+                backgroundColor: bg,
+                surfaceTintColor: Colors.transparent,
+                elevation: 0,
+                shadowColor: Colors.transparent,
+                automaticallyImplyLeading: false,
+                leading: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 16),
+                    child: _backButton(context),
                   ),
                 ),
-                // ── Fixed filter bar ──────────────────────────
-                Container(
-                  color: Theme.of(context).scaffoldBackgroundColor,
-                  padding: const EdgeInsets.fromLTRB(24, 10, 24, 8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
+                title: Text(name, style: GoogleFonts.cormorant(
+                  fontSize: 18, fontWeight: FontWeight.w600,
+                  color: context.appOnSurface, letterSpacing: 0.2,
+                )),
+                flexibleSpace: FlexibleSpaceBar(
+                  collapseMode: CollapseMode.parallax,
+                  titlePadding: EdgeInsets.zero,
+                  background: Stack(
+                    fit: StackFit.expand,
                     children: [
-                      if (hasTerminals) ...[
-                        Text('Terminal', style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 2.0, color: context.appMutedFg(0.40))),
-                        const SizedBox(height: 5),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 14),
+                      _buildHeroImage(imageUrl, assetPath, context),
+                      // bottom gradient so text below blends in
+                      Positioned(
+                        bottom: 0, left: 0, right: 0,
+                        child: Container(
+                          height: 80,
                           decoration: BoxDecoration(
-                            color: appCardSurface(context),
-                            border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-                            borderRadius: BorderRadius.circular(3),
-                            boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
-                          ),
-                          child: DropdownButtonHideUnderline(
-                            child: DropdownButton<String?>(
-                              value: _selectedFirebaseTerminalId,
-                              isExpanded: true,
-                              isDense: true,
-                              style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appOnSurface),
-                              hint: Text('All terminals', style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appMutedFg(0.40))),
-                              items: [
-                                DropdownMenuItem<String?>(value: null, child: Text('All terminals', style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appOnSurface))),
-                                ..._firebaseTerminalEntries.map((t) => DropdownMenuItem<String?>(
-                                  value: t.id,
-                                  child: Text(t.name, style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appOnSurface)),
-                                )),
-                              ],
-                              onChanged: _setSelectedFirebaseTerminal,
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [Colors.transparent, bg],
                             ),
                           ),
                         ),
-                        const SizedBox(height: 8),
-                      ],
-                      Text('Search', style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 2.0, color: context.appMutedFg(0.40))),
-                      const SizedBox(height: 5),
-                      AnimatedContainer(
-                        duration: const Duration(milliseconds: 150),
-                        height: 40,
-                        decoration: BoxDecoration(
-                          color: appCardSurface(context),
-                          borderRadius: BorderRadius.circular(3),
-                          border: Border.all(color: _searchFocused ? kTeal : kGoldLight.withValues(alpha: 0.28)),
-                          boxShadow: _searchFocused
-                              ? [BoxShadow(color: kTeal.withValues(alpha: 0.10), blurRadius: 0, spreadRadius: 2)]
-                              : [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
-                        ),
+                      ),
+                      // Airport name + location + code in expanded state
+                      Positioned(
+                        bottom: 16, left: 24, right: 24,
                         child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            const SizedBox(width: 12),
-                            Icon(Icons.search_rounded, size: 15, color: context.appMutedFg(0.40)),
-                            const SizedBox(width: 8),
                             Expanded(
-                              child: TextField(
-                                controller: _restaurantSearchController,
-                                focusNode: _searchFocus,
-                                style: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w400, color: context.appOnSurface),
-                                decoration: InputDecoration(
-                                  hintText: 'Name or cuisine...',
-                                  hintStyle: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w400, color: context.appMutedFg(0.40)),
-                                  border: InputBorder.none,
-                                  enabledBorder: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  isDense: true,
-                                  contentPadding: EdgeInsets.zero,
-                                ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(name, style: GoogleFonts.cormorant(
+                                    fontSize: 24, fontWeight: FontWeight.w600,
+                                    color: context.appOnSurface, letterSpacing: 0.2, height: 1.15,
+                                  )),
+                                  const SizedBox(height: 2),
+                                  Text(location, style: GoogleFonts.jost(
+                                    fontSize: 12, fontWeight: FontWeight.w400,
+                                    letterSpacing: 1.4, color: context.appMutedFg(0.42),
+                                  )),
+                                ],
                               ),
                             ),
-                            if (_restaurantSearchController.text.isNotEmpty)
-                              GestureDetector(
-                                onTap: () { _restaurantSearchController.clear(); setState(() {}); },
-                                child: Padding(padding: const EdgeInsets.symmetric(horizontal: 10), child: Icon(Icons.close_rounded, size: 15, color: context.appMutedFg(0.40))),
-                              )
-                            else
-                              const SizedBox(width: 12),
+                            Text(code, style: GoogleFonts.cormorant(
+                              fontSize: 20, fontWeight: FontWeight.w400,
+                              color: kTeal, letterSpacing: 0.8,
+                            )),
                           ],
                         ),
                       ),
                     ],
                   ),
                 ),
-                // ── Scrollable restaurant list ─────────────────
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.only(top: 12, bottom: 40),
+              ),
+
+              // ── Stats row (scrolls away) ──────────────────────
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 12, 24, 0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _rule(),
+                      const SizedBox(height: 12),
+                      Row(
+                        children: [
+                          _InfoStat(value: '$terminalCount', label: terminalCount == 1 ? 'Terminal' : 'Terminals'),
+                          const _InfoDot(),
+                          _InfoStat(value: '$restaurantCount', label: 'Venues'),
+                          if (loungeCount > 0) ...[
+                            const _InfoDot(),
+                            _InfoStat(value: '$loungeCount', label: loungeCount == 1 ? 'Lounge' : 'Lounges'),
+                          ],
+                        ],
+                      ),
+                      const SizedBox(height: 14),
+                    ],
+                  ),
+                ),
+              ),
+
+              // ── Sticky tabs (fixed height — never changes) ────
+              SliverPersistentHeader(
+                pinned: true,
+                delegate: _StickyHeaderDelegate(
+                  minHeight: 62,
+                  maxHeight: 62,
+                  child: Container(
+                    color: bg,
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 24),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              _SectionHeader(title: 'Restaurants & Cafés'),
-                              SizedBox(height: 16),
-                            ],
-                          ),
-                        ),
-                        _buildFirebaseRestaurantSections(context, name),
+                        _buildTabBar(context),
+                        const SizedBox(height: 12),
                       ],
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+
+              // ── Filter bar + content (scrolls) ───────────────
+              SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(24, 0, 24, 8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          if (hasTerminals && _tabIndex == 0) ...[
+                            Text('Terminal', style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 2.0, color: context.appMutedFg(0.40))),
+                            const SizedBox(height: 5),
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 14),
+                              decoration: BoxDecoration(
+                                color: appCardSurface(context),
+                                border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+                                borderRadius: BorderRadius.circular(3),
+                                boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
+                              ),
+                              child: DropdownButtonHideUnderline(
+                                child: DropdownButton<String?>(
+                                  value: _selectedFirebaseTerminalId,
+                                  isExpanded: true,
+                                  isDense: true,
+                                  style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appOnSurface),
+                                  hint: Text('All terminals', style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appMutedFg(0.40))),
+                                  items: [
+                                    DropdownMenuItem<String?>(value: null, child: Text('All terminals', style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appOnSurface))),
+                                    ..._firebaseTerminalEntries
+                                        .where((t) => !t.name.toLowerCase().contains('lounge'))
+                                        .map((t) => DropdownMenuItem<String?>(
+                                          value: t.id,
+                                          child: Text(t.name, style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appOnSurface)),
+                                        )),
+                                  ],
+                                  onChanged: _setSelectedFirebaseTerminal,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                          ],
+                          Text('Search', style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 2.0, color: context.appMutedFg(0.40))),
+                          const SizedBox(height: 5),
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 150),
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: appCardSurface(context),
+                              borderRadius: BorderRadius.circular(3),
+                              border: Border.all(color: _searchFocused ? kTeal : kGoldLight.withValues(alpha: 0.28)),
+                              boxShadow: _searchFocused
+                                  ? [BoxShadow(color: kTeal.withValues(alpha: 0.10), blurRadius: 0, spreadRadius: 2)]
+                                  : [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
+                            ),
+                            child: Row(
+                              children: [
+                                const SizedBox(width: 12),
+                                Icon(Icons.search_rounded, size: 15, color: context.appMutedFg(0.40)),
+                                const SizedBox(width: 8),
+                                Expanded(
+                                  child: TextField(
+                                    controller: _restaurantSearchController,
+                                    focusNode: _searchFocus,
+                                    style: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w400, color: context.appOnSurface),
+                                    decoration: InputDecoration(
+                                      hintText: _tabIndex == 0 ? 'Name or cuisine...' : 'Search lounges...',
+                                      hintStyle: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w400, color: context.appMutedFg(0.40)),
+                                      border: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      isDense: true,
+                                      contentPadding: EdgeInsets.zero,
+                                    ),
+                                  ),
+                                ),
+                                if (_restaurantSearchController.text.isNotEmpty)
+                                  GestureDetector(
+                                    onTap: () { _restaurantSearchController.clear(); setState(() {}); },
+                                    child: Padding(padding: const EdgeInsets.symmetric(horizontal: 10), child: Icon(Icons.close_rounded, size: 15, color: context.appMutedFg(0.40))),
+                                  )
+                                else
+                                  const SizedBox(width: 12),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    _buildFirebaseRestaurantSections(context, name),
+                    const SizedBox(height: 40),
+                  ],
+                ),
+              ),
+            ],
           ),
         ],
       ),
     );
   }
 
+  Widget _buildHeroImage(String? imageUrl, String? assetPath, BuildContext context) {
+    if (imageUrl != null) {
+      return Image.network(
+        imageUrl,
+        fit: BoxFit.cover,
+        headers: const {'User-Agent': 'ConcourseApp/1.0 (airport-dining-guide)'},
+        loadingBuilder: (_, child, progress) => progress == null
+            ? child
+            : Container(color: const Color(0xFF0B2D3A)),
+        errorBuilder: (_, __, ___) => assetPath != null
+            ? Image.asset(assetPath, fit: BoxFit.cover)
+            : Container(color: const Color(0xFF0B2D3A)),
+      );
+    }
+    if (assetPath != null) return Image.asset(assetPath, fit: BoxFit.cover);
+    return Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFF0B2D3A), Color(0xFF134555)],
+        ),
+      ),
+    );
+  }
+
   Widget _buildFirebaseRestaurantSections(BuildContext context, String airportName) {
+    final showLounges = _tabIndex == 1;
+    // Base set filtered by active tab
+    final tabRestaurants = _firebaseRestaurants.where((r) => r.isLounge == showLounges).toList();
+
+    if (showLounges) {
+      // Lounges: group by terminal but don't use the terminal dropdown filter
+      if (_firebaseTerminalEntries.isNotEmpty) {
+        final sections = <Widget>[];
+        for (final t in _firebaseTerminalEntries) {
+          final list = _filterRestaurantsByQuery(
+            tabRestaurants.where((r) => r.terminalId == t.id).toList());
+          if (list.isEmpty) continue;
+          if (sections.isNotEmpty) sections.add(const SizedBox(height: 20));
+          sections.add(_buildRestaurantSection(context, t.name, list, airportName));
+        }
+        if (sections.isEmpty) return _buildEmptyState(isLounges: true);
+        return Column(crossAxisAlignment: CrossAxisAlignment.start, children: sections);
+      }
+      final filtered = _filterRestaurantsByQuery(tabRestaurants);
+      if (filtered.isEmpty) return _buildEmptyState(isLounges: true);
+      return _buildRestaurantSection(context, 'Lounges', filtered, airportName);
+    }
+
+    // Restaurants & Cafés tab — respect terminal dropdown
     if (_firebaseTerminalEntries.isNotEmpty && _selectedFirebaseTerminalId != null) {
       for (final t in _firebaseTerminalEntries) {
         if (t.id == _selectedFirebaseTerminalId) {
-          final filtered = _filterRestaurantsByQuery(_firebaseRestaurants.where((r) => r.terminalId == t.id).toList());
-          if (filtered.isEmpty) return _buildEmptyRestaurantState();
+          final filtered = _filterRestaurantsByQuery(
+            tabRestaurants.where((r) => r.terminalId == t.id).toList());
+          if (filtered.isEmpty) return _buildEmptyState(isLounges: false);
           return _buildRestaurantSection(context, t.name, filtered, airportName);
         }
       }
@@ -340,21 +554,30 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
     if (_firebaseTerminalEntries.isNotEmpty) {
       final sections = <Widget>[];
       for (final t in _firebaseTerminalEntries) {
-        final list = _filterRestaurantsByQuery(_firebaseRestaurants.where((r) => r.terminalId == t.id).toList());
+        final list = _filterRestaurantsByQuery(
+          tabRestaurants.where((r) => r.terminalId == t.id).toList());
         if (list.isEmpty) continue;
         if (sections.isNotEmpty) sections.add(const SizedBox(height: 20));
         sections.add(_buildRestaurantSection(context, t.name, list, airportName));
       }
-      if (sections.isEmpty) return _buildEmptyRestaurantState();
+      if (sections.isEmpty) return _buildEmptyState(isLounges: false);
       return Column(crossAxisAlignment: CrossAxisAlignment.start, children: sections);
     }
-    final filtered = _filterRestaurantsByQuery(_firebaseRestaurants);
-    if (filtered.isEmpty) return _buildEmptyRestaurantState();
+    final filtered = _filterRestaurantsByQuery(tabRestaurants);
+    if (filtered.isEmpty) return _buildEmptyState(isLounges: false);
     return _buildRestaurantSection(context, 'All', filtered, airportName);
   }
 
-  Widget _buildEmptyRestaurantState() {
+  Widget _buildEmptyState({required bool isLounges}) {
     final hasQuery = _restaurantSearchController.text.trim().isNotEmpty;
+    final String message;
+    if (isLounges) {
+      message = hasQuery
+          ? 'No lounges match your search'
+          : 'No lounge information available for this airport';
+    } else {
+      message = hasQuery ? 'No restaurants match your search' : 'No restaurants here';
+    }
     return Padding(
       padding: const EdgeInsets.only(top: 32),
       child: Center(
@@ -363,12 +586,19 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
           children: [
             Container(
               width: 52, height: 52,
-              decoration: BoxDecoration(color: kGold.withValues(alpha: 0.07), shape: BoxShape.circle, border: Border.all(color: kGoldLight.withValues(alpha: 0.28))),
-              child: const Icon(Icons.search_off_rounded, color: kGold, size: 22),
+              decoration: BoxDecoration(
+                color: kGold.withValues(alpha: 0.07),
+                shape: BoxShape.circle,
+                border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+              ),
+              child: Icon(
+                isLounges ? Icons.airline_seat_recline_extra_rounded : Icons.search_off_rounded,
+                color: kGold, size: 22,
+              ),
             ),
             const SizedBox(height: 16),
             Text(
-              hasQuery ? 'No restaurants match your search' : 'No restaurants here',
+              message,
               style: GoogleFonts.cormorant(fontSize: 20, fontWeight: FontWeight.w400, color: context.appMutedFg(0.44)),
               textAlign: TextAlign.center,
             ),
@@ -707,6 +937,7 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
 
   IconData _getRestaurantIcon(String cuisine) {
     final c = cuisine.toLowerCase();
+    if (c.contains('lounge')) return Icons.airline_seat_recline_extra_rounded;
     if (c.contains('coffee') || c.contains('café') || c.contains('cafe')) return Icons.coffee;
     if (c.contains('pub') || c.contains('bar')) return Icons.local_bar;
     if (c.contains('pizza')) return Icons.local_pizza;
@@ -765,6 +996,43 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
 // ─────────────────────────────────────────────────────────────
 //  SECTION HEADER
 // ─────────────────────────────────────────────────────────────
+class _InfoStat extends StatelessWidget {
+  final String value;
+  final String label;
+  const _InfoStat({required this.value, required this.label});
+
+  @override
+  Widget build(BuildContext context) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(value, style: GoogleFonts.cormorant(
+            fontSize: 22, fontWeight: FontWeight.w500, color: kTeal, letterSpacing: 0.3,
+          )),
+          Text(label, style: GoogleFonts.jost(
+            fontSize: 9, fontWeight: FontWeight.w400, letterSpacing: 1.5,
+            color: context.appMutedFg(0.45),
+          )),
+        ],
+      );
+}
+
+class _InfoDot extends StatelessWidget {
+  const _InfoDot();
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.fromLTRB(12, 0, 12, 8),
+        child: Container(
+          width: 3, height: 3,
+          decoration: BoxDecoration(
+            color: kGoldLight.withValues(alpha: 0.50),
+            shape: BoxShape.circle,
+          ),
+        ),
+      );
+}
+
 class _SectionHeader extends StatelessWidget {
   final String title;
   const _SectionHeader({required this.title});
@@ -780,6 +1048,34 @@ class _SectionHeader extends StatelessWidget {
       ],
     );
   }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  STICKY HEADER DELEGATE
+// ─────────────────────────────────────────────────────────────
+class _StickyHeaderDelegate extends SliverPersistentHeaderDelegate {
+  final double minHeight;
+  final double maxHeight;
+  final Widget child;
+
+  const _StickyHeaderDelegate({
+    required this.minHeight,
+    required this.maxHeight,
+    required this.child,
+  });
+
+  @override
+  double get minExtent => minHeight;
+
+  @override
+  double get maxExtent => maxHeight;
+
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) => child;
+
+  @override
+  bool shouldRebuild(_StickyHeaderDelegate old) =>
+      minHeight != old.minHeight || maxHeight != old.maxHeight || child != old.child;
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -821,6 +1117,7 @@ class Restaurant {
   final String? terminalId;
   final String? terminalShort;
   final String? terminalName;
+  final bool isLounge;
 
   Restaurant({
     required this.name,
@@ -831,5 +1128,6 @@ class Restaurant {
     this.terminalId,
     this.terminalShort,
     this.terminalName,
+    this.isLounge = false,
   });
 }

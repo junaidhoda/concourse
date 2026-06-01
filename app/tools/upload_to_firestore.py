@@ -102,7 +102,9 @@ def upload(db, airport_id: str, airport_meta: dict,
 
     added = 0
     for doc in restaurants:
-        rest_col.add(doc)
+        # Use a deterministic ID so re-running the script overwrites rather than duplicates.
+        doc_id = slug(f"{doc.get('name', '')}_{terminal_name}")
+        rest_col.document(doc_id).set(doc)
         added += 1
 
     print(f"  {terminal_name}: uploaded {added} restaurants")
@@ -162,7 +164,7 @@ def main():
     with open(BHX_CSV, encoding="utf-8") as f:
         bhx_rows = list(csv.DictReader(f))
 
-    for terminal_name in ["Main Terminal"]:
+    for terminal_name in ["Main Terminal", "Lounges"]:
         rows = [r for r in bhx_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Birmingham"}) for r in rows]
         upload(db, "birmingham", bhx_meta, terminal_name, docs)
