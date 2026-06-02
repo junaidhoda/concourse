@@ -23,7 +23,6 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
     'FRA': 'assets/images/airports/fra.jpg',
   };
 
-  final Set<String> _selectedTerminals = {'north', 'south'};
   int _tabIndex = 0; // 0 = Restaurants & Cafés, 1 = Lounges
   bool _isLoading = true;
   Map<String, dynamic>? _airportData;
@@ -214,21 +213,10 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
     return null;
   }
 
-  void _selectTerminal(String terminal) {
-    setState(() {
-      if (_selectedTerminals.contains(terminal)) {
-        _selectedTerminals.remove(terminal);
-      } else {
-        _selectedTerminals.add(terminal);
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     if (_isLoading) return _buildLoadingScreen(context);
     if (_firebaseRestaurants.isNotEmpty) return _buildFirebaseAirportScreen(context);
-    if (widget.airportId == 'LGW') return _buildLondonGatwickScreen(context);
     return _buildPlaceholderScreen(context);
   }
 
@@ -643,81 +631,6 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
     );
   }
 
-  // ─── LONDON GATWICK SCREEN ────────────────────────────────
-  Widget _buildLondonGatwickScreen(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: Stack(
-        children: [
-          _Background(),
-          SafeArea(
-            child: CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(24, 12, 24, 0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            _backButton(context),
-                            const SizedBox(width: 12),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('London Gatwick', style: GoogleFonts.cormorant(fontSize: 24, fontWeight: FontWeight.w600, color: context.appOnSurface)),
-                                  Text('London, United Kingdom', style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 1.5, color: context.appMutedFg(0.40))),
-                                ],
-                              ),
-                            ),
-                            Text('LGW', style: GoogleFonts.cormorant(fontSize: 18, fontWeight: FontWeight.w400, color: kTeal, letterSpacing: 0.5)),
-                          ],
-                        ),
-                        const SizedBox(height: 14),
-                        _rule(),
-                        const SizedBox(height: 16),
-                        const _SectionHeader(title: 'Terminals'),
-                        const SizedBox(height: 12),
-                        Row(
-                          children: [
-                            Expanded(child: _buildTerminalCard(context, 'North Terminal', 'N', _selectedTerminals.contains('north'), () => _selectTerminal('north'))),
-                            const SizedBox(width: 10),
-                            Expanded(child: _buildTerminalCard(context, 'South Terminal', 'S', _selectedTerminals.contains('south'), () => _selectTerminal('south'))),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        const _SectionHeader(title: 'Restaurants & Cafés'),
-                        const SizedBox(height: 16),
-                      ],
-                    ),
-                  ),
-                ),
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 40),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (_selectedTerminals.contains('north')) ...[
-                          _buildRestaurantSection(context, 'North Terminal', _getNorthTerminalRestaurants(), 'London Gatwick (LGW)'),
-                          if (_selectedTerminals.contains('south')) const SizedBox(height: 20),
-                        ],
-                        if (_selectedTerminals.contains('south'))
-                          _buildRestaurantSection(context, 'South Terminal', _getSouthTerminalRestaurants(), 'London Gatwick (LGW)'),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   // ─── PLACEHOLDER SCREEN ───────────────────────────────────
   Widget _buildPlaceholderScreen(BuildContext context) {
     return Scaffold(
@@ -846,29 +759,6 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
     );
   }
 
-  Widget _buildTerminalCard(BuildContext context, String label, String code, bool isSelected, VoidCallback onTap) {
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 150),
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        decoration: BoxDecoration(
-          color: isSelected ? kTeal.withValues(alpha: 0.08) : appCardSurface(context),
-          borderRadius: BorderRadius.circular(3),
-          border: Border.all(color: isSelected ? kTeal : kGoldLight.withValues(alpha: 0.28), width: isSelected ? 1.5 : 1),
-          boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
-        ),
-        child: Column(
-          children: [
-            Text(code, style: GoogleFonts.cormorant(fontSize: 28, fontWeight: FontWeight.w600, color: isSelected ? kTeal : context.appMutedFg(0.35))),
-            const SizedBox(height: 4),
-            Text(label, style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.5, color: isSelected ? kTeal : context.appMutedFg(0.40))),
-          ],
-        ),
-      ),
-    );
-  }
-
   Widget _buildRestaurantSection(BuildContext context, String terminalName, List<Restaurant> restaurants, String airportDisplayName) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -986,77 +876,6 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
     return Icons.restaurant;
   }
 
-  Restaurant _lgwRestaurant(String name, String cuisine, String amenity, String airside) =>
-      Restaurant(
-        name: name,
-        cuisine: cuisine,
-        amenity: amenity,
-        description: '',
-        website: '',
-        outlets: [RestaurantOutlet(gateArea: '', airside: airside, level: '', locationNotes: '')],
-      );
-
-  List<Restaurant> _getNorthTerminalRestaurants() {
-    return [
-      _lgwRestaurant('Bar on the Balcony', 'Bar', 'bar', 'airside'),
-      _lgwRestaurant('Black Sheep Coffee', 'Coffee', 'cafe', 'airside'),
-      _lgwRestaurant('The Breakfast Club', 'Breakfast', 'restaurant', 'airside'),
-      _lgwRestaurant('BrewDog', 'Pub', 'pub', 'airside'),
-      _lgwRestaurant('Juniper & Co', 'Restaurant', 'restaurant', 'airside'),
-      _lgwRestaurant('Krispy Kreme', 'Dessert', 'confectionery', 'airside'),
-      _lgwRestaurant('Pret a Manger', 'Sandwich', 'cafe', 'airside'),
-      _lgwRestaurant('Pure', 'Café', 'cafe', 'airside'),
-      _lgwRestaurant('The Red Lion', 'Pub', 'pub', 'airside'),
-      _lgwRestaurant('Shake Shack', 'Burger', 'fast_food', 'airside'),
-      _lgwRestaurant('Sonoma', 'Restaurant', 'restaurant', 'airside'),
-      _lgwRestaurant('Starbucks', 'Coffee', 'cafe', 'airside'),
-      _lgwRestaurant('Sussex House', 'Restaurant', 'restaurant', 'landside'),
-      _lgwRestaurant('Tortilla', 'Mexican', 'restaurant', 'airside'),
-      _lgwRestaurant('wagamama', 'Asian', 'restaurant', 'airside'),
-    ];
-  }
-
-  List<Restaurant> _getSouthTerminalRestaurants() {
-    return [
-      _lgwRestaurant('The Beehive', 'Pub', 'pub', 'landside'),
-      _lgwRestaurant('Big Smoke', 'Bar', 'bar', 'airside'),
-      _lgwRestaurant('Black Sheep Coffee', 'Coffee', 'cafe', 'landside'),
-      _lgwRestaurant('Caffe Nero', 'Coffee', 'cafe', 'landside'),
-      _lgwRestaurant('The Flying Horse', 'Pub', 'pub', 'airside'),
-      _lgwRestaurant('Giraffe', 'Restaurant', 'restaurant', 'landside'),
-      _lgwRestaurant('Greggs', 'Bakery', 'bakery', 'landside'),
-      _lgwRestaurant('itsu', 'Asian', 'restaurant', 'airside'),
-      _lgwRestaurant('Joe & The Juice', 'Juice Bar', 'cafe', 'airside'),
-      _lgwRestaurant('Nandos', 'Chicken', 'restaurant', 'airside'),
-      _lgwRestaurant('PizzaExpress', 'Pizza', 'restaurant', 'airside'),
-      Restaurant(
-        name: 'Pret a Manger',
-        cuisine: 'Sandwich',
-        amenity: 'cafe',
-        description: '',
-        website: '',
-        outlets: [
-          const RestaurantOutlet(gateArea: 'Arrivals', airside: 'landside', level: '', locationNotes: ''),
-          const RestaurantOutlet(gateArea: 'Departures', airside: 'airside', level: '', locationNotes: ''),
-        ],
-      ),
-      _lgwRestaurant('South Downs Bar', 'Bar', 'bar', 'airside'),
-      Restaurant(
-        name: 'Starbucks',
-        cuisine: 'Coffee',
-        amenity: 'cafe',
-        description: '',
-        website: '',
-        outlets: [
-          const RestaurantOutlet(gateArea: '', airside: 'airside', level: '', locationNotes: ''),
-          const RestaurantOutlet(gateArea: '', airside: 'landside', level: '', locationNotes: ''),
-        ],
-      ),
-      _lgwRestaurant('wagamama', 'Asian', 'restaurant', 'airside'),
-      _lgwRestaurant('Wondertree', 'Restaurant', 'restaurant', 'airside'),
-      _lgwRestaurant('Small Batch Social', 'Coffee', 'cafe', 'airside'),
-    ];
-  }
 }
 
 // ─────────────────────────────────────────────────────────────

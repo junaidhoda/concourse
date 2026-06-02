@@ -1,3 +1,48 @@
 # macOS
 .DS_Store
 **/.DS_Store
+
+# Node
+node_modules/
+
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+app/airport_app/.dart_tool/
+app/airport_app/.flutter-plugins
+app/airport_app/.flutter-plugins-dependencies
+app/airport_app/.pub-cache/
+app/airport_app/.pub/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Platform and build directories (device-specific, not shared)
+app/airport_app/ios/
+app/airport_app/ios_backup/
+app/airport_app/android/
+app/airport_app/windows/
+app/airport_app/linux/
+app/airport_app/build/
