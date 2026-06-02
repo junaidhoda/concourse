@@ -16,6 +16,10 @@ import 'screens/welcome_screen.dart';
 import 'screens/loading_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/forgot_password_screen.dart';
+import 'screens/admin_login_screen.dart';
+import 'screens/admin_dashboard_screen.dart';
+import 'screens/admin_airport_screen.dart';
+import 'screens/admin_restaurant_editor_screen.dart';
 import 'services/auth_service.dart';
 
 void main() async {
@@ -103,14 +107,32 @@ final GoRouter _router = GoRouter(
       builder: (context, state) {
         final extra = state.extra as Map<String, dynamic>;
         return RestaurantDetailScreen(
-          name: extra['name'] as String,
-          cuisine: extra['cuisine'] as String,
-          location: extra['location'] as String,
-          isOpen: extra['isOpen'] as bool,
-          logoUrl: extra['logoUrl'] as String,
+          restaurant: extra['restaurant'] as Restaurant,
           airportName: extra['airportName'] as String? ?? '',
         );
       },
+    ),
+    GoRoute(
+      path: '/admin',
+      builder: (context, state) => const AdminLoginScreen(),
+    ),
+    GoRoute(
+      path: '/admin/dashboard',
+      builder: (context, state) => const AdminDashboardScreen(),
+    ),
+    GoRoute(
+      path: '/admin/airport/:airportCode',
+      builder: (context, state) => AdminAirportScreen(
+        airportCode: state.pathParameters['airportCode']!,
+      ),
+    ),
+    GoRoute(
+      path: '/admin/restaurant/:airportCode/:terminalId/:restaurantId',
+      builder: (context, state) => AdminRestaurantEditorScreen(
+        airportCode: state.pathParameters['airportCode']!,
+        terminalId: state.pathParameters['terminalId']!,
+        restaurantId: state.pathParameters['restaurantId'],
+      ),
     ),
   ],
 );

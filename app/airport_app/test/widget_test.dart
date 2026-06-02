@@ -13,7 +13,7 @@ import 'package:airport_app/main.dart';
 void main() {
   testWidgets('Airport app smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const AirportApp());
+    await tester.pumpWidget(const MyApp());
 
     // Verify that the app loads without errors
     expect(find.byType(MaterialApp), findsOneWidget);

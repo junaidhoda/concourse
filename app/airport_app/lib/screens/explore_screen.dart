@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../theme/app_theme.dart';
+import '../services/firebase_service.dart';
 
 // ─────────────────────────────────────────────────────────────
 //  DATA MODEL
@@ -41,6 +42,7 @@ const _kAirports = [
   _Airport(id: 'LGW', iata: 'LGW', name: 'London Gatwick', city: 'London', country: 'United Kingdom', flag: '🇬🇧', venueCount: 44),
   _Airport(id: 'LHR', iata: 'LHR', name: 'London Heathrow', city: 'London', country: 'United Kingdom', flag: '🇬🇧', venueCount: 84),
   _Airport(id: 'MAN', iata: 'MAN', name: 'Manchester Airport', city: 'Manchester', country: 'United Kingdom', flag: '🇬🇧', venueCount: 36),
+  _Airport(id: 'HND', iata: 'HND', name: 'Tokyo Haneda Airport', city: 'Tokyo', country: 'Japan', flag: '🇯🇵', venueCount: 169),
   _Airport(id: 'SIN', iata: 'SIN', name: 'Singapore Changi', city: 'Singapore', country: 'Singapore', flag: '🇸🇬', venueCount: 96),
 ];
 
@@ -66,6 +68,7 @@ class _ExploreScreenState extends State<ExploreScreen> with TickerProviderStateM
   final FocusNode _searchFocus = FocusNode();
   List<_Airport> _results = [];
   bool _hasQuery = false;
+  final Map<String, int> _liveCounts = {};
 
   // Staggered fade-up controllers
   late final AnimationController _headerCtrl;
@@ -90,6 +93,19 @@ class _ExploreScreenState extends State<ExploreScreen> with TickerProviderStateM
     _delayed(250, _actionsCtrl);
     _delayed(380, _featuredCtrl);
     _delayed(500, _ruleCtrl);
+
+    _loadLiveCounts();
+  }
+
+  Future<void> _loadLiveCounts() async {
+    final ids = _kFeatured.map((a) => a.id).toList();
+    final counts = await Future.wait(ids.map((id) => FirebaseService.getRestaurantCount(id)));
+    if (!mounted) return;
+    setState(() {
+      for (var i = 0; i < ids.length; i++) {
+        if (counts[i] > 0) _liveCounts[ids[i]] = counts[i];
+      }
+    });
   }
 
   @override
@@ -285,6 +301,7 @@ class _ExploreScreenState extends State<ExploreScreen> with TickerProviderStateM
                   separatorBuilder: (_, __) => const SizedBox(width: 10),
                   itemBuilder: (context, i) => _FeaturedCard(
                     airport: _kFeatured[i],
+                    venueCount: _liveCounts[_kFeatured[i].id] ?? _kFeatured[i].venueCount,
                     onTap: () => context.push('/airport-detail/${_kFeatured[i].id}'),
                   ),
                 ),
@@ -654,8 +671,9 @@ class _ActionCardState extends State<_ActionCard> {
 // ─────────────────────────────────────────────────────────────
 class _FeaturedCard extends StatelessWidget {
   final _Airport airport;
+  final int venueCount;
   final VoidCallback onTap;
-  const _FeaturedCard({required this.airport, required this.onTap});
+  const _FeaturedCard({required this.airport, required this.venueCount, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -731,7 +749,7 @@ class _FeaturedCard extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      '${airport.venueCount}',
+                      '$venueCount',
                       style: GoogleFonts.cormorant(
                         fontSize: 15,
                         fontWeight: FontWeight.w400,

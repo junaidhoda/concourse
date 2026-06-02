@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
+import '../services/firebase_service.dart';
 
 // ─────────────────────────────────────────────────────────────
 //  AIRPORT MODEL
@@ -65,35 +66,13 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
     );
   }
 
-  final Map<String, List<Airport>> _airportsByContinent = const {
-    'Europe': [
-      Airport(id: 'BHX', name: 'Birmingham', iataCode: 'BHX', city: 'Birmingham', country: 'United Kingdom', countryCode: 'GB'),
-      Airport(id: 'CDG', name: 'Paris Charles de Gaulle', iataCode: 'CDG', city: 'Paris', country: 'France', countryCode: 'FR'),
-      Airport(id: 'FRA', name: 'Frankfurt Airport', iataCode: 'FRA', city: 'Frankfurt', country: 'Germany', countryCode: 'DE'),
-      Airport(id: 'IST', name: 'Istanbul Airport', iataCode: 'IST', city: 'Istanbul', country: 'Turkey', countryCode: 'TR'),
-      Airport(id: 'LGW', name: 'London Gatwick', iataCode: 'LGW', city: 'London', country: 'United Kingdom', countryCode: 'GB'),
-      Airport(id: 'LHR', name: 'London Heathrow', iataCode: 'LHR', city: 'London', country: 'United Kingdom', countryCode: 'GB'),
-      Airport(id: 'MAN', name: 'Manchester', iataCode: 'MAN', city: 'Manchester', country: 'United Kingdom', countryCode: 'GB'),
-    ],
-    'North America': [
-      Airport(id: 'JFK', name: 'New York John F. Kennedy', iataCode: 'JFK', city: 'New York', country: 'USA', countryCode: 'US'),
-      Airport(id: 'LAX', name: 'Los Angeles International', iataCode: 'LAX', city: 'Los Angeles', country: 'USA', countryCode: 'US'),
-    ],
-    'Asia': [
-      Airport(id: 'BKK', name: 'Bangkok Suvarnabhumi', iataCode: 'BKK', city: 'Bangkok', country: 'Thailand', countryCode: 'TH'),
-      Airport(id: 'SIN', name: 'Singapore Changi', iataCode: 'SIN', city: 'Singapore', country: 'Singapore', countryCode: 'SG'),
-    ],
-    'Middle East': [
-      Airport(id: 'DXB', name: 'Dubai International', iataCode: 'DXB', city: 'Dubai', country: 'United Arab Emirates', countryCode: 'AE'),
-    ],
-  };
+  Map<String, List<Airport>> _airportsByContinent = {};
+  bool _isLoading = true;
 
-  static const Map<String, String> _continentSubtitles = {
-    'Europe': 'London · Paris · Frankfurt',
-    'North America': 'New York · Los Angeles',
-    'Asia': 'Bangkok · Singapore',
-    'Middle East': 'Dubai',
-  };
+  static const _continentOrder = [
+    'Europe', 'North America', 'Asia', 'Middle East',
+    'South America', 'Africa', 'Oceania',
+  ];
 
   static const Map<String, String> _continentImages = {
     'Europe': 'assets/images/europe.png',
@@ -102,9 +81,54 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
     'Middle East': 'assets/images/middle_east.png',
   };
 
+  String _subtitleForContinent(String continent) {
+    final cities = (_airportsByContinent[continent] ?? [])
+        .map((a) => a.city)
+        .toSet()
+        .take(3)
+        .join(' · ');
+    return cities;
+  }
+
   List<Airport> get _allAirports =>
       _airportsByContinent.values.expand((list) => list).toList()
         ..sort((a, b) => a.name.compareTo(b.name));
+
+  Future<void> _loadAirports() async {
+    final raw = await FirebaseService.getAllAirports();
+    if (!mounted) return;
+
+    final grouped = <String, List<Airport>>{};
+    for (final a in raw) {
+      final continent = (a['continent'] as String?)?.trim() ?? 'Other';
+      final code = (a['code'] as String? ?? '').toUpperCase();
+      if (code.isEmpty) continue;
+      grouped.putIfAbsent(continent, () => []).add(Airport(
+        id: code,
+        name: a['name'] as String? ?? code,
+        iataCode: code,
+        city: a['city'] as String? ?? '',
+        country: a['country'] as String? ?? '',
+        countryCode: '',
+      ));
+    }
+    for (final list in grouped.values) {
+      list.sort((a, b) => a.name.compareTo(b.name));
+    }
+
+    final ordered = <String, List<Airport>>{};
+    for (final c in _continentOrder) {
+      if (grouped.containsKey(c)) ordered[c] = grouped[c]!;
+    }
+    for (final entry in grouped.entries) {
+      if (!ordered.containsKey(entry.key)) ordered[entry.key] = entry.value;
+    }
+
+    setState(() {
+      _airportsByContinent = ordered;
+      _isLoading = false;
+    });
+  }
 
   @override
   void initState() {
@@ -115,6 +139,7 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
 
     _delayed(150, _headerCtrl);
     _delayed(300, _contentCtrl);
+    _loadAirports();
 
     if (widget.initialQuery.isNotEmpty) {
       _searchCtrl.text = widget.initialQuery;
@@ -174,7 +199,9 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
                 children: [
                   _fadeUp(_buildHeader(context), _headerCtrl),
                   Expanded(
-                  child: _hasQuery
+                  child: _isLoading
+                      ? const Center(child: CircularProgressIndicator(color: kTeal, strokeWidth: 1.5))
+                      : _hasQuery
                       ? _buildSearchResults()
                       : _fadeUp(AnimatedSwitcher(
                           duration: const Duration(milliseconds: 300),
@@ -267,7 +294,7 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
           padding: const EdgeInsets.only(bottom: 10),
           child: _ContinentCard(
             continent: continent,
-            subtitle: _continentSubtitles[continent] ?? '',
+            subtitle: _subtitleForContinent(continent),
             count: _airportsByContinent[continent]!.length,
             imagePath: _continentImages[continent] ?? '',
             onTap: () => _selectContinent(continent),
@@ -555,6 +582,13 @@ class _ContinentCard extends StatefulWidget {
 class _ContinentCardState extends State<_ContinentCard> {
   bool _pressed = false;
 
+  Widget _continentFallback() => Container(
+        color: const Color(0xFF0B2D3A),
+        child: const Center(
+          child: Icon(Icons.flight_takeoff_rounded, color: Color(0xFF1A6B7A), size: 32),
+        ),
+      );
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -656,10 +690,13 @@ class _ContinentCardState extends State<_ContinentCard> {
                       child: SizedBox(
                         width: 140,
                         height: double.infinity,
-                        child: Image.asset(
-                          widget.imagePath,
-                          fit: BoxFit.cover,
-                        ),
+                        child: widget.imagePath.isNotEmpty
+                            ? Image.asset(
+                                widget.imagePath,
+                                fit: BoxFit.cover,
+                                errorBuilder: (_, __, ___) => _continentFallback(),
+                              )
+                            : _continentFallback(),
                       ),
                     ),
                   ],

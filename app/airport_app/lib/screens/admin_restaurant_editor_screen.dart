@@ -1,14 +1,81 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../theme/app_theme.dart';
 import '../services/admin_service.dart';
+
+class _OutletFormData {
+  final TextEditingController gateAreaController;
+  final TextEditingController levelController;
+  final TextEditingController locationNotesController;
+  final TextEditingController openingHoursController;
+  String airside;
+  bool? open247;
+  String takeaway;
+  String wheelchairAccessible;
+  bool? delivery;
+  bool? reservable;
+  bool? kidsMenu;
+
+  _OutletFormData({
+    String? gateArea,
+    String? level,
+    String? locationNotes,
+    String? airside,
+    bool? open247,
+    String? openingHours,
+    String? takeaway,
+    String? wheelchairAccessible,
+    bool? delivery,
+    bool? reservable,
+    bool? kidsMenu,
+  })  : gateAreaController       = TextEditingController(text: gateArea ?? ''),
+        levelController          = TextEditingController(text: level ?? ''),
+        locationNotesController  = TextEditingController(text: locationNotes ?? ''),
+        openingHoursController   = TextEditingController(text: openingHours ?? ''),
+        airside = (['airside', 'landside', 'both'].contains(airside?.toLowerCase())
+            ? airside!.toLowerCase() : 'airside'),
+        open247    = open247,
+        takeaway   = (['yes', 'no', 'only'].contains(takeaway?.toLowerCase())
+            ? takeaway!.toLowerCase() : ''),
+        wheelchairAccessible = (['yes', 'no', 'limited'].contains(wheelchairAccessible?.toLowerCase())
+            ? wheelchairAccessible!.toLowerCase() : ''),
+        delivery   = delivery,
+        reservable = reservable,
+        kidsMenu   = kidsMenu;
+
+  void dispose() {
+    gateAreaController.dispose();
+    levelController.dispose();
+    locationNotesController.dispose();
+    openingHoursController.dispose();
+  }
+
+  Map<String, dynamic> toMap() => {
+    'gate_area':             gateAreaController.text.trim(),
+    'airside':               airside,
+    'level':                 levelController.text.trim(),
+    'location_notes':        locationNotesController.text.trim(),
+    'open_24_7':             open247 ?? false,
+    'opening_hours':         openingHoursController.text.trim(),
+    'takeaway':              takeaway,
+    'wheelchair_accessible': wheelchairAccessible,
+    'delivery':              (delivery   ?? false) ? 'yes' : '',
+    'reservable':            (reservable ?? false) ? 'yes' : '',
+    'kids_menu':             (kidsMenu   ?? false) ? 'yes' : '',
+  };
+}
 
 class AdminRestaurantEditorScreen extends StatefulWidget {
   final String airportCode;
-  final String? restaurantId; // null for new restaurant
+  final String terminalId;
+  final String? restaurantId;
 
   const AdminRestaurantEditorScreen({
     super.key,
     required this.airportCode,
+    required this.terminalId,
     this.restaurantId,
   });
 
@@ -18,44 +85,35 @@ class AdminRestaurantEditorScreen extends StatefulWidget {
 
 class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  final _brandController = TextEditingController();
-  final _cuisineController = TextEditingController();
-  final _terminalNameController = TextEditingController();
-  final _terminalShortController = TextEditingController();
-  final _terminalIdController = TextEditingController();
-  final _levelController = TextEditingController();
-  final _floorController = TextEditingController();
-  final _websiteController = TextEditingController();
-  final _phoneController = TextEditingController();
-  final _locationNotesController = TextEditingController();
+  final _nameController        = TextEditingController();
+  final _cuisineController     = TextEditingController();
   final _descriptionController = TextEditingController();
-  final _menuController = TextEditingController();
+  final _websiteController     = TextEditingController();
+  final _phoneController        = TextEditingController();
 
   String _selectedAmenity = 'restaurant';
-  bool _isLoading = true;
-  bool _isSaving = false;
-  String? _error;
-  Map<String, dynamic>? _restaurantData;
 
-  // Dietary options
-  bool _isVegan = false;
+  bool _isLoading = true;
+  bool _isSaving  = false;
+  String? _error;
+
+  bool _isVegan      = false;
   bool _isVegetarian = false;
-  bool _isHalal = false;
-  bool _isKosher = false;
+  bool _isHalal      = false;
+  bool _isKosher     = false;
   bool _isGlutenFree = false;
 
-  // Services
-  bool _hasTakeaway = false;
-  bool _hasDelivery = false;
-  bool _isWheelchairAccessible = false;
+  List<_OutletFormData> _outlets = [];
+
+  bool get _isNew => widget.restaurantId == null || widget.restaurantId == 'new';
 
   @override
   void initState() {
     super.initState();
-    if (widget.restaurantId != null && widget.restaurantId != 'new') {
+    if (!_isNew) {
       _loadRestaurant();
     } else {
+      _outlets = [_OutletFormData()];
       _isLoading = false;
     }
   }
@@ -63,575 +121,128 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
   @override
   void dispose() {
     _nameController.dispose();
-    _brandController.dispose();
     _cuisineController.dispose();
-    _terminalNameController.dispose();
-    _terminalShortController.dispose();
-    _terminalIdController.dispose();
-    _levelController.dispose();
-    _floorController.dispose();
+    _descriptionController.dispose();
     _websiteController.dispose();
     _phoneController.dispose();
-    _locationNotesController.dispose();
-    _descriptionController.dispose();
-    _menuController.dispose();
+    for (final o in _outlets) o.dispose();
     super.dispose();
   }
 
   Future<void> _loadRestaurant() async {
     try {
-      final restaurants = await AdminService.getRestaurantsForAirport(widget.airportCode);
+      final restaurants = await AdminService.getRestaurantsForTerminal(widget.airportCode, widget.terminalId);
       final restaurant = restaurants.firstWhere(
         (r) => r['id'] == widget.restaurantId,
         orElse: () => {},
       );
-
-      if (restaurant.isNotEmpty) {
-        _restaurantData = restaurant;
-        _populateFields();
-      }
+      if (restaurant.isNotEmpty) _populateFields(restaurant);
     } catch (e) {
-      setState(() {
-        _error = 'Failed to load restaurant: $e';
-      });
+      setState(() => _error = 'Failed to load restaurant: $e');
     } finally {
-      setState(() {
-        _isLoading = false;
-      });
+      setState(() => _isLoading = false);
     }
   }
 
-  void _populateFields() {
-    if (_restaurantData == null) return;
+  bool _boolFromField(Map<String, dynamic> data, String key) {
+    final v = data[key];
+    if (v is bool) return v;
+    if (v is String) return v.toLowerCase() == 'yes';
+    return false;
+  }
 
-    _nameController.text = _restaurantData!['name'] as String? ?? '';
-    _brandController.text = _restaurantData!['brand'] as String? ?? '';
-    _cuisineController.text = _restaurantData!['cuisine'] as String? ?? '';
-    _terminalNameController.text = _restaurantData!['terminal_name'] as String? ?? '';
-    _terminalShortController.text = _restaurantData!['terminal_short'] as String? ?? '';
-    _terminalIdController.text = _restaurantData!['terminal_id'] as String? ?? '';
-    
-    final additional = _restaurantData!['additional'] as Map<String, dynamic>? ?? {};
-    _levelController.text = additional['level'] as String? ?? '';
-    _floorController.text = additional['floor'] as String? ?? '';
-    _websiteController.text = additional['website'] as String? ?? '';
-    _phoneController.text = additional['phone'] as String? ?? '';
-    
-    _selectedAmenity = _restaurantData!['amenity'] as String? ?? 'restaurant';
-    
-    // Dietary options
-    final dietary = _restaurantData!['dietary'] as Map<String, dynamic>? ?? {};
-    _isVegan = dietary['vegan'] as bool? ?? false;
-    _isVegetarian = dietary['vegetarian'] as bool? ?? false;
-    _isHalal = dietary['halal'] as bool? ?? false;
-    _isKosher = dietary['kosher'] as bool? ?? false;
-    _isGlutenFree = dietary['gluten_free'] as bool? ?? false;
-    
-    // Services
-    _hasTakeaway = additional['takeaway'] as bool? ?? false;
-    _hasDelivery = additional['delivery'] as bool? ?? false;
-    _isWheelchairAccessible = additional['wheelchair_accessible'] as bool? ?? false;
-    
-    // Custom fields
-    _locationNotesController.text = additional['location_notes'] as String? ?? '';
-    _descriptionController.text = additional['description'] as String? ?? '';
-    _menuController.text = additional['menu'] as String? ?? '';
+  void _populateFields(Map<String, dynamic> data) {
+    _nameController.text        = data['name']        as String? ?? '';
+    _cuisineController.text     = data['cuisine']     as String? ?? '';
+    _descriptionController.text = data['description'] as String? ?? '';
+    _websiteController.text     = data['website']     as String? ?? '';
+    _phoneController.text       = data['phone']       as String? ?? '';
+    _selectedAmenity            = data['amenity']     as String? ?? 'restaurant';
+
+    // Dietary — support both root-level strings and legacy dietary sub-map
+    final dietary = data['dietary'] as Map<String, dynamic>? ?? {};
+    _isVegan      = _boolFromField(data, 'vegan_options')   || (dietary['vegan']       as bool? ?? false);
+    _isVegetarian = _boolFromField(data, 'vegetarian_options') || (dietary['vegetarian']  as bool? ?? false);
+    _isHalal      = _boolFromField(data, 'halal')           || (dietary['halal']       as bool? ?? false);
+    _isKosher     = _boolFromField(data, 'kosher')          || (dietary['kosher']      as bool? ?? false);
+    _isGlutenFree = _boolFromField(data, 'gluten_free')     || (dietary['gluten_free'] as bool? ?? false);
+
+    // Per-outlet opening hours & features (migrate root-level fields to first outlet on load)
+    String rootHours = data['opening_hours'] as String? ?? '';
+    bool   rootOpen247 = data['open_24_7'] as bool? ?? false;
+    final rootTw = (data['takeaway'] as String? ?? '').toLowerCase();
+    final rootWc = (data['wheelchair_accessible'] as String? ?? '').toLowerCase();
+    bool rootDelivery   = _boolFromField(data, 'delivery');
+    bool rootReservable = _boolFromField(data, 'reservable');
+    bool rootKidsMenu   = _boolFromField(data, 'kids_menu');
+
+    final rawOutlets = data['outlets'] as List<dynamic>? ?? [];
+    _outlets = rawOutlets.isNotEmpty
+        ? rawOutlets.map((o) {
+            final outlet = o as Map<String, dynamic>;
+            final tw = (outlet['takeaway'] as String? ?? '').toLowerCase();
+            final wc = (outlet['wheelchair_accessible'] as String? ?? '').toLowerCase();
+            return _OutletFormData(
+              gateArea:      outlet['gate_area']     as String?,
+              level:         outlet['level']         as String? ?? data['floor_level'] as String?,
+              locationNotes: outlet['location_notes'] as String?,
+              airside:       (outlet['airside'] as String? ?? data['airside'] as String?)?.toLowerCase(),
+              open247:       outlet['open_24_7']     as bool? ?? false,
+              openingHours:  outlet['opening_hours'] as String? ?? '',
+              takeaway:      ['yes', 'no', 'only'].contains(tw) ? tw : '',
+              wheelchairAccessible: ['yes', 'no', 'limited'].contains(wc) ? wc : '',
+              delivery:   _boolFromField(outlet, 'delivery'),
+              reservable: _boolFromField(outlet, 'reservable'),
+              kidsMenu:   _boolFromField(outlet, 'kids_menu'),
+            );
+          }).toList()
+        : [_OutletFormData(
+            airside:      (data['airside'] as String?)?.toLowerCase(),
+            level:        data['floor_level'] as String?,
+            open247:      rootOpen247,
+            openingHours: rootHours,
+            takeaway:     ['yes', 'no', 'only'].contains(rootTw) ? rootTw : '',
+            wheelchairAccessible: ['yes', 'no', 'limited'].contains(rootWc) ? rootWc : '',
+            delivery:   rootDelivery,
+            reservable: rootReservable,
+            kidsMenu:   rootKidsMenu,
+          )];
   }
 
   Future<void> _saveRestaurant() async {
     if (!_formKey.currentState!.validate()) return;
-
-    setState(() {
-      _isSaving = true;
-      _error = null;
-    });
+    setState(() { _isSaving = true; _error = null; });
 
     try {
       final data = {
-        'name': _nameController.text.trim(),
-        'brand': _brandController.text.trim(),
-        'amenity': _selectedAmenity,
-        'cuisine': _cuisineController.text.trim(),
-        'terminal_name': _terminalNameController.text.trim(),
-        'terminal_short': _terminalShortController.text.trim(),
-        'terminal_id': _terminalIdController.text.trim(),
-        'dietary': {
-          'vegan': _isVegan,
-          'vegetarian': _isVegetarian,
-          'halal': _isHalal,
-          'kosher': _isKosher,
-          'gluten_free': _isGlutenFree,
-        },
-        'additional': {
-          'level': _levelController.text.trim(),
-          'floor': _floorController.text.trim(),
-          'website': _websiteController.text.trim(),
-          'phone': _phoneController.text.trim(),
-          'takeaway': _hasTakeaway,
-          'delivery': _hasDelivery,
-          'wheelchair_accessible': _isWheelchairAccessible,
-          'location_notes': _locationNotesController.text.trim(),
-          'description': _descriptionController.text.trim(),
-          'menu': _menuController.text.trim(),
-        },
+        'name':        _nameController.text.trim(),
+        'amenity':     _selectedAmenity,
+        'cuisine':     _cuisineController.text.trim(),
+        'description': _descriptionController.text.trim(),
+        'website':     _websiteController.text.trim(),
+        'phone':       _phoneController.text.trim(),
+        // Dietary
+        'halal':              _isHalal      ? 'yes' : '',
+        'vegetarian_options': _isVegetarian ? 'yes' : '',
+        'vegan_options':      _isVegan      ? 'yes' : '',
+        'kosher':             _isKosher     ? 'yes' : '',
+        'gluten_free':        _isGlutenFree ? 'yes' : '',
+        'outlets': _outlets.map((o) => o.toMap()).toList(),
       };
 
-      bool success;
-      if (widget.restaurantId == null || widget.restaurantId == 'new') {
-        success = await AdminService.addRestaurant(widget.airportCode, data);
-      } else {
-        success = await AdminService.updateRestaurant(widget.airportCode, widget.restaurantId!, data);
-      }
+      final success = _isNew
+          ? await AdminService.addRestaurant(widget.airportCode, widget.terminalId, data)
+          : await AdminService.updateRestaurant(widget.airportCode, widget.terminalId, widget.restaurantId!, data);
 
       if (success) {
-        if (mounted) {
-          context.go('/admin/airport/${widget.airportCode}');
-        }
+        if (mounted) context.go('/admin/airport/${widget.airportCode}');
       } else {
-        setState(() {
-          _error = 'Failed to save restaurant';
-        });
+        setState(() => _error = 'Failed to save restaurant');
       }
     } catch (e) {
-      setState(() {
-        _error = 'Error saving restaurant: $e';
-      });
+      setState(() => _error = 'Error saving: $e');
     } finally {
-      setState(() {
-        _isSaving = false;
-      });
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBar: AppBar(
-        title: Text(widget.restaurantId == null || widget.restaurantId == 'new' 
-            ? 'Add Restaurant' 
-            : 'Edit Restaurant'),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        foregroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.white : const Color(0xFF3E6BC1),
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => context.go('/admin/airport/${widget.airportCode}'),
-        ),
-        actions: [
-          if (widget.restaurantId != null && widget.restaurantId != 'new')
-            IconButton(
-              icon: const Icon(Icons.delete, color: Colors.red),
-              onPressed: _deleteRestaurant,
-              tooltip: 'Delete Restaurant',
-            ),
-        ],
-      ),
-      body: _isLoading
-          ? const Center(
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF3E6BC1)),
-              ),
-            )
-          : SafeArea(
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    // Error message
-                    if (_error != null)
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.all(16),
-                        padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          color: Colors.red[50],
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Colors.red[200]!),
-                        ),
-                        child: Text(
-                          _error!,
-                          style: TextStyle(
-                            color: Colors.red[700],
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                    
-                    // Form content
-                    Expanded(
-                      child: SingleChildScrollView(
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // Basic Information
-                            _buildSectionTitle('Basic Information'),
-                            TextFormField(
-                              controller: _nameController,
-                              decoration: const InputDecoration(
-                                labelText: 'Restaurant Name *',
-                                border: OutlineInputBorder(),
-                              ),
-                              validator: (value) {
-                                if (value == null || value.trim().isEmpty) {
-                                  return 'Please enter restaurant name';
-                                }
-                                return null;
-                              },
-                            ),
-                            const SizedBox(height: 16),
-                            
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: TextFormField(
-                                    controller: _brandController,
-                                    decoration: const InputDecoration(
-                                      labelText: 'Brand',
-                                      border: OutlineInputBorder(),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 16),
-                                Expanded(
-                                  child: DropdownButtonFormField<String>(
-                                    value: _selectedAmenity,
-                                    decoration: const InputDecoration(
-                                      labelText: 'Type',
-                                      border: OutlineInputBorder(),
-                                    ),
-                                    items: [
-                                      'restaurant',
-                                      'cafe',
-                                      'bar',
-                                      'pub',
-                                      'fast_food',
-                                      'bakery',
-                                      'confectionery',
-                                      'ice_cream',
-                                      'food_court',
-                                    ].map((String value) {
-                                      return DropdownMenuItem<String>(
-                                        value: value,
-                                        child: Text(_formatAmenity(value)),
-                                      );
-                                    }).toList(),
-                                    onChanged: (String? newValue) {
-                                      setState(() {
-                                        _selectedAmenity = newValue!;
-                                      });
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 16),
-                            
-                            TextFormField(
-                              controller: _cuisineController,
-                              decoration: const InputDecoration(
-                                labelText: 'Cuisine',
-                                border: OutlineInputBorder(),
-                              ),
-                            ),
-                            
-                            const SizedBox(height: 24),
-                            
-                            // Terminal Information
-                            _buildSectionTitle('Terminal Information'),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: TextFormField(
-                                    controller: _terminalNameController,
-                                    decoration: const InputDecoration(
-                                      labelText: 'Terminal Name',
-                                      border: OutlineInputBorder(),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 16),
-                                Expanded(
-                                  child: TextFormField(
-                                    controller: _terminalShortController,
-                                    decoration: const InputDecoration(
-                                      labelText: 'Terminal Short',
-                                      border: OutlineInputBorder(),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 16),
-                            
-                            TextFormField(
-                              controller: _terminalIdController,
-                              decoration: const InputDecoration(
-                                labelText: 'Terminal ID',
-                                border: OutlineInputBorder(),
-                              ),
-                            ),
-                            
-                            const SizedBox(height: 24),
-                            
-                            // Location Details
-                            _buildSectionTitle('Location Details'),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: TextFormField(
-                                    controller: _levelController,
-                                    decoration: const InputDecoration(
-                                      labelText: 'Level',
-                                      border: OutlineInputBorder(),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(width: 16),
-                                Expanded(
-                                  child: TextFormField(
-                                    controller: _floorController,
-                                    decoration: const InputDecoration(
-                                      labelText: 'Floor',
-                                      border: OutlineInputBorder(),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            
-                            const SizedBox(height: 24),
-                            
-                            // Contact Information
-                            _buildSectionTitle('Contact Information'),
-                            TextFormField(
-                              controller: _websiteController,
-                              decoration: const InputDecoration(
-                                labelText: 'Website',
-                                border: OutlineInputBorder(),
-                              ),
-                            ),
-                            const SizedBox(height: 16),
-                            
-                            TextFormField(
-                              controller: _phoneController,
-                              decoration: const InputDecoration(
-                                labelText: 'Phone',
-                                border: OutlineInputBorder(),
-                              ),
-                            ),
-                            
-                            const SizedBox(height: 24),
-                            
-                            // Dietary Options
-                            _buildSectionTitle('Dietary Options'),
-                            Wrap(
-                              spacing: 8,
-                              children: [
-                                FilterChip(
-                                  label: const Text('Vegan'),
-                                  selected: _isVegan,
-                                  onSelected: (bool selected) {
-                                    setState(() {
-                                      _isVegan = selected;
-                                    });
-                                  },
-                                ),
-                                FilterChip(
-                                  label: const Text('Vegetarian'),
-                                  selected: _isVegetarian,
-                                  onSelected: (bool selected) {
-                                    setState(() {
-                                      _isVegetarian = selected;
-                                    });
-                                  },
-                                ),
-                                FilterChip(
-                                  label: const Text('Halal'),
-                                  selected: _isHalal,
-                                  onSelected: (bool selected) {
-                                    setState(() {
-                                      _isHalal = selected;
-                                    });
-                                  },
-                                ),
-                                FilterChip(
-                                  label: const Text('Kosher'),
-                                  selected: _isKosher,
-                                  onSelected: (bool selected) {
-                                    setState(() {
-                                      _isKosher = selected;
-                                    });
-                                  },
-                                ),
-                                FilterChip(
-                                  label: const Text('Gluten-Free'),
-                                  selected: _isGlutenFree,
-                                  onSelected: (bool selected) {
-                                    setState(() {
-                                      _isGlutenFree = selected;
-                                    });
-                                  },
-                                ),
-                              ],
-                            ),
-                            
-                            const SizedBox(height: 24),
-                            
-                            // Services
-                            _buildSectionTitle('Services'),
-                            Wrap(
-                              spacing: 8,
-                              children: [
-                                FilterChip(
-                                  label: const Text('Takeaway'),
-                                  selected: _hasTakeaway,
-                                  onSelected: (bool selected) {
-                                    setState(() {
-                                      _hasTakeaway = selected;
-                                    });
-                                  },
-                                ),
-                                FilterChip(
-                                  label: const Text('Delivery'),
-                                  selected: _hasDelivery,
-                                  onSelected: (bool selected) {
-                                    setState(() {
-                                      _hasDelivery = selected;
-                                    });
-                                  },
-                                ),
-                                FilterChip(
-                                  label: const Text('Wheelchair Accessible'),
-                                  selected: _isWheelchairAccessible,
-                                  onSelected: (bool selected) {
-                                    setState(() {
-                                      _isWheelchairAccessible = selected;
-                                    });
-                                  },
-                                ),
-                              ],
-                            ),
-                            
-                            const SizedBox(height: 24),
-                            
-                            // Additional Information
-                            _buildSectionTitle('Additional Information'),
-                            TextFormField(
-                              controller: _locationNotesController,
-                              decoration: const InputDecoration(
-                                labelText: 'Location Notes',
-                                border: OutlineInputBorder(),
-                                hintText: 'Directions, landmarks, etc.',
-                              ),
-                              maxLines: 3,
-                            ),
-                            const SizedBox(height: 16),
-                            
-                            TextFormField(
-                              controller: _descriptionController,
-                              decoration: const InputDecoration(
-                                labelText: 'Description',
-                                border: OutlineInputBorder(),
-                                hintText: 'About the restaurant...',
-                              ),
-                              maxLines: 4,
-                            ),
-                            const SizedBox(height: 16),
-                            
-                            TextFormField(
-                              controller: _menuController,
-                              decoration: const InputDecoration(
-                                labelText: 'Menu',
-                                border: OutlineInputBorder(),
-                                hintText: 'Menu items, specialties...',
-                              ),
-                              maxLines: 6,
-                            ),
-                            
-                            const SizedBox(height: 40),
-                          ],
-                        ),
-                      ),
-                    ),
-                    
-                    // Save button
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(16),
-                      child: ElevatedButton(
-                        onPressed: _isSaving ? null : _saveRestaurant,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF3E6BC1),
-                          foregroundColor: Colors.white,
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                        ),
-                        child: _isSaving
-                            ? const SizedBox(
-                                width: 20,
-                                height: 20,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                                ),
-                              )
-                            : Text(
-                                widget.restaurantId == null || widget.restaurantId == 'new'
-                                    ? 'Add Restaurant'
-                                    : 'Save Changes',
-                                style: const TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-    );
-  }
-
-  Widget _buildSectionTitle(String title) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: Text(
-        title,
-        style: const TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-          color: Color(0xFF2C2C2C),
-        ),
-      ),
-    );
-  }
-
-  String _formatAmenity(String amenity) {
-    switch (amenity.toLowerCase()) {
-      case 'cafe':
-        return 'Café';
-      case 'pub':
-        return 'Pub';
-      case 'bar':
-        return 'Bar';
-      case 'fast_food':
-        return 'Fast Food';
-      case 'restaurant':
-        return 'Restaurant';
-      case 'bakery':
-        return 'Bakery';
-      case 'confectionery':
-        return 'Confectionery';
-      case 'ice_cream':
-        return 'Ice Cream';
-      case 'food_court':
-        return 'Food Court';
-      default:
-        return amenity.replaceAll('_', ' ').split(' ').map((word) => 
-          word.isNotEmpty ? '${word[0].toUpperCase()}${word.substring(1)}' : ''
-        ).join(' ');
+      setState(() => _isSaving = false);
     }
   }
 
@@ -639,43 +250,470 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Delete Restaurant'),
-        content: const Text('Are you sure you want to delete this restaurant? This action cannot be undone.'),
+        backgroundColor: appCardSurface(context),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3), side: BorderSide(color: kGoldLight.withValues(alpha: 0.28))),
+        title: Text('Delete Restaurant', style: GoogleFonts.cormorant(fontSize: 22, fontWeight: FontWeight.w500, color: context.appOnSurface)),
+        content: Text('This cannot be undone.', style: GoogleFonts.jost(fontSize: 13, color: context.appMutedFg(0.55))),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: const Text('Cancel'),
+            child: Text('Cancel', style: GoogleFonts.jost(fontSize: 13, color: context.appMutedFg(0.55))),
           ),
           TextButton(
             onPressed: () => Navigator.of(context).pop(true),
-            style: TextButton.styleFrom(foregroundColor: Colors.red),
-            child: const Text('Delete'),
+            child: Text('Delete', style: GoogleFonts.jost(fontSize: 13, color: Colors.red.shade400)),
           ),
         ],
       ),
     );
 
     if (confirmed == true) {
-      setState(() {
-        _isSaving = true;
-      });
-
+      setState(() => _isSaving = true);
       try {
-        final success = await AdminService.deleteRestaurant(widget.airportCode, widget.restaurantId!);
-        if (success && mounted) {
-          context.go('/admin/airport/${widget.airportCode}');
-        } else {
-          setState(() {
-            _error = 'Failed to delete restaurant';
-            _isSaving = false;
-          });
-        }
+        final success = await AdminService.deleteRestaurant(widget.airportCode, widget.terminalId, widget.restaurantId!);
+        if (success && mounted) context.go('/admin/airport/${widget.airportCode}');
+        else setState(() { _error = 'Failed to delete'; _isSaving = false; });
       } catch (e) {
-        setState(() {
-          _error = 'Error deleting restaurant: $e';
-          _isSaving = false;
-        });
+        setState(() { _error = 'Error: $e'; _isSaving = false; });
       }
     }
   }
-} 
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: Stack(
+        children: [
+          _Background(),
+          SafeArea(
+            child: Column(
+              children: [
+                // ── Header ──────────────────────────────────
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () => context.go('/admin/airport/${widget.airportCode}'),
+                        child: Container(
+                          padding: const EdgeInsets.all(9),
+                          decoration: BoxDecoration(
+                            color: appCardSurface(context),
+                            borderRadius: BorderRadius.circular(3),
+                            border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+                            boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 6, offset: const Offset(0, 2))],
+                          ),
+                          child: Icon(Icons.arrow_back_ios_new, size: 13, color: context.appOnSurface.withValues(alpha: 0.55)),
+                        ),
+                      ),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Text(
+                          _isNew ? 'Add Restaurant' : 'Edit Restaurant',
+                          style: GoogleFonts.cormorant(fontSize: 22, fontWeight: FontWeight.w600, color: context.appOnSurface, letterSpacing: 0.2),
+                        ),
+                      ),
+                      if (!_isNew)
+                        GestureDetector(
+                          onTap: _deleteRestaurant,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                            decoration: BoxDecoration(
+                              color: Colors.red.withValues(alpha: 0.08),
+                              borderRadius: BorderRadius.circular(3),
+                              border: Border.all(color: Colors.red.withValues(alpha: 0.25)),
+                            ),
+                            child: Text('Delete', style: GoogleFonts.jost(fontSize: 12, color: Colors.red.shade400, letterSpacing: 0.3)),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 12),
+                Padding(padding: const EdgeInsets.symmetric(horizontal: 24), child: _rule(context)),
+                const SizedBox(height: 4),
+
+                // ── Error ────────────────────────────────────
+                if (_error != null)
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(24, 8, 24, 0),
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.red.withValues(alpha: 0.08),
+                      borderRadius: BorderRadius.circular(3),
+                      border: Border.all(color: Colors.red.withValues(alpha: 0.25)),
+                    ),
+                    child: Text(_error!, style: GoogleFonts.jost(fontSize: 13, color: Colors.red.shade400)),
+                  ),
+
+                // ── Form ─────────────────────────────────────
+                Expanded(
+                  child: _isLoading
+                      ? Center(child: CircularProgressIndicator(color: kTeal, strokeWidth: 1.5))
+                      : Form(
+                          key: _formKey,
+                          child: ListView(
+                            padding: const EdgeInsets.fromLTRB(24, 16, 24, 24),
+                            children: [
+                              // ── Basic ──────────────────────
+                              _SectionHeader(title: 'Basic Information'),
+                              const SizedBox(height: 12),
+                              _field(context, controller: _nameController, label: 'Name', required: true),
+                              const SizedBox(height: 10),
+                              Row(children: [
+                                Expanded(child: _amenityDropdown(context)),
+                                const SizedBox(width: 10),
+                                Expanded(child: _field(context, controller: _cuisineController, label: 'Cuisine')),
+                              ]),
+                              const SizedBox(height: 10),
+                              _field(context, controller: _descriptionController, label: 'Description', maxLines: 3, hint: 'Brief description...'),
+                              const SizedBox(height: 10),
+                              _field(context, controller: _phoneController, label: 'Phone', keyboard: TextInputType.phone),
+                              const SizedBox(height: 10),
+                              _field(context, controller: _websiteController, label: 'Website', hint: 'https://...', keyboard: TextInputType.url),
+
+                              // ── Dietary ────────────────────
+                              const SizedBox(height: 24),
+                              _SectionHeader(title: 'Dietary'),
+                              const SizedBox(height: 12),
+                              Wrap(spacing: 8, runSpacing: 8, children: [
+                                _DietaryChip(label: 'Vegan',       selected: _isVegan,       onChanged: (v) => setState(() => _isVegan = v)),
+                                _DietaryChip(label: 'Vegetarian',  selected: _isVegetarian,  onChanged: (v) => setState(() => _isVegetarian = v)),
+                                _DietaryChip(label: 'Halal',       selected: _isHalal,       onChanged: (v) => setState(() => _isHalal = v)),
+                                _DietaryChip(label: 'Kosher',      selected: _isKosher,      onChanged: (v) => setState(() => _isKosher = v)),
+                                _DietaryChip(label: 'Gluten-Free', selected: _isGlutenFree,  onChanged: (v) => setState(() => _isGlutenFree = v)),
+                              ]),
+
+                              // ── Locations ──────────────────
+                              const SizedBox(height: 24),
+                              _SectionHeader(title: 'Locations'),
+                              const SizedBox(height: 4),
+                              Text('One entry per physical location within the terminal.',
+                                  style: GoogleFonts.jost(fontSize: 12, color: context.appMutedFg(0.42))),
+                              const SizedBox(height: 12),
+                              ...List.generate(_outlets.length, (i) => _buildOutletCard(context, i)),
+                              const SizedBox(height: 8),
+                              GestureDetector(
+                                onTap: () => setState(() => _outlets.add(_OutletFormData())),
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(vertical: 12),
+                                  decoration: BoxDecoration(
+                                    color: kTeal.withValues(alpha: 0.06),
+                                    borderRadius: BorderRadius.circular(3),
+                                    border: Border.all(color: kTeal.withValues(alpha: 0.25)),
+                                  ),
+                                  child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                                    Icon(Icons.add_rounded, size: 16, color: kTeal),
+                                    const SizedBox(width: 6),
+                                    Text('Add Location', style: GoogleFonts.jost(fontSize: 13, color: kTeal, letterSpacing: 0.3)),
+                                  ]),
+                                ),
+                              ),
+                              const SizedBox(height: 32),
+                            ],
+                          ),
+                        ),
+                ),
+
+                // ── Save button ──────────────────────────────
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+                  child: GestureDetector(
+                    onTap: _isSaving ? null : _saveRestaurant,
+                    child: Container(
+                      width: double.infinity,
+                      height: 52,
+                      decoration: BoxDecoration(
+                        color: _isSaving ? kTeal.withValues(alpha: 0.6) : kTeal,
+                        borderRadius: BorderRadius.circular(3),
+                        boxShadow: [BoxShadow(color: kTeal.withValues(alpha: 0.25), blurRadius: 12, offset: const Offset(0, 4))],
+                      ),
+                      child: Center(
+                        child: _isSaving
+                            ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 1.5, color: Colors.white))
+                            : Text(
+                                _isNew ? 'ADD RESTAURANT' : 'SAVE CHANGES',
+                                style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w500, letterSpacing: 2.2, color: Colors.white),
+                              ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildOutletCard(BuildContext context, int index) {
+    final outlet = _outlets[index];
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: appCardSurface(context),
+        borderRadius: BorderRadius.circular(3),
+        border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+        boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.05), blurRadius: 6, offset: const Offset(0, 2))],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // ── Header row ─────────────────────────────
+          Row(children: [
+            Text('Location ${index + 1}',
+                style: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w500, color: context.appMutedFg(0.55), letterSpacing: 0.5)),
+            const Spacer(),
+            if (_outlets.length > 1)
+              GestureDetector(
+                onTap: () => setState(() { _outlets[index].dispose(); _outlets.removeAt(index); }),
+                child: Icon(Icons.remove_circle_outline_rounded, size: 18, color: Colors.red.shade300),
+              ),
+          ]),
+
+          // ── Physical location ───────────────────────
+          const SizedBox(height: 10),
+          _field(context, controller: outlet.gateAreaController, label: 'Gate Area / Zone', hint: 'e.g. Gates 1–20, Pier B'),
+          const SizedBox(height: 10),
+          _airsideDropdown(context, outlet),
+          const SizedBox(height: 10),
+          Row(children: [
+            Expanded(child: _field(context, controller: outlet.levelController, label: 'Level / Floor', hint: 'e.g. 2F, Level 1')),
+          ]),
+          const SizedBox(height: 10),
+          _field(context, controller: outlet.locationNotesController, label: 'Directions', hint: 'e.g. Next to gate 35, opposite WHSmith...', maxLines: 2),
+
+          // ── Opening hours ───────────────────────────
+          const SizedBox(height: 14),
+          _subHeader(context, 'Opening Hours'),
+          const SizedBox(height: 10),
+          _DietaryChip(
+            label: 'Open 24/7',
+            selected: outlet.open247 ?? false,
+            onChanged: (v) => setState(() => outlet.open247 = v),
+          ),
+          if (!(outlet.open247 ?? false)) ...[
+            const SizedBox(height: 10),
+            _field(context, controller: outlet.openingHoursController,
+                label: 'Hours', hint: 'e.g. Mo-Fr 07:00-22:00; Sa-Su 08:00-20:00'),
+          ],
+
+          // ── Features ────────────────────────────────
+          const SizedBox(height: 14),
+          _subHeader(context, 'Features'),
+          const SizedBox(height: 10),
+          Row(children: [
+            Expanded(child: _optionDropdown(context,
+              label: 'Takeaway',
+              value: outlet.takeaway,
+              items: const {'': 'Unknown', 'yes': 'Yes', 'no': 'No', 'only': 'Only'},
+              onChanged: (v) => setState(() => outlet.takeaway = v ?? ''),
+            )),
+            const SizedBox(width: 10),
+            Expanded(child: _optionDropdown(context,
+              label: 'Wheelchair',
+              value: outlet.wheelchairAccessible,
+              items: const {'': 'Unknown', 'yes': 'Yes', 'no': 'No', 'limited': 'Limited'},
+              onChanged: (v) => setState(() => outlet.wheelchairAccessible = v ?? ''),
+            )),
+          ]),
+          const SizedBox(height: 10),
+          Wrap(spacing: 8, runSpacing: 8, children: [
+            _DietaryChip(label: 'Delivery',     selected: outlet.delivery   ?? false, onChanged: (v) => setState(() => outlet.delivery   = v)),
+            _DietaryChip(label: 'Reservations', selected: outlet.reservable ?? false, onChanged: (v) => setState(() => outlet.reservable = v)),
+            _DietaryChip(label: 'Kids Menu',    selected: outlet.kidsMenu   ?? false, onChanged: (v) => setState(() => outlet.kidsMenu   = v)),
+          ]),
+        ],
+      ),
+    );
+  }
+
+  Widget _subHeader(BuildContext context, String title) => Text(
+    title,
+    style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w500, letterSpacing: 1.6, color: context.appMutedFg(0.42)),
+  );
+
+  Widget _field(BuildContext context, {
+    required TextEditingController controller,
+    required String label,
+    String? hint,
+    int maxLines = 1,
+    bool required = false,
+    TextInputType keyboard = TextInputType.text,
+  }) {
+    return TextFormField(
+      controller: controller,
+      maxLines: maxLines,
+      keyboardType: keyboard,
+      style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface),
+      validator: required ? (v) => (v == null || v.trim().isEmpty) ? 'Required' : null : null,
+      decoration: InputDecoration(
+        labelText: label,
+        hintText: hint,
+        labelStyle: GoogleFonts.jost(fontSize: 13, color: context.appMutedFg(0.45)),
+        hintStyle: GoogleFonts.jost(fontSize: 13, color: context.appMutedFg(0.32)),
+        isDense: true,
+        filled: true,
+        fillColor: appCardSurface(context),
+        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: BorderSide(color: kGoldLight.withValues(alpha: 0.28))),
+        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: const BorderSide(color: kTeal, width: 1)),
+        errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: BorderSide(color: Colors.red.shade300)),
+        focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: BorderSide(color: Colors.red.shade400)),
+      ),
+    );
+  }
+
+  Widget _optionDropdown(BuildContext context, {
+    required String label,
+    required String value,
+    required Map<String, String> items,
+    required void Function(String?) onChanged,
+  }) {
+    return DropdownButtonFormField<String>(
+      value: value.isEmpty ? '' : value,
+      style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface),
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: GoogleFonts.jost(fontSize: 13, color: context.appMutedFg(0.45)),
+        isDense: true,
+        filled: true,
+        fillColor: appCardSurface(context),
+        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: BorderSide(color: kGoldLight.withValues(alpha: 0.28))),
+        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: const BorderSide(color: kTeal, width: 1)),
+      ),
+      items: items.entries.map((e) => DropdownMenuItem(
+        value: e.key,
+        child: Text(e.value, style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface)),
+      )).toList(),
+      onChanged: onChanged,
+    );
+  }
+
+  Widget _amenityDropdown(BuildContext context) {
+    final items = ['restaurant', 'cafe', 'bar', 'pub', 'fast_food', 'bakery', 'confectionery', 'ice_cream', 'food_court'];
+    return DropdownButtonFormField<String>(
+      value: _selectedAmenity,
+      style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface),
+      decoration: InputDecoration(
+        labelText: 'Type',
+        labelStyle: GoogleFonts.jost(fontSize: 13, color: context.appMutedFg(0.45)),
+        isDense: true,
+        filled: true,
+        fillColor: appCardSurface(context),
+        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: BorderSide(color: kGoldLight.withValues(alpha: 0.28))),
+        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: const BorderSide(color: kTeal, width: 1)),
+      ),
+      items: items.map((v) => DropdownMenuItem(value: v, child: Text(_formatAmenity(v), style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface)))).toList(),
+      onChanged: (v) => setState(() => _selectedAmenity = v!),
+    );
+  }
+
+  Widget _airsideDropdown(BuildContext context, _OutletFormData outlet) {
+    return DropdownButtonFormField<String>(
+      value: outlet.airside,
+      style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface),
+      decoration: InputDecoration(
+        labelText: 'Security',
+        labelStyle: GoogleFonts.jost(fontSize: 13, color: context.appMutedFg(0.45)),
+        isDense: true,
+        filled: true,
+        fillColor: appCardSurface(context),
+        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: BorderSide(color: kGoldLight.withValues(alpha: 0.28))),
+        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: const BorderSide(color: kTeal, width: 1)),
+      ),
+      items: [
+        DropdownMenuItem(value: 'airside',  child: Text('After security',  style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface))),
+        DropdownMenuItem(value: 'landside', child: Text('Before security', style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface))),
+        DropdownMenuItem(value: 'both',     child: Text('Both',            style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface))),
+      ],
+      onChanged: (v) => setState(() => outlet.airside = v!),
+    );
+  }
+
+  String _formatAmenity(String amenity) => switch (amenity) {
+    'cafe'          => 'Café',
+    'pub'           => 'Pub',
+    'bar'           => 'Bar',
+    'fast_food'     => 'Fast Food',
+    'restaurant'    => 'Restaurant',
+    'bakery'        => 'Bakery',
+    'confectionery' => 'Confectionery',
+    'ice_cream'     => 'Ice Cream',
+    'food_court'    => 'Food Court',
+    _               => amenity.replaceAll('_', ' '),
+  };
+}
+
+// ─────────────────────────────────────────────────────────────
+//  DIETARY CHIP
+// ─────────────────────────────────────────────────────────────
+class _DietaryChip extends StatelessWidget {
+  final String label;
+  final bool selected;
+  final void Function(bool) onChanged;
+  const _DietaryChip({required this.label, required this.selected, required this.onChanged});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => onChanged(!selected),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+        decoration: BoxDecoration(
+          color: selected ? kTeal.withValues(alpha: 0.10) : appCardSurface(context),
+          borderRadius: BorderRadius.circular(3),
+          border: Border.all(color: selected ? kTeal.withValues(alpha: 0.40) : kGoldLight.withValues(alpha: 0.28)),
+        ),
+        child: Text(label, style: GoogleFonts.jost(fontSize: 12, color: selected ? kTeal : context.appMutedFg(0.50), fontWeight: selected ? FontWeight.w500 : FontWeight.w400)),
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  SHARED WIDGETS
+// ─────────────────────────────────────────────────────────────
+Widget _rule(BuildContext context) => Container(
+  height: 1,
+  decoration: BoxDecoration(
+    gradient: LinearGradient(
+      colors: [Colors.transparent, kGoldLight.withValues(alpha: 0.28), context.appOnSurface.withValues(alpha: 0.08), Colors.transparent],
+      stops: const [0.0, 0.3, 0.7, 1.0],
+    ),
+  ),
+);
+
+class _SectionHeader extends StatelessWidget {
+  final String title;
+  const _SectionHeader({required this.title});
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(title, style: GoogleFonts.cormorant(fontSize: 20, fontWeight: FontWeight.w400, color: context.appOnSurface, letterSpacing: 0.2)),
+        const SizedBox(width: 10),
+        Expanded(child: Container(height: 1, decoration: BoxDecoration(gradient: LinearGradient(colors: [kGoldLight.withValues(alpha: 0.28), Colors.transparent])))),
+        const SizedBox(width: 6),
+        Transform.rotate(angle: math.pi / 4, child: Container(width: 4, height: 4, color: kGoldLight.withValues(alpha: 0.6))),
+      ],
+    );
+  }
+}
+
+class _Background extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => Container(
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.topLeft, end: Alignment.bottomRight,
+        colors: appPageGradientColors(context),
+        stops: const [0.0, 0.55, 1.0],
+      ),
+    ),
+  );
+}
