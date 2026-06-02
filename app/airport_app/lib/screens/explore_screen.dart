@@ -42,6 +42,7 @@ const _kAirports = [
   _Airport(id: 'LGW', iata: 'LGW', name: 'London Gatwick', city: 'London', country: 'United Kingdom', flag: '🇬🇧', venueCount: 44),
   _Airport(id: 'LHR', iata: 'LHR', name: 'London Heathrow', city: 'London', country: 'United Kingdom', flag: '🇬🇧', venueCount: 84),
   _Airport(id: 'MAN', iata: 'MAN', name: 'Manchester Airport', city: 'Manchester', country: 'United Kingdom', flag: '🇬🇧', venueCount: 36),
+  _Airport(id: 'HND', iata: 'HND', name: 'Tokyo Haneda Airport', city: 'Tokyo', country: 'Japan', flag: '🇯🇵', venueCount: 169),
   _Airport(id: 'SIN', iata: 'SIN', name: 'Singapore Changi', city: 'Singapore', country: 'Singapore', flag: '🇸🇬', venueCount: 96),
 ];
 

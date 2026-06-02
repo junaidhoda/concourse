@@ -21,6 +21,7 @@ BHX_CSV      = "bhx_restaurants.csv"
 MAN_CSV      = "man_restaurants.csv"
 CDG_CSV      = "cdg_restaurants.csv"
 FRA_CSV      = "fra_restaurants.csv"
+HND_CSV      = "hnd_restaurants.csv"
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -74,9 +75,9 @@ def clean(row: dict, extra_fields: dict) -> dict:
         "takeaway":        row.get("takeaway", "").strip(),           # yes / no / only
         "delivery":        "",
         "reservable":      "",
-        "halal":           "",
-        "vegetarian_options": "",
-        "vegan_options":   "",
+        "halal":           row.get("halal", "").strip(),
+        "vegetarian_options": row.get("vegetarian_options", "").strip(),
+        "vegan_options":   row.get("vegan_options", "").strip(),
         "kids_menu":       "",
 
         # ── Metadata ───────────────────────────────────────────────────
@@ -118,12 +119,13 @@ def main():
     # ── Gatwick ───────────────────────────────────────────────────────
     print("Uploading Gatwick …")
     gatwick_meta = {
-        "name":    "London Gatwick Airport",
-        "code":    "LGW",
-        "city":    "London",
-        "country": "UK",
-        "lat":     51.1537,
-        "lon":     -0.1821,
+        "name":      "London Gatwick Airport",
+        "code":      "LGW",
+        "city":      "London",
+        "country":   "UK",
+        "continent": "Europe",
+        "lat":       51.1537,
+        "lon":       -0.1821,
     }
     with open(GATWICK_CSV, encoding="utf-8") as f:
         gatwick_rows = list(csv.DictReader(f))
@@ -136,12 +138,13 @@ def main():
     # ── Heathrow ──────────────────────────────────────────────────────
     print("Uploading Heathrow …")
     heathrow_meta = {
-        "name":    "London Heathrow Airport",
-        "code":    "LHR",
-        "city":    "London",
-        "country": "UK",
-        "lat":     51.4700,
-        "lon":     -0.4543,
+        "name":      "London Heathrow Airport",
+        "code":      "LHR",
+        "city":      "London",
+        "country":   "UK",
+        "continent": "Europe",
+        "lat":       51.4700,
+        "lon":       -0.4543,
     }
     with open(HEATHROW_CSV, encoding="utf-8") as f:
         heathrow_rows = list(csv.DictReader(f))
@@ -154,12 +157,13 @@ def main():
     # ── Birmingham ────────────────────────────────────────────────────
     print("Uploading Birmingham …")
     bhx_meta = {
-        "name":    "Birmingham Airport",
-        "code":    "BHX",
-        "city":    "Birmingham",
-        "country": "UK",
-        "lat":     52.4538,
-        "lon":     -1.7480,
+        "name":      "Birmingham Airport",
+        "code":      "BHX",
+        "city":      "Birmingham",
+        "country":   "UK",
+        "continent": "Europe",
+        "lat":       52.4538,
+        "lon":       -1.7480,
     }
     with open(BHX_CSV, encoding="utf-8") as f:
         bhx_rows = list(csv.DictReader(f))
@@ -172,12 +176,13 @@ def main():
     # ── Manchester ───────────────────────────────────────────────────
     print("Uploading Manchester …")
     man_meta = {
-        "name":    "Manchester Airport",
-        "code":    "MAN",
-        "city":    "Manchester",
-        "country": "UK",
-        "lat":     53.3537,
-        "lon":     -2.2750,
+        "name":      "Manchester Airport",
+        "code":      "MAN",
+        "city":      "Manchester",
+        "country":   "UK",
+        "continent": "Europe",
+        "lat":       53.3537,
+        "lon":       -2.2750,
     }
     with open(MAN_CSV, encoding="utf-8") as f:
         man_rows = list(csv.DictReader(f))
@@ -190,12 +195,13 @@ def main():
     # ── CDG ──────────────────────────────────────────────────────────
     print("Uploading CDG …")
     cdg_meta = {
-        "name":    "Paris Charles de Gaulle Airport",
-        "code":    "CDG",
-        "city":    "Paris",
-        "country": "France",
-        "lat":     49.0097,
-        "lon":     2.5477,
+        "name":      "Paris Charles de Gaulle Airport",
+        "code":      "CDG",
+        "city":      "Paris",
+        "country":   "France",
+        "continent": "Europe",
+        "lat":       49.0097,
+        "lon":       2.5477,
     }
     with open(CDG_CSV, encoding="utf-8") as f:
         cdg_rows = list(csv.DictReader(f))
@@ -212,12 +218,13 @@ def main():
     # ── Frankfurt ─────────────────────────────────────────────────────────
     print("Uploading Frankfurt …")
     fra_meta = {
-        "name":    "Frankfurt Airport",
-        "code":    "FRA",
-        "city":    "Frankfurt",
-        "country": "Germany",
-        "lat":     50.0379,
-        "lon":     8.5622,
+        "name":      "Frankfurt Airport",
+        "code":      "FRA",
+        "city":      "Frankfurt",
+        "country":   "Germany",
+        "continent": "Europe",
+        "lat":       50.0379,
+        "lon":       8.5622,
     }
     with open(FRA_CSV, encoding="utf-8") as f:
         fra_rows = list(csv.DictReader(f))
@@ -231,6 +238,25 @@ def main():
         rows = [r for r in fra_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Frankfurt"}) for r in rows]
         upload(db, "fra", fra_meta, terminal_name, docs)
+
+    # ── Tokyo Haneda ─────────────────────────────────────────────────────────
+    print("Uploading Tokyo Haneda …")
+    hnd_meta = {
+        "name":      "Tokyo Haneda Airport",
+        "code":      "HND",
+        "city":      "Tokyo",
+        "country":   "Japan",
+        "continent": "Asia",
+        "lat":       35.5494,
+        "lon":       139.7798,
+    }
+    with open(HND_CSV, encoding="utf-8") as f:
+        hnd_rows = list(csv.DictReader(f))
+
+    for terminal_name in ["Terminal 1", "Terminal 2", "Terminal 3"]:
+        rows = [r for r in hnd_rows if r["terminal"] == terminal_name]
+        docs = [clean(r, {"airport": "Tokyo Haneda"}) for r in rows]
+        upload(db, "haneda", hnd_meta, terminal_name, docs)
 
     print("\nDone.")
 

@@ -10,6 +10,7 @@ class FirebaseService {
     'MAN': 'manchester',
     'CDG': 'cdg',
     'FRA': 'fra',
+    'HND': 'haneda',
   };
 
   static String _slug(String airportCode) =>
@@ -86,6 +87,16 @@ class FirebaseService {
       return rests.map((r) => {...r, '_terminalId': terminalId, '_terminalName': terminalName}).toList();
     }));
     return results.expand((list) => list).toList();
+  }
+
+  static Future<List<Map<String, dynamic>>> getAllAirports() async {
+    try {
+      final snap = await _firestore.collection('airports').get();
+      return snap.docs.map((d) => {'_docId': d.id, ...d.data()}).toList();
+    } catch (e) {
+      print('Error fetching airports: $e');
+      return [];
+    }
   }
 
   static String getAirportName(String airportCode) {
