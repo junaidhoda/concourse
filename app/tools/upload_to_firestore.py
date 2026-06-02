@@ -15,7 +15,7 @@ from firebase_admin import credentials, firestore
 
 SERVICE_ACCOUNT = "/Users/junaidhoda/.firebase/airport-app-20516-firebase-adminsdk-fbsvc-96d88f4ebf.json"
 
-GATWICK_CSV  = "gatwick_restaurants.csv"
+GATWICK_CSV  = "lgw_restaurants.csv"
 HEATHROW_CSV = "heathrow_restaurants.csv"
 BHX_CSV      = "bhx_restaurants.csv"
 MAN_CSV      = "man_restaurants.csv"
