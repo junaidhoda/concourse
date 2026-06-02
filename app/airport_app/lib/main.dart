@@ -103,11 +103,7 @@ final GoRouter _router = GoRouter(
       builder: (context, state) {
         final extra = state.extra as Map<String, dynamic>;
         return RestaurantDetailScreen(
-          name: extra['name'] as String,
-          cuisine: extra['cuisine'] as String,
-          location: extra['location'] as String,
-          isOpen: extra['isOpen'] as bool,
-          logoUrl: extra['logoUrl'] as String,
+          restaurant: extra['restaurant'] as Restaurant,
           airportName: extra['airportName'] as String? ?? '',
         );
       },

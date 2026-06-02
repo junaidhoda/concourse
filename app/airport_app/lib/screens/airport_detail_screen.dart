@@ -74,41 +74,64 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
     final terminalId = map['_terminalId'] as String? ?? '';
     final terminalName = map['_terminalName'] as String? ?? terminalId;
     final categories = _stringFromMap(map, ['categories']) ?? '';
+    final amenity = map['amenity'] as String? ?? 'restaurant';
 
-    // A venue is a lounge if its categories or terminal name say so.
-    final isLounge = categories.toLowerCase().contains('lounge') ||
+    final isLounge = amenity == 'lounge' ||
+        categories.toLowerCase().contains('lounge') ||
         terminalName.toLowerCase().contains('lounge') ||
         terminalId.toLowerCase().contains('lounge');
 
-    // Prefer specific cuisine; fall back to categories (e.g. "Restaurant, Gluten-free")
     String cuisine = _stringFromMap(map, ['cuisine']) ?? '';
     if (cuisine.isEmpty) {
-      // Strip dietary tags to keep only the venue type
       cuisine = categories.split(',').map((s) => s.trim()).firstWhere(
         (s) => !{'Gluten-free', 'Halal', 'Vegan', 'Vegetarian'}.contains(s),
         orElse: () => categories,
       );
     }
 
-    // Map airside field to a readable location string
-    final airsideRaw = map['airside'] as String? ?? '';
-    final location = switch (airsideRaw.toLowerCase()) {
-      'airside' => 'After security',
-      'landside' => 'Before security',
-      'both' => 'Airside & landside',
-      _ => '',
-    };
+    final dietary = map['dietary'] as Map<String, dynamic>? ?? {};
+    final additional = map['additional'] as Map<String, dynamic>? ?? {};
+
+    final rawOutlets = map['outlets'] as List<dynamic>? ?? [];
+    final List<RestaurantOutlet> outlets;
+    if (rawOutlets.isNotEmpty) {
+      outlets = rawOutlets.map((o) {
+        final outlet = o as Map<String, dynamic>;
+        return RestaurantOutlet(
+          gateArea: outlet['gate_area'] as String? ?? '',
+          airside: outlet['airside'] as String? ?? '',
+          level: outlet['level'] as String? ?? '',
+          locationNotes: outlet['location_notes'] as String? ?? '',
+        );
+      }).toList();
+    } else {
+      // Legacy single-location format: build one outlet from root-level fields
+      outlets = [
+        RestaurantOutlet(
+          gateArea: '',
+          airside: map['airside'] as String? ?? '',
+          level: additional['level'] as String? ?? '',
+          locationNotes: additional['location_notes'] as String? ?? '',
+        ),
+      ];
+    }
 
     return Restaurant(
       name: _stringFromMap(map, ['name']) ?? 'Unknown',
       cuisine: cuisine,
-      location: location,
-      isOpen: true,
-      logoUrl: '',
+      amenity: amenity,
+      description: map['description'] as String? ?? additional['description'] as String? ?? '',
+      website: map['website'] as String? ?? additional['website'] as String? ?? '',
+      isLounge: isLounge,
       terminalId: terminalId,
       terminalShort: terminalId,
       terminalName: terminalName,
-      isLounge: isLounge,
+      isVegan: dietary['vegan'] as bool? ?? false,
+      isVegetarian: dietary['vegetarian'] as bool? ?? false,
+      isHalal: dietary['halal'] as bool? ?? false,
+      isKosher: dietary['kosher'] as bool? ?? false,
+      isGlutenFree: dietary['gluten_free'] as bool? ?? false,
+      outlets: outlets,
     );
   }
 
@@ -285,59 +308,71 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
                   fontSize: 18, fontWeight: FontWeight.w600,
                   color: context.appOnSurface, letterSpacing: 0.2,
                 )),
-                flexibleSpace: FlexibleSpaceBar(
-                  collapseMode: CollapseMode.parallax,
-                  titlePadding: EdgeInsets.zero,
-                  background: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      _buildHeroImage(imageUrl, assetPath, context),
-                      // bottom gradient so text below blends in
-                      Positioned(
-                        bottom: 0, left: 0, right: 0,
-                        child: Container(
-                          height: 80,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [Colors.transparent, bg],
+                // Raw LayoutBuilder — no FlexibleSpaceBar so no internal ClipRect.
+                // Stack has clipBehavior: Clip.none so iOS bounce never cuts text.
+                // Text stays at bottom: 16 always; only opacity changes (no position jumps).
+                flexibleSpace: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final topPadding = MediaQuery.of(context).padding.top;
+                    final expandedMax = 280.0 + topPadding;
+                    final collapsedMin = kToolbarHeight + topPadding;
+                    final t = ((expandedMax - constraints.maxHeight) / (expandedMax - collapsedMin)).clamp(0.0, 1.0);
+                    final textOpacity = (1.0 - t * 2.0).clamp(0.0, 1.0);
+
+                    return Stack(
+                      fit: StackFit.expand,
+                      clipBehavior: Clip.none,
+                      children: [
+                        _buildHeroImage(imageUrl, assetPath, context),
+                        Positioned(
+                          bottom: 0, left: 0, right: 0,
+                          child: Container(
+                            height: 100,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [Colors.transparent, bg],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      // Airport name + location + code in expanded state
-                      Positioned(
-                        bottom: 16, left: 24, right: 24,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
+                        if (textOpacity > 0)
+                          Positioned(
+                            bottom: 16, left: 24, right: 24,
+                            child: Opacity(
+                              opacity: textOpacity,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
-                                  Text(name, style: GoogleFonts.cormorant(
-                                    fontSize: 24, fontWeight: FontWeight.w600,
-                                    color: context.appOnSurface, letterSpacing: 0.2, height: 1.15,
-                                  )),
-                                  const SizedBox(height: 2),
-                                  Text(location, style: GoogleFonts.jost(
-                                    fontSize: 12, fontWeight: FontWeight.w400,
-                                    letterSpacing: 1.4, color: context.appMutedFg(0.42),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(name, style: GoogleFonts.cormorant(
+                                          fontSize: 24, fontWeight: FontWeight.w600,
+                                          color: context.appOnSurface, letterSpacing: 0.2, height: 1.15,
+                                        )),
+                                        const SizedBox(height: 2),
+                                        Text(location, style: GoogleFonts.jost(
+                                          fontSize: 12, fontWeight: FontWeight.w400,
+                                          letterSpacing: 1.4, color: context.appMutedFg(0.42),
+                                        )),
+                                      ],
+                                    ),
+                                  ),
+                                  Text(code, style: GoogleFonts.cormorant(
+                                    fontSize: 20, fontWeight: FontWeight.w400,
+                                    color: kTeal, letterSpacing: 0.8,
                                   )),
                                 ],
                               ),
                             ),
-                            Text(code, style: GoogleFonts.cormorant(
-                              fontSize: 20, fontWeight: FontWeight.w400,
-                              color: kTeal, letterSpacing: 0.8,
-                            )),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                          ),
+                      ],
+                    );
+                  },
                 ),
               ),
 
@@ -857,14 +892,13 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
   }
 
   Widget _buildRestaurantCard(BuildContext context, Restaurant restaurant, String airportDisplayName) {
+    final outletCount = restaurant.outlets.length;
+    final firstOutlet = restaurant.outlets.isNotEmpty ? restaurant.outlets.first : null;
+
     return GestureDetector(
       onTap: () {
         context.push('/restaurant-detail', extra: {
-          'name': restaurant.name,
-          'cuisine': restaurant.cuisine,
-          'location': restaurant.location,
-          'isOpen': restaurant.isOpen,
-          'logoUrl': restaurant.logoUrl,
+          'restaurant': restaurant,
           'airportName': airportDisplayName,
         });
       },
@@ -881,7 +915,6 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Icon badge
             Container(
               width: 48, height: 48,
               decoration: BoxDecoration(
@@ -892,7 +925,6 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
               child: Icon(_getRestaurantIcon(restaurant.cuisine), color: kTeal, size: 24),
             ),
             const SizedBox(height: 12),
-            // Name
             Text(
               restaurant.name,
               style: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w500, color: context.appOnSurface, height: 1.35),
@@ -900,7 +932,6 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 4),
-            // Cuisine
             if (restaurant.cuisine.isNotEmpty)
               Text(
                 restaurant.cuisine,
@@ -909,31 +940,36 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
                 overflow: TextOverflow.ellipsis,
               ),
             const Spacer(),
-            // Open status
-            Row(
-              children: [
-                Container(width: 5, height: 5, decoration: BoxDecoration(color: restaurant.isOpen ? kTeal : kGold, shape: BoxShape.circle)),
-                const SizedBox(width: 5),
-                Text(
-                  restaurant.isOpen ? 'Open' : 'Closed',
-                  style: GoogleFonts.jost(fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 0.5, color: restaurant.isOpen ? kTeal : kGold),
-                ),
-              ],
-            ),
-            if (restaurant.location.isNotEmpty) ...[
-              const SizedBox(height: 3),
+            if (outletCount > 1)
+              Row(
+                children: [
+                  Icon(Icons.location_on_rounded, size: 10, color: kTeal),
+                  const SizedBox(width: 3),
+                  Text(
+                    '$outletCount locations',
+                    style: GoogleFonts.jost(fontSize: 10, fontWeight: FontWeight.w400, letterSpacing: 0.3, color: kTeal),
+                  ),
+                ],
+              )
+            else if (firstOutlet != null && firstOutlet.airside.isNotEmpty)
               Text(
-                restaurant.location,
+                _airsideLabel(firstOutlet.airside),
                 style: GoogleFonts.jost(fontSize: 10, fontWeight: FontWeight.w400, color: context.appMutedFg(0.35)),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
-            ],
           ],
         ),
       ),
     );
   }
+
+  String _airsideLabel(String airside) => switch (airside.toLowerCase()) {
+    'airside' => 'After security',
+    'landside' => 'Before security',
+    'both' => 'Airside & landside',
+    _ => '',
+  };
 
   IconData _getRestaurantIcon(String cuisine) {
     final c = cuisine.toLowerCase();
@@ -950,45 +986,75 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
     return Icons.restaurant;
   }
 
+  Restaurant _lgwRestaurant(String name, String cuisine, String amenity, String airside) =>
+      Restaurant(
+        name: name,
+        cuisine: cuisine,
+        amenity: amenity,
+        description: '',
+        website: '',
+        outlets: [RestaurantOutlet(gateArea: '', airside: airside, level: '', locationNotes: '')],
+      );
+
   List<Restaurant> _getNorthTerminalRestaurants() {
     return [
-      Restaurant(name: 'Bar on the Balcony', cuisine: 'Bar', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/bar-on-the-balcony.jpg'),
-      Restaurant(name: 'Black Sheep Coffee', cuisine: 'Coffee', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/black-sheep-coffee.jpg'),
-      Restaurant(name: 'The Breakfast Club', cuisine: 'Breakfast', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/the-breakfast-club.jpg'),
-      Restaurant(name: 'BrewDog', cuisine: 'Pub', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/brewdog.jpg'),
-      Restaurant(name: 'Juniper & Co', cuisine: 'Restaurant', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/juniper-co.jpg'),
-      Restaurant(name: 'Krispy Kreme', cuisine: 'Dessert', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/krispy-kreme.jpg'),
-      Restaurant(name: 'Pret a Manger', cuisine: 'Sandwich', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/pret-a-manger.jpg'),
-      Restaurant(name: 'Pure', cuisine: 'Café', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/pure.jpg'),
-      Restaurant(name: 'The Red Lion', cuisine: 'Pub', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/red-lion.jpg'),
-      Restaurant(name: 'Shake Shack', cuisine: 'Burger', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/shake-shack.jpg'),
-      Restaurant(name: 'Sonoma', cuisine: 'Restaurant', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/sonoma.jpg'),
-      Restaurant(name: 'Starbucks', cuisine: 'Coffee', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/starbucks.jpg'),
-      Restaurant(name: 'Sussex House', cuisine: 'Restaurant', location: 'Before security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/sussex-house.jpg'),
-      Restaurant(name: 'Tortilla', cuisine: 'Mexican', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/tortilla.jpg'),
-      Restaurant(name: 'wagamama', cuisine: 'Asian', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/wagamama.jpg'),
+      _lgwRestaurant('Bar on the Balcony', 'Bar', 'bar', 'airside'),
+      _lgwRestaurant('Black Sheep Coffee', 'Coffee', 'cafe', 'airside'),
+      _lgwRestaurant('The Breakfast Club', 'Breakfast', 'restaurant', 'airside'),
+      _lgwRestaurant('BrewDog', 'Pub', 'pub', 'airside'),
+      _lgwRestaurant('Juniper & Co', 'Restaurant', 'restaurant', 'airside'),
+      _lgwRestaurant('Krispy Kreme', 'Dessert', 'confectionery', 'airside'),
+      _lgwRestaurant('Pret a Manger', 'Sandwich', 'cafe', 'airside'),
+      _lgwRestaurant('Pure', 'Café', 'cafe', 'airside'),
+      _lgwRestaurant('The Red Lion', 'Pub', 'pub', 'airside'),
+      _lgwRestaurant('Shake Shack', 'Burger', 'fast_food', 'airside'),
+      _lgwRestaurant('Sonoma', 'Restaurant', 'restaurant', 'airside'),
+      _lgwRestaurant('Starbucks', 'Coffee', 'cafe', 'airside'),
+      _lgwRestaurant('Sussex House', 'Restaurant', 'restaurant', 'landside'),
+      _lgwRestaurant('Tortilla', 'Mexican', 'restaurant', 'airside'),
+      _lgwRestaurant('wagamama', 'Asian', 'restaurant', 'airside'),
     ];
   }
 
   List<Restaurant> _getSouthTerminalRestaurants() {
     return [
-      Restaurant(name: 'The Beehive', cuisine: 'Pub', location: 'Before security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/the-beehive.jpg'),
-      Restaurant(name: 'Big Smoke', cuisine: 'Bar', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/big-smoke.jpg'),
-      Restaurant(name: 'Black Sheep Coffee', cuisine: 'Coffee', location: 'Before security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/black-sheep-coffee.jpg'),
-      Restaurant(name: 'Caffe Nero', cuisine: 'Coffee', location: 'Before security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/caffe-nero.jpg'),
-      Restaurant(name: 'The Flying Horse', cuisine: 'Pub', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/the-flying-horse.jpg'),
-      Restaurant(name: 'Giraffe', cuisine: 'Restaurant', location: 'Before security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/giraffe.jpg'),
-      Restaurant(name: 'Greggs', cuisine: 'Sandwich', location: 'Arrivals', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/greggs.jpg'),
-      Restaurant(name: 'itsu', cuisine: 'Asian', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/itsu.jpg'),
-      Restaurant(name: 'Joe & The Juice', cuisine: 'Juice Bar', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/joe-and-the-juice.jpg'),
-      Restaurant(name: 'Nandos', cuisine: 'Chicken', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/nandos.jpg'),
-      Restaurant(name: 'PizzaExpress', cuisine: 'Pizza', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/pizza-express.jpg'),
-      Restaurant(name: 'Pret a Manger', cuisine: 'Sandwich', location: 'Arrivals and after security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/pret-a-manger.jpg'),
-      Restaurant(name: 'South Downs Bar', cuisine: 'Bar', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/south-downs-bar.jpg'),
-      Restaurant(name: 'Starbucks', cuisine: 'Coffee', location: 'After security and before security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/starbucks.jpg'),
-      Restaurant(name: 'wagamama', cuisine: 'Asian', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/wagamama.jpg'),
-      Restaurant(name: 'Wondertree', cuisine: 'Restaurant', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/wondertree.jpg'),
-      Restaurant(name: 'Small Batch Social', cuisine: 'Coffee', location: 'After security', isOpen: true, logoUrl: 'https://www.gatwickairport.com/wp-content/uploads/2023/01/small-batch-social.jpg'),
+      _lgwRestaurant('The Beehive', 'Pub', 'pub', 'landside'),
+      _lgwRestaurant('Big Smoke', 'Bar', 'bar', 'airside'),
+      _lgwRestaurant('Black Sheep Coffee', 'Coffee', 'cafe', 'landside'),
+      _lgwRestaurant('Caffe Nero', 'Coffee', 'cafe', 'landside'),
+      _lgwRestaurant('The Flying Horse', 'Pub', 'pub', 'airside'),
+      _lgwRestaurant('Giraffe', 'Restaurant', 'restaurant', 'landside'),
+      _lgwRestaurant('Greggs', 'Bakery', 'bakery', 'landside'),
+      _lgwRestaurant('itsu', 'Asian', 'restaurant', 'airside'),
+      _lgwRestaurant('Joe & The Juice', 'Juice Bar', 'cafe', 'airside'),
+      _lgwRestaurant('Nandos', 'Chicken', 'restaurant', 'airside'),
+      _lgwRestaurant('PizzaExpress', 'Pizza', 'restaurant', 'airside'),
+      Restaurant(
+        name: 'Pret a Manger',
+        cuisine: 'Sandwich',
+        amenity: 'cafe',
+        description: '',
+        website: '',
+        outlets: [
+          const RestaurantOutlet(gateArea: 'Arrivals', airside: 'landside', level: '', locationNotes: ''),
+          const RestaurantOutlet(gateArea: 'Departures', airside: 'airside', level: '', locationNotes: ''),
+        ],
+      ),
+      _lgwRestaurant('South Downs Bar', 'Bar', 'bar', 'airside'),
+      Restaurant(
+        name: 'Starbucks',
+        cuisine: 'Coffee',
+        amenity: 'cafe',
+        description: '',
+        website: '',
+        outlets: [
+          const RestaurantOutlet(gateArea: '', airside: 'airside', level: '', locationNotes: ''),
+          const RestaurantOutlet(gateArea: '', airside: 'landside', level: '', locationNotes: ''),
+        ],
+      ),
+      _lgwRestaurant('wagamama', 'Asian', 'restaurant', 'airside'),
+      _lgwRestaurant('Wondertree', 'Restaurant', 'restaurant', 'airside'),
+      _lgwRestaurant('Small Batch Social', 'Coffee', 'cafe', 'airside'),
     ];
   }
 }
@@ -1108,26 +1174,52 @@ class _TerminalEntry {
   const _TerminalEntry({required this.id, required this.short, required this.name});
 }
 
+class RestaurantOutlet {
+  final String gateArea;
+  final String airside;
+  final String level;
+  final String locationNotes;
+
+  const RestaurantOutlet({
+    required this.gateArea,
+    required this.airside,
+    required this.level,
+    required this.locationNotes,
+  });
+}
+
 class Restaurant {
   final String name;
   final String cuisine;
-  final String location;
-  final bool isOpen;
-  final String logoUrl;
+  final String amenity;
+  final String description;
+  final String website;
+  final bool isLounge;
   final String? terminalId;
   final String? terminalShort;
   final String? terminalName;
-  final bool isLounge;
+  final bool isVegan;
+  final bool isVegetarian;
+  final bool isHalal;
+  final bool isKosher;
+  final bool isGlutenFree;
+  final List<RestaurantOutlet> outlets;
 
-  Restaurant({
+  const Restaurant({
     required this.name,
     required this.cuisine,
-    required this.location,
-    required this.isOpen,
-    required this.logoUrl,
+    required this.amenity,
+    required this.description,
+    required this.website,
+    required this.outlets,
+    this.isLounge = false,
     this.terminalId,
     this.terminalShort,
     this.terminalName,
-    this.isLounge = false,
+    this.isVegan = false,
+    this.isVegetarian = false,
+    this.isHalal = false,
+    this.isKosher = false,
+    this.isGlutenFree = false,
   });
 }
