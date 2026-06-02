@@ -34,6 +34,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
         return _AirportRow(
           slug: slug,
           name: d['name'] as String? ?? FirebaseService.getAirportName(slug.toUpperCase()),
+          continent: d['continent'] as String? ?? 'Other',
           terminalCount: counts['terminals'] ?? 0,
           restaurantCount: counts['restaurants'] ?? 0,
         );
@@ -43,6 +44,48 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
     } catch (e) {
       if (mounted) setState(() { _error = e.toString(); _isLoading = false; });
     }
+  }
+
+  static const _continentOrder = [
+    'Europe', 'North America', 'Asia', 'Middle East',
+    'South America', 'Africa', 'Oceania', 'Other',
+  ];
+
+  Widget _buildGroupedList(BuildContext context) {
+    final grouped = <String, List<_AirportRow>>{};
+    for (final row in _airports) {
+      grouped.putIfAbsent(row.continent, () => []).add(row);
+    }
+
+    final sections = <MapEntry<String, List<_AirportRow>>>[];
+    for (final c in _continentOrder) {
+      if (grouped.containsKey(c)) sections.add(MapEntry(c, grouped[c]!));
+    }
+    for (final entry in grouped.entries) {
+      if (!_continentOrder.contains(entry.key)) sections.add(entry);
+    }
+
+    final items = <Widget>[];
+    for (final section in sections) {
+      items.add(Padding(
+        padding: EdgeInsets.only(top: items.isEmpty ? 0 : 20, bottom: 12),
+        child: _SectionHeader(title: section.key),
+      ));
+      for (final row in section.value) {
+        items.add(Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: _AirportCard(
+            row: row,
+            onTap: () => context.go('/admin/airport/${row.slug}'),
+          ),
+        ));
+      }
+    }
+
+    return ListView(
+      padding: const EdgeInsets.fromLTRB(24, 0, 24, 40),
+      children: items,
+    );
   }
 
   @override
@@ -103,29 +146,15 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
                 ),
                 const SizedBox(height: 20),
 
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: _SectionHeader(title: 'Airports'),
-                ),
-                const SizedBox(height: 12),
-
                 // ── Content ──────────────────────────────────
                 Expanded(
                   child: _isLoading
-                      ? Center(child: CircularProgressIndicator(color: kTeal, strokeWidth: 1.5))
+                      ? const Center(child: CircularProgressIndicator(color: kTeal, strokeWidth: 1.5))
                       : _error != null
                           ? _ErrorState(message: _error!, onRetry: _load)
                           : _airports.isEmpty
                               ? Center(child: Text('No airports found', style: GoogleFonts.jost(color: context.appMutedFg(0.45))))
-                              : ListView.separated(
-                                  padding: const EdgeInsets.fromLTRB(24, 0, 24, 40),
-                                  itemCount: _airports.length,
-                                  separatorBuilder: (_, __) => const SizedBox(height: 10),
-                                  itemBuilder: (context, i) => _AirportCard(
-                                    row: _airports[i],
-                                    onTap: () => context.go('/admin/airport/${_airports[i].slug}'),
-                                  ),
-                                ),
+                              : _buildGroupedList(context),
                 ),
               ],
             ),
@@ -140,9 +169,10 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
 class _AirportRow {
   final String slug;
   final String name;
+  final String continent;
   final int terminalCount;
   final int restaurantCount;
-  const _AirportRow({required this.slug, required this.name, required this.terminalCount, required this.restaurantCount});
+  const _AirportRow({required this.slug, required this.name, required this.continent, required this.terminalCount, required this.restaurantCount});
 }
 
 class _AirportCard extends StatelessWidget {

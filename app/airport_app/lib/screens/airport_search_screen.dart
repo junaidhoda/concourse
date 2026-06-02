@@ -582,6 +582,13 @@ class _ContinentCard extends StatefulWidget {
 class _ContinentCardState extends State<_ContinentCard> {
   bool _pressed = false;
 
+  Widget _continentFallback() => Container(
+        color: const Color(0xFF0B2D3A),
+        child: const Center(
+          child: Icon(Icons.flight_takeoff_rounded, color: Color(0xFF1A6B7A), size: 32),
+        ),
+      );
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -683,10 +690,13 @@ class _ContinentCardState extends State<_ContinentCard> {
                       child: SizedBox(
                         width: 140,
                         height: double.infinity,
-                        child: Image.asset(
-                          widget.imagePath,
-                          fit: BoxFit.cover,
-                        ),
+                        child: widget.imagePath.isNotEmpty
+                            ? Image.asset(
+                                widget.imagePath,
+                                fit: BoxFit.cover,
+                                errorBuilder: (_, __, ___) => _continentFallback(),
+                              )
+                            : _continentFallback(),
                       ),
                     ),
                   ],

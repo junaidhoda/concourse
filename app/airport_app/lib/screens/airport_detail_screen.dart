@@ -104,12 +104,12 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
         );
       }).toList();
     } else {
-      // Legacy single-location format: build one outlet from root-level fields
       outlets = [
         RestaurantOutlet(
           gateArea: '',
           airside: map['airside'] as String? ?? '',
-          level: additional['level'] as String? ?? '',
+          level: additional['level'] as String? ??
+              map['floor_level'] as String? ?? '',
           locationNotes: additional['location_notes'] as String? ?? '',
         ),
       ];
@@ -121,15 +121,31 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
       amenity: amenity,
       description: map['description'] as String? ?? additional['description'] as String? ?? '',
       website: map['website'] as String? ?? additional['website'] as String? ?? '',
+      phone: map['phone'] as String? ?? '',
       isLounge: isLounge,
       terminalId: terminalId,
       terminalShort: terminalId,
       terminalName: terminalName,
-      isVegan: dietary['vegan'] as bool? ?? false,
-      isVegetarian: dietary['vegetarian'] as bool? ?? false,
-      isHalal: dietary['halal'] as bool? ?? false,
-      isKosher: dietary['kosher'] as bool? ?? false,
-      isGlutenFree: dietary['gluten_free'] as bool? ?? false,
+      isVegan:       _boolField(map, dietary, 'vegan', 'vegan_options'),
+      isVegetarian:  _boolField(map, dietary, 'vegetarian', 'vegetarian_options'),
+      isHalal:       _boolField(map, dietary, 'halal', 'halal'),
+      isKosher:      _boolField(map, dietary, 'kosher', 'kosher'),
+      isGlutenFree:  _boolField(map, dietary, 'gluten_free', 'gluten_free'),
+      // Prefer root-level; fall back to first outlet for data saved via new admin format
+      open247:       map['open_24_7'] as bool? ?? (rawOutlets.isNotEmpty ? (rawOutlets.first as Map)['open_24_7'] as bool? ?? false : false),
+      openingHours:  _outletFallback(map, rawOutlets, 'opening_hours'),
+      openingMonday:    map['opening_monday']    as String? ?? '',
+      openingTuesday:   map['opening_tuesday']   as String? ?? '',
+      openingWednesday: map['opening_wednesday'] as String? ?? '',
+      openingThursday:  map['opening_thursday']  as String? ?? '',
+      openingFriday:    map['opening_friday']    as String? ?? '',
+      openingSaturday:  map['opening_saturday']  as String? ?? '',
+      openingSunday:    map['opening_sunday']    as String? ?? '',
+      wheelchairAccessible: _outletFallback(map, rawOutlets, 'wheelchair_accessible'),
+      takeaway:   _outletFallback(map, rawOutlets, 'takeaway'),
+      delivery:   _outletFallback(map, rawOutlets, 'delivery'),
+      reservable: _outletFallback(map, rawOutlets, 'reservable'),
+      kidsMenu:   _outletFallback(map, rawOutlets, 'kids_menu'),
       outlets: outlets,
     );
   }
@@ -211,6 +227,23 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
       if (v != null && v is String && v.isNotEmpty) return v;
     }
     return null;
+  }
+
+  String _outletFallback(Map<String, dynamic> map, List<dynamic> outlets, String key) {
+    final root = map[key] as String? ?? '';
+    if (root.isNotEmpty) return root;
+    if (outlets.isEmpty) return '';
+    return (outlets.first as Map<String, dynamic>)[key] as String? ?? '';
+  }
+
+  bool _boolField(Map<String, dynamic> map, Map<String, dynamic> dietary,
+      String dietaryKey, String rootKey) {
+    final d = dietary[dietaryKey];
+    if (d is bool) return d;
+    final r = map[rootKey];
+    if (r is bool) return r;
+    if (r is String) return r.toLowerCase() == 'yes';
+    return false;
   }
 
   @override
@@ -1013,6 +1046,7 @@ class Restaurant {
   final String amenity;
   final String description;
   final String website;
+  final String phone;
   final bool isLounge;
   final String? terminalId;
   final String? terminalShort;
@@ -1024,6 +1058,24 @@ class Restaurant {
   final bool isGlutenFree;
   final List<RestaurantOutlet> outlets;
 
+  // Opening hours
+  final bool open247;
+  final String openingHours;
+  final String openingMonday;
+  final String openingTuesday;
+  final String openingWednesday;
+  final String openingThursday;
+  final String openingFriday;
+  final String openingSaturday;
+  final String openingSunday;
+
+  // Features
+  final String wheelchairAccessible;
+  final String takeaway;
+  final String delivery;
+  final String reservable;
+  final String kidsMenu;
+
   const Restaurant({
     required this.name,
     required this.cuisine,
@@ -1031,6 +1083,7 @@ class Restaurant {
     required this.description,
     required this.website,
     required this.outlets,
+    this.phone = '',
     this.isLounge = false,
     this.terminalId,
     this.terminalShort,
@@ -1040,5 +1093,19 @@ class Restaurant {
     this.isHalal = false,
     this.isKosher = false,
     this.isGlutenFree = false,
+    this.open247 = false,
+    this.openingHours = '',
+    this.openingMonday = '',
+    this.openingTuesday = '',
+    this.openingWednesday = '',
+    this.openingThursday = '',
+    this.openingFriday = '',
+    this.openingSaturday = '',
+    this.openingSunday = '',
+    this.wheelchairAccessible = '',
+    this.takeaway = '',
+    this.delivery = '',
+    this.reservable = '',
+    this.kidsMenu = '',
   });
 }

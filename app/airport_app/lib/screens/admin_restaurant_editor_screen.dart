@@ -9,27 +9,61 @@ class _OutletFormData {
   final TextEditingController gateAreaController;
   final TextEditingController levelController;
   final TextEditingController locationNotesController;
+  final TextEditingController openingHoursController;
   String airside;
+  bool? open247;
+  String takeaway;
+  String wheelchairAccessible;
+  bool? delivery;
+  bool? reservable;
+  bool? kidsMenu;
 
-  _OutletFormData({String? gateArea, String? level, String? locationNotes, String? airside})
-      : gateAreaController = TextEditingController(text: gateArea ?? ''),
-        levelController = TextEditingController(text: level ?? ''),
-        locationNotesController = TextEditingController(text: locationNotes ?? ''),
+  _OutletFormData({
+    String? gateArea,
+    String? level,
+    String? locationNotes,
+    String? airside,
+    bool? open247,
+    String? openingHours,
+    String? takeaway,
+    String? wheelchairAccessible,
+    bool? delivery,
+    bool? reservable,
+    bool? kidsMenu,
+  })  : gateAreaController       = TextEditingController(text: gateArea ?? ''),
+        levelController          = TextEditingController(text: level ?? ''),
+        locationNotesController  = TextEditingController(text: locationNotes ?? ''),
+        openingHoursController   = TextEditingController(text: openingHours ?? ''),
         airside = (['airside', 'landside', 'both'].contains(airside?.toLowerCase())
-            ? airside!.toLowerCase()
-            : 'airside');
+            ? airside!.toLowerCase() : 'airside'),
+        open247    = open247,
+        takeaway   = (['yes', 'no', 'only'].contains(takeaway?.toLowerCase())
+            ? takeaway!.toLowerCase() : ''),
+        wheelchairAccessible = (['yes', 'no', 'limited'].contains(wheelchairAccessible?.toLowerCase())
+            ? wheelchairAccessible!.toLowerCase() : ''),
+        delivery   = delivery,
+        reservable = reservable,
+        kidsMenu   = kidsMenu;
 
   void dispose() {
     gateAreaController.dispose();
     levelController.dispose();
     locationNotesController.dispose();
+    openingHoursController.dispose();
   }
 
   Map<String, dynamic> toMap() => {
-    'gate_area': gateAreaController.text.trim(),
-    'airside': airside,
-    'level': levelController.text.trim(),
-    'location_notes': locationNotesController.text.trim(),
+    'gate_area':             gateAreaController.text.trim(),
+    'airside':               airside,
+    'level':                 levelController.text.trim(),
+    'location_notes':        locationNotesController.text.trim(),
+    'open_24_7':             open247 ?? false,
+    'opening_hours':         openingHoursController.text.trim(),
+    'takeaway':              takeaway,
+    'wheelchair_accessible': wheelchairAccessible,
+    'delivery':              (delivery   ?? false) ? 'yes' : '',
+    'reservable':            (reservable ?? false) ? 'yes' : '',
+    'kids_menu':             (kidsMenu   ?? false) ? 'yes' : '',
   };
 }
 
@@ -51,20 +85,22 @@ class AdminRestaurantEditorScreen extends StatefulWidget {
 
 class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  final _cuisineController = TextEditingController();
+  final _nameController        = TextEditingController();
+  final _cuisineController     = TextEditingController();
   final _descriptionController = TextEditingController();
-  final _websiteController = TextEditingController();
+  final _websiteController     = TextEditingController();
+  final _phoneController        = TextEditingController();
 
   String _selectedAmenity = 'restaurant';
+
   bool _isLoading = true;
-  bool _isSaving = false;
+  bool _isSaving  = false;
   String? _error;
 
-  bool _isVegan = false;
+  bool _isVegan      = false;
   bool _isVegetarian = false;
-  bool _isHalal = false;
-  bool _isKosher = false;
+  bool _isHalal      = false;
+  bool _isKosher     = false;
   bool _isGlutenFree = false;
 
   List<_OutletFormData> _outlets = [];
@@ -88,6 +124,7 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
     _cuisineController.dispose();
     _descriptionController.dispose();
     _websiteController.dispose();
+    _phoneController.dispose();
     for (final o in _outlets) o.dispose();
     super.dispose();
   }
@@ -107,32 +144,69 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
     }
   }
 
-  void _populateFields(Map<String, dynamic> data) {
-    _nameController.text = data['name'] as String? ?? '';
-    _cuisineController.text = data['cuisine'] as String? ?? '';
-    _descriptionController.text = data['description'] as String? ?? '';
-    _websiteController.text = data['website'] as String? ?? '';
-    _selectedAmenity = data['amenity'] as String? ?? 'restaurant';
+  bool _boolFromField(Map<String, dynamic> data, String key) {
+    final v = data[key];
+    if (v is bool) return v;
+    if (v is String) return v.toLowerCase() == 'yes';
+    return false;
+  }
 
+  void _populateFields(Map<String, dynamic> data) {
+    _nameController.text        = data['name']        as String? ?? '';
+    _cuisineController.text     = data['cuisine']     as String? ?? '';
+    _descriptionController.text = data['description'] as String? ?? '';
+    _websiteController.text     = data['website']     as String? ?? '';
+    _phoneController.text       = data['phone']       as String? ?? '';
+    _selectedAmenity            = data['amenity']     as String? ?? 'restaurant';
+
+    // Dietary — support both root-level strings and legacy dietary sub-map
     final dietary = data['dietary'] as Map<String, dynamic>? ?? {};
-    _isVegan      = dietary['vegan']       as bool? ?? false;
-    _isVegetarian = dietary['vegetarian']  as bool? ?? false;
-    _isHalal      = dietary['halal']       as bool? ?? false;
-    _isKosher     = dietary['kosher']      as bool? ?? false;
-    _isGlutenFree = dietary['gluten_free'] as bool? ?? false;
+    _isVegan      = _boolFromField(data, 'vegan_options')   || (dietary['vegan']       as bool? ?? false);
+    _isVegetarian = _boolFromField(data, 'vegetarian_options') || (dietary['vegetarian']  as bool? ?? false);
+    _isHalal      = _boolFromField(data, 'halal')           || (dietary['halal']       as bool? ?? false);
+    _isKosher     = _boolFromField(data, 'kosher')          || (dietary['kosher']      as bool? ?? false);
+    _isGlutenFree = _boolFromField(data, 'gluten_free')     || (dietary['gluten_free'] as bool? ?? false);
+
+    // Per-outlet opening hours & features (migrate root-level fields to first outlet on load)
+    String rootHours = data['opening_hours'] as String? ?? '';
+    bool   rootOpen247 = data['open_24_7'] as bool? ?? false;
+    final rootTw = (data['takeaway'] as String? ?? '').toLowerCase();
+    final rootWc = (data['wheelchair_accessible'] as String? ?? '').toLowerCase();
+    bool rootDelivery   = _boolFromField(data, 'delivery');
+    bool rootReservable = _boolFromField(data, 'reservable');
+    bool rootKidsMenu   = _boolFromField(data, 'kids_menu');
 
     final rawOutlets = data['outlets'] as List<dynamic>? ?? [];
     _outlets = rawOutlets.isNotEmpty
         ? rawOutlets.map((o) {
             final outlet = o as Map<String, dynamic>;
+            final tw = (outlet['takeaway'] as String? ?? '').toLowerCase();
+            final wc = (outlet['wheelchair_accessible'] as String? ?? '').toLowerCase();
             return _OutletFormData(
-              gateArea: outlet['gate_area'] as String?,
-              level: outlet['level'] as String?,
+              gateArea:      outlet['gate_area']     as String?,
+              level:         outlet['level']         as String? ?? data['floor_level'] as String?,
               locationNotes: outlet['location_notes'] as String?,
-              airside: (outlet['airside'] as String?)?.toLowerCase(),
+              airside:       (outlet['airside'] as String? ?? data['airside'] as String?)?.toLowerCase(),
+              open247:       outlet['open_24_7']     as bool? ?? false,
+              openingHours:  outlet['opening_hours'] as String? ?? '',
+              takeaway:      ['yes', 'no', 'only'].contains(tw) ? tw : '',
+              wheelchairAccessible: ['yes', 'no', 'limited'].contains(wc) ? wc : '',
+              delivery:   _boolFromField(outlet, 'delivery'),
+              reservable: _boolFromField(outlet, 'reservable'),
+              kidsMenu:   _boolFromField(outlet, 'kids_menu'),
             );
           }).toList()
-        : [_OutletFormData()];
+        : [_OutletFormData(
+            airside:      (data['airside'] as String?)?.toLowerCase(),
+            level:        data['floor_level'] as String?,
+            open247:      rootOpen247,
+            openingHours: rootHours,
+            takeaway:     ['yes', 'no', 'only'].contains(rootTw) ? rootTw : '',
+            wheelchairAccessible: ['yes', 'no', 'limited'].contains(rootWc) ? rootWc : '',
+            delivery:   rootDelivery,
+            reservable: rootReservable,
+            kidsMenu:   rootKidsMenu,
+          )];
   }
 
   Future<void> _saveRestaurant() async {
@@ -141,15 +215,18 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
 
     try {
       final data = {
-        'name': _nameController.text.trim(),
-        'amenity': _selectedAmenity,
-        'cuisine': _cuisineController.text.trim(),
+        'name':        _nameController.text.trim(),
+        'amenity':     _selectedAmenity,
+        'cuisine':     _cuisineController.text.trim(),
         'description': _descriptionController.text.trim(),
-        'website': _websiteController.text.trim(),
-        'dietary': {
-          'vegan': _isVegan, 'vegetarian': _isVegetarian, 'halal': _isHalal,
-          'kosher': _isKosher, 'gluten_free': _isGlutenFree,
-        },
+        'website':     _websiteController.text.trim(),
+        'phone':       _phoneController.text.trim(),
+        // Dietary
+        'halal':              _isHalal      ? 'yes' : '',
+        'vegetarian_options': _isVegetarian ? 'yes' : '',
+        'vegan_options':      _isVegan      ? 'yes' : '',
+        'kosher':             _isKosher     ? 'yes' : '',
+        'gluten_free':        _isGlutenFree ? 'yes' : '',
         'outlets': _outlets.map((o) => o.toMap()).toList(),
       };
 
@@ -280,37 +357,36 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
                           child: ListView(
                             padding: const EdgeInsets.fromLTRB(24, 16, 24, 24),
                             children: [
+                              // ── Basic ──────────────────────
                               _SectionHeader(title: 'Basic Information'),
                               const SizedBox(height: 12),
                               _field(context, controller: _nameController, label: 'Name', required: true),
                               const SizedBox(height: 10),
-                              Row(
-                                children: [
-                                  Expanded(child: _amenityDropdown(context)),
-                                  const SizedBox(width: 10),
-                                  Expanded(child: _field(context, controller: _cuisineController, label: 'Cuisine')),
-                                ],
-                              ),
+                              Row(children: [
+                                Expanded(child: _amenityDropdown(context)),
+                                const SizedBox(width: 10),
+                                Expanded(child: _field(context, controller: _cuisineController, label: 'Cuisine')),
+                              ]),
                               const SizedBox(height: 10),
                               _field(context, controller: _descriptionController, label: 'Description', maxLines: 3, hint: 'Brief description...'),
                               const SizedBox(height: 10),
+                              _field(context, controller: _phoneController, label: 'Phone', keyboard: TextInputType.phone),
+                              const SizedBox(height: 10),
                               _field(context, controller: _websiteController, label: 'Website', hint: 'https://...', keyboard: TextInputType.url),
 
+                              // ── Dietary ────────────────────
                               const SizedBox(height: 24),
-                              _SectionHeader(title: 'Dietary Options'),
+                              _SectionHeader(title: 'Dietary'),
                               const SizedBox(height: 12),
-                              Wrap(
-                                spacing: 8,
-                                runSpacing: 8,
-                                children: [
-                                  _DietaryChip(label: 'Vegan',       selected: _isVegan,       onChanged: (v) => setState(() => _isVegan = v)),
-                                  _DietaryChip(label: 'Vegetarian',  selected: _isVegetarian,  onChanged: (v) => setState(() => _isVegetarian = v)),
-                                  _DietaryChip(label: 'Halal',       selected: _isHalal,       onChanged: (v) => setState(() => _isHalal = v)),
-                                  _DietaryChip(label: 'Kosher',      selected: _isKosher,      onChanged: (v) => setState(() => _isKosher = v)),
-                                  _DietaryChip(label: 'Gluten-Free', selected: _isGlutenFree,  onChanged: (v) => setState(() => _isGlutenFree = v)),
-                                ],
-                              ),
+                              Wrap(spacing: 8, runSpacing: 8, children: [
+                                _DietaryChip(label: 'Vegan',       selected: _isVegan,       onChanged: (v) => setState(() => _isVegan = v)),
+                                _DietaryChip(label: 'Vegetarian',  selected: _isVegetarian,  onChanged: (v) => setState(() => _isVegetarian = v)),
+                                _DietaryChip(label: 'Halal',       selected: _isHalal,       onChanged: (v) => setState(() => _isHalal = v)),
+                                _DietaryChip(label: 'Kosher',      selected: _isKosher,      onChanged: (v) => setState(() => _isKosher = v)),
+                                _DietaryChip(label: 'Gluten-Free', selected: _isGlutenFree,  onChanged: (v) => setState(() => _isGlutenFree = v)),
+                              ]),
 
+                              // ── Locations ──────────────────
                               const SizedBox(height: 24),
                               _SectionHeader(title: 'Locations'),
                               const SizedBox(height: 4),
@@ -328,14 +404,11 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
                                     borderRadius: BorderRadius.circular(3),
                                     border: Border.all(color: kTeal.withValues(alpha: 0.25)),
                                   ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(Icons.add_rounded, size: 16, color: kTeal),
-                                      const SizedBox(width: 6),
-                                      Text('Add Location', style: GoogleFonts.jost(fontSize: 13, color: kTeal, letterSpacing: 0.3)),
-                                    ],
-                                  ),
+                                  child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                                    Icon(Icons.add_rounded, size: 16, color: kTeal),
+                                    const SizedBox(width: 6),
+                                    Text('Add Location', style: GoogleFonts.jost(fontSize: 13, color: kTeal, letterSpacing: 0.3)),
+                                  ]),
                                 ),
                               ),
                               const SizedBox(height: 32),
@@ -390,30 +463,79 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Text('Location ${index + 1}',
-                  style: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w500, color: context.appMutedFg(0.55), letterSpacing: 0.5)),
-              const Spacer(),
-              if (_outlets.length > 1)
-                GestureDetector(
-                  onTap: () => setState(() { _outlets[index].dispose(); _outlets.removeAt(index); }),
-                  child: Icon(Icons.remove_circle_outline_rounded, size: 18, color: Colors.red.shade300),
-                ),
-            ],
-          ),
+          // ── Header row ─────────────────────────────
+          Row(children: [
+            Text('Location ${index + 1}',
+                style: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w500, color: context.appMutedFg(0.55), letterSpacing: 0.5)),
+            const Spacer(),
+            if (_outlets.length > 1)
+              GestureDetector(
+                onTap: () => setState(() { _outlets[index].dispose(); _outlets.removeAt(index); }),
+                child: Icon(Icons.remove_circle_outline_rounded, size: 18, color: Colors.red.shade300),
+              ),
+          ]),
+
+          // ── Physical location ───────────────────────
           const SizedBox(height: 10),
           _field(context, controller: outlet.gateAreaController, label: 'Gate Area / Zone', hint: 'e.g. Gates 1–20, Pier B'),
           const SizedBox(height: 10),
           _airsideDropdown(context, outlet),
           const SizedBox(height: 10),
-          _field(context, controller: outlet.levelController, label: 'Level / Floor', hint: 'e.g. Ground Floor, Level 1'),
+          Row(children: [
+            Expanded(child: _field(context, controller: outlet.levelController, label: 'Level / Floor', hint: 'e.g. 2F, Level 1')),
+          ]),
           const SizedBox(height: 10),
           _field(context, controller: outlet.locationNotesController, label: 'Directions', hint: 'e.g. Next to gate 35, opposite WHSmith...', maxLines: 2),
+
+          // ── Opening hours ───────────────────────────
+          const SizedBox(height: 14),
+          _subHeader(context, 'Opening Hours'),
+          const SizedBox(height: 10),
+          _DietaryChip(
+            label: 'Open 24/7',
+            selected: outlet.open247 ?? false,
+            onChanged: (v) => setState(() => outlet.open247 = v),
+          ),
+          if (!(outlet.open247 ?? false)) ...[
+            const SizedBox(height: 10),
+            _field(context, controller: outlet.openingHoursController,
+                label: 'Hours', hint: 'e.g. Mo-Fr 07:00-22:00; Sa-Su 08:00-20:00'),
+          ],
+
+          // ── Features ────────────────────────────────
+          const SizedBox(height: 14),
+          _subHeader(context, 'Features'),
+          const SizedBox(height: 10),
+          Row(children: [
+            Expanded(child: _optionDropdown(context,
+              label: 'Takeaway',
+              value: outlet.takeaway,
+              items: const {'': 'Unknown', 'yes': 'Yes', 'no': 'No', 'only': 'Only'},
+              onChanged: (v) => setState(() => outlet.takeaway = v ?? ''),
+            )),
+            const SizedBox(width: 10),
+            Expanded(child: _optionDropdown(context,
+              label: 'Wheelchair',
+              value: outlet.wheelchairAccessible,
+              items: const {'': 'Unknown', 'yes': 'Yes', 'no': 'No', 'limited': 'Limited'},
+              onChanged: (v) => setState(() => outlet.wheelchairAccessible = v ?? ''),
+            )),
+          ]),
+          const SizedBox(height: 10),
+          Wrap(spacing: 8, runSpacing: 8, children: [
+            _DietaryChip(label: 'Delivery',     selected: outlet.delivery   ?? false, onChanged: (v) => setState(() => outlet.delivery   = v)),
+            _DietaryChip(label: 'Reservations', selected: outlet.reservable ?? false, onChanged: (v) => setState(() => outlet.reservable = v)),
+            _DietaryChip(label: 'Kids Menu',    selected: outlet.kidsMenu   ?? false, onChanged: (v) => setState(() => outlet.kidsMenu   = v)),
+          ]),
         ],
       ),
     );
   }
+
+  Widget _subHeader(BuildContext context, String title) => Text(
+    title,
+    style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w500, letterSpacing: 1.6, color: context.appMutedFg(0.42)),
+  );
 
   Widget _field(BuildContext context, {
     required TextEditingController controller,
@@ -442,6 +564,32 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
         errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: BorderSide(color: Colors.red.shade300)),
         focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: BorderSide(color: Colors.red.shade400)),
       ),
+    );
+  }
+
+  Widget _optionDropdown(BuildContext context, {
+    required String label,
+    required String value,
+    required Map<String, String> items,
+    required void Function(String?) onChanged,
+  }) {
+    return DropdownButtonFormField<String>(
+      value: value.isEmpty ? '' : value,
+      style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface),
+      decoration: InputDecoration(
+        labelText: label,
+        labelStyle: GoogleFonts.jost(fontSize: 13, color: context.appMutedFg(0.45)),
+        isDense: true,
+        filled: true,
+        fillColor: appCardSurface(context),
+        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: BorderSide(color: kGoldLight.withValues(alpha: 0.28))),
+        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: const BorderSide(color: kTeal, width: 1)),
+      ),
+      items: items.entries.map((e) => DropdownMenuItem(
+        value: e.key,
+        child: Text(e.value, style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface)),
+      )).toList(),
+      onChanged: onChanged,
     );
   }
 
