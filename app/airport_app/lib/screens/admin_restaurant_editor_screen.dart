@@ -1,5 +1,8 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../theme/app_theme.dart';
 import '../services/admin_service.dart';
 
 class _OutletFormData {
@@ -12,7 +15,9 @@ class _OutletFormData {
       : gateAreaController = TextEditingController(text: gateArea ?? ''),
         levelController = TextEditingController(text: level ?? ''),
         locationNotesController = TextEditingController(text: locationNotes ?? ''),
-        airside = airside ?? 'airside';
+        airside = (['airside', 'landside', 'both'].contains(airside?.toLowerCase())
+            ? airside!.toLowerCase()
+            : 'airside');
 
   void dispose() {
     gateAreaController.dispose();
@@ -30,11 +35,13 @@ class _OutletFormData {
 
 class AdminRestaurantEditorScreen extends StatefulWidget {
   final String airportCode;
+  final String terminalId;
   final String? restaurantId;
 
   const AdminRestaurantEditorScreen({
     super.key,
     required this.airportCode,
+    required this.terminalId,
     this.restaurantId,
   });
 
@@ -62,10 +69,12 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
 
   List<_OutletFormData> _outlets = [];
 
+  bool get _isNew => widget.restaurantId == null || widget.restaurantId == 'new';
+
   @override
   void initState() {
     super.initState();
-    if (widget.restaurantId != null && widget.restaurantId != 'new') {
+    if (!_isNew) {
       _loadRestaurant();
     } else {
       _outlets = [_OutletFormData()];
@@ -79,31 +88,22 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
     _cuisineController.dispose();
     _descriptionController.dispose();
     _websiteController.dispose();
-    for (final o in _outlets) {
-      o.dispose();
-    }
+    for (final o in _outlets) o.dispose();
     super.dispose();
   }
 
   Future<void> _loadRestaurant() async {
     try {
-      final restaurants = await AdminService.getRestaurantsForAirport(widget.airportCode);
+      final restaurants = await AdminService.getRestaurantsForTerminal(widget.airportCode, widget.terminalId);
       final restaurant = restaurants.firstWhere(
         (r) => r['id'] == widget.restaurantId,
         orElse: () => {},
       );
-
-      if (restaurant.isNotEmpty) {
-        _populateFields(restaurant);
-      }
+      if (restaurant.isNotEmpty) _populateFields(restaurant);
     } catch (e) {
-      setState(() {
-        _error = 'Failed to load restaurant: $e';
-      });
+      setState(() => _error = 'Failed to load restaurant: $e');
     } finally {
-      setState(() {
-        _isLoading = false;
-      });
+      setState(() => _isLoading = false);
     }
   }
 
@@ -115,35 +115,29 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
     _selectedAmenity = data['amenity'] as String? ?? 'restaurant';
 
     final dietary = data['dietary'] as Map<String, dynamic>? ?? {};
-    _isVegan = dietary['vegan'] as bool? ?? false;
-    _isVegetarian = dietary['vegetarian'] as bool? ?? false;
-    _isHalal = dietary['halal'] as bool? ?? false;
-    _isKosher = dietary['kosher'] as bool? ?? false;
+    _isVegan      = dietary['vegan']       as bool? ?? false;
+    _isVegetarian = dietary['vegetarian']  as bool? ?? false;
+    _isHalal      = dietary['halal']       as bool? ?? false;
+    _isKosher     = dietary['kosher']      as bool? ?? false;
     _isGlutenFree = dietary['gluten_free'] as bool? ?? false;
 
     final rawOutlets = data['outlets'] as List<dynamic>? ?? [];
-    if (rawOutlets.isNotEmpty) {
-      _outlets = rawOutlets.map((o) {
-        final outlet = o as Map<String, dynamic>;
-        return _OutletFormData(
-          gateArea: outlet['gate_area'] as String?,
-          level: outlet['level'] as String?,
-          locationNotes: outlet['location_notes'] as String?,
-          airside: outlet['airside'] as String?,
-        );
-      }).toList();
-    } else {
-      _outlets = [_OutletFormData()];
-    }
+    _outlets = rawOutlets.isNotEmpty
+        ? rawOutlets.map((o) {
+            final outlet = o as Map<String, dynamic>;
+            return _OutletFormData(
+              gateArea: outlet['gate_area'] as String?,
+              level: outlet['level'] as String?,
+              locationNotes: outlet['location_notes'] as String?,
+              airside: (outlet['airside'] as String?)?.toLowerCase(),
+            );
+          }).toList()
+        : [_OutletFormData()];
   }
 
   Future<void> _saveRestaurant() async {
     if (!_formKey.currentState!.validate()) return;
-
-    setState(() {
-      _isSaving = true;
-      _error = null;
-    });
+    setState(() { _isSaving = true; _error = null; });
 
     try {
       final data = {
@@ -153,21 +147,15 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
         'description': _descriptionController.text.trim(),
         'website': _websiteController.text.trim(),
         'dietary': {
-          'vegan': _isVegan,
-          'vegetarian': _isVegetarian,
-          'halal': _isHalal,
-          'kosher': _isKosher,
-          'gluten_free': _isGlutenFree,
+          'vegan': _isVegan, 'vegetarian': _isVegetarian, 'halal': _isHalal,
+          'kosher': _isKosher, 'gluten_free': _isGlutenFree,
         },
         'outlets': _outlets.map((o) => o.toMap()).toList(),
       };
 
-      bool success;
-      if (widget.restaurantId == null || widget.restaurantId == 'new') {
-        success = await AdminService.addRestaurant(widget.airportCode, data);
-      } else {
-        success = await AdminService.updateRestaurant(widget.airportCode, widget.restaurantId!, data);
-      }
+      final success = _isNew
+          ? await AdminService.addRestaurant(widget.airportCode, widget.terminalId, data)
+          : await AdminService.updateRestaurant(widget.airportCode, widget.terminalId, widget.restaurantId!, data);
 
       if (success) {
         if (mounted) context.go('/admin/airport/${widget.airportCode}');
@@ -175,291 +163,28 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
         setState(() => _error = 'Failed to save restaurant');
       }
     } catch (e) {
-      setState(() => _error = 'Error saving restaurant: $e');
+      setState(() => _error = 'Error saving: $e');
     } finally {
       setState(() => _isSaving = false);
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBar: AppBar(
-        title: Text(widget.restaurantId == null || widget.restaurantId == 'new'
-            ? 'Add Restaurant'
-            : 'Edit Restaurant'),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        foregroundColor: Theme.of(context).brightness == Brightness.dark ? Colors.white : const Color(0xFF3E6BC1),
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => context.go('/admin/airport/${widget.airportCode}'),
-        ),
-        actions: [
-          if (widget.restaurantId != null && widget.restaurantId != 'new')
-            IconButton(
-              icon: const Icon(Icons.delete, color: Colors.red),
-              onPressed: _deleteRestaurant,
-              tooltip: 'Delete Restaurant',
-            ),
-        ],
-      ),
-      body: _isLoading
-          ? const Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Color(0xFF3E6BC1))))
-          : SafeArea(
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    if (_error != null)
-                      Container(
-                        width: double.infinity,
-                        margin: const EdgeInsets.all(16),
-                        padding: const EdgeInsets.all(12),
-                        decoration: BoxDecoration(
-                          color: Colors.red[50],
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Colors.red[200]!),
-                        ),
-                        child: Text(_error!, style: TextStyle(color: Colors.red[700], fontSize: 14)),
-                      ),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        padding: const EdgeInsets.all(16),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // ── Basic Information ────────────
-                            _buildSectionTitle('Basic Information'),
-                            TextFormField(
-                              controller: _nameController,
-                              decoration: const InputDecoration(labelText: 'Name *', border: OutlineInputBorder()),
-                              validator: (v) => (v == null || v.trim().isEmpty) ? 'Please enter a name' : null,
-                            ),
-                            const SizedBox(height: 16),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: DropdownButtonFormField<String>(
-                                    value: _selectedAmenity,
-                                    decoration: const InputDecoration(labelText: 'Type', border: OutlineInputBorder()),
-                                    items: [
-                                      'restaurant', 'cafe', 'bar', 'pub', 'fast_food',
-                                      'bakery', 'confectionery', 'ice_cream', 'food_court',
-                                    ].map((v) => DropdownMenuItem(value: v, child: Text(_formatAmenity(v)))).toList(),
-                                    onChanged: (v) => setState(() => _selectedAmenity = v!),
-                                  ),
-                                ),
-                                const SizedBox(width: 16),
-                                Expanded(
-                                  child: TextFormField(
-                                    controller: _cuisineController,
-                                    decoration: const InputDecoration(labelText: 'Cuisine', border: OutlineInputBorder()),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 16),
-                            TextFormField(
-                              controller: _descriptionController,
-                              decoration: const InputDecoration(
-                                labelText: 'Description',
-                                border: OutlineInputBorder(),
-                                hintText: 'Brief description of the restaurant...',
-                              ),
-                              maxLines: 3,
-                            ),
-                            const SizedBox(height: 16),
-                            TextFormField(
-                              controller: _websiteController,
-                              decoration: const InputDecoration(
-                                labelText: 'Website',
-                                border: OutlineInputBorder(),
-                                hintText: 'https://...',
-                              ),
-                              keyboardType: TextInputType.url,
-                            ),
-
-                            const SizedBox(height: 24),
-
-                            // ── Dietary Options ──────────────
-                            _buildSectionTitle('Dietary Options'),
-                            Wrap(
-                              spacing: 8,
-                              children: [
-                                FilterChip(label: const Text('Vegan'), selected: _isVegan, onSelected: (v) => setState(() => _isVegan = v)),
-                                FilterChip(label: const Text('Vegetarian'), selected: _isVegetarian, onSelected: (v) => setState(() => _isVegetarian = v)),
-                                FilterChip(label: const Text('Halal'), selected: _isHalal, onSelected: (v) => setState(() => _isHalal = v)),
-                                FilterChip(label: const Text('Kosher'), selected: _isKosher, onSelected: (v) => setState(() => _isKosher = v)),
-                                FilterChip(label: const Text('Gluten-Free'), selected: _isGlutenFree, onSelected: (v) => setState(() => _isGlutenFree = v)),
-                              ],
-                            ),
-
-                            const SizedBox(height: 24),
-
-                            // ── Outlets ──────────────────────
-                            _buildSectionTitle('Locations'),
-                            const SizedBox(height: 4),
-                            Text(
-                              'Add one entry per physical location within the terminal.',
-                              style: TextStyle(fontSize: 13, color: Colors.grey[600]),
-                            ),
-                            const SizedBox(height: 12),
-                            ...List.generate(_outlets.length, (i) => _buildOutletForm(i)),
-                            const SizedBox(height: 8),
-                            OutlinedButton.icon(
-                              onPressed: () => setState(() => _outlets.add(_OutletFormData())),
-                              icon: const Icon(Icons.add, size: 18),
-                              label: const Text('Add Location'),
-                              style: OutlinedButton.styleFrom(foregroundColor: const Color(0xFF3E6BC1)),
-                            ),
-
-                            const SizedBox(height: 40),
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    // ── Save button ──────────────────────────
-                    Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(16),
-                      child: ElevatedButton(
-                        onPressed: _isSaving ? null : _saveRestaurant,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color(0xFF3E6BC1),
-                          foregroundColor: Colors.white,
-                          padding: const EdgeInsets.symmetric(vertical: 16),
-                        ),
-                        child: _isSaving
-                            ? const SizedBox(
-                                width: 20, height: 20,
-                                child: CircularProgressIndicator(strokeWidth: 2, valueColor: AlwaysStoppedAnimation<Color>(Colors.white)),
-                              )
-                            : Text(
-                                widget.restaurantId == null || widget.restaurantId == 'new' ? 'Add Restaurant' : 'Save Changes',
-                                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                              ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-    );
-  }
-
-  Widget _buildOutletForm(int index) {
-    final outlet = _outlets[index];
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(14),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey[300]!),
-        borderRadius: BorderRadius.circular(8),
-        color: Colors.grey[50],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Text('Location ${index + 1}', style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14)),
-              const Spacer(),
-              if (_outlets.length > 1)
-                IconButton(
-                  icon: const Icon(Icons.remove_circle_outline, color: Colors.red, size: 20),
-                  padding: EdgeInsets.zero,
-                  constraints: const BoxConstraints(),
-                  onPressed: () => setState(() {
-                    _outlets[index].dispose();
-                    _outlets.removeAt(index);
-                  }),
-                ),
-            ],
-          ),
-          const SizedBox(height: 10),
-          TextFormField(
-            controller: outlet.gateAreaController,
-            decoration: const InputDecoration(
-              labelText: 'Gate Area / Zone',
-              border: OutlineInputBorder(),
-              hintText: 'e.g. Gates 1–20, Pier B, Departures Hall',
-              isDense: true,
-            ),
-          ),
-          const SizedBox(height: 10),
-          DropdownButtonFormField<String>(
-            value: outlet.airside,
-            decoration: const InputDecoration(labelText: 'Security', border: OutlineInputBorder(), isDense: true),
-            items: const [
-              DropdownMenuItem(value: 'airside', child: Text('After security')),
-              DropdownMenuItem(value: 'landside', child: Text('Before security')),
-              DropdownMenuItem(value: 'both', child: Text('Both')),
-            ],
-            onChanged: (v) => setState(() => outlet.airside = v!),
-          ),
-          const SizedBox(height: 10),
-          TextFormField(
-            controller: outlet.levelController,
-            decoration: const InputDecoration(
-              labelText: 'Level / Floor',
-              border: OutlineInputBorder(),
-              hintText: 'e.g. Ground Floor, Level 1',
-              isDense: true,
-            ),
-          ),
-          const SizedBox(height: 10),
-          TextFormField(
-            controller: outlet.locationNotesController,
-            decoration: const InputDecoration(
-              labelText: 'Directions',
-              border: OutlineInputBorder(),
-              hintText: 'e.g. Next to gate 35, opposite WHSmith...',
-              isDense: true,
-            ),
-            maxLines: 2,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSectionTitle(String title) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
-      child: Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF2C2C2C))),
-    );
-  }
-
-  String _formatAmenity(String amenity) {
-    return switch (amenity) {
-      'cafe' => 'Café',
-      'pub' => 'Pub',
-      'bar' => 'Bar',
-      'fast_food' => 'Fast Food',
-      'restaurant' => 'Restaurant',
-      'bakery' => 'Bakery',
-      'confectionery' => 'Confectionery',
-      'ice_cream' => 'Ice Cream',
-      'food_court' => 'Food Court',
-      _ => amenity.replaceAll('_', ' '),
-    };
   }
 
   Future<void> _deleteRestaurant() async {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Delete Restaurant'),
-        content: const Text('Are you sure you want to delete this restaurant? This action cannot be undone.'),
+        backgroundColor: appCardSurface(context),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3), side: BorderSide(color: kGoldLight.withValues(alpha: 0.28))),
+        title: Text('Delete Restaurant', style: GoogleFonts.cormorant(fontSize: 22, fontWeight: FontWeight.w500, color: context.appOnSurface)),
+        content: Text('This cannot be undone.', style: GoogleFonts.jost(fontSize: 13, color: context.appMutedFg(0.55))),
         actions: [
-          TextButton(onPressed: () => Navigator.of(context).pop(false), child: const Text('Cancel')),
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Text('Cancel', style: GoogleFonts.jost(fontSize: 13, color: context.appMutedFg(0.55))),
+          ),
           TextButton(
             onPressed: () => Navigator.of(context).pop(true),
-            style: TextButton.styleFrom(foregroundColor: Colors.red),
-            child: const Text('Delete'),
+            child: Text('Delete', style: GoogleFonts.jost(fontSize: 13, color: Colors.red.shade400)),
           ),
         ],
       ),
@@ -468,21 +193,379 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
     if (confirmed == true) {
       setState(() => _isSaving = true);
       try {
-        final success = await AdminService.deleteRestaurant(widget.airportCode, widget.restaurantId!);
-        if (success && mounted) {
-          context.go('/admin/airport/${widget.airportCode}');
-        } else {
-          setState(() {
-            _error = 'Failed to delete restaurant';
-            _isSaving = false;
-          });
-        }
+        final success = await AdminService.deleteRestaurant(widget.airportCode, widget.terminalId, widget.restaurantId!);
+        if (success && mounted) context.go('/admin/airport/${widget.airportCode}');
+        else setState(() { _error = 'Failed to delete'; _isSaving = false; });
       } catch (e) {
-        setState(() {
-          _error = 'Error deleting restaurant: $e';
-          _isSaving = false;
-        });
+        setState(() { _error = 'Error: $e'; _isSaving = false; });
       }
     }
   }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      body: Stack(
+        children: [
+          _Background(),
+          SafeArea(
+            child: Column(
+              children: [
+                // ── Header ──────────────────────────────────
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () => context.go('/admin/airport/${widget.airportCode}'),
+                        child: Container(
+                          padding: const EdgeInsets.all(9),
+                          decoration: BoxDecoration(
+                            color: appCardSurface(context),
+                            borderRadius: BorderRadius.circular(3),
+                            border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+                            boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 6, offset: const Offset(0, 2))],
+                          ),
+                          child: Icon(Icons.arrow_back_ios_new, size: 13, color: context.appOnSurface.withValues(alpha: 0.55)),
+                        ),
+                      ),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Text(
+                          _isNew ? 'Add Restaurant' : 'Edit Restaurant',
+                          style: GoogleFonts.cormorant(fontSize: 22, fontWeight: FontWeight.w600, color: context.appOnSurface, letterSpacing: 0.2),
+                        ),
+                      ),
+                      if (!_isNew)
+                        GestureDetector(
+                          onTap: _deleteRestaurant,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                            decoration: BoxDecoration(
+                              color: Colors.red.withValues(alpha: 0.08),
+                              borderRadius: BorderRadius.circular(3),
+                              border: Border.all(color: Colors.red.withValues(alpha: 0.25)),
+                            ),
+                            child: Text('Delete', style: GoogleFonts.jost(fontSize: 12, color: Colors.red.shade400, letterSpacing: 0.3)),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 12),
+                Padding(padding: const EdgeInsets.symmetric(horizontal: 24), child: _rule(context)),
+                const SizedBox(height: 4),
+
+                // ── Error ────────────────────────────────────
+                if (_error != null)
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(24, 8, 24, 0),
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.red.withValues(alpha: 0.08),
+                      borderRadius: BorderRadius.circular(3),
+                      border: Border.all(color: Colors.red.withValues(alpha: 0.25)),
+                    ),
+                    child: Text(_error!, style: GoogleFonts.jost(fontSize: 13, color: Colors.red.shade400)),
+                  ),
+
+                // ── Form ─────────────────────────────────────
+                Expanded(
+                  child: _isLoading
+                      ? Center(child: CircularProgressIndicator(color: kTeal, strokeWidth: 1.5))
+                      : Form(
+                          key: _formKey,
+                          child: ListView(
+                            padding: const EdgeInsets.fromLTRB(24, 16, 24, 24),
+                            children: [
+                              _SectionHeader(title: 'Basic Information'),
+                              const SizedBox(height: 12),
+                              _field(context, controller: _nameController, label: 'Name', required: true),
+                              const SizedBox(height: 10),
+                              Row(
+                                children: [
+                                  Expanded(child: _amenityDropdown(context)),
+                                  const SizedBox(width: 10),
+                                  Expanded(child: _field(context, controller: _cuisineController, label: 'Cuisine')),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              _field(context, controller: _descriptionController, label: 'Description', maxLines: 3, hint: 'Brief description...'),
+                              const SizedBox(height: 10),
+                              _field(context, controller: _websiteController, label: 'Website', hint: 'https://...', keyboard: TextInputType.url),
+
+                              const SizedBox(height: 24),
+                              _SectionHeader(title: 'Dietary Options'),
+                              const SizedBox(height: 12),
+                              Wrap(
+                                spacing: 8,
+                                runSpacing: 8,
+                                children: [
+                                  _DietaryChip(label: 'Vegan',       selected: _isVegan,       onChanged: (v) => setState(() => _isVegan = v)),
+                                  _DietaryChip(label: 'Vegetarian',  selected: _isVegetarian,  onChanged: (v) => setState(() => _isVegetarian = v)),
+                                  _DietaryChip(label: 'Halal',       selected: _isHalal,       onChanged: (v) => setState(() => _isHalal = v)),
+                                  _DietaryChip(label: 'Kosher',      selected: _isKosher,      onChanged: (v) => setState(() => _isKosher = v)),
+                                  _DietaryChip(label: 'Gluten-Free', selected: _isGlutenFree,  onChanged: (v) => setState(() => _isGlutenFree = v)),
+                                ],
+                              ),
+
+                              const SizedBox(height: 24),
+                              _SectionHeader(title: 'Locations'),
+                              const SizedBox(height: 4),
+                              Text('One entry per physical location within the terminal.',
+                                  style: GoogleFonts.jost(fontSize: 12, color: context.appMutedFg(0.42))),
+                              const SizedBox(height: 12),
+                              ...List.generate(_outlets.length, (i) => _buildOutletCard(context, i)),
+                              const SizedBox(height: 8),
+                              GestureDetector(
+                                onTap: () => setState(() => _outlets.add(_OutletFormData())),
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(vertical: 12),
+                                  decoration: BoxDecoration(
+                                    color: kTeal.withValues(alpha: 0.06),
+                                    borderRadius: BorderRadius.circular(3),
+                                    border: Border.all(color: kTeal.withValues(alpha: 0.25)),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.add_rounded, size: 16, color: kTeal),
+                                      const SizedBox(width: 6),
+                                      Text('Add Location', style: GoogleFonts.jost(fontSize: 13, color: kTeal, letterSpacing: 0.3)),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 32),
+                            ],
+                          ),
+                        ),
+                ),
+
+                // ── Save button ──────────────────────────────
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+                  child: GestureDetector(
+                    onTap: _isSaving ? null : _saveRestaurant,
+                    child: Container(
+                      width: double.infinity,
+                      height: 52,
+                      decoration: BoxDecoration(
+                        color: _isSaving ? kTeal.withValues(alpha: 0.6) : kTeal,
+                        borderRadius: BorderRadius.circular(3),
+                        boxShadow: [BoxShadow(color: kTeal.withValues(alpha: 0.25), blurRadius: 12, offset: const Offset(0, 4))],
+                      ),
+                      child: Center(
+                        child: _isSaving
+                            ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 1.5, color: Colors.white))
+                            : Text(
+                                _isNew ? 'ADD RESTAURANT' : 'SAVE CHANGES',
+                                style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w500, letterSpacing: 2.2, color: Colors.white),
+                              ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildOutletCard(BuildContext context, int index) {
+    final outlet = _outlets[index];
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: appCardSurface(context),
+        borderRadius: BorderRadius.circular(3),
+        border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+        boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.05), blurRadius: 6, offset: const Offset(0, 2))],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Text('Location ${index + 1}',
+                  style: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w500, color: context.appMutedFg(0.55), letterSpacing: 0.5)),
+              const Spacer(),
+              if (_outlets.length > 1)
+                GestureDetector(
+                  onTap: () => setState(() { _outlets[index].dispose(); _outlets.removeAt(index); }),
+                  child: Icon(Icons.remove_circle_outline_rounded, size: 18, color: Colors.red.shade300),
+                ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          _field(context, controller: outlet.gateAreaController, label: 'Gate Area / Zone', hint: 'e.g. Gates 1–20, Pier B'),
+          const SizedBox(height: 10),
+          _airsideDropdown(context, outlet),
+          const SizedBox(height: 10),
+          _field(context, controller: outlet.levelController, label: 'Level / Floor', hint: 'e.g. Ground Floor, Level 1'),
+          const SizedBox(height: 10),
+          _field(context, controller: outlet.locationNotesController, label: 'Directions', hint: 'e.g. Next to gate 35, opposite WHSmith...', maxLines: 2),
+        ],
+      ),
+    );
+  }
+
+  Widget _field(BuildContext context, {
+    required TextEditingController controller,
+    required String label,
+    String? hint,
+    int maxLines = 1,
+    bool required = false,
+    TextInputType keyboard = TextInputType.text,
+  }) {
+    return TextFormField(
+      controller: controller,
+      maxLines: maxLines,
+      keyboardType: keyboard,
+      style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface),
+      validator: required ? (v) => (v == null || v.trim().isEmpty) ? 'Required' : null : null,
+      decoration: InputDecoration(
+        labelText: label,
+        hintText: hint,
+        labelStyle: GoogleFonts.jost(fontSize: 13, color: context.appMutedFg(0.45)),
+        hintStyle: GoogleFonts.jost(fontSize: 13, color: context.appMutedFg(0.32)),
+        isDense: true,
+        filled: true,
+        fillColor: appCardSurface(context),
+        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: BorderSide(color: kGoldLight.withValues(alpha: 0.28))),
+        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: const BorderSide(color: kTeal, width: 1)),
+        errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: BorderSide(color: Colors.red.shade300)),
+        focusedErrorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: BorderSide(color: Colors.red.shade400)),
+      ),
+    );
+  }
+
+  Widget _amenityDropdown(BuildContext context) {
+    final items = ['restaurant', 'cafe', 'bar', 'pub', 'fast_food', 'bakery', 'confectionery', 'ice_cream', 'food_court'];
+    return DropdownButtonFormField<String>(
+      value: _selectedAmenity,
+      style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface),
+      decoration: InputDecoration(
+        labelText: 'Type',
+        labelStyle: GoogleFonts.jost(fontSize: 13, color: context.appMutedFg(0.45)),
+        isDense: true,
+        filled: true,
+        fillColor: appCardSurface(context),
+        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: BorderSide(color: kGoldLight.withValues(alpha: 0.28))),
+        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: const BorderSide(color: kTeal, width: 1)),
+      ),
+      items: items.map((v) => DropdownMenuItem(value: v, child: Text(_formatAmenity(v), style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface)))).toList(),
+      onChanged: (v) => setState(() => _selectedAmenity = v!),
+    );
+  }
+
+  Widget _airsideDropdown(BuildContext context, _OutletFormData outlet) {
+    return DropdownButtonFormField<String>(
+      value: outlet.airside,
+      style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface),
+      decoration: InputDecoration(
+        labelText: 'Security',
+        labelStyle: GoogleFonts.jost(fontSize: 13, color: context.appMutedFg(0.45)),
+        isDense: true,
+        filled: true,
+        fillColor: appCardSurface(context),
+        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: BorderSide(color: kGoldLight.withValues(alpha: 0.28))),
+        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(3), borderSide: const BorderSide(color: kTeal, width: 1)),
+      ),
+      items: [
+        DropdownMenuItem(value: 'airside',  child: Text('After security',  style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface))),
+        DropdownMenuItem(value: 'landside', child: Text('Before security', style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface))),
+        DropdownMenuItem(value: 'both',     child: Text('Both',            style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface))),
+      ],
+      onChanged: (v) => setState(() => outlet.airside = v!),
+    );
+  }
+
+  String _formatAmenity(String amenity) => switch (amenity) {
+    'cafe'          => 'Café',
+    'pub'           => 'Pub',
+    'bar'           => 'Bar',
+    'fast_food'     => 'Fast Food',
+    'restaurant'    => 'Restaurant',
+    'bakery'        => 'Bakery',
+    'confectionery' => 'Confectionery',
+    'ice_cream'     => 'Ice Cream',
+    'food_court'    => 'Food Court',
+    _               => amenity.replaceAll('_', ' '),
+  };
+}
+
+// ─────────────────────────────────────────────────────────────
+//  DIETARY CHIP
+// ─────────────────────────────────────────────────────────────
+class _DietaryChip extends StatelessWidget {
+  final String label;
+  final bool selected;
+  final void Function(bool) onChanged;
+  const _DietaryChip({required this.label, required this.selected, required this.onChanged});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => onChanged(!selected),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+        decoration: BoxDecoration(
+          color: selected ? kTeal.withValues(alpha: 0.10) : appCardSurface(context),
+          borderRadius: BorderRadius.circular(3),
+          border: Border.all(color: selected ? kTeal.withValues(alpha: 0.40) : kGoldLight.withValues(alpha: 0.28)),
+        ),
+        child: Text(label, style: GoogleFonts.jost(fontSize: 12, color: selected ? kTeal : context.appMutedFg(0.50), fontWeight: selected ? FontWeight.w500 : FontWeight.w400)),
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  SHARED WIDGETS
+// ─────────────────────────────────────────────────────────────
+Widget _rule(BuildContext context) => Container(
+  height: 1,
+  decoration: BoxDecoration(
+    gradient: LinearGradient(
+      colors: [Colors.transparent, kGoldLight.withValues(alpha: 0.28), context.appOnSurface.withValues(alpha: 0.08), Colors.transparent],
+      stops: const [0.0, 0.3, 0.7, 1.0],
+    ),
+  ),
+);
+
+class _SectionHeader extends StatelessWidget {
+  final String title;
+  const _SectionHeader({required this.title});
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(title, style: GoogleFonts.cormorant(fontSize: 20, fontWeight: FontWeight.w400, color: context.appOnSurface, letterSpacing: 0.2)),
+        const SizedBox(width: 10),
+        Expanded(child: Container(height: 1, decoration: BoxDecoration(gradient: LinearGradient(colors: [kGoldLight.withValues(alpha: 0.28), Colors.transparent])))),
+        const SizedBox(width: 6),
+        Transform.rotate(angle: math.pi / 4, child: Container(width: 4, height: 4, color: kGoldLight.withValues(alpha: 0.6))),
+      ],
+    );
+  }
+}
+
+class _Background extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) => Container(
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.topLeft, end: Alignment.bottomRight,
+        colors: appPageGradientColors(context),
+        stops: const [0.0, 0.55, 1.0],
+      ),
+    ),
+  );
 }

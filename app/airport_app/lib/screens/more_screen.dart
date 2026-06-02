@@ -1,8 +1,10 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../preferences.dart';
+import '../services/admin_service.dart';
 
 class MoreScreen extends StatefulWidget {
   const MoreScreen({super.key});
@@ -15,6 +17,7 @@ class _MoreScreenState extends State<MoreScreen> with TickerProviderStateMixin {
   late final AnimationController _headerCtrl;
   late final AnimationController _prefsCtrl;
   late final AnimationController _aboutCtrl;
+  bool _isAdmin = false;
 
   static const _languages = [
     'English (UK)',
@@ -52,6 +55,10 @@ class _MoreScreenState extends State<MoreScreen> with TickerProviderStateMixin {
     _delayed(150, _headerCtrl);
     _delayed(300, _prefsCtrl);
     _delayed(450, _aboutCtrl);
+
+    AdminService.checkIsAdmin().then((v) {
+      if (mounted) setState(() => _isAdmin = v);
+    });
   }
 
   @override
@@ -283,6 +290,22 @@ class _MoreScreenState extends State<MoreScreen> with TickerProviderStateMixin {
                             trailing: Icon(Icons.chevron_right_rounded, size: 18, color: textColor.withValues(alpha: 0.35)),
                           ),
                           const SizedBox(height: 28),
+
+                          // ── Admin ──
+                          if (_isAdmin) ...[
+                            _SectionHeader(title: 'Admin', isDark: isDark),
+                            const SizedBox(height: 14),
+                            _MoreCard(
+                              icon: Icons.admin_panel_settings_outlined,
+                              title: 'Admin Panel',
+                              subtitle: 'Manage airports & restaurants',
+                              isDark: isDark,
+                              onTap: () => context.go('/admin'),
+                              trailing: Icon(Icons.chevron_right_rounded, size: 18, color: textColor.withValues(alpha: 0.35)),
+                            ),
+                            const SizedBox(height: 28),
+                          ],
+
                           Center(
                             child: Column(
                               children: [
@@ -349,6 +372,7 @@ class _MoreCard extends StatefulWidget {
   final String subtitle;
   final Widget trailing;
   final bool isDark;
+  final VoidCallback? onTap;
 
   const _MoreCard({
     required this.icon,
@@ -356,6 +380,7 @@ class _MoreCard extends StatefulWidget {
     required this.subtitle,
     required this.trailing,
     required this.isDark,
+    this.onTap,
   });
 
   @override
@@ -371,6 +396,7 @@ class _MoreCardState extends State<_MoreCard> {
     final textColor = widget.isDark ? Colors.white : kInk;
 
     return GestureDetector(
+      onTap: widget.onTap,
       onTapDown: (_) => setState(() => _pressed = true),
       onTapUp: (_) => setState(() => _pressed = false),
       onTapCancel: () => setState(() => _pressed = false),

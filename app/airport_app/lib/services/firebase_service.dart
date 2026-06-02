@@ -59,19 +59,33 @@ class FirebaseService {
     }
   }
 
-  // Fetches all restaurants across all terminals, injecting _terminalId and _terminalName.
+  // Returns total restaurant count across all terminals without fetching full documents.
+  static Future<int> getRestaurantCount(String airportCode) async {
+    try {
+      final terminals = await getTerminals(airportCode);
+      if (terminals.isEmpty) return 0;
+      final snaps = await Future.wait(
+        terminals.map((t) => _firestore
+            .collection('airports').doc(_slug(airportCode))
+            .collection('terminals').doc(t['id'] as String)
+            .collection('restaurants').get()),
+      );
+      return snaps.fold<int>(0, (total, s) => total + s.size);
+    } catch (_) {
+      return 0;
+    }
+  }
+
+  // Fetches all restaurants across all terminals in parallel.
   static Future<List<Map<String, dynamic>>> getRestaurants(String airportCode) async {
     final terminals = await getTerminals(airportCode);
-    final all = <Map<String, dynamic>>[];
-    for (final t in terminals) {
-      final terminalId = t['id'] as String;
+    final results = await Future.wait(terminals.map((t) async {
+      final terminalId   = t['id'] as String;
       final terminalName = t['name'] as String? ?? terminalId;
       final rests = await getRestaurantsByTerminal(airportCode, terminalId);
-      for (final r in rests) {
-        all.add({...r, '_terminalId': terminalId, '_terminalName': terminalName});
-      }
-    }
-    return all;
+      return rests.map((r) => {...r, '_terminalId': terminalId, '_terminalName': terminalName}).toList();
+    }));
+    return results.expand((list) => list).toList();
   }
 
   static String getAirportName(String airportCode) {

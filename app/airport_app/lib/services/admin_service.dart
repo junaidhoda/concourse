@@ -1,68 +1,101 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AdminService {
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  static const String _adminUsername = 'admin';
-  static const String _adminPassword = 'MustafaJunaid';
-  
-  static bool _isAuthenticated = false;
 
-  // Admin authentication
-  static bool authenticateAdmin(String username, String password) {
-    if (username == _adminUsername && password == _adminPassword) {
-      _isAuthenticated = true;
-      return true;
+  static Future<bool> checkIsAdmin() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return false;
+    try {
+      final doc = await _firestore.collection('users').doc(user.uid).get();
+      return doc.data()?['isAdmin'] == true;
+    } catch (_) {
+      return false;
     }
-    return false;
   }
 
-  static bool get isAuthenticated => _isAuthenticated;
+  static void logout() {}
 
-  static void logout() {
-    _isAuthenticated = false;
-  }
+  // ── Airports ────────────────────────────────────────────────
 
-  // Get all airports
   static Future<List<Map<String, dynamic>>> getAllAirports() async {
     try {
-      final querySnapshot = await _firestore.collection('airports').get();
-      return querySnapshot.docs.map((doc) => {
-        'id': doc.id,
-        ...doc.data(),
-      }).toList();
+      final snap = await _firestore.collection('airports').get();
+      return snap.docs.map((d) => {'id': d.id, ...d.data()}).toList();
     } catch (e) {
       print('Error fetching airports: $e');
       return [];
     }
   }
 
-  // Get restaurants for an airport
-  static Future<List<Map<String, dynamic>>> getRestaurantsForAirport(String airportCode) async {
+  // Returns { 'terminals': n, 'restaurants': n } for a given airport slug.
+  static Future<Map<String, int>> getAirportCounts(String airportSlug) async {
     try {
-      final querySnapshot = await _firestore
-          .collection('airports')
-          .doc(airportCode)
-          .collection('restaurants')
-          .get();
-      
-      return querySnapshot.docs.map((doc) => {
-        'id': doc.id,
-        ...doc.data(),
-      }).toList();
+      final terminalsSnap = await _firestore
+          .collection('airports').doc(airportSlug)
+          .collection('terminals').get();
+      int restaurantCount = 0;
+      final snaps = await Future.wait(terminalsSnap.docs.map((t) => t.reference.collection('restaurants').get()));
+      restaurantCount = snaps.fold(0, (sum, s) => sum + s.size);
+      return {'terminals': terminalsSnap.size, 'restaurants': restaurantCount};
+    } catch (e) {
+      return {'terminals': 0, 'restaurants': 0};
+    }
+  }
+
+  // ── Terminals ───────────────────────────────────────────────
+
+  static Future<List<Map<String, dynamic>>> getTerminals(String airportSlug) async {
+    try {
+      final snap = await _firestore
+          .collection('airports').doc(airportSlug)
+          .collection('terminals').get();
+      return snap.docs.map((d) => {'id': d.id, ...d.data()}).toList();
+    } catch (e) {
+      print('Error fetching terminals: $e');
+      return [];
+    }
+  }
+
+  // ── Restaurants ─────────────────────────────────────────────
+
+  static Future<List<Map<String, dynamic>>> getRestaurantsForTerminal(
+      String airportSlug, String terminalId) async {
+    try {
+      final snap = await _firestore
+          .collection('airports').doc(airportSlug)
+          .collection('terminals').doc(terminalId)
+          .collection('restaurants').get();
+      return snap.docs.map((d) => {'id': d.id, ...d.data()}).toList();
     } catch (e) {
       print('Error fetching restaurants: $e');
       return [];
     }
   }
 
-  // Update restaurant data
-  static Future<bool> updateRestaurant(String airportCode, String restaurantId, Map<String, dynamic> data) async {
+  static Future<bool> addRestaurant(
+      String airportSlug, String terminalId, Map<String, dynamic> data) async {
     try {
       await _firestore
-          .collection('airports')
-          .doc(airportCode)
-          .collection('restaurants')
-          .doc(restaurantId)
+          .collection('airports').doc(airportSlug)
+          .collection('terminals').doc(terminalId)
+          .collection('restaurants').add(data);
+      return true;
+    } catch (e) {
+      print('Error adding restaurant: $e');
+      return false;
+    }
+  }
+
+  static Future<bool> updateRestaurant(
+      String airportSlug, String terminalId, String restaurantId,
+      Map<String, dynamic> data) async {
+    try {
+      await _firestore
+          .collection('airports').doc(airportSlug)
+          .collection('terminals').doc(terminalId)
+          .collection('restaurants').doc(restaurantId)
           .update(data);
       return true;
     } catch (e) {
@@ -71,43 +104,13 @@ class AdminService {
     }
   }
 
-  // Update airport data
-  static Future<bool> updateAirport(String airportCode, Map<String, dynamic> data) async {
+  static Future<bool> deleteRestaurant(
+      String airportSlug, String terminalId, String restaurantId) async {
     try {
       await _firestore
-          .collection('airports')
-          .doc(airportCode)
-          .update(data);
-      return true;
-    } catch (e) {
-      print('Error updating airport: $e');
-      return false;
-    }
-  }
-
-  // Add new restaurant
-  static Future<bool> addRestaurant(String airportCode, Map<String, dynamic> data) async {
-    try {
-      await _firestore
-          .collection('airports')
-          .doc(airportCode)
-          .collection('restaurants')
-          .add(data);
-      return true;
-    } catch (e) {
-      print('Error adding restaurant: $e');
-      return false;
-    }
-  }
-
-  // Delete restaurant
-  static Future<bool> deleteRestaurant(String airportCode, String restaurantId) async {
-    try {
-      await _firestore
-          .collection('airports')
-          .doc(airportCode)
-          .collection('restaurants')
-          .doc(restaurantId)
+          .collection('airports').doc(airportSlug)
+          .collection('terminals').doc(terminalId)
+          .collection('restaurants').doc(restaurantId)
           .delete();
       return true;
     } catch (e) {
@@ -115,4 +118,4 @@ class AdminService {
       return false;
     }
   }
-} 
+}

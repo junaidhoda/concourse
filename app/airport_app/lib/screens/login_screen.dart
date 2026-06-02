@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../services/admin_service.dart';
 import '../services/auth_service.dart';
 import '../theme/app_theme.dart';
 
@@ -82,17 +81,11 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
     if (!_formKey.currentState!.validate()) return;
     setState(() => _isLoading = true);
     try {
-      if (_emailCtrl.text.trim().toLowerCase() == 'admin') {
-        final success = AdminService.authenticateAdmin(_emailCtrl.text.trim(), _passwordCtrl.text);
-        if (success && mounted) context.go('/admin/dashboard');
-        if (!success && mounted) _showError('Invalid admin credentials');
-      } else {
-        await AuthService.signInWithEmailAndPassword(
-          email: _emailCtrl.text.trim(),
-          password: _passwordCtrl.text,
-        );
-        if (mounted) context.go('/explore');
-      }
+      await AuthService.signInWithEmailAndPassword(
+        email: _emailCtrl.text.trim(),
+        password: _passwordCtrl.text,
+      );
+      if (mounted) context.go('/explore');
     } catch (e) {
       if (mounted) _showError(e.toString());
     } finally {
@@ -239,7 +232,6 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
                                     enabled: !_isLoading,
                                     validator: (v) {
                                       if (v == null || v.isEmpty) return 'Please enter your email';
-                                      if (v.toLowerCase() == 'admin') return null;
                                       if (!RegExp(r'^[\w\-.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(v)) {
                                         return 'Please enter a valid email';
                                       }
