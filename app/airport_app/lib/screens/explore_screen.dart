@@ -43,6 +43,11 @@ const _kAirports = [
   _Airport(id: 'LHR', iata: 'LHR', name: 'London Heathrow', city: 'London', country: 'United Kingdom', flag: '🇬🇧', venueCount: 84),
   _Airport(id: 'MAN', iata: 'MAN', name: 'Manchester Airport', city: 'Manchester', country: 'United Kingdom', flag: '🇬🇧', venueCount: 36),
   _Airport(id: 'HND', iata: 'HND', name: 'Tokyo Haneda Airport', city: 'Tokyo', country: 'Japan', flag: '🇯🇵', venueCount: 169),
+  _Airport(id: 'AUH', iata: 'AUH', name: 'Zayed International Airport', city: 'Abu Dhabi', country: 'UAE', flag: '🇦🇪', venueCount: 33),
+  _Airport(id: 'DOH', iata: 'DOH', name: 'Hamad International Airport', city: 'Doha', country: 'Qatar', flag: '🇶🇦', venueCount: 70),
+  _Airport(id: 'ATL', iata: 'ATL', name: 'Hartsfield-Jackson Atlanta International', city: 'Atlanta', country: 'USA', flag: '🇺🇸', venueCount: 0),
+  _Airport(id: 'ORD', iata: 'ORD', name: "Chicago O'Hare International", city: 'Chicago', country: 'USA', flag: '🇺🇸', venueCount: 125),
+  _Airport(id: 'DFW', iata: 'DFW', name: 'Dallas/Fort Worth International', city: 'Dallas', country: 'USA', flag: '🇺🇸', venueCount: 78),
   _Airport(id: 'SIN', iata: 'SIN', name: 'Singapore Changi', city: 'Singapore', country: 'Singapore', flag: '🇸🇬', venueCount: 96),
 ];
 
@@ -203,9 +208,9 @@ class _ExploreScreenState extends State<ExploreScreen> with TickerProviderStateM
               width: 52,
               height: 52,
               decoration: BoxDecoration(
-                color: kGold.withOpacity(0.07),
+                color: kGold.withValues(alpha: 0.07),
                 shape: BoxShape.circle,
-                border: Border.all(color: kGoldLight.withOpacity(0.28)),
+                border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
               ),
               child: const Icon(Icons.search_off_rounded, color: kGold, size: 22),
             ),
@@ -382,7 +387,7 @@ class _Header extends StatelessWidget {
               fontSize: 12,
               fontWeight: FontWeight.lerp(FontWeight.w400, FontWeight.w500, 0.5),
               letterSpacing: 4.0,
-              color: kTeal.withOpacity(0.75),
+              color: kTeal.withValues(alpha: 0.75),
             ),
           ),
           const SizedBox(height: 12),
@@ -397,7 +402,7 @@ class _Header extends StatelessWidget {
                   gradient: LinearGradient(
                     colors: [
                       Colors.transparent,
-                      kGoldLight.withOpacity(0.28),
+                      kGoldLight.withValues(alpha: 0.28),
                       context.appOnSurface.withValues(alpha: 0.08),
                       Colors.transparent,
                     ],
@@ -479,10 +484,10 @@ class _SearchBarState extends State<_SearchBar> {
         color: appCardSurface(context),
         borderRadius: BorderRadius.circular(3),
         border: Border.all(
-          color: _focused ? kTeal : kGoldLight.withOpacity(0.28),
+          color: _focused ? kTeal : kGoldLight.withValues(alpha: 0.28),
           width: 1,
         ),
-        boxShadow: _focused ? [BoxShadow(color: kTeal.withOpacity(0.10), blurRadius: 0, spreadRadius: 2)] : [],
+        boxShadow: _focused ? [BoxShadow(color: kTeal.withValues(alpha: 0.10), blurRadius: 0, spreadRadius: 2)] : [],
       ),
       child: Row(
         children: [
@@ -559,7 +564,7 @@ class _SectionHeader extends StatelessWidget {
             height: 1,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [kGoldLight.withOpacity(0.28), Colors.transparent],
+                colors: [kGoldLight.withValues(alpha: 0.28), Colors.transparent],
               ),
             ),
           ),
@@ -570,7 +575,7 @@ class _SectionHeader extends StatelessWidget {
           child: Container(
             width: 4,
             height: 4,
-            color: kGoldLight.withOpacity(0.6),
+            color: kGoldLight.withValues(alpha: 0.6),
           ),
         ),
       ],
@@ -614,7 +619,7 @@ class _ActionCardState extends State<_ActionCard> {
           decoration: BoxDecoration(
             color: appCardSurface(context),
             borderRadius: BorderRadius.circular(3),
-            border: Border.all(color: kGoldLight.withOpacity(0.28)),
+            border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
             boxShadow: _pressed
                 ? []
                 : [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
@@ -626,7 +631,7 @@ class _ActionCardState extends State<_ActionCard> {
                 width: 38,
                 height: 38,
                 decoration: BoxDecoration(
-                  color: kTeal.withOpacity(0.10),
+                  color: kTeal.withValues(alpha: 0.10),
                   borderRadius: BorderRadius.circular(3),
                 ),
                 child: Icon(widget.icon, color: kTeal, size: 18),
@@ -685,7 +690,7 @@ class _FeaturedCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: appCardSurface(context),
           borderRadius: BorderRadius.circular(3),
-          border: Border.all(color: kGoldLight.withOpacity(0.28)),
+          border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
           boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
         ),
         child: Column(
@@ -706,7 +711,7 @@ class _FeaturedCard extends StatelessWidget {
                       margin: const EdgeInsets.only(bottom: 7),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
-                          colors: [kTeal.withOpacity(0.5), Colors.transparent],
+                          colors: [kTeal.withValues(alpha: 0.5), Colors.transparent],
                         ),
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(3),
@@ -744,7 +749,7 @@ class _FeaturedCard extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(height: 1, color: kGoldLight.withOpacity(0.28)),
+                Container(height: 1, color: kGoldLight.withValues(alpha: 0.28)),
                 const SizedBox(height: 5),
                 Row(
                   children: [
@@ -795,7 +800,7 @@ class _ResultCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: appCardSurface(context),
           borderRadius: BorderRadius.circular(3),
-          border: Border.all(color: kGoldLight.withOpacity(0.28)),
+          border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
           boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
         ),
         child: Row(
@@ -805,9 +810,9 @@ class _ResultCard extends StatelessWidget {
               width: 44,
               height: 44,
               decoration: BoxDecoration(
-                color: kGold.withOpacity(0.07),
+                color: kGold.withValues(alpha: 0.07),
                 shape: BoxShape.circle,
-                border: Border.all(color: kGoldLight.withOpacity(0.28)),
+                border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
               ),
               child: Center(
                 child: Text(airport.flag, style: const TextStyle(fontSize: 22)),

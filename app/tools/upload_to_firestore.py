@@ -22,6 +22,8 @@ MAN_CSV      = "man_restaurants.csv"
 CDG_CSV      = "cdg_restaurants.csv"
 FRA_CSV      = "fra_restaurants.csv"
 HND_CSV      = "hnd_restaurants.csv"
+AUH_CSV      = "auh_restaurants.csv"
+DOH_CSV      = "doh_restaurants.csv"
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -257,6 +259,44 @@ def main():
         rows = [r for r in hnd_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Tokyo Haneda"}) for r in rows]
         upload(db, "haneda", hnd_meta, terminal_name, docs)
+
+    # ── Abu Dhabi ─────────────────────────────────────────────────────────
+    print("Uploading Abu Dhabi …")
+    auh_meta = {
+        "name":      "Zayed International Airport",
+        "code":      "AUH",
+        "city":      "Abu Dhabi",
+        "country":   "United Arab Emirates",
+        "continent": "Middle East",
+        "lat":       24.4330,
+        "lon":       54.6511,
+    }
+    with open(AUH_CSV, encoding="utf-8") as f:
+        auh_rows = list(csv.DictReader(f))
+
+    for terminal_name in ["Terminal A"]:
+        rows = [r for r in auh_rows if r["terminal"] == terminal_name]
+        docs = [clean(r, {"airport": "Zayed International"}) for r in rows]
+        upload(db, "auh", auh_meta, terminal_name, docs)
+
+    # ── Doha ──────────────────────────────────────────────────────────────
+    print("Uploading Doha …")
+    doh_meta = {
+        "name":      "Hamad International Airport",
+        "code":      "DOH",
+        "city":      "Doha",
+        "country":   "Qatar",
+        "continent": "Middle East",
+        "lat":       25.2731,
+        "lon":       51.6081,
+    }
+    with open(DOH_CSV, encoding="utf-8") as f:
+        doh_rows = list(csv.DictReader(f))
+
+    for terminal_name in ["Concourse A", "Concourse B", "Concourse C", "Concourse D", "Concourse E"]:
+        rows = [r for r in doh_rows if r["terminal"] == terminal_name]
+        docs = [clean(r, {"airport": "Hamad International"}) for r in rows]
+        upload(db, "doh", doh_meta, terminal_name, docs)
 
     print("\nDone.")
 
