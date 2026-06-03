@@ -15,9 +15,9 @@ class AdminAirportScreen extends StatefulWidget {
 }
 
 class _AdminAirportScreenState extends State<AdminAirportScreen> {
-  // terminalId → list of restaurant docs
   Map<String, List<Map<String, dynamic>>> _terminalRestaurants = {};
   Map<String, String> _terminalNames = {};
+  Map<String, dynamic>? _airportDetails;
   bool _isLoading = true;
   String? _error;
 
@@ -30,10 +30,15 @@ class _AdminAirportScreenState extends State<AdminAirportScreen> {
   Future<void> _load() async {
     setState(() { _isLoading = true; _error = null; });
     try {
-      final terminals = await AdminService.getTerminals(widget.airportCode);
+      final results = await Future.wait([
+        AdminService.getAirportDetails(widget.airportCode),
+        AdminService.getTerminals(widget.airportCode),
+      ]);
+      final details   = results[0] as Map<String, dynamic>?;
+      final terminals = results[1] as List<Map<String, dynamic>>;
+
       final Map<String, List<Map<String, dynamic>>> grouped = {};
       final Map<String, String> names = {};
-
       await Future.wait(terminals.map((t) async {
         final id   = t['id'] as String;
         final name = t['name'] as String? ?? id;
@@ -41,22 +46,186 @@ class _AdminAirportScreenState extends State<AdminAirportScreen> {
         grouped[id] = await AdminService.getRestaurantsForTerminal(widget.airportCode, id);
       }));
 
-      // Keep terminals in the order Firestore returned them
       final orderedIds = terminals.map((t) => t['id'] as String).toList();
       final ordered = { for (final id in orderedIds) id: grouped[id] ?? [] };
 
       if (mounted) setState(() {
+        _airportDetails      = details;
         _terminalRestaurants = ordered;
-        _terminalNames = names;
-        _isLoading = false;
+        _terminalNames       = names;
+        _isLoading           = false;
       });
     } catch (e) {
       if (mounted) setState(() { _error = e.toString(); _isLoading = false; });
     }
   }
 
-  String get _airportName =>
-      FirebaseService.getAirportName(widget.airportCode.toUpperCase());
+  String get _airportName {
+    if (_airportDetails != null) {
+      return _airportDetails!['name'] as String? ??
+          FirebaseService.getAirportName(widget.airportCode.toUpperCase());
+    }
+    return FirebaseService.getAirportName(widget.airportCode.toUpperCase());
+  }
+
+  void _showEditAirportSheet(BuildContext context) {
+    final d = _airportDetails ?? {};
+    final nameCtrl      = TextEditingController(text: d['name']    as String? ?? '');
+    final codeCtrl      = TextEditingController(text: d['code']    as String? ?? widget.airportCode.toUpperCase());
+    final cityCtrl      = TextEditingController(text: d['city']    as String? ?? '');
+    final countryCtrl   = TextEditingController(text: d['country'] as String? ?? '');
+    final latCtrl       = TextEditingController(text: (d['lat']  ?? '').toString());
+    final lonCtrl       = TextEditingController(text: (d['lon']  ?? '').toString());
+    String selectedContinent = d['continent'] as String? ?? 'Other';
+
+    const continents = ['Europe', 'North America', 'Asia', 'Middle East',
+                        'South America', 'Africa', 'Oceania', 'Other'];
+    if (!continents.contains(selectedContinent)) selectedContinent = 'Other';
+
+    bool saving = false;
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, setSheetState) {
+          Future<void> save() async {
+            setSheetState(() => saving = true);
+            final data = {
+              'name':      nameCtrl.text.trim(),
+              'code':      codeCtrl.text.trim().toUpperCase(),
+              'city':      cityCtrl.text.trim(),
+              'country':   countryCtrl.text.trim(),
+              'continent': selectedContinent,
+              if (double.tryParse(latCtrl.text) != null) 'lat': double.parse(latCtrl.text),
+              if (double.tryParse(lonCtrl.text) != null) 'lon': double.parse(lonCtrl.text),
+            };
+            final ok = await AdminService.updateAirport(widget.airportCode, data);
+            if (!ctx.mounted) return;
+            Navigator.of(ctx).pop();
+            if (ok) {
+              setState(() => _airportDetails = {...?_airportDetails, ...data});
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text('Airport updated', style: GoogleFonts.jost(fontSize: 13)),
+                backgroundColor: kTeal,
+                duration: const Duration(seconds: 2),
+              ));
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text('Update failed', style: GoogleFonts.jost(fontSize: 13)),
+                backgroundColor: Colors.red.shade700,
+                duration: const Duration(seconds: 2),
+              ));
+            }
+          }
+
+          return Padding(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(ctx).viewInsets.bottom),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(ctx).scaffoldBackgroundColor,
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(8)),
+                border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // Handle + title
+                  Center(child: Container(
+                    margin: const EdgeInsets.only(top: 12, bottom: 8),
+                    width: 32, height: 3,
+                    decoration: BoxDecoration(color: kGoldLight.withValues(alpha: 0.4), borderRadius: BorderRadius.circular(2)),
+                  )),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 4, 24, 16),
+                    child: Text('Edit Airport Details', style: GoogleFonts.cormorant(
+                      fontSize: 22, fontWeight: FontWeight.w600,
+                      color: Theme.of(ctx).colorScheme.onSurface,
+                    )),
+                  ),
+                  Flexible(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          _SheetField(label: 'Airport Name', controller: nameCtrl),
+                          const SizedBox(height: 12),
+                          Row(children: [
+                            Expanded(child: _SheetField(label: 'IATA Code', controller: codeCtrl, caps: true)),
+                            const SizedBox(width: 12),
+                            Expanded(child: _SheetField(label: 'City', controller: cityCtrl)),
+                          ]),
+                          const SizedBox(height: 12),
+                          _SheetField(label: 'Country', controller: countryCtrl),
+                          const SizedBox(height: 12),
+                          // Continent dropdown
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('Continent', style: GoogleFonts.jost(
+                                fontSize: 11, letterSpacing: 0.8,
+                                color: Theme.of(ctx).colorScheme.onSurface.withValues(alpha: 0.45),
+                              )),
+                              const SizedBox(height: 6),
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: appCardSurface(ctx),
+                                  borderRadius: BorderRadius.circular(3),
+                                  border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+                                ),
+                                padding: const EdgeInsets.symmetric(horizontal: 12),
+                                child: DropdownButtonHideUnderline(
+                                  child: DropdownButton<String>(
+                                    value: selectedContinent,
+                                    isExpanded: true,
+                                    dropdownColor: appCardSurface(ctx),
+                                    style: GoogleFonts.jost(fontSize: 14, color: Theme.of(ctx).colorScheme.onSurface),
+                                    items: continents.map((c) => DropdownMenuItem(value: c, child: Text(c))).toList(),
+                                    onChanged: (v) { if (v != null) setSheetState(() => selectedContinent = v); },
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 12),
+                          Row(children: [
+                            Expanded(child: _SheetField(label: 'Latitude', controller: latCtrl, numeric: true)),
+                            const SizedBox(width: 12),
+                            Expanded(child: _SheetField(label: 'Longitude', controller: lonCtrl, numeric: true)),
+                          ]),
+                          const SizedBox(height: 24),
+                          GestureDetector(
+                            onTap: saving ? null : save,
+                            child: Container(
+                              height: 46,
+                              decoration: BoxDecoration(
+                                color: saving ? kTeal.withValues(alpha: 0.5) : kTeal,
+                                borderRadius: BorderRadius.circular(3),
+                              ),
+                              child: Center(child: saving
+                                ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 1.5))
+                                : Text('Save Changes', style: GoogleFonts.jost(fontSize: 14, color: Colors.white, letterSpacing: 0.5)),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    ).whenComplete(() {
+      nameCtrl.dispose(); codeCtrl.dispose(); cityCtrl.dispose();
+      countryCtrl.dispose(); latCtrl.dispose(); lonCtrl.dispose();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -103,6 +272,26 @@ class _AdminAirportScreenState extends State<AdminAirportScreen> {
                           ],
                         ),
                       ),
+                      GestureDetector(
+                        onTap: () => _showEditAirportSheet(context),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          decoration: BoxDecoration(
+                            color: appCardSurface(context),
+                            borderRadius: BorderRadius.circular(3),
+                            border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+                            boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 6, offset: const Offset(0, 2))],
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(Icons.edit_rounded, size: 13, color: context.appMutedFg(0.50)),
+                              const SizedBox(width: 5),
+                              Text('Edit', style: GoogleFonts.jost(fontSize: 12, color: context.appMutedFg(0.55), letterSpacing: 0.4)),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -117,23 +306,22 @@ class _AdminAirportScreenState extends State<AdminAirportScreen> {
                       ? Center(child: CircularProgressIndicator(color: kTeal, strokeWidth: 1.5))
                       : _error != null
                           ? _ErrorState(message: _error!, onRetry: _load)
-                          : _terminalRestaurants.isEmpty
-                              ? Center(child: Text('No terminals found', style: GoogleFonts.jost(color: context.appMutedFg(0.45))))
-                              : ListView.builder(
-                                  padding: const EdgeInsets.fromLTRB(24, 12, 24, 40),
-                                  itemCount: _terminalRestaurants.length,
-                                  itemBuilder: (context, i) {
-                                    final terminalId   = _terminalRestaurants.keys.elementAt(i);
-                                    final terminalName = _terminalNames[terminalId] ?? terminalId;
-                                    final restaurants  = _terminalRestaurants[terminalId]!;
-                                    return _TerminalSection(
-                                      terminalName: terminalName,
-                                      restaurants: restaurants,
-                                      onAdd: () => context.go('/admin/restaurant/${widget.airportCode}/$terminalId/new'),
-                                      onEdit: (r) => context.go('/admin/restaurant/${widget.airportCode}/$terminalId/${r['id']}'),
-                                    );
-                                  },
-                                ),
+                          : ListView.builder(
+                              padding: const EdgeInsets.fromLTRB(24, 12, 24, 40),
+                              itemCount: _terminalRestaurants.length + 1,
+                              itemBuilder: (context, i) {
+                                if (i == 0) return _AirportDetailsCard(details: _airportDetails);
+                                final terminalId   = _terminalRestaurants.keys.elementAt(i - 1);
+                                final terminalName = _terminalNames[terminalId] ?? terminalId;
+                                final restaurants  = _terminalRestaurants[terminalId]!;
+                                return _TerminalSection(
+                                  terminalName: terminalName,
+                                  restaurants: restaurants,
+                                  onAdd: () => context.go('/admin/restaurant/${widget.airportCode}/$terminalId/new'),
+                                  onEdit: (r) => context.go('/admin/restaurant/${widget.airportCode}/$terminalId/${r['id']}'),
+                                );
+                              },
+                            ),
                 ),
               ],
             ),
@@ -267,6 +455,127 @@ class _TerminalSection extends StatelessWidget {
           }),
 
         const SizedBox(height: 16),
+      ],
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  AIRPORT DETAILS CARD
+// ─────────────────────────────────────────────────────────────
+class _AirportDetailsCard extends StatelessWidget {
+  final Map<String, dynamic>? details;
+  const _AirportDetailsCard({required this.details});
+
+  @override
+  Widget build(BuildContext context) {
+    final d = details ?? {};
+    final city      = d['city']      as String? ?? '';
+    final country   = d['country']   as String? ?? '';
+    final continent = d['continent'] as String? ?? '';
+    final lat       = d['lat'];
+    final lon       = d['lon'];
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      decoration: BoxDecoration(
+        color: appCardSurface(context),
+        borderRadius: BorderRadius.circular(3),
+        border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+        boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Airport Details', style: GoogleFonts.cormorant(
+            fontSize: 15, fontWeight: FontWeight.w600,
+            color: context.appOnSurface, letterSpacing: 0.2,
+          )),
+          const SizedBox(height: 10),
+          Container(height: 1, color: kGoldLight.withValues(alpha: 0.20)),
+          const SizedBox(height: 10),
+          _DetailRow(label: 'City', value: city.isEmpty ? '—' : city),
+          _DetailRow(label: 'Country', value: country.isEmpty ? '—' : country),
+          _DetailRow(label: 'Continent', value: continent.isEmpty ? '—' : continent),
+          if (lat != null && lon != null)
+            _DetailRow(label: 'Coordinates', value: '${lat.toString()}, ${lon.toString()}'),
+        ],
+      ),
+    );
+  }
+}
+
+class _DetailRow extends StatelessWidget {
+  final String label;
+  final String value;
+  const _DetailRow({required this.label, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 6),
+      child: Row(
+        children: [
+          SizedBox(
+            width: 90,
+            child: Text(label, style: GoogleFonts.jost(
+              fontSize: 11, letterSpacing: 0.5,
+              color: context.appMutedFg(0.42),
+            )),
+          ),
+          Expanded(child: Text(value, style: GoogleFonts.jost(
+            fontSize: 13, color: context.appOnSurface,
+          ))),
+        ],
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  SHEET FIELD
+// ─────────────────────────────────────────────────────────────
+class _SheetField extends StatelessWidget {
+  final String label;
+  final TextEditingController controller;
+  final bool caps;
+  final bool numeric;
+  const _SheetField({
+    required this.label,
+    required this.controller,
+    this.caps = false,
+    this.numeric = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(label, style: GoogleFonts.jost(
+          fontSize: 11, letterSpacing: 0.8,
+          color: context.appMutedFg(0.45),
+        )),
+        const SizedBox(height: 6),
+        Container(
+          decoration: BoxDecoration(
+            color: appCardSurface(context),
+            borderRadius: BorderRadius.circular(3),
+            border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+          ),
+          child: TextField(
+            controller: controller,
+            textCapitalization: caps ? TextCapitalization.characters : TextCapitalization.words,
+            keyboardType: numeric ? const TextInputType.numberWithOptions(signed: true, decimal: true) : TextInputType.text,
+            style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface),
+            decoration: InputDecoration(
+              isDense: true,
+              contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              border: InputBorder.none,
+            ),
+          ),
+        ),
       ],
     );
   }
