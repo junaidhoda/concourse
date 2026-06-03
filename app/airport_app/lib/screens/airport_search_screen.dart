@@ -600,7 +600,7 @@ class _ContinentCardState extends State<_ContinentCard> {
         scale: _pressed ? 0.99 : 1.0,
         duration: const Duration(milliseconds: 100),
         child: Container(
-          height: 112,
+          height: 128,
           decoration: BoxDecoration(
             color: appCardSurface(context),
             borderRadius: BorderRadius.circular(3),

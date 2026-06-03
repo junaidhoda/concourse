@@ -4,23 +4,7 @@ import 'package:flutter/foundation.dart';
 class FirebaseService {
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  static const _codeToSlug = {
-    'LGW': 'gatwick',
-    'LHR': 'heathrow',
-    'BHX': 'birmingham',
-    'MAN': 'manchester',
-    'CDG': 'cdg',
-    'FRA': 'fra',
-    'HND': 'haneda',
-    'AUH': 'auh',
-    'DOH': 'doh',
-    'ATL': 'atl',
-    'ORD': 'ord',
-    'DFW': 'dfw',
-  };
-
-  static String _slug(String airportCode) =>
-      _codeToSlug[airportCode.toUpperCase()] ?? airportCode.toLowerCase();
+  static String _slug(String airportCode) => airportCode.toLowerCase();
 
   static Future<Map<String, dynamic>?> getAirportData(String airportCode) async {
     try {

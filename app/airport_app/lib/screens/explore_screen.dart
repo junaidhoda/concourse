@@ -30,26 +30,44 @@ class _Airport {
   });
 }
 
-const _kAirports = [
-  _Airport(id: 'BHX', iata: 'BHX', name: 'Birmingham Airport', city: 'Birmingham', country: 'United Kingdom', flag: '🇬🇧', venueCount: 28),
-  _Airport(id: 'BKK', iata: 'BKK', name: 'Bangkok Suvarnabhumi', city: 'Bangkok', country: 'Thailand', flag: '🇹🇭', venueCount: 110),
-  _Airport(id: 'CDG', iata: 'CDG', name: 'Paris Charles de Gaulle', city: 'Paris', country: 'France', flag: '🇫🇷', venueCount: 72),
-  _Airport(id: 'DXB', iata: 'DXB', name: 'Dubai International', city: 'Dubai', country: 'UAE', flag: '🇦🇪', venueCount: 120),
-  _Airport(id: 'FRA', iata: 'FRA', name: 'Frankfurt Airport', city: 'Frankfurt', country: 'Germany', flag: '🇩🇪', venueCount: 58),
-  _Airport(id: 'IST', iata: 'IST', name: 'Istanbul Airport', city: 'Istanbul', country: 'Turkey', flag: '🇹🇷', venueCount: 64),
-  _Airport(id: 'JFK', iata: 'JFK', name: 'New York John F. Kennedy', city: 'New York', country: 'USA', flag: '🇺🇸', venueCount: 68),
-  _Airport(id: 'LAX', iata: 'LAX', name: 'Los Angeles International', city: 'Los Angeles', country: 'USA', flag: '🇺🇸', venueCount: 52),
-  _Airport(id: 'LGW', iata: 'LGW', name: 'London Gatwick', city: 'London', country: 'United Kingdom', flag: '🇬🇧', venueCount: 44),
-  _Airport(id: 'LHR', iata: 'LHR', name: 'London Heathrow', city: 'London', country: 'United Kingdom', flag: '🇬🇧', venueCount: 84),
-  _Airport(id: 'MAN', iata: 'MAN', name: 'Manchester Airport', city: 'Manchester', country: 'United Kingdom', flag: '🇬🇧', venueCount: 36),
-  _Airport(id: 'HND', iata: 'HND', name: 'Tokyo Haneda Airport', city: 'Tokyo', country: 'Japan', flag: '🇯🇵', venueCount: 169),
-  _Airport(id: 'AUH', iata: 'AUH', name: 'Zayed International Airport', city: 'Abu Dhabi', country: 'UAE', flag: '🇦🇪', venueCount: 33),
-  _Airport(id: 'DOH', iata: 'DOH', name: 'Hamad International Airport', city: 'Doha', country: 'Qatar', flag: '🇶🇦', venueCount: 70),
-  _Airport(id: 'ATL', iata: 'ATL', name: 'Hartsfield-Jackson Atlanta International', city: 'Atlanta', country: 'USA', flag: '🇺🇸', venueCount: 0),
-  _Airport(id: 'ORD', iata: 'ORD', name: "Chicago O'Hare International", city: 'Chicago', country: 'USA', flag: '🇺🇸', venueCount: 125),
-  _Airport(id: 'DFW', iata: 'DFW', name: 'Dallas/Fort Worth International', city: 'Dallas', country: 'USA', flag: '🇺🇸', venueCount: 78),
-  _Airport(id: 'SIN', iata: 'SIN', name: 'Singapore Changi', city: 'Singapore', country: 'Singapore', flag: '🇸🇬', venueCount: 96),
-];
+// Country → flag emoji, used when building airports from Firestore.
+const _kCountryFlags = {
+  'Australia':           '🇦🇺',
+  'Belgium':             '🇧🇪',
+  'Brazil':              '🇧🇷',
+  'Canada':              '🇨🇦',
+  'China':               '🇨🇳',
+  'France':              '🇫🇷',
+  'Germany':             '🇩🇪',
+  'Greece':              '🇬🇷',
+  'Hong Kong':           '🇭🇰',
+  'India':               '🇮🇳',
+  'Ireland':             '🇮🇪',
+  'Italy':               '🇮🇹',
+  'Japan':               '🇯🇵',
+  'Malaysia':            '🇲🇾',
+  'Mexico':              '🇲🇽',
+  'Netherlands':         '🇳🇱',
+  'New Zealand':         '🇳🇿',
+  'Nigeria':             '🇳🇬',
+  'Peru':                '🇵🇪',
+  'Philippines':         '🇵🇭',
+  'Portugal':            '🇵🇹',
+  'Qatar':               '🇶🇦',
+  'Singapore':           '🇸🇬',
+  'South Africa':        '🇿🇦',
+  'South Korea':         '🇰🇷',
+  'Spain':               '🇪🇸',
+  'Sri Lanka':           '🇱🇰',
+  'Switzerland':         '🇨🇭',
+  'Taiwan':              '🇹🇼',
+  'Thailand':            '🇹🇭',
+  'Turkey':              '🇹🇷',
+  'UAE':                 '🇦🇪',
+  'United Arab Emirates':'🇦🇪',
+  'United Kingdom':      '🇬🇧',
+  'USA':                 '🇺🇸',
+};
 
 const _kFeatured = [
   _Airport(id: 'LHR', iata: 'LHR', name: 'London Heathrow', city: 'London', country: 'United Kingdom', flag: '🇬🇧', venueCount: 84),
@@ -72,6 +90,7 @@ class _ExploreScreenState extends State<ExploreScreen> with TickerProviderStateM
   final TextEditingController _searchCtrl = TextEditingController();
   final FocusNode _searchFocus = FocusNode();
   List<_Airport> _results = [];
+  List<_Airport> _allAirports = [];
   bool _hasQuery = false;
   final Map<String, int> _liveCounts = {};
 
@@ -100,6 +119,27 @@ class _ExploreScreenState extends State<ExploreScreen> with TickerProviderStateM
     _delayed(500, _ruleCtrl);
 
     _loadLiveCounts();
+    _loadAirports();
+  }
+
+  Future<void> _loadAirports() async {
+    final raw = await FirebaseService.getAllAirports();
+    if (!mounted) return;
+    final airports = raw.map((a) {
+      final code    = (a['code'] as String? ?? '').toUpperCase();
+      final country = a['country'] as String? ?? '';
+      return _Airport(
+        id:         code,
+        iata:       code,
+        name:       a['name']   as String? ?? code,
+        city:       a['city']   as String? ?? '',
+        country:    country,
+        flag:       _kCountryFlags[country] ?? '🌍',
+        venueCount: 0,
+      );
+    }).where((a) => a.id.isNotEmpty).toList()
+      ..sort((a, b) => a.name.compareTo(b.name));
+    setState(() => _allAirports = airports);
   }
 
   Future<void> _loadLiveCounts() async {
@@ -130,7 +170,7 @@ class _ExploreScreenState extends State<ExploreScreen> with TickerProviderStateM
       if (q.isEmpty) {
         _results = [];
       } else {
-        _results = _kAirports
+        _results = _allAirports
             .where((a) =>
                 a.name.toLowerCase().contains(q) ||
                 a.city.toLowerCase().contains(q) ||
