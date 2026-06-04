@@ -537,7 +537,11 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
                                         )),
                                   ],
                                   onChanged: _setSelectedFirebaseTerminal,
+                                ),
+                              ),
+                            ),
                             const SizedBox(height: 8),
+                          ],
                           Text('Search', style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 2.0, color: context.appMutedFg(0.40))),
                           const SizedBox(height: 5),
                           AnimatedContainer(

@@ -68,68 +68,6 @@ class _OutletFormData {
   };
 }
 
-class _OutletFormData {
-  final TextEditingController gateAreaController;
-  final TextEditingController levelController;
-  final TextEditingController locationNotesController;
-  final TextEditingController openingHoursController;
-  String airside;
-  bool? open247;
-  String takeaway;
-  String wheelchairAccessible;
-  bool? delivery;
-  bool? reservable;
-  bool? kidsMenu;
-
-  _OutletFormData({
-    String? gateArea,
-    String? level,
-    String? locationNotes,
-    String? airside,
-    bool? open247,
-    String? openingHours,
-    String? takeaway,
-    String? wheelchairAccessible,
-    bool? delivery,
-    bool? reservable,
-    bool? kidsMenu,
-  })  : gateAreaController       = TextEditingController(text: gateArea ?? ''),
-        levelController          = TextEditingController(text: level ?? ''),
-        locationNotesController  = TextEditingController(text: locationNotes ?? ''),
-        openingHoursController   = TextEditingController(text: openingHours ?? ''),
-        airside = (['airside', 'landside', 'both'].contains(airside?.toLowerCase())
-            ? airside!.toLowerCase() : 'airside'),
-        open247    = open247,
-        takeaway   = (['yes', 'no', 'only'].contains(takeaway?.toLowerCase())
-            ? takeaway!.toLowerCase() : ''),
-        wheelchairAccessible = (['yes', 'no', 'limited'].contains(wheelchairAccessible?.toLowerCase())
-            ? wheelchairAccessible!.toLowerCase() : ''),
-        delivery   = delivery,
-        reservable = reservable,
-        kidsMenu   = kidsMenu;
-
-  void dispose() {
-    gateAreaController.dispose();
-    levelController.dispose();
-    locationNotesController.dispose();
-    openingHoursController.dispose();
-  }
-
-  Map<String, dynamic> toMap() => {
-    'gate_area':             gateAreaController.text.trim(),
-    'airside':               airside,
-    'level':                 levelController.text.trim(),
-    'location_notes':        locationNotesController.text.trim(),
-    'open_24_7':             open247 ?? false,
-    'opening_hours':         openingHoursController.text.trim(),
-    'takeaway':              takeaway,
-    'wheelchair_accessible': wheelchairAccessible,
-    'delivery':              (delivery   ?? false) ? 'yes' : '',
-    'reservable':            (reservable ?? false) ? 'yes' : '',
-    'kids_menu':             (kidsMenu   ?? false) ? 'yes' : '',
-  };
-}
-
 class AdminRestaurantEditorScreen extends StatefulWidget {
   final String airportCode;
   final String terminalId;
