@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'services/chain_restaurant_service.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'firebase_options.dart';
@@ -28,6 +29,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await AppPreferences.instance.load();
+  ChainRestaurantService.loadAll(); // fire-and-forget; cached before first airport screen
   runApp(const MyApp());
 }
 

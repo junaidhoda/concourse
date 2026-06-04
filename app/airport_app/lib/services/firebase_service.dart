@@ -109,19 +109,73 @@ class FirebaseService {
 
   static String getAirportLocation(String airportCode) {
     const airportLocations = {
+      // Europe
       'LHR': 'London, United Kingdom',
       'LGW': 'London, United Kingdom',
-      'JFK': 'New York, United States',
-      'LAX': 'Los Angeles, United States',
-      'CDG': 'Paris, France',
-      'FRA': 'Frankfurt, Germany',
-      'SIN': 'Singapore',
-      'DXB': 'Dubai, United Arab Emirates',
-      'BKK': 'Bangkok, Thailand',
-      'IST': 'Istanbul, Turkey',
       'MAN': 'Manchester, United Kingdom',
       'BHX': 'Birmingham, United Kingdom',
+      'CDG': 'Paris, France',
+      'FRA': 'Frankfurt, Germany',
+      'MUC': 'Munich, Germany',
+      'IST': 'Istanbul, Turkey',
+      'AMS': 'Amsterdam, Netherlands',
+      'ATH': 'Athens, Greece',
+      'BRU': 'Brussels, Belgium',
+      'DUB': 'Dublin, Ireland',
+      'FCO': 'Rome, Italy',
+      'LIS': 'Lisbon, Portugal',
+      'MAD': 'Madrid, Spain',
+      'ZRH': 'Zurich, Switzerland',
+      // Middle East
+      'DXB': 'Dubai, United Arab Emirates',
+      'AUH': 'Abu Dhabi, United Arab Emirates',
+      'DOH': 'Doha, Qatar',
+      // North America
+      'JFK': 'New York, United States',
+      'LGA': 'New York, United States',
+      'LAX': 'Los Angeles, United States',
+      'ATL': 'Atlanta, United States',
+      'ORD': 'Chicago, United States',
+      'DFW': 'Dallas, United States',
+      'DEN': 'Denver, United States',
+      'SFO': 'San Francisco, United States',
+      'SEA': 'Seattle, United States',
+      'MIA': 'Miami, United States',
+      'BOS': 'Boston, United States',
+      'IAH': 'Houston, United States',
+      'LAS': 'Las Vegas, United States',
+      'MCO': 'Orlando, United States',
+      'YYZ': 'Toronto, Canada',
+      'YVR': 'Vancouver, Canada',
+      'MEX': 'Mexico City, Mexico',
+      // Asia
+      'SIN': 'Singapore',
+      'BKK': 'Bangkok, Thailand',
+      'HKG': 'Hong Kong',
+      'ICN': 'Seoul, South Korea',
+      'NRT': 'Tokyo, Japan',
+      'HND': 'Tokyo, Japan',
+      'KIX': 'Osaka, Japan',
+      'PKX': 'Beijing, China',
+      'CAN': 'Guangzhou, China',
+      'TPE': 'Taipei, Taiwan',
+      'KUL': 'Kuala Lumpur, Malaysia',
+      'MNL': 'Manila, Philippines',
+      'DEL': 'New Delhi, India',
+      'BOM': 'Mumbai, India',
+      'CMB': 'Colombo, Sri Lanka',
+      'HAN': 'Hanoi, Vietnam',
+      // South America
+      'GIG': 'Rio de Janeiro, Brazil',
+      'LIM': 'Lima, Peru',
+      // Africa
+      'LOS': 'Lagos, Nigeria',
+      'JNB': 'Johannesburg, South Africa',
+      // Oceania
+      'SYD': 'Sydney, Australia',
+      'MEL': 'Melbourne, Australia',
+      'WLG': 'Wellington, New Zealand',
     };
-    return airportLocations[airportCode] ?? 'Unknown Location';
+    return airportLocations[airportCode] ?? '';
   }
 }
