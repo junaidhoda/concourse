@@ -4,6 +4,69 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../services/admin_service.dart';
+import '../services/chain_restaurant_service.dart';
+
+class _OutletFormData {
+  final TextEditingController gateAreaController;
+  final TextEditingController levelController;
+  final TextEditingController locationNotesController;
+  final TextEditingController openingHoursController;
+  String airside;
+  bool? open247;
+  String takeaway;
+  String wheelchairAccessible;
+  bool? delivery;
+  bool? reservable;
+  bool? kidsMenu;
+
+  _OutletFormData({
+    String? gateArea,
+    String? level,
+    String? locationNotes,
+    String? airside,
+    bool? open247,
+    String? openingHours,
+    String? takeaway,
+    String? wheelchairAccessible,
+    bool? delivery,
+    bool? reservable,
+    bool? kidsMenu,
+  })  : gateAreaController       = TextEditingController(text: gateArea ?? ''),
+        levelController          = TextEditingController(text: level ?? ''),
+        locationNotesController  = TextEditingController(text: locationNotes ?? ''),
+        openingHoursController   = TextEditingController(text: openingHours ?? ''),
+        airside = (['airside', 'landside', 'both'].contains(airside?.toLowerCase())
+            ? airside!.toLowerCase() : 'airside'),
+        open247    = open247,
+        takeaway   = (['yes', 'no', 'only'].contains(takeaway?.toLowerCase())
+            ? takeaway!.toLowerCase() : ''),
+        wheelchairAccessible = (['yes', 'no', 'limited'].contains(wheelchairAccessible?.toLowerCase())
+            ? wheelchairAccessible!.toLowerCase() : ''),
+        delivery   = delivery,
+        reservable = reservable,
+        kidsMenu   = kidsMenu;
+
+  void dispose() {
+    gateAreaController.dispose();
+    levelController.dispose();
+    locationNotesController.dispose();
+    openingHoursController.dispose();
+  }
+
+  Map<String, dynamic> toMap() => {
+    'gate_area':             gateAreaController.text.trim(),
+    'airside':               airside,
+    'level':                 levelController.text.trim(),
+    'location_notes':        locationNotesController.text.trim(),
+    'open_24_7':             open247 ?? false,
+    'opening_hours':         openingHoursController.text.trim(),
+    'takeaway':              takeaway,
+    'wheelchair_accessible': wheelchairAccessible,
+    'delivery':              (delivery   ?? false) ? 'yes' : '',
+    'reservable':            (reservable ?? false) ? 'yes' : '',
+    'kids_menu':             (kidsMenu   ?? false) ? 'yes' : '',
+  };
+}
 
 class _OutletFormData {
   final TextEditingController gateAreaController;
@@ -89,13 +152,17 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
   final _cuisineController     = TextEditingController();
   final _descriptionController = TextEditingController();
   final _websiteController     = TextEditingController();
-  final _phoneController        = TextEditingController();
+  final _phoneController       = TextEditingController();
+  final _logoUrlController     = TextEditingController();
 
   String _selectedAmenity = 'restaurant';
 
   bool _isLoading = true;
   bool _isSaving  = false;
   String? _error;
+
+  List<Map<String, dynamic>> _allChains = [];
+  List<Map<String, dynamic>> _suggestions = [];
 
   bool _isVegan      = false;
   bool _isVegetarian = false;
@@ -110,6 +177,10 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
   @override
   void initState() {
     super.initState();
+    _nameController.addListener(_onNameChanged);
+    ChainRestaurantService.load().then((chains) {
+      if (mounted) setState(() => _allChains = chains);
+    });
     if (!_isNew) {
       _loadRestaurant();
     } else {
@@ -118,13 +189,34 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
     }
   }
 
+  void _onNameChanged() {
+    final results = ChainRestaurantService.search(_allChains, _nameController.text);
+    setState(() => _suggestions = results);
+  }
+
+  void _applyChain(Map<String, dynamic> chain) {
+    setState(() {
+      _nameController.text = chain['name'] as String;
+      _nameController.selection = TextSelection.collapsed(offset: _nameController.text.length);
+      final cuisines = chain['cuisine'] as List<dynamic>? ?? [];
+      if (cuisines.isNotEmpty) _cuisineController.text = cuisines.join(', ');
+      final desc = chain['description'] as String? ?? '';
+      if (desc.isNotEmpty) _descriptionController.text = desc;
+      final logo = chain['logo_url'] as String? ?? '';
+      if (logo.isNotEmpty) _logoUrlController.text = logo;
+      _suggestions = [];
+    });
+  }
+
   @override
   void dispose() {
+    _nameController.removeListener(_onNameChanged);
     _nameController.dispose();
     _cuisineController.dispose();
     _descriptionController.dispose();
     _websiteController.dispose();
     _phoneController.dispose();
+    _logoUrlController.dispose();
     for (final o in _outlets) o.dispose();
     super.dispose();
   }
@@ -157,6 +249,7 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
     _descriptionController.text = data['description'] as String? ?? '';
     _websiteController.text     = data['website']     as String? ?? '';
     _phoneController.text       = data['phone']       as String? ?? '';
+    _logoUrlController.text     = data['logo_url']    as String? ?? '';
     _selectedAmenity            = data['amenity']     as String? ?? 'restaurant';
 
     // Dietary — support both root-level strings and legacy dietary sub-map
@@ -221,6 +314,7 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
         'description': _descriptionController.text.trim(),
         'website':     _websiteController.text.trim(),
         'phone':       _phoneController.text.trim(),
+        'logo_url':    _logoUrlController.text.trim(),
         // Dietary
         'halal':              _isHalal      ? 'yes' : '',
         'vegetarian_options': _isVegetarian ? 'yes' : '',
@@ -360,7 +454,64 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
                               // ── Basic ──────────────────────
                               _SectionHeader(title: 'Basic Information'),
                               const SizedBox(height: 12),
+                              // Name with chain autocomplete
                               _field(context, controller: _nameController, label: 'Name', required: true),
+                              if (_suggestions.isNotEmpty)
+                                Container(
+                                  margin: const EdgeInsets.only(top: 2),
+                                  decoration: BoxDecoration(
+                                    color: appCardSurface(context),
+                                    borderRadius: BorderRadius.circular(3),
+                                    border: Border.all(color: kTeal.withValues(alpha: 0.35)),
+                                    boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.12), blurRadius: 8, offset: const Offset(0, 3))],
+                                  ),
+                                  child: Column(
+                                    children: _suggestions.map((chain) {
+                                      final name = chain['name'] as String;
+                                      final cuisines = (chain['cuisine'] as List<dynamic>? ?? []).join(', ');
+                                      final logoUrl = chain['logo_url'] as String? ?? '';
+                                      return InkWell(
+                                        onTap: () => _applyChain(chain),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                                          child: Row(
+                                            children: [
+                                              Container(
+                                                width: 36, height: 36,
+                                                margin: const EdgeInsets.only(right: 12),
+                                                decoration: BoxDecoration(
+                                                  color: kTeal.withValues(alpha: 0.06),
+                                                  borderRadius: BorderRadius.circular(3),
+                                                  border: Border.all(color: kGoldLight.withValues(alpha: 0.22)),
+                                                ),
+                                                clipBehavior: Clip.antiAlias,
+                                                child: logoUrl.isNotEmpty
+                                                    ? Image.network(
+                                                        logoUrl,
+                                                        fit: BoxFit.contain,
+                                                        errorBuilder: (_, __, ___) =>
+                                                            Icon(Icons.restaurant, size: 16, color: kTeal.withValues(alpha: 0.5)),
+                                                      )
+                                                    : Icon(Icons.restaurant, size: 16, color: kTeal.withValues(alpha: 0.5)),
+                                              ),
+                                              Expanded(
+                                                child: Column(
+                                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(name, style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface, fontWeight: FontWeight.w500)),
+                                                    if (cuisines.isNotEmpty)
+                                                      Text(cuisines, style: GoogleFonts.jost(fontSize: 11, color: context.appMutedFg(0.45))),
+                                                  ],
+                                                ),
+                                              ),
+                                              Icon(Icons.north_west_rounded, size: 13, color: kTeal.withValues(alpha: 0.6)),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
                               const SizedBox(height: 10),
                               Row(children: [
                                 Expanded(child: _amenityDropdown(context)),
@@ -369,6 +520,8 @@ class _AdminRestaurantEditorScreenState extends State<AdminRestaurantEditorScree
                               ]),
                               const SizedBox(height: 10),
                               _field(context, controller: _descriptionController, label: 'Description', maxLines: 3, hint: 'Brief description...'),
+                              const SizedBox(height: 10),
+                              _field(context, controller: _logoUrlController, label: 'Logo URL', hint: 'https://...', keyboard: TextInputType.url),
                               const SizedBox(height: 10),
                               _field(context, controller: _phoneController, label: 'Phone', keyboard: TextInputType.phone),
                               const SizedBox(height: 10),

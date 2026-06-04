@@ -1,0 +1,253 @@
+Total unique cuisines: 248
+Total chains with a cuisine: 479
+
+Count    Cuisine
+--------------------------------------------------
+25       Specialty Coffee
+16       Coffee & Café
+15       Mexican
+13       Fast Food
+11       Japanese / Sushi
+10       Burgers
+9        Pizza
+9        Market & Café
+8        Sandwiches
+6        Korean
+6        American Casual Dining
+6        Ice Cream
+6        Bakery
+5        Bar
+5        Italian Coffee
+5        Bubble Tea
+5        Fried Chicken
+5        Healthy Fast Casual
+4        Japanese Ramen
+4        Juice & Smoothies
+4        Filipino Fast Food
+4        Italian / Pizza
+3        Italian Café
+3        Bakery & Café
+3        Korean Fried Chicken
+3        French Café
+3        South Indian
+3        Mediterranean
+3        Convenience Store
+3        Sandwiches & Café
+3        Chinese
+3        Hot Dogs
+3        Korean Pork Cutlet
+3        Wine Bar
+3        Italian / Pasta
+3        Donuts & Coffee
+3        Japanese / Conveyor Belt Sushi
+3        Japanese Gyudon
+3        Steakhouse
+2        Korean Café
+2        Gelato
+2        Pretzels & Bakery
+2        Bar / Pub
+2        Filipino Coffee
+2        Craft Beer Bar
+2        French Bakery & Café
+2        Korean Street Food
+2        Chinese Tea
+2        Taiwanese Tea
+2        Chinese Fast Food
+2        Noodles
+2        Irish Pub
+2        BBQ
+2        Food Hall
+2        Indian
+2        French Bakery
+2        Middle Eastern
+2        Japanese
+2        Bagels
+2        Travel Retail & Café
+2        Korean Noodles
+2        Australian Deli & Café
+2        Colombian Coffee
+2        Cold-Pressed Juice
+2        German Bakery
+2        Thai
+2        Donuts
+2        French Patisserie
+2        French Luxury Café
+2        Seafood
+2        Frozen Yogurt
+2        Italian American
+2        Portuguese Chicken
+2        Tex-Mex
+2        Korean Bakery
+2        Singaporean Café
+2        Chicken Wings
+1        Chinese Noodles
+1        Fast Food / Root Beer
+1        Bar & Restaurant
+1        Korean Coffee & Café
+1        Asian Street Food
+1        Healthy Burgers
+1        Vietnamese
+1        American Gastrobar
+1        Coffee Bar
+1        American Artisan Cheese
+1        Spanish / Iberian
+1        Asian Noodles
+1        Indian Sweets & Snacks
+1        Bone Broth / Soups
+1        Wings & Sports Bar
+1        Burgers / Fast Food
+1        Irish Chocolate & Café
+1        Media / Pop-Up Food
+1        Cuban Café
+1        Austrian Coffeehouse
+1        British Café & Deli
+1        Italian
+1        Brazilian Snacks
+1        Indian Tea & Snacks
+1        Indian Chai & Snacks
+1        Chicken Fast Food
+1        Market & Italian Café
+1        Lebanese
+1        Swiss Confectionery
+1        Candy Store
+1        Casual Dining
+1        Bar / Craft Cocktails
+1        Korean / Pork Cutlet
+1        Indian / Curry
+1        Ice Cream & Fast Food
+1        Nashville Hot Chicken
+1        Italian Steakhouse
+1        American Diner
+1        Indian Street Food
+1        Taiwanese / Dim Sum
+1        Pizza Delivery
+1        South Indian / Asian
+1        Coffee & Donuts
+1        Italian Market & Restaurant
+1        Bagels & Café
+1        Mexican Bakery
+1        Vending
+1        Tea / Bubble Tea
+1        Healthy Vending
+1        Smoothies & Yogurt
+1        Spanish Café
+1        Gourmet Popcorn
+1        Healthy Smoothies
+1        Brazilian Fast Casual
+1        World Kitchen
+1        Chocolate & Café
+1        Craft Beer
+1        Travel Retail / Café
+1        Vegetarian / Asian
+1        British Bakery
+1        Indian / Gujarati
+1        Indian Snacks & Sweets
+1        Latin American / Empanadas
+1        American / Music Themed
+1        Bar / Restaurant
+1        Argentine Café & Confectionery
+1        Beer Bar
+1        German / Snacks
+1        Bakery & Desserts
+1        Chicago Pizza
+1        Travel Retail
+1        Bar / French
+1        Indonesian Noodles
+1        Smoothies & Juice
+1        Juice & Coffee
+1        Chinese / Seafood
+1        Indian Vegetarian
+1        French Café & Bakery
+1        Dutch Café / Market
+1        Spanish Tapas
+1        French Fine Dining
+1        French Brasserie
+1        Belgian Bakery & Café
+1        Chinese / Dumplings
+1        Healthy Fast Food
+1        Bakery / Pizza
+1        Coffee
+1        Turkish Dried Fruits & Nuts
+1        International Market-Style
+1        American / Caribbean
+1        Japanese Udon
+1        Chocolate Café
+1        Deli
+1        Grilled Cheese & Sandwiches
+1        Deli & Coffee
+1        Bakery / Cupcakes
+1        Healthy Casual Dining
+1        Chinese / Shanghai
+1        Bar / Cocktails
+1        Japanese Burgers
+1        Coffee Shop & Casual Dining
+1        Japanese Fast Food
+1        Healthy / Snacks
+1        Healthy / Plant-Based
+1        Dessert Café
+1        Gourmet Nuts & Popcorn
+1        Irish Sandwiches
+1        Singaporean Snacks
+1        Malaysian Café
+1        Café / Grab & Go
+1        Fast Food / Gourmet
+1        Asian Fusion
+1        Mexican Convenience Store
+1        Bar / Craft Beer
+1        Filipino Breakfast & American
+1        American Chinese
+1        Bakery Café
+1        Belgian Sandwiches
+1        Cajun Seafood
+1        Malaysian
+1        Malaysian Buns
+1        Chinese / Singaporean
+1        Korean Bakery & Café
+1        Italian Coffee & Café
+1        Malaysian / Penang
+1        Vietnamese Noodles
+1        Italian Pizza
+1        Filipino Flavoured Fries
+1        Fujian Chinese
+1        Latin American
+1        Chocolate & Candy
+1        Neapolitan Pizza
+1        Japanese Tonkatsu
+1        Mediterranean / Middle Eastern
+1        Bar / Italian
+1        Turkish Bakery
+1        American Comfort Food
+1        Chicken
+1        Smoothies
+1        American Breakfast
+1        Singaporean / Chinese
+1        Italian / Bar
+1        Australian Café
+1        International Street Food
+1        Ice Cream & Casual Dining
+1        Mexican Fast Food
+1        Healthy / Natural
+1        Coffee & Tea
+1        Singaporean / Malaysian
+1        Indian Desserts & Patisserie
+1        Dim Sum
+1        Snacks
+1        Native American
+1        Ribs & American
+1        Chinese / Hong Kong
+1        Gourmet Burgers
+1        British Sandwiches
+1        Italian Chocolate & Gelato
+1        Waffles & Desserts
+1        Japanese Noodles
+1        British Pub
+1        Café / Healthy
+1        German / Austrian Bakery
+1        Asian Stir-Fry
+1        American / International
+1        Asian Buns
+1        Indian / Momos
+1        Wraps & Fast Casual
+1        Indian-Mexican Fusion
+1        Malaysian Coffee
+1        Italian / Café

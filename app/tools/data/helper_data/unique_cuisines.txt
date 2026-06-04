@@ -1,0 +1,719 @@
+Total unique cuisines: 714
+Total restaurants with a cuisine: 2051
+
+Count    Cuisine
+--------------------------------------------------
+59       Coffee Shop
+40       Korean
+39       Italian
+35       Grab & Go
+33       Craft Beer Bar
+33       Bar
+32       Mexican
+30       Japanese
+27       Burgers
+24       Japanese Sushi
+22       Thai
+21       Specialty Coffee
+20       International
+20       Japanese Ramen
+19       American
+19       Pizza
+17       Cocktail Bar
+15       Food Hall
+14       Indian
+14       Bakery & Cafe
+14       Wine Bar
+14       Ice Cream
+13       Juice Bar
+13       Chinese
+13       American Bar
+13       Café
+12       Japanese Tonkatsu
+11       Cafe
+11       British Pub
+11       Irish Pub
+11       Sports Bar
+11       Cantonese
+10       Middle Eastern
+10       Lounge
+10       Market & Deli
+10       French Bakery
+10       Vietnamese
+10       Coffee
+9        Fast Food
+9        Mediterranean
+9        American Bar & Grill
+9        Taiwanese
+8        International Bar
+8        Indian Street Food
+8        South Indian
+8        Vending
+8        Chinese Noodles
+8        Sandwiches
+8        Italian Pizza
+7        Lebanese
+7        Coffee Bar
+7        Deli
+7        Asian
+7        Indian & International
+7        Coffee & Tea
+7        Healthy & Fresh
+7        Spanish
+7        Italian Cafe
+7        Asian Noodles
+7        Spanish Tapas
+7        German Bakery
+7        Malaysian
+7        Bar & Lounge
+7        Gourmet Burgers
+6        Italian Bar
+6        International Cafe
+6        Greek
+6        Seafood
+6        American Grill
+6        Texas BBQ
+6        Irish & International
+6        German
+6        Korean Street Food
+6        Peruvian
+6        Chinese Dumplings
+6        Filipino Bakery
+5        Latin American
+5        Coffee Kiosk
+5        American BBQ
+5        Healthy & Organic
+5        Chocolate & Desserts
+5        Italian Wine Bar
+5        German Cafe
+5        Bar & Snacks
+5        Market & Grab & Go
+5        Korean Noodles
+5        Japanese Izakaya
+5        Gourmet Market
+5        Filipino Café
+5        Singaporean
+4        Coffee & Cafe
+4        Bakery
+4        American Pub
+4        Italian Deli
+4        American Bistro
+4        Belgian Cafe
+4        Steakhouse
+4        Tea & Coffee
+4        French Crepes
+4        American Sports Bar
+4        South Asian
+4        Bar & Grill
+4        Snack Bar
+4        Coffee & Bar
+4        Hong Kong Cafe
+4        French Patisserie
+4        Bagels & Deli
+4        Korean Soups
+4        Pan-Asian
+4        Caribbean
+4        Italian American
+4        Portuguese Coffee
+4        Spanish Bakery
+4        Australian
+4        Convenience & Snacks
+4        Deli & Café
+4        Mexican Tacos
+4        Filipino Canteen
+4        Chinese Filipino
+4        Milk Tea
+4        Bavarian Biergarten
+4        Japanese Café
+4        Japanese Teppanyaki
+4        Healthy Café
+4        Artisan Bakery
+4        Singapore Kopitiam
+4        Bubble Tea
+4        Swiss International
+4        Swiss Café
+3        Healthy & Cafe
+3        Greek Fast Food
+3        Bar & Cafe
+3        Greek Bakery
+3        Indian Vegetarian
+3        Healthy & Salads
+3        Bakery & Desserts
+3        French Cafe
+3        Bakery & Coffee
+3        American Steakhouse
+3        Gourmet Deli
+3        Jewish Deli
+3        Desserts & Cafe
+3        Turkish
+3        Street Food
+3        Gulf Arabic
+3        Fried Chicken
+3        International Bistro
+3        Italian Bakery
+3        Brazilian Bar
+3        Healthy Bowls
+3        Shanghainese
+3        Tea Bar
+3        Korean BBQ
+3        Korean Bakery
+3        Korean Fried Chicken
+3        Turkish Cafe
+3        Cocktail Lounge
+3        Bagels
+3        Healthy & Juices
+3        Confectionery
+3        Japanese Udon
+3        Japanese Curry
+3        Japanese Seafood
+3        Malaysian & International
+3        Hawaiian Poke
+3        American Cafe
+3        British Bar
+3        American Diner
+3        Spanish Charcuterie
+3        Australian Cafe
+3        Café Bar
+3        Cuban
+3        Neapolitan Pizza
+3        Filipino
+3        Filipino Snacks
+3        Rotisserie Chicken
+3        Bakery & Café
+3        Japanese Coffee
+3        Italian Café
+3        Bavarian
+3        Japanese Sweets
+3        Italian Fine Dining
+3        Mexican Fast Casual
+3        Chicago Market
+3        Vegetarian
+3        Pacific Northwest
+3        Singaporean Noodles
+3        Singapore Hawker
+3        Premium Tea
+3        Taiwanese Desserts
+2        Indian & Asian
+2        Coffee & Bakery
+2        Greek Cafe
+2        Gelato
+2        British
+2        Thai Desserts
+2        Tea & Desserts
+2        Thai Street Food
+2        Indian Grill
+2        Belgian
+2        Belgian Beer Bar
+2        Chinese Fast Food
+2        French Bistro
+2        Tea & Snacks
+2        Doughnuts & Coffee
+2        Vegetarian & Global
+2        Breakfast & Brunch
+2        Hot Dogs
+2        Juice & Smoothies
+2        Texas Bar
+2        Tex-Mex
+2        Cafe & Dairy
+2        Gourmet Cafe
+2        Chinese Dim Sum
+2        Whiskey Bar
+2        Emirati
+2        Yemeni
+2        Italian Coffee Bar
+2        Craft Beer & Grill
+2        British Cafe
+2        Coffee & Snacks
+2        Brazilian
+2        Snack Kiosk
+2        Hong Kong Bakery
+2        Cantonese Noodles
+2        Portuguese Bakery
+2        Dim Sum
+2        Japanese Desserts
+2        Southeast Asian
+2        Korean Cafe
+2        Korean Sandwiches
+2        Korean Snacks
+2        Korean Regional
+2        Coffee & Desserts
+2        Korean & Asian
+2        Turkish Kebab
+2        Italian Sandwiches
+2        New York Deli
+2        Deli & Cafe
+2        Japanese Regional
+2        Japanese Tempura
+2        Japanese Soba
+2        Japanese Street Food
+2        Malaysian Cafe
+2        British Bar & Grill
+2        Healthy Salads
+2        French Brasserie
+2        Portuguese & International
+2        Portuguese Pastry
+2        Portuguese Cafe
+2        Spanish Bar
+2        Spanish Cafe
+2        Spanish Deli
+2        Spanish Fast Food
+2        Southern & Craft Beer
+2        Market & Farm-to-Table
+2        Doughnuts
+2        Australian Coffee Bar
+2        Mexican Health Food
+2        Mexican Street Food
+2        Mexican Bar
+2        Wings & Beer
+2        Mexican Fast Food
+2        Healthy Grab & Go
+2        Italian Fast Food
+2        Mexican Tortas
+2        Cuban American
+2        Modern Café
+2        American Casual
+2        Filipino Pastry
+2        Filipino Dumplings
+2        Desserts & Cakes
+2        Fine Dining
+2        Japanese Rice Bowls
+2        Japanese Fine Dining
+2        Japanese BBQ
+2        American Café
+2        Craft Beer Pub
+2        American Tavern
+2        Chinese Peking Duck
+2        Hong Kong Cantonese
+2        Chinese Home Style
+2        Chinese Tea
+2        Chinese Pastry
+2        Chinese Hot Pot
+2        Italian Coffee
+2        French Café
+2        Themed Café
+2        Sichuan Chinese
+2        Hong Kong Café
+2        Modern Australian
+2        Asian Fusion
+2        Taiwanese Café
+2        Taiwanese Tea
+2        Taiwanese Fried Chicken
+2        Café & Market
+2        Swiss Bakery
+2        Swiss Bar
+2        Swiss Confectionery
+1        Seafood & Wine
+1        Dutch Cafe
+1        Dutch Bar
+1        Dutch
+1        Asian Bar
+1        Italian & Cafe
+1        Greek Snacks
+1        Thai Cafe
+1        Bakery & Pies
+1        Halal
+1        Whisky Bar
+1        Burgers & Tacos
+1        Bakery & Tea Room
+1        Indian Fast Food
+1        Indian Cafe
+1        Indian Snacks
+1        Indian Breakfast
+1        Turkish & Middle Eastern
+1        Indian Egg Dishes
+1        Craft Spirits Bar
+1        Irish American Pub
+1        Southern BBQ
+1        Belgian Bistro
+1        Belgian Chocolate
+1        Cantonese Seafood
+1        French
+1        French Fine Dining
+1        French Bar
+1        Japanese French
+1        Sri Lankan & International
+1        Sri Lankan
+1        Sri Lankan Snacks
+1        Indo-Chinese
+1        Indian Biryani
+1        Indian Chai & Cafe
+1        Indian Sports Bar
+1        South Indian & Asian
+1        Gujarati Vegetarian
+1        South Indian Coffee
+1        Indian Desserts
+1        BBQ & Sports Bar
+1        Modern Asian
+1        Desserts & Bar
+1        Argentinian
+1        American Farm-to-Table
+1        Burgers & Bar
+1        Coffee & Craft Beer
+1        Bar & Market
+1        Qatari & Middle Eastern
+1        Qatari
+1        British Tea Room
+1        Luxury French
+1        Coffee & Chocolate
+1        Steakhouse & Grill
+1        Middle Eastern Cafe
+1        Desserts & Sweets
+1        Cafe & Co-working
+1        Irish Coffee & Tea
+1        Irish
+1        Craft Beer & Coffee
+1        Modern Irish
+1        Irish Cafe
+1        Irish Bar
+1        Irish Bakery
+1        Arabic
+1        Syrian
+1        Gulf & Arabic
+1        Tea & Cafe
+1        South Asian Cafe
+1        Persian
+1        Arabic Cafe
+1        Indian Punjabi
+1        Moroccan
+1        South Indian Vegetarian
+1        Gulf Seafood
+1        Arabic Bakery
+1        Gin Bar
+1        Italian Bistro
+1        Gelato & Chocolate
+1        Japanese Brazilian
+1        Asian Street Food
+1        Coffee & Beer Bar
+1        German Bar
+1        Burgers & Grill
+1        Healthy & Breakfast
+1        Kosher
+1        Deli & Coffee
+1        Italian Gelato
+1        Craft Beer & German
+1        Brazilian Bakery
+1        Brazilian & International
+1        Japanese & Middle Eastern
+1        Brazilian BBQ
+1        Brazilian Fast Food
+1        Chinese Herbal Tea
+1        Cantonese Roast Meats
+1        Market & International
+1        Southern Soul Food
+1        American Fast Food
+1        Gelato & Desserts
+1        Korean Seafood
+1        Korean Food Hall
+1        Middle Eastern Halal
+1        Brazilian Healthy
+1        Korean Bowls
+1        Korean Healthy
+1        Korean Bar
+1        Turkish Desserts
+1        Turkish & International
+1        Organic & Healthy
+1        Turkish Bakery
+1        Turkish Bar
+1        Turkish Tea House
+1        American Bakery
+1        German Beer Garden
+1        European Cafe
+1        American Southern
+1        Chinese Bar
+1        Pizza & Bar
+1        Italian Pizza & Wine
+1        Korean Ramen
+1        South African
+1        Cafe & Deli
+1        South African & International
+1        Chinese Japanese
+1        Japanese Cafe & Bar
+1        Japanese & International
+1        Japanese Matcha Cafe
+1        Mediterranean Cafe
+1        Japanese Osaka
+1        Japanese Bakery Cafe
+1        European Brasserie
+1        Japanese Soups
+1        Malaysian Fusion
+1        Malaysian Noodles
+1        Sandwiches & Cafe
+1        Malaysian Kopitiam
+1        Malaysian Kueh
+1        Malaysian Snacks
+1        Japanese Bakery
+1        Bar & Gaming
+1        Tequila Bar
+1        Sandwiches & Bakery
+1        Bagels & Bakery
+1        Gourmet Sandwiches
+1        Chinese American
+1        California Cafe
+1        Mexican Seafood
+1        British Bakery
+1        Wine Bar & Bistro
+1        British Breakfast
+1        British Luxury
+1        French Luxury Cafe
+1        Cheese & Coffee
+1        New York Multi-Concept
+1        Bagels & Asian
+1        American Snacks
+1        Burgers & Breakfast
+1        Italian Market
+1        Kosher Mexican
+1        New York Bar
+1        Bagels & Ramen
+1        Craft Beer & Wine Bar
+1        Peruvian Seafood
+1        Peruvian Asian
+1        Peruvian Bar
+1        Peruvian Bakery
+1        Peruvian Burgers
+1        Peruvian Chicken
+1        Peruvian Cafe
+1        Nikkei Japanese
+1        Peruvian Grab & Go
+1        Grab & Go Cafe
+1        French Luxury
+1        Portuguese Bistro
+1        Portuguese
+1        Italian & Portuguese Bakery
+1        Portuguese Market
+1        Sandwiches & Snacks
+1        Bar & International
+1        Desserts & Coffee
+1        Healthy & Vegetarian
+1        Japanese Spanish
+1        Italian Truffle
+1        French Rotisserie
+1        Spanish Pastry
+1        Spanish Grill
+1        Spanish Mediterranean
+1        Spanish Confectionery
+1        Frozen Yogurt
+1        Coffee & Brunch
+1        British Sports Bar
+1        British Brasserie
+1        British Cafe & Bar
+1        Smoothies & Frozen Yogurt
+1        American & Craft Beer
+1        Healthy & Smoothies
+1        Hotel Bar
+1        Craft Beer & Southern
+1        Italian Grab & Go
+1        Mediterranean Grab & Go
+1        Australian Sports Bar
+1        Australian & International
+1        Burgers & Fried Chicken
+1        Sandwiches & Salads
+1        Australian Burgers
+1        Italian Australian
+1        Australian Deli
+1        Australian Bakery
+1        Australian Schnitzel
+1        Australian Specialty Coffee
+1        Australian Wine Bar
+1        Australian Bar
+1        Australian Gourmet Deli
+1        Coffee & Drinks
+1        Mexican Bakery
+1        Café & Bakery
+1        Yucatecan Mexican
+1        French Deli
+1        Mexican Italian
+1        Vegetarian & Vegan
+1        Mexican Pastry
+1        Chicken Wings
+1        Mexican Chocolate
+1        Bakery Café
+1        Haitian Creole
+1        New York Pizza
+1        Farm-to-Table Café
+1        Soul Food
+1        Coffee & Bagels
+1        Burgers & Burritos
+1        Filipino Western
+1        Filipino Lechon
+1        Fruit Shakes
+1        Bar & Spirits
+1        Noodles
+1        Filipino Congee
+1        Filipino Fast Food
+1        Philippine Coffee
+1        Filipino Italian
+1        Asian Snacks
+1        Filipino Grill
+1        Filipino Street Food
+1        BBQ & Japanese
+1        Filipino Breakfast
+1        International Street Food
+1        Bavarian Brewery
+1        Bavarian Bar
+1        Bavarian Snacks
+1        Italian Snacks
+1        Lounge Bar
+1        German Deli
+1        German Gourmet
+1        German Bistro
+1        Prosecco Bar
+1        Bavarian Gourmet
+1        Bavarian Casual
+1        Asian Seafood Fusion
+1        Austrian Bavarian
+1        Austrian Bar
+1        Austrian Alpine
+1        Steakhouse & Seafood
+1        European Fine Dining
+1        Austrian Sausages
+1        Japanese Okonomiyaki
+1        Japanese Beef Cutlet
+1        Steakhouse & Wine
+1        Japanese Kushikatsu
+1        Japanese Gyoza
+1        Japanese Western
+1        Vegan Japanese
+1        Japanese Fast Food
+1        Japanese Bar
+1        Smoothies & Salads
+1        German American
+1        Champagne Bar
+1        Chicago Classics
+1        Popcorn & Snacks
+1        Healthy Market
+1        Chicago Pizza
+1        American Eclectic
+1        Jazz Bar
+1        Snacks & Nuts
+1        Irish American
+1        Healthy Fast Casual
+1        American Burgers
+1        Chicago Deep Dish
+1        Salads
+1        California Casual
+1        Coastal American
+1        Milk Tea & Fruit
+1        Peking Duck
+1        Northwest Chinese
+1        Chinese Barbecue
+1        African Bar
+1        Breakfast
+1        Craft Beer Hall
+1        Chocolate & Coffee
+1        Whiskey & Grill
+1        Pacific Northwest Seafood
+1        Bubble Tea & Coffee
+1        Craft Beer
+1        Pacific Northwest Market
+1        Seattle Hot Dogs
+1        American Comfort Food
+1        Global Eclectic
+1        Tea & Drinks
+1        Acai & Health Food
+1        Artisan Gelato
+1        Chinese Desserts
+1        Singaporean Western
+1        Chinese Herbal
+1        Grill & Fusion
+1        Western Seafood
+1        Hakka Chinese
+1        Western Café
+1        Specialty Tea
+1        Western Steakhouse
+1        Grill
+1        Hong Kong Roast Meats
+1        Patisserie
+1        Cantonese Congee
+1        Seafood Rolls
+1        Thai Fast Casual
+1        Thai & Bar
+1        Cheese Desserts
+1        Coconut Drinks
+1        Pancakes & Desserts
+1        Singaporean Dim Sum
+1        Bakery & Cookies
+1        Japanese Patisserie
+1        Singapore Porridge
+1        French Café & Desserts
+1        Bar & Casual Dining
+1        Cantonese Fine Dining
+1        French Chicken
+1        Malaysian Bakery
+1        Japanese Family Dining
+1        Singapore Seafood
+1        Singaporean Chinese
+1        Desserts
+1        Singaporean Hainanese
+1        Singaporean Bakery
+1        Singapore Satay
+1        Asian Desserts
+1        Singapore Bar
+1        Singaporean Snacks
+1        Japanese Snacks
+1        Cantonese Dim Sum
+1        Chinese Braised Meats
+1        Japanese Wagyu
+1        Singaporean Chicken Rice
+1        Western Grill
+1        Yunnan Chinese
+1        Australian Bistro
+1        Italian Mediterranean
+1        Australian Pub
+1        Portuguese Chicken
+1        Pies
+1        Juice & Coffee
+1        Australian Craft Beer
+1        Salads & Bowls
+1        Italian Café Bar
+1        Taiwanese Western
+1        Chinese Herbal Soup
+1        Taiwanese Asian
+1        Sichuan Noodles
+1        Australian Café
+1        Fujianese Noodles
+1        Taiwanese Beef Noodles
+1        Taiwanese Noodles
+1        Taiwanese Home Style
+1        Taiwanese Braised
+1        Taiwanese Seafood
+1        Taiwanese Pastry
+1        Pizza & Café
+1        Taiwanese Chinese
+1        Bak Kut Teh
+1        Taiwanese Lamb
+1        Taiwanese Sweets
+1        Taiwanese Bakery
+1        Tea
+1        Curry
+1        Taiwanese Hot Pot
+1        Vegetarian Taiwanese
+1        Taiwanese Soup
+1        Taiwanese BBQ
+1        Taiwanese Fast Food
+1        Café & Deli
+1        New Zealand Bar
+1        Canadian Café
+1        Canadian Pub
+1        Japanese Hot Dogs
+1        Canadian Bar & Grill
+1        Canadian Market
+1        Fish & Chips
+1        Organic Health Food
+1        Indigenous Canadian
+1        Canadian Bar
+1        Canadian Diner
+1        Italian Fast Casual
+1        Smoothies & Juice
+1        British Café
+1        Canadian Grill
+1        Canadian Comfort Food
+1        Wine & Beer Bar
+1        Lebanese Shawarma
+1        Poutine
+1        Thai Fast Food
+1        Southern Fried Chicken
+1        Canadian
+1        Global Fusion
+1        Fine Seafood
+1        Swiss Alpine
+1        Swiss Sausages

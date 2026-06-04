@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:palette_generator/palette_generator.dart';
 import '../theme/app_theme.dart';
 import 'airport_detail_screen.dart';
 
@@ -23,12 +24,31 @@ class RestaurantDetailScreen extends StatefulWidget {
 class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
     with SingleTickerProviderStateMixin {
   late final TabController _tabCtrl;
+  Color? _heroBgColor;
 
   @override
   void initState() {
     super.initState();
     _tabCtrl = TabController(length: 2, vsync: this);
     _tabCtrl.addListener(() => setState(() {}));
+    if (widget.restaurant.logoUrl.isNotEmpty) _extractPaletteColor();
+  }
+
+  Future<void> _extractPaletteColor() async {
+    try {
+      final palette = await PaletteGenerator.fromImageProvider(
+        NetworkImage(widget.restaurant.logoUrl),
+        size: const Size(100, 100),
+      );
+      final color = palette.vibrantColor?.color
+          ?? palette.darkVibrantColor?.color
+          ?? palette.dominantColor?.color;
+      if (color != null && mounted) {
+        // Darken so it works as a dark hero background
+        final hsl = HSLColor.fromColor(color);
+        setState(() => _heroBgColor = hsl.withLightness((hsl.lightness * 0.4).clamp(0.05, 0.35)).toColor());
+      }
+    } catch (_) {}
   }
 
   @override
@@ -132,30 +152,34 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                       child: _backButton(context),
                     ),
                   ),
-                  title: Text(
-                    r.name,
-                    style: GoogleFonts.cormorant(fontSize: 18, fontWeight: FontWeight.w600, color: context.appOnSurface, letterSpacing: 0.2),
-                  ),
                   flexibleSpace: LayoutBuilder(
                     builder: (context, constraints) {
                       final topPadding = MediaQuery.of(context).padding.top;
                       final expandedMax = 260.0 + topPadding;
                       final collapsedMin = kToolbarHeight + topPadding;
                       final t = ((expandedMax - constraints.maxHeight) / (expandedMax - collapsedMin)).clamp(0.0, 1.0);
-                      final textOpacity = (1.0 - t * 2.0).clamp(0.0, 1.0);
+                      final textOpacity  = (1.0 - t * 2.0).clamp(0.0, 1.0);
+                      final titleOpacity = ((t - 0.5) * 2.0).clamp(0.0, 1.0);
 
                       return Stack(
                         fit: StackFit.expand,
                         clipBehavior: Clip.none,
                         children: [
-                          // Hero background
-                          Container(
-                            decoration: const BoxDecoration(
+                          // Hero background — tinted by logo palette when available
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 500),
+                            decoration: BoxDecoration(
                               gradient: LinearGradient(
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
-                                colors: [Color(0xFF0A2530), Color(0xFF0F3D4E), Color(0xFF0A2530)],
-                                stops: [0.0, 0.5, 1.0],
+                                colors: _heroBgColor != null
+                                    ? [
+                                        Color.lerp(_heroBgColor!, const Color(0xFF0A2530), 0.3)!,
+                                        _heroBgColor!,
+                                        Color.lerp(_heroBgColor!, const Color(0xFF0A2530), 0.3)!,
+                                      ]
+                                    : const [Color(0xFF0A2530), Color(0xFF0F3D4E), Color(0xFF0A2530)],
+                                stops: const [0.0, 0.5, 1.0],
                               ),
                             ),
                           ),
@@ -174,19 +198,22 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                               ),
                             ),
                           ),
-                          // Centred icon
-                          Center(
-                            child: Container(
-                              width: 80, height: 80,
-                              decoration: BoxDecoration(
-                                color: Colors.black.withValues(alpha: 0.25),
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: kTeal.withValues(alpha: 0.35)),
-                                boxShadow: [BoxShadow(color: kTeal.withValues(alpha: 0.12), blurRadius: 20, spreadRadius: 2)],
+                          // Logo fills hero / falls back to centred icon
+                          if (r.logoUrl.isNotEmpty)
+                            Positioned.fill(
+                              child: Padding(
+                                padding: const EdgeInsets.fromLTRB(48, 24, 48, 72),
+                                child: Image.network(
+                                  r.logoUrl,
+                                  fit: BoxFit.contain,
+                                  errorBuilder: (_, __, ___) => Center(
+                                    child: Icon(_cuisineIcon, size: 48, color: kTeal),
+                                  ),
+                                ),
                               ),
-                              child: Icon(_cuisineIcon, size: 36, color: kTeal),
-                            ),
-                          ),
+                            )
+                          else
+                            Center(child: Icon(_cuisineIcon, size: 48, color: kTeal)),
                           // Bottom fade into scaffold
                           Positioned(
                             bottom: 0, left: 0, right: 0,
@@ -235,6 +262,31 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                                         style: GoogleFonts.cormorant(fontSize: 16, fontWeight: FontWeight.w400, color: kTeal, letterSpacing: 0.6),
                                       ),
                                   ],
+                                ),
+                              ),
+                            ),
+                          // Collapsed title — fades in after hero text has gone
+                          if (titleOpacity > 0)
+                            Positioned(
+                              top: topPadding,
+                              left: 56,
+                              right: 56,
+                              height: kToolbarHeight,
+                              child: Opacity(
+                                opacity: titleOpacity,
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    r.name,
+                                    style: GoogleFonts.cormorant(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: context.appOnSurface,
+                                      letterSpacing: 0.2,
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ),
                               ),
                             ),
