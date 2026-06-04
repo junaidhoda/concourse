@@ -1,0 +1,63 @@
+name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
+Nusr-Et,Main Terminal,restaurant,,2,,41.2618709,28.7449587,,,,,,,,13202550524,node
+Arby's,Main Terminal,fast_food,,1,sandwich,41.262172,28.7380821,,,,,,yes,Arby's,6787508047,node
+Brewmark,Main Terminal,restaurant,,2,,41.2617281,28.746483,,,,,,,,6794085815,node
+Burger King,Main Terminal,fast_food,,1,burger,41.2631012,28.7474822,,,,,yes,yes,Burger King,9032700217,node
+Caffè Nero,Main Terminal,cafe,,1,coffee_shop,41.2647937,28.7486698,,,,,yes,yes,Caffè Nero,11200644977,node
+Carl's Jr.,Main Terminal,fast_food,,3,burger,41.2620507,28.7403209,,,,24/7,yes,only,Carl's Jr.,7068105744,node
+Carluccio's,Main Terminal,restaurant,,2,italian,41.2610804,28.7408463,,,,,,,,13202550550,node
+Cups & Clouds,Main Terminal,cafe,,2,coffee_shop,41.261915,28.7463169,,,,,,yes,,11463713309,node
+gram,Main Terminal,cafe,,2,,41.2624641,28.7387454,,,,,yes,,,11200644969,node
+McDonald's,Main Terminal,fast_food,,3,burger,41.2619669,28.7396085,,+90 444 6262,https://www.mcdonalds.com.tr/,24/7,yes,only,McDonald's,12328378344,node
+mvnch,Main Terminal,fast_food,,2,,41.2616994,28.74098,,,,,,,,13202550522,node
+Pidem,Main Terminal,fast_food,,,,41.2622586,28.7399106,,,,,,,,8517883719,node
+Pierre Hermes,Main Terminal,cafe,,2,,41.2623522,28.7446148,,,,,yes,,,11200644970,node
+Pizzeria Enzo,Main Terminal,fast_food,,2,pizza,41.2626379,28.7387668,,,,,yes,yes,,11200644967,node
+Popeyes,Main Terminal,fast_food,,3,chicken,41.2621766,28.7403199,,+90 444 7677,https://www.popeyes.com.tr/,24/7,yes,only,Popeyes,12328378345,node
+Refresh,Main Terminal,ice_cream,,2,,41.2611548,28.7406022,,,,,,,,13202550549,node
+Sbarro,Main Terminal,fast_food,,3,pizza,41.2622273,28.7401525,,,https://www.sbarro.com.tr/,24/7,yes,only,Sbarro,9275086817,node
+Shake Shack,Main Terminal,fast_food,,2,burger,41.2610963,28.7410006,,,,,,yes,Shake Shack,13202550551,node
+Simit Sarayı,Main Terminal,fast_food,,1,,41.2582866,28.7366934,,,,24/7,yes,yes,Simit Sarayı,12335581397,node
+Slim Chicken's,Main Terminal,fast_food,,2,chicken,41.2611122,28.7411365,,,,,,,,13202550552,node
+Starbucks,Main Terminal,cafe,,1,coffee_shop,41.2623429,28.7467897,,,,,yes,yes,Starbucks,6787456752,node
+Subway,Main Terminal,fast_food,,3,sandwich,41.2622268,28.7400378,,,https://www.subway.com/tr-TR/,24/7,yes,only,Subway,9275086818,node
+The Gang Foods,Main Terminal,fast_food,,3,,41.2622263,28.7399231,,,,24/7,yes,only,,12328378346,node
+The House Cafe,Main Terminal,cafe,,2,,41.26238,28.7456969,,,,,yes,,,11200644972,node
+Tickerdaze,Main Terminal,restaurant,,2,,41.2613054,28.7391028,,,,,,,,6789315797,node
+TRT World Cafe,Main Terminal,cafe,,2,,41.261493,28.7435708,,,,,yes,,,6794082490,node
+Vivanda Burger,Main Terminal,fast_food,,2,burger,41.262626,28.739086,,,,,yes,,,11200644968,node
+YO! Sushi,Main Terminal,restaurant,,2,sushi,41.2621864,28.7394748,,,,,,,YO! Sushi,6794055530,node
+Avenue Bistro Bar,Main Terminal,restaurant,,,,,,,,,,,,,,
+Backhaus,Main Terminal,cafe,,,,,,,,,,,,,,
+Bi Bar,Main Terminal,bar,,,,,,,,,,,,,,
+Bi Coffee,Main Terminal,cafe,,,,,,,,,,,,,,
+Bi Coffee & Bi Bar,Main Terminal,cafe,,,,,,,,,,,,,,
+Bite,Main Terminal,restaurant,,,,,,,,,,,,,,
+Bottega Bosphorus,Main Terminal,restaurant,,,,,,,,,,,,,,
+Cafe Yanımda,Main Terminal,cafe,,,,,,,,,,,,,,
+Carls Cafe,Main Terminal,cafe,,,,,,,,,,,,,,
+Carluccio's Bar,Main Terminal,bar,,,,,,,,,,,,,,
+Çay Saati,Main Terminal,cafe,,,,,,,,,,,,,,
+Chocnette,Main Terminal,fast_food,,,,,,,,,,,,,,
+Cuisine Anatolia,Main Terminal,restaurant,,,turkish,,,,,,,,,,,
+Deli Aux Pain,Main Terminal,cafe,,,,,,,,,,,,,,
+Eat & Joy,Main Terminal,restaurant,,,,,,,,,,,,,,
+Enva,Main Terminal,restaurant,,,,,,,,,,,,,,
+Godiva,Main Terminal,cafe,,,,,,,,,,,,,,
+HD Döner,Main Terminal,fast_food,,,kebab,,,,,,,,,,,
+HighBorn Coffee,Main Terminal,cafe,,,coffee_shop,,,,,,,,,,,
+Jackie's,Main Terminal,restaurant,,,,,,,,,,,,,,
+Kaimakk,Main Terminal,restaurant,,,,,,,,,,,,,,
+Komyuniti Bar & Restaurant,Main Terminal,bar,,,,,,,,,,,,,,
+Loba Coffee,Main Terminal,cafe,,,,,,,,,,,,,,
+Malatya Pazarı,Main Terminal,fast_food,,,,,,,,,,,,,,
+Max Brenner,Main Terminal,cafe,,,,,,,,,,,,,,
+Mood Up,Main Terminal,restaurant,,,,,,,,,,,,,,
+Obica,Main Terminal,restaurant,,,italian,,,,,,,,,,,
+Paşa Döner,Main Terminal,fast_food,,,kebab,,,,,,,,,,,
+Rey Food & Drink,Main Terminal,restaurant,,,,,,,,,,,,,,
+Rey Organic,Main Terminal,restaurant,,,,,,,,,,,,,,
+Seferi,Main Terminal,restaurant,,,,,,,,,,,,,,
+Via Bakery,Main Terminal,cafe,,,,,,,,,,,,,,
+Via Fıçı,Main Terminal,bar,,,,,,,,,,,,,,
+Via Kiosk,Main Terminal,cafe,,,,,,,,,,,,,,

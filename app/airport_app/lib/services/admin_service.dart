@@ -19,6 +19,27 @@ class AdminService {
 
   // ── Airports ────────────────────────────────────────────────
 
+  static Future<Map<String, dynamic>?> getAirportDetails(String airportSlug) async {
+    try {
+      final doc = await _firestore.collection('airports').doc(airportSlug).get();
+      if (!doc.exists) return null;
+      return {'id': doc.id, ...doc.data()!};
+    } catch (e) {
+      print('Error fetching airport details: $e');
+      return null;
+    }
+  }
+
+  static Future<bool> updateAirport(String airportSlug, Map<String, dynamic> data) async {
+    try {
+      await _firestore.collection('airports').doc(airportSlug).update(data);
+      return true;
+    } catch (e) {
+      print('Error updating airport: $e');
+      return false;
+    }
+  }
+
   static Future<List<Map<String, dynamic>>> getAllAirports() async {
     try {
       final snap = await _firestore.collection('airports').get();

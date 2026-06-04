@@ -1,0 +1,2488 @@
+name,cuisine,airport_count,airports,example_airport
+Starbucks,coffee_shop,105,"ATH, AUH, BHX, BKK, BOS, BRU, CAN, DEL, DEN, DOH, DUB, DXB, FRA, IAH, ICN, IST, JFK, KUL, LAS, LAX, LGA, LGW, LHR, LIM, LIS, MAD, MAN, MIA, MNL, MUC, ORD, PKX, SEA, SIN, TPE, YVR, YYZ, ZRH",LGW
+McDonald's,,51,"BHX, BKK, CAN, CDG, DEL, DEN, DFW, FRA, GIG, IST, JFK, KIX, KUL, LIM, LIS, MAD, MEL, MEX, MNL, MUC, ORD, PKX, SEA, SIN, SYD, TPE, ZRH",BHX
+Burger King,,39,"AMS, ATH, AUH, BHX, BKK, BOM, BRU, CAN, CMB, DEL, DOH, DUB, FRA, GIG, HKG, ICN, IST, KUL, LAS, LAX, LOS, MAD, MIA, MNL, ORD, SIN, TPE, ZRH",BHX
+Subway,sandwich,30,"BKK, DEL, DFW, GIG, IST, LAS, MEL, MEX, MIA, MUC, NRT, ORD, SIN, SYD, TPE, WLG, YVR, YYZ",IST
+KFC,,27,"CAN, DEL, DOH, GIG, ICN, KUL, LAX, LIM, LIS, LOS, MAN, MIA, MNL, PKX, SIN, SYD, ZRH",MAN
+Pret A Manger,sandwich,21,"ATH, BHX, CDG, DUB, DXB, JFK, LGW, LHR, MAD, MAN, ZRH",LGW
+Chili's,tex-mex,14,"DFW, DXB, IAH, LAS, MNL, ORD, SEA",DXB
+Dunkin',"donut, coffee_shop",14,"BOS, ICN, JFK, LGA, MIA, ORD, SIN",JFK
+Shake Shack,burger,14,"DEN, DFW, ICN, IST, JFK, LAS, LGA, LGW, MNL, NRT, SIN",LGW
+Chick-fil-A,chicken,13,"DEN, DFW, IAH, LAS, LAX, MIA, ORD",LAX
+Auntie Anne's,pretzel,12,"DFW, IAH, JFK, LAS, LGA, ORD, SIN",JFK
+Starbucks Coffee,,12,"CDG, GIG, MEX",CDG
+Tim Hortons,coffee_shop,12,"DEL, JFK, YVR, YYZ",JFK
+Costa Coffee,"Coffee, Café",11,"AUH, BOM, DEL, DOH, DXB, KUL, SEA",AUH
+Paul,,11,"CDG, DXB, LIS, MAD, SIN",CDG
+Farmer's Fridge,,10,"BOS, JFK, ORD",JFK
+Jamba Juice,juice,10,"DEN, IAH, ICN, LAS, LGA, ORD",ICN
+Krispy Kreme,donut,10,"AUH, BKK, KUL, LGW, MEX, MNL, SYD",LGW
+Wendys,,10,"DFW, IAH, LAS, LGA, MIA, MNL, SEA, YVR, YYZ",MNL
+Exki,,9,"BRU, CDG",CDG
+Brioche Dorée,,8,"AUH, CDG",CDG
+Costa,,8,"BHX, DXB, LHR, MAN",LHR
+Einstein Bros. Bagels,bagel,8,"DEN, DFW, IAH, LAS, LAX, MIA",LAX
+TGI Fridays,"American, Bar",8,"AUH, DFW, GIG, IAH, LIM",AUH
+Lotteria,burger,7,"ICN, SIN",SIN
+Panda Express,chinese,7,"DEN, DFW, IAH, LAX",LAX
+Pizza Hut,pizza,7,"BOM, DFW, GIG, LIM, LIS, PKX, SIN",SIN
+Brioche Doree,,6,ORD,ORD
+Camden Food Co.,"Sandwiches, Café",6,"ATH, AUH, BKK, BOS, JFK, SEA",AUH
+Carl's Jr,,6,"CDG, IST, LAX, MEX",CDG
+Dunkin' Express,"donut, coffee_shop",6,"JFK, LAS, ORD",JFK
+Giraffe,"international, burger",6,"BHX, DXB, LGW, LHR, MAN",LGW
+Manchu Wok,,6,"IAH, MIA, ORD, SEA",IAH
+Peet's Coffee,coffee_shop,6,"BOS, DEN, JFK, LAX",JFK
+ستاربكس,coffee_shop,6,"DXB, TPE",DXB
+ANGELINUS,,5,ICN,ICN
+Arabica,Coffee & Café,5,"AUH, HKG, ICN, KUL, SIN",AUH
+Baskin-Robbins,ice_cream,5,"BOM, DFW, ICN, JFK",JFK
+CIBO Express Gourmet Markets,,5,LGA,LGA
+Dunkin' Donuts,"donut, coffee_shop",5,"KUL, LIM, SIN",SIN
+Krispy Kreme Doughnuts,donut,5,ICN,ICN
+Luckin Coffee,coffee_shop,5,"CAN, HKG, PKX, SIN",SIN
+Pappasito's Cantina,,5,"DFW, IAH",DFW
+Paris Baguette,,5,"ICN, MNL, SIN",SIN
+Popeyes,,5,"BHX, IST, LAS, MNL, SIN",BHX
+Upper Crust,,5,"BKK, DUB, GIG, MAN, YYZ",MAN
+7 Eleven,,4,MEX,MEX
+Cafeccino,,4,"BOM, DEL",DEL
+Caffè Nero,coffee_shop,4,"BHX, DXB, IST, LGW",LGW
+Café Versailles,,4,MIA,MIA
+CIBO Express Gourmet Market,,4,"IAH, YYZ",IAH
+Cinnabon,,4,"ATH, IAH, MEX, MNL",MNL
+COFFEE@WORKS,coffee_shop,4,ICN,ICN
+Dominos,,4,"BOM, DEL",DEL
+Evolvending Vending Machine,,4,BOS,BOS
+Freshii,,4,"DFW, LGA, YVR, YYZ",DFW
+GONG CHA,tea,4,"ICN, NRT",ICN
+Great American Bagel Company,,4,ORD,ORD
+Hard Rock Cafe,,4,"DXB, KUL, SIN",SIN
+Meyer Deli Coffee Kitchen,,4,FRA,FRA
+Mount Comfort Coffee,,4,BOS,BOS
+Nuts on Clark,,4,ORD,ORD
+PASCUCCI,coffee_shop,4,ICN,ICN
+QUICKER's,,4,FRA,FRA
+Reggio's Chicago Style Pizza,,4,ORD,ORD
+Sbarro,pizza,4,"IST, MEX",IST
+Taco Bell,mexican,4,"BKK, ICN, KUL",BKK
+The Coffee Bean & Tea Leaf,coffee_shop,4,"DEN, ICN, LAS, SIN",SIN
+Urban Food Market,"Café, International",4,"AUH, DEL",AUH
+Wagamama,asian,4,"DOH, LGW, LHR",LGW
+Wahlburgers,,4,"BOS, YYZ",BOS
+Wings,,4,MEX,MEX
+A&W,burger,3,"SIN, YVR, YYZ",SIN
+AMORE,,3,"ATH, FRA",FRA
+Au Bon Pain,,3,MIA,MIA
+Banh Shop,,3,"DFW, YVR",DFW
+Beerhive,,3,"IAH, YYZ",IAH
+Black Sheep Coffee,coffee_shop,3,"LGW, LHR",LGW
+Bo'S Coffee,,3,MNL,MNL
+Brew'd,,3,"FRA, MAN",MAN
+Butlers Chocolate Café,"Cafe, Chocolates",3,"AUH, DUB",AUH
+Cafe Espresso,,3,DEL,DEL
+Caffe Nero,,3,LHR,LHR
+Carlo's Bake Shop Express,,3,"MIA, ORD",MIA
+Chatime,,3,"MNL, TPE",TPE
+Curry Kitchen,,3,"BOM, DEL",DEL
+Dazbog Coffee,,3,DEN,DEN
+Dickey's Barbecue Pit,,3,DFW,DFW
+Din Tai Fung,taiwanese,3,"KUL, SIN, TPE",SIN
+Dunkin' by Hudson,,3,BOS,BOS
+Eataly,italian,3,"AMS, FCO, JFK",JFK
+Evolvending Vending Machines,,3,BOS,BOS
+Farm2Air Market,,3,MIA,MIA
+Fresh Attractions,,3,"LAS, MCO",LAS
+Fresh Market On The Go,,3,"LAS, ORD",LAS
+Garabatos,,3,MEX,MEX
+Garrett Popcorn Shops,,3,ORD,ORD
+Gloria Jeans,,3,KUL,KUL
+Grab & Fly,,3,"BRU, DEL, LIS",DEL
+Greggs,,3,"BHX, LGW, MAN",LGW
+Harry's,,3,SIN,SIN
+Hudson News,,3,LAS,LAS
+Hwangsaengga Kalguksu,korean,3,ICN,ICN
+itsu,asian,3,"BRU, LGW, LHR",LGW
+Jamba,juice,3,"IAH, JFK, LAX",JFK
+Joe & The Juice,,3,"DOH, LGW, MAN",LGW
+Jollibee,,3,"HKG, MNL",HKG
+Kabod Coffee,,3,DEN,DEN
+Kamps,,3,FRA,FRA
+Krispy Kreme Kiosk,,3,DEL,DEL
+La Tapenade Mediterranean Cafe,,3,ORD,ORD
+Maison Kayser,,3,MEX,MEX
+Mi Casa Cantina,mexican,3,"JFK, LGA, SEA",JFK
+Natoo,,3,"FRA, LIM",FRA
+Nescafe,,3,DEL,DEL
+Panos,,3,BRU,BRU
+PappaRich,malaysian,3,"SIN, SYD",SIN
+Potato Corner,,3,"BKK, MNL, SIN",SIN
+Qdoba Mexican Eats,,3,"DEN, SEA",DEN
+Quiznos Sub,,3,"LAS, MEX",LAS
+Saboten,japanese,3,"ICN, PKX, SIN",SIN
+Snack and Drink Vending Machine,,3,MCO,MCO
+Taste of Thai,thai,3,SYD,SYD
+Texas Chicken,"Fried Chicken, Fast Food",3,"AUH, DXB, SIN",AUH
+Theobroma,,3,DEL,DEL
+Toby's Estate,,3,SYD,SYD
+Tortas Frontera by Rick Bayless,,3,ORD,ORD
+Tous Les Jours,,3,ICN,ICN
+Urban Crave,,3,"IAH, YVR, YYZ",IAH
+Wolfgang Puck Express,italian,3,"LAS, LAX, ORD",LAX
+YO!,,3,LHR,LHR
+YO! Sushi,"Japanese, Sushi",3,"DOH, IST, SYD",DOH
+Yoshinoya,japanese,3,"CAN, NRT, TPE",CAN
+È PRONTO,,3,KIX,KIX
+1915 Lanzhou Beef Noodles,chinese,2,SYD,SYD
+@café,,2,DEL,DEL
+A Nature-Inspired Korean Food,korean,2,ICN,ICN
+AJISEN RAMEN,ramen,2,"HKG, PKX",PKX
+Anton & Anni,,2,FRA,FRA
+Asian Street Kitchen,asian,2,"DXB, SIN",SIN
+Aviano Coffee,,2,DEN,DEN
+B.GOOD,,2,BOS,BOS
+Bar Festiv,,2,BRU,BRU
+BARista,,2,"CMB, SYD",SYD
+Beecher's Handmade Cheese,,2,"LAX, SEA",LAX
+Bellota-Bellota,,2,CDG,CDG
+Bento Sushi,sushi,2,"JFK, YYZ",JFK
+BHC Chicken,chicken,2,"ICN, SIN",SIN
+Big Bowl,,2,"DEN, ORD",DEN
+Bizeun,,2,ICN,ICN
+Boost Juice,,2,"KUL, MEL",MEL
+Booster Juice,,2,YYZ,YYZ
+Broth Kitchen,korean,2,ICN,ICN
+Buffalo Wild Wings,wings,2,"JFK, SEA",JFK
+Built Custom Burgers,,2,"LAX, YYZ",LAX
+Bunsik Gotgan,korean,2,ICN,ICN
+Burger Station,burger,2,ICN,ICN
+BuzzFeed,,2,LGA,LGA
+BYULMI BUNSIK,korean,2,ICN,ICN
+Cafe Descartes,,2,ORD,ORD
+Caffe D'arte,,2,SEA,SEA
+Caffe Tonino,,2,DEL,DEL
+Caffè Vergnano,,2,"FCO, MUC",FCO
+Café Flor,"Cafe, Snacks",2,"AMS, AUH",AUH
+Café Ritazza,"Coffee, Café",2,"AUH, BOM",AUH
+California Pizza Kitchen,pizza,2,"DFW, LAX",LAX
+Caribou Coffee,,2,DEN,DEN
+Carluccio's,italian,2,"AMS, IST",IST
+Carnatic Café,,2,DEL,DEL
+Casa Ávila,,2,MEX,MEX
+Chaayos,,2,DEL,DEL
+CHAGEE,,2,"HKG, SIN",SIN
+Chai Point,,2,"BOM, DEL",DEL
+Cheers,,2,BOS,BOS
+Chi Life Market,,2,ORD,ORD
+CHICHA San Chen,,2,"HKG, SIN",SIN
+Chilim Balam,,2,MEX,MEX
+China Wok,chinese,2,"DXB, LIM",DXB
+Chipotle,,2,BOS,BOS
+Chowking,,2,MNL,MNL
+Ciao Gourmet Market,,2,ORD,ORD
+CIRCULO K,,2,MEX,MEX
+Classic Noodles,,2,ICN,ICN
+Coffee & More,,2,"BOM, BRU",BOM
+Coffee Bean,coffee_shop,2,"CMB, ICN",ICN
+Coffee Fellows,,2,"FRA, MUC",FRA
+Comptoir Libanais,"Lebanese, Middle Eastern",2,"DOH, DXB",DOH
+Cosmic Candy,,2,JNB,JNB
+Cousin's Bar-B-Q,,2,DFW,DFW
+Cozy Kitchen,,2,MNL,MNL
+Crafted Bar,,2,LAS,LAS
+Crispy Pork Cutlet,korean,2,ICN,ICN
+Crystal Jade La Mian Xiao Long Bao,chinese,2,"HKG, SIN",SIN
+Culinary Square,,2,ICN,ICN
+Day2Day Eats,"International, Café",2,DOH,DOH
+Dhaba,pakistani,2,"DEL, DXB",DXB
+Dilli Streat,,2,DEL,DEL
+Dos Toros Taqueria,mexican,2,"JFK, LGA",JFK
+Dosa factory & Noodle,,2,DEL,DEL
+Dunkin Donut,,2,MNL,MNL
+Dunkin Donuts & Baskin-Robbins,,2,MCO,MCO
+El Fogoncito,,2,MEX,MEX
+El Globo,,2,MEX,MEX
+El Gran Pastor,,2,MEX,MEX
+Eric Kayser,,2,"CDG, LOS",CDG
+Ex Tea,,2,CMB,CMB
+Falafel Express,,2,"BOM, DEL",DEL
+Farmers Market,,2,"ORD, YYZ",ORD
+Five Guys,burger,2,"DXB, LHR",LHR
+FLO Café,"Greek, Coffee, Café",2,DOH,DOH
+FOOD GARDEN,korean,2,"ICN, KUL",ICN
+Freshens Fresh Food Studio,,2,DEN,DEN
+Fujiya Restaurant,,2,"DXB, NRT",DXB
+Full Bar,,2,LAS,LAS
+Get Your FIX,coffee_shop,2,DXB,DXB
+Gloria Jean's Coffees,coffee_shop,2,"BKK, MEX",BKK
+GODIVA Café,,2,"HKG, NRT",HKG
+GONGPYEONG-DONG GIANT CUTLET,korean,2,ICN,ICN
+Goose Island Beer Company,,2,ORD,ORD
+GOPIZZA,pizza,2,"ICN, SIN",SIN
+Grand Cru,,2,"GIG, SYD",GIG
+Green Market,,2,ORD,ORD
+Gujrati Svado,,2,DEL,DEL
+Gusto Pasta Bar,pasta,2,"MEL, SYD",SYD
+H & H Bagels,,2,JFK,JFK
+Half Moon Empanadas,,2,"DEN, ORD",DEN
+Haneulmaru Cafe,,2,ICN,ICN
+Heberer's Traditional Bakery,,2,FRA,FRA
+Heineken,,2,"DXB, ICN",DXB
+Heineken Bar,,2,"BOM, DEL",DEL
+Heirloom Bakery Cafe,,2,YYZ,YYZ
+Henlin,,2,MNL,MNL
+Hermann's Mobile,,2,FRA,FRA
+HEYTEA,,2,"PKX, SIN",SIN
+Hissho Sushi,,2,BOS,BOS
+HOLLYS,coffee_shop,2,ICN,ICN
+Home Run Inn Pizza,,2,ORD,ORD
+Hudsons Coffee,coffee_shop,2,"MEL, SIN",SIN
+Hungry Jack's,burger,2,"MEL, SYD",SYD
+Idli.com,,2,"BOM, DEL",DEL
+Ile Bar,,2,DEL,DEL
+illy Café,"Italian, Coffee, Café",2,DOH,DOH
+Irving Farm Coffee Roasters,coffee_shop,2,"JFK, LGA",JFK
+JAMOCHA CAFÉ,"Coffee, Café",2,DOH,DOH
+JaYeon,korean,2,ICN,ICN
+Jeondongjib,korean,2,ICN,ICN
+Jersey Mike's Subs,sandwich,2,"LAS, LAX",LAX
+Jones the Grocer,,2,"AUH, LHR",LHR
+Jones the Grocer Express,"Café, Gourmet Deli",2,"DOH, DXB",DOH
+Juan Valdez Café,,2,"MEX, MIA",MEX
+JUMBO Seafood,seafood,2,"SIN, TPE",SIN
+Kape Manila,,2,MNL,MNL
+Ke Rico,,2,MEX,MEX
+KOI Thé,,2,SIN,SIN
+KONThai,thai,2,ICN,ICN
+Krispy Pork Cutlet,korean,2,ICN,ICN
+La Place,,2,"MAD, YYZ",MAD
+La Taba,,2,MEX,MEX
+La Table de Michel Roth,,2,CDG,CDG
+Le Grand Comptoir,"French, Brasserie",2,"DOH, JFK",DOH
+Legal Sea Foods,,2,BOS,BOS
+LeMa Dumpling,chinese,2,SIN,SIN
+Levito,"Italian, Pizza, Pasta",2,"ATH, DOH",DOH
+LINA'S,sandwich,2,ICN,ICN
+Little Xingkai,chinese,2,ICN,ICN
+Llaollao,frozen_yogurt,2,"MNL, SIN",SIN
+Mad Mex,mexican,2,SYD,SYD
+Marché Take Away,,2,ZRH,ZRH
+Masala Twist,,2,"BOM, DEL",DEL
+McCafé,,2,"KUL, LIS",KUL
+Melt Shop,burger,2,"JFK, LGA",JFK
+Misha's Cupcakes,,2,MIA,MIA
+Modern Market,,2,DEN,DEN
+Modern Shanghai,chinese,2,ICN,ICN
+Mojo,,2,WLG,WLG
+MONDO Bar,,2,FRA,FRA
+Mos Burger,,2,"ICN, TPE",TPE
+MUKYOKU,japanese,2,ICN,ICN
+Namsan King Size Pork Cutlet,korean,2,ICN,ICN
+Nando's,,2,"JNB, LGW",LGW
+NIMAT,,2,ICN,ICN
+Nooodles,,2,"KUL, MEL",MEL
+Nourish,,2,"BOM, DEL",DEL
+Novo Coffee,,2,DEN,DEN
+O'briens,,2,KUL,KUL
+Olive & Finch Grab & Go,,2,DEN,DEN
+One Minute Gourmet,,2,"BKK, HKG",BKK
+Oporto,,2,SYD,SYD
+Oriental Bay,asian,2,ICN,ICN
+OURHOME's Kimchi Cuisine,korean,2,ICN,ICN
+OXXO,,2,MEX,MEX
+Paname Tap House,,2,CDG,CDG
+Pappadeaux Seafood Kitchen,,2,DFW,DFW
+Papparoti,,2,DEL,DEL
+Paradise Classic,,2,SIN,SIN
+Paris Croissant,,2,ICN,ICN
+Pasión del Cielo,,2,MEX,MEX
+Paul Bassett,coffee_shop,2,ICN,ICN
+PHO,vietnamese,2,ICN,ICN
+Piece a Pizza,,2,JNB,JNB
+Pinkberry,,2,"DFW, IAH",DFW
+Pizza Hut Express,,2,"DEL, MIA",DEL
+Popeyes Louisiana Kitchen,chicken,2,"DFW, HKG",HKG
+Port of Subs,,2,"LAS, SEA",LAS
+Potbelly Sandwich Shop,,2,BOS,BOS
+Pronto Gino's,,2,MEX,MEX
+Puro Gusto,,2,"AUH, FRA",FRA
+Quick,,2,BRU,BRU
+Ritazza,,2,"GIG, MAD",GIG
+Rocky Mountain Chocolate Factory,,2,"DEN, ORD",DEN
+Sahara Grill,,2,SYD,SYD
+Salute,,2,MEX,MEX
+Seattles Best Coffee,,2,MNL,MNL
+SEGAFREDO CAFFE,coffee_shop,2,"CMB, KIX",KIX
+Skillet,,2,SEA,SEA
+Smashburger,,2,"DFW, YYZ",DFW
+SMASHBURGER & Bar,,2,DEN,DEN
+Smoothie King,,2,"DFW, ORD",DFW
+Snooze an A.M. Eatery,,2,DEN,DEN
+SODAM BANSANG,korean,2,ICN,ICN
+SOHO Coffee,,2,"BHX, MAD",BHX
+Sonsoo Ok,korean,2,ICN,ICN
+Sophia Loren,,2,"FCO, FRA",FRA
+Soul Origin,,2,"MEL, SYD",SYD
+Stephanie's,,2,BOS,BOS
+Strada by It,,2,CDG,CDG
+strEAT,asian,2,"ICN, MAD",ICN
+Sukiya,"japanese, gyudon",2,"KIX, SIN",SIN
+Sushi Maki,,2,MIA,MIA
+Sushi Sushi,japanese,2,"MEL, SYD",SYD
+Sushia,japanese,2,SYD,SYD
+Sushiro,japanese,2,"SIN, TPE",SIN
+Sūshi,,2,CDG,CDG
+Taste of Nature,,2,ICN,ICN
+Terrace Bar,,2,LGA,LGA
+The Kitchen By Wolfgang Puck,,2,"LAX, SIN",SIN
+The Satay Club,singaporean,2,SIN,SIN
+The Scoop,,2,"LGA, MCO",LGA
+TJT Snack Bar,,2,JNB,JNB
+Top Juice,juice,2,SYD,SYD
+Tsim Sha Tsui,,2,MNL,MNL
+TWOSOME PLACE,coffee_shop,2,ICN,ICN
+Ultra Bar,,2,"BOM, DEL",DEL
+Vaango,,2,"BOM, DEL",DEL
+Veloce Espresso,,2,SYD,SYD
+Villa Italian Kitchen,,2,"IAH, MIA",IAH
+Villa Pizza,,2,"DEN, MIA",DEN
+Vinifera,,2,YYZ,YYZ
+Vino Volo,,2,"YVR, YYZ",YVR
+Whataburger,,2,DFW,DFW
+Whisk & Bowl,,2,DFW,DFW
+Wow Bao,,2,"BOS, ORD",BOS
+WPizza by Wolfgang Puck,pizza,2,"BOS, LAX",LAX
+Wrapafella,,2,"BOM, DEL",DEL
+Ya Kun Kaya Toast,,2,"KUL, SIN",SIN
+Zaro's Family Bakery,,2,"JFK, LGA",JFK
+ZUS Coffee,coffee_shop,2,"KUL, SIN",SIN
+100% Natural,,1,MEX,MEX
+100°C Fresco y Mexicano,,1,MEX,MEX
+12oz,,1,FCO,FCO
+1903 Lounge,,1,MAN,MAN
+1903 Lounge (T3),,1,MAN,MAN
+2 Cafe,,1,HKG,HKG
+2.0 Taco & Tequila Bar,,1,DFW,DFW
+305 Pizza,,1,MIA,MIA
+365 Juices Bar,juice,1,SIN,SIN
+4 Fingers Crispy Chicken,chicken,1,SIN,SIN
+4 FOOD Street Kitchen,,1,MUC,MUC
+5 Boroughs Food Emporium,,1,LGA,LGA
+551HORAI,chinese,1,KIX,KIX
+7-11,,1,TPE,TPE
+7Café,,1,SIN,SIN
+800 Degrees Pizza,pizza,1,LAX,LAX
+A Noodle Story,singaporean,1,SIN,SIN
+A Saideira,,1,GIG,GIG
+A TWOSOME PLACE,coffee_shop,1,ICN,ICN
+A-1 Bakery Express,,1,HKG,HKG
+A-Roy Thai Restaurant,thai,1,SIN,SIN
+ABC Kitchen,,1,KUL,KUL
+Aburi-EN,japanese,1,SIN,SIN
+Acacia Tree Café,,1,MNL,MNL
+Ace Cerveceria & Tacos,mexican,1,LAX,LAX
+Acer,,1,YYZ,YYZ
+ActionCity Café,,1,SIN,SIN
+ADDAL,,1,ICN,ICN
+Adelholzener Bar,,1,MUC,MUC
+Aero Sport Bar,,1,GIG,GIG
+AFL Kitchen & Bar,,1,MEL,MEL
+Africa Lounge,,1,SEA,SEA
+AG1 - Vending Machine,,1,ORD,ORD
+Aim Deli,,1,BKK,BKK
+AIR Bakery,,1,ZRH,ZRH
+Air Cargo Food Kiosk,,1,MNL,MNL
+AIR Restaurant,,1,ZRH,ZRH
+Airbräu,,1,MUC,MUC
+Airbräu Next to Heaven,,1,MUC,MUC
+Aircraft Brewers,,1,JNB,JNB
+Airo Restaurant - ParkRoyal,,1,MEL,MEL
+Airport Café,,1,MNL,MNL
+Airport Corner,,1,TPE,TPE
+Airport Juice Bar,,1,DOH,DOH
+Airport Oliva,,1,MUC,MUC
+Airport Tandoor,,1,DOH,DOH
+Airr Toast,,1,DEL,DEL
+Aj 1881,,1,BOM,BOM
+Al Baraka Restaurant,,1,DXB,DXB
+Al Dahleez,,1,DXB,DXB
+Al Hallab,,1,DXB,DXB
+Al Musaharati,,1,DXB,DXB
+Al Takia,,1,DXB,DXB
+Alchemy Cocktail Lounge,,1,IAH,IAH
+Aletitude,,1,DEN,DEN
+Alfred Coffee,coffee_shop,1,LAX,LAX
+Alfredo Bar & Biergarten,,1,MUC,MUC
+Alidoro,sandwich,1,JFK,JFK
+All Bar One,,1,BHX,BHX
+All Good Deli,,1,BOM,BOM
+Allora Ristorante & Bar,italian,1,SIN,SIN
+Allpress Espresso,,1,SYD,SYD
+Aloha,,1,MAD,MAD
+Alpenblick Bar,,1,ZRH,ZRH
+Alpine Bar,,1,ZRH,ZRH
+Alta Strada,,1,BOS,BOS
+Always Fresh Always On,,1,ORD,ORD
+Amba restaurant,indian,1,DXB,DXB
+Amber Alehouse,,1,MAN,MAN
+Amcha Katta,,1,BOM,BOM
+America's Dog,,1,ORD,ORD
+AMERICAN TRAILER,,1,ICN,ICN
+Amo,,1,BRU,BRU
+Amorino,,1,FCO,FCO
+Amps Tea,,1,SIN,SIN
+Amreli,,1,BOM,BOM
+Amsterdam Bread Co.,,1,AMS,AMS
+Amul Ice Cream Lounge,,1,BOM,BOM
+An Acai Affair,,1,SIN,SIN
+Ancho,,1,ATH,ATH
+And More Restaurant,mediterranean,1,PKX,PKX
+Andiamo,,1,ORD,ORD
+Angels Pizza,,1,MNL,MNL
+Anika,,1,MNL,MNL
+Anjappar,indian,1,SIN,SIN
+Apartment 7B Deli & Market,,1,JFK,JFK
+Apiary,,1,MAN,MAN
+Apollinaris Bar,,1,MUC,MUC
+Applebee's,,1,DFW,DFW
+Apropos,,1,YYZ,YYZ
+Arajeel,,1,DXB,DXB
+Arby's,sandwich,1,IST,IST
+Archeo Pizzeria,,1,YYZ,YYZ
+Archie's,,1,MAN,MAN
+Aristocrat,,1,MNL,MNL
+Army Navy,,1,MNL,MNL
+Aroi Restaurant,thai,1,BKK,BKK
+Arrivals Eatery,,1,JFK,JFK
+Arteastiq,,1,SIN,SIN
+Arthur Guinness Bar,,1,DUB,DUB
+Artichoke Pizza,,1,LGA,LGA
+Artichoke Pizzeria,pizza,1,JFK,JFK
+Artisan Market,,1,DFW,DFW
+Artisan-Taf,,1,ATH,ATH
+Arzábal,,1,MAD,MAD
+Ashrafi,,1,DXB,DXB
+Asia 7,,1,BOM,BOM
+Asia Street Cooking,,1,FRA,FRA
+Asian Chao - Gates 100-129,,1,MCO,MCO
+Asian Corner,asian,1,BKK,BKK
+Aspire Lounge,,1,BHX,BHX
+Aspire Lounge South,,1,BHX,BHX
+Atrium Dine,,1,SYD,SYD
+Aunt Butchie's Bakery Cafe,,1,JFK,JFK
+Auntie Anne's - Food Court,,1,MCO,MCO
+Auntie Anne's - Gates 100-129,,1,MCO,MCO
+Auntie Anne's Pretzels,,1,DEN,DEN
+Auntie Anne's/Cinnabon - Terminal C Palm Court,,1,MCO,MCO
+Aura Bar,,1,LHR,LHR
+Avenue Bistro Bar,,1,IST,IST
+Avian Grab & Fly,,1,KUL,KUL
+Aviator's Sports Bar & Bar-B-Que,,1,DEN,DEN
+Aviolino,,1,ZRH,ZRH
+Axil Coffee Roasters,,1,MEL,MEL
+Ayyam Al Khair,,1,DXB,DXB
+Azusa Coffee,coffee_shop,1,KIX,KIX
+"B-Smooth, Smoothies & Salads",,1,ORD,ORD
+Babel Restaurant,,1,ZRH,ZRH
+Backhaus,,1,IST,IST
+Backstube Wünsche,,1,MUC,MUC
+Bad Egg Breakfast Bar,,1,SEA,SEA
+Bagel Boss,,1,JFK,JFK
+Bahama Breeze - Gates 70-79,,1,MCO,MCO
+Baker Street,,1,BOM,BOM
+Bakeside,,1,ZRH,ZRH
+Baladna,"Cafe, Dairy, Juices",1,DOH,DOH
+Baladna Express,"Café, Dairy, Juices",1,DOH,DOH
+Balaji,,1,BOM,BOM
+Balbisiana,,1,MAD,MAD
+Ballard Brew Hall,,1,SEA,SEA
+Bam Bam,,1,IAH,IAH
+Bambuza Vietnam Kitchen & Bar,,1,SEA,SEA
+Bamee,,1,MUC,MUC
+Bananas Smoothies & Frozen Yogurt - Gates 100-129,,1,MCO,MCO
+Banapple,,1,MNL,MNL
+Bangalore Empire Restaurant - Qusais,indian,1,DXB,DXB
+Bar 120,,1,YYZ,YYZ
+Bar 212,,1,LGA,LGA
+Bar Dough,,1,DEN,DEN
+Bar Fly,,1,BOM,BOM
+Bar Iris,,1,ZRH,ZRH
+Bar Louie,,1,DFW,DFW
+Bar Pulpo by Movida,,1,MEL,MEL
+Bar Siena,,1,ORD,ORD
+Bar Veloce,,1,LGA,LGA
+Barbadimos,,1,ATH,ATH
+Barburrito,,1,MAN,MAN
+Bareto,,1,MAD,MAD
+Bari-Uma (霸嗎拉麵),ramen,1,HKG,HKG
+Barista Bot Robotic Vending,,1,DEN,DEN
+Barista Premium,,1,TPE,TPE
+Barney's Lounge,,1,LAS,LAS
+Barnie's Coffee & Tea Co.,,1,MCO,MCO
+Baron Rojo,,1,MEX,MEX
+Baskin Robbins & Dunkin',,1,ORD,ORD
+Baskin Robins,,1,DXB,DXB
+Basta,"Qatari, Middle Eastern",1,DOH,DOH
+Bayou City Bar,,1,IAH,IAH
+Beacon Bar and Kitchen,"pizza, sandwich",1,JFK,JFK
+Bean Love,,1,FRA,FRA
+Beaudevin Wine Bar,,1,ORD,ORD
+Beauty in the Pot,chinese,1,SIN,SIN
+Bebang,,1,MNL,MNL
+Beecher's Handmade Cheese / Sweetleaf Coffee Roasters,,1,LGA,LGA
+Beercode,,1,FCO,FCO
+Beers & Cheers,,1,BRU,BRU
+Beher,,1,MAD,MAD
+Belad Al Sham Rest.,,1,DXB,DXB
+Belgorama,,1,BRU,BRU
+Belle & Belge,,1,BRU,BRU
+Bellevue,,1,ZRH,ZRH
+Ben & Jerry's Ice Cream,,1,DEN,DEN
+BENITORA Xiao Chi,,1,NRT,NRT
+Bercos,,1,DEL,DEL
+Berghoff Cafe,,1,ORD,ORD
+Berkshire Farms Market,,1,BOS,BOS
+Berlucchi,,1,FCO,FCO
+Best Ugly Bagels,,1,WLG,WLG
+Best Worscht in Town,,1,FRA,FRA
+Betcha Burgers & Bar,burger,1,LAX,LAX
+Betelsweet,,1,MAD,MAD
+Betty's Burgers,burger,1,SYD,SYD
+Bewley's,,1,DUB,DUB
+Bi Bar,,1,IST,IST
+Bi Coffee,,1,IST,IST
+Bi Coffee & Bi Bar,,1,IST,IST
+Big Smoke,,1,LGW,LGW
+Biggie Smalls,,1,MEL,MEL
+Bikanervala,indian,1,SIN,SIN
+Billy Goat Tavern and Grill,,1,ORD,ORD
+Bira 91 Taproom,,1,BOM,BOM
+Birch Coffee / H&H Bagels / Rossi Pizzeria,,1,LGA,LGA
+Birds of Paradise,,1,SIN,SIN
+Birra Moretti Bar,,1,AMS,AMS
+Biryani Blues,,1,DEL,DEL
+Bistro 2020,,1,SYD,SYD
+Bistro by Mastercard,,1,FCO,FCO
+Bistro:D,,1,TPE,TPE
+Bistrot,,1,FCO,FCO
+Bistrot Attica Athens / Lukumades,,1,ATH,ATH
+Bistrot Bakery,,1,BRU,BRU
+Bistrot Bar,,1,BRU,BRU
+Bistrot Benoit,,1,CDG,CDG
+Bistrot Frankfurt Airport,,1,FRA,FRA
+Bistrot Snack Bar,,1,FRA,FRA
+Bite,,1,IST,IST
+BJ's Gourmet Market,,1,ORD,ORD
+BKLYN Blend,coffee_shop,1,JFK,JFK
+Black Dog Bar,,1,BOM,BOM
+Black Pearls,,1,BRU,BRU
+Black Star Bakery & Cafe,,1,JFK,JFK
+Black Tap Bar,,1,JFK,JFK
+Blackberry,,1,BOM,BOM
+Blaze Pizza,,1,IAH,IAH
+Blue Elephant Restaurant,,1,DXB,DXB
+Blue Sky Bar,,1,DEN,DEN
+Blue Smith,,1,MNL,MNL
+Bluebird Bar,,1,MUC,MUC
+Bluebird Coffee Roasters,,1,DUB,DUB
+Boar's Head Deli,,1,DFW,DFW
+Boarding Bite,,1,BOM,BOM
+Bob's,,1,GIG,GIG
+Boccata Restaurant and Wine Bar,,1,MEL,MEL
+Boccone Pronto,,1,YYZ,YYZ
+Boccone Trattoria by Massimo Capra,,1,YYZ,YYZ
+Boconero,,1,MUC,MUC
+Boconero Express,,1,MUC,MUC
+Bodegon,,1,LIM,LIM
+Bonchon,chicken,1,BKK,BKK
+Bonci,,1,FCO,FCO
+Boost Juice Bar,,1,KUL,KUL
+Boost Juice Bars,juice,1,SIN,SIN
+Border Grill,,1,LAX,LAX
+Boston Bruins Bar,,1,BOS,BOS
+Boston Harbor Distillery,,1,BOS,BOS
+Boston Public Market,,1,BOS,BOS
+BOTEJYU 1946,japanese,1,KIX,KIX
+BOTEJYU EXPRESS,,1,NRT,NRT
+Bottega Bar,Italian,1,AUH,AUH
+Bottega Bosphorus,,1,IST,IST
+Bottega Prosecco,,1,FCO,FCO
+Bottega Prosecco Bar,,1,BHX,BHX
+Bottega Prosecco Bar & Caffè,,1,MAD,MAD
+Boulton & Watt,,1,JFK,JFK
+Boutique DaDong Restaurant,chinese,1,PKX,PKX
+BOWL,,1,HKG,HKG
+Boxx,,1,DUB,DUB
+Brasserie Bread,,1,SYD,SYD
+BRB Boba Tea,,1,LAS,LAS
+Bread!,,1,AMS,AMS
+Breadtalk,,1,MNL,MNL
+Breckenridge Brewery,,1,DEN,DEN
+BrewDog,,1,LGW,LGW
+Brewed,,1,DFW,DFW
+Brewgate,,1,BRU,BRU
+"Brewgate - Coffee, Beer & Bites",,1,FRA,FRA
+Brewmark,,1,IST,IST
+BrewTop Social,,1,SEA,SEA
+Brezelkönig,,1,ZRH,ZRH
+Breznsalzer,,1,MUC,MUC
+Bridge Road Brewers,,1,MEL,MEL
+Bridge Xiangyuan Rice Noodles,chinese,1,PKX,PKX
+Brindle Room,,1,JFK,JFK
+Brittans,,1,JNB,JNB
+Brklyn's Best Bagels / Kombu,,1,LGA,LGA
+Brooklyn Deli,,1,JFK,JFK
+Brooklyn Diner,,1,LGA,LGA
+Brooklyn Rebel,,1,JFK,JFK
+Brot by Axel Schmitt,,1,FRA,FRA
+Brothers BBQ,,1,DEN,DEN
+Brummanah Restaurant and Cafe,,1,DXB,DXB
+Brunetti Classico,,1,MEL,MEL
+Bruschetteria,,1,MUC,MUC
+Bryant Park Market,,1,JFK,JFK
+Bubble Waffle Cafe,,1,YVR,YVR
+Bubbles Seafood & Winebar,,1,AMS,AMS
+Bubbles Wine Bar,,1,ORD,ORD
+Bubby's,,1,LGA,LGA
+Budweiser Bar,,1,BOM,BOM
+Bufala Gelato,,1,ATH,ATH
+Buffalo Wild Wings GO,,1,BOS,BOS
+Buk Chang Dong Soon Tofu,korean,1,SIN,SIN
+Bullritos,,1,IAH,IAH
+Burger Boy,burger,1,LIM,LIM
+Burger Federation,,1,ORD,ORD
+Burger King - Gates 70-99,,1,MCO,MCO
+Burger Land,,1,TPE,TPE
+Burger Taco Co,,1,BOM,BOM
+Burgeri,"Burgers, American",1,DOH,DOH
+Burrito Beach,,1,ORD,ORD
+Busgate Goodies,,1,MNL,MNL
+But First Coffee,,1,MNL,MNL
+Butcher & The Burger,,1,ORD,ORD
+Butter & Cream,,1,SIN,SIN
+Bye Bye Bar,,1,ZRH,ZRH
+BYEOLMIGA,korean,1,ICN,ICN
+Byte Restaurant,,1,JNB,JNB
+Byte: Fresh Grab and Go Meals,,1,IAH,IAH
+Byzance Gourmet Food Bar,,1,CDG,CDG
+Bà Xã,,1,MEL,MEL
+C'est Bon Café,,1,TPE,TPE
+Cadillac Mexican Kitchen & Tequila Bar,,1,IAH,IAH
+Cadiz,spanish,1,DXB,DXB
+Caesars,,1,DXB,DXB
+Cafe & Bar 和 SAKURA,,1,KIX,KIX
+CAFE & DINING N's COURT,,1,NRT,NRT
+CAFE LOKA LOKA,,1,KUL,KUL
+Cafe O,coffee_shop,1,SIN,SIN
+Cafe Sol,,1,MEL,MEL
+Cafe Yanımda,,1,IST,IST
+Cafe Zoot!,,1,ORD,ORD
+caffe LAT.25° Terminal1,,1,NRT,NRT
+caffe LAT.25° Terminal3 2F,,1,NRT,NRT
+caffe LAT.25° Terminal3 3F,,1,NRT,NRT
+Caffe Mercato,,1,ORD,ORD
+Caffe Pascucci,coffee_shop,1,ICN,ICN
+Caffettino Espresso,,1,SYD,SYD
+Caffexpress,,1,MNL,MNL
+Caffè Napoli,,1,FCO,FCO
+Caffè Ritazza,,1,FRA,FRA
+Caffè Spettacolo,,1,ZRH,ZRH
+Caffè Vergnano - Women in Coffee,,1,FCO,FCO
+Café Comptoir,,1,BRU,BRU
+Café Comunal,,1,AMS,AMS
+Café DIOR by Anne-Sophie Pic,,1,KIX,KIX
+Café Eiffel,,1,CDG,CDG
+Café Kitsuné,,1,SIN,SIN
+Café La Carreta,,1,MIA,MIA
+Café Nescafe,,1,CMB,CMB
+Café Pans,,1,MAD,MAD
+Café Park & Stop,,1,MNL,MNL
+Café Punta del Cielo,,1,MEX,MEX
+Café Rembrandt,,1,AMS,AMS
+Café Tee Ree Ya,,1,MNL,MNL
+Café-Konditorei Aida,,1,MUC,MUC
+Cake Bar,,1,DFW,DFW
+Calista Taverna,,1,LGA,LGA
+Callao,,1,LIM,LIM
+Camdem Food Co.,,1,DXB,DXB
+Camden Food Company,,1,YYZ,YYZ
+Camden Food Company - Gates 50-59,,1,MCO,MCO
+Campos Coffee,coffee_shop,1,SYD,SYD
+can.teen,,1,HKG,HKG
+Cantina Grill,,1,DEN,DEN
+Capello,,1,JNB,JNB
+Capital One Landing,,1,LGA,LGA
+Capitol Hill Food Hall,,1,SEA,SEA
+Caplansky's Deli,,1,YYZ,YYZ
+Caribbean Kitchen,caribbean,1,JFK,JFK
+Carls Cafe,,1,IST,IST
+Carluccio's Bar,,1,IST,IST
+Carry Out/Carry On,,1,ORD,ORD
+Carvel - Food Court,,1,MCO,MCO
+Carvel - Gates 70-99,,1,MCO,MCO
+Casa Bauducco,,1,GIG,GIG
+Casa Daza,,1,MNL,MNL
+Casa do Pão de Queijo,,1,GIG,GIG
+Casa Mia,italian,1,DXB,DXB
+Cask & Larder - Gates 100-129,,1,MCO,MCO
+Cask & Larder Provisions - Terminal C Palm Court,,1,MCO,MCO
+Cask & Larder Public House - Terminal C Palm Court,,1,MCO,MCO
+Cava,mediterranean,1,LAX,LAX
+Caviar House Seafood Bar,,1,ZRH,ZRH
+Cañas y Tapas - Café Pans,,1,MAD,MAD
+CBTL,,1,KUL,KUL
+Ccd,,1,BOM,BOM
+Center Bar and Kitchen,,1,ZRH,ZRH
+Central Café,,1,MAD,MAD
+Central Thai,thai,1,SIN,SIN
+Century Express,"indian, chinese, arabic",1,DXB,DXB
+Cha Chaan by KAM FAT CAFÉ 1986,hong_kong,1,HKG,HKG
+CHA MULAN,,1,SIN,SIN
+Chac'late,"Chocolates, Café, Desserts",1,DOH,DOH
+Chaiiwala,,1,BHX,BHX
+Chalet Suisse,,1,ZRH,ZRH
+Chapati & Karak,"Indian, Café, Street Food",1,DOH,DOH
+CHAR,,1,ICN,ICN
+Charm Boat Noodle,thai,1,BKK,BKK
+Chatterbox Express,singaporean,1,SIN,SIN
+Chaw X Lavazza,coffee_shop,1,BKK,BKK
+Chee Kei,chinese,1,PKX,PKX
+Chef café,,1,BOM,BOM
+Chef Creole,,1,MIA,MIA
+Chef Wan Petite,,1,KUL,KUL
+Chef Wei HK Cheong Fun,hong_kong,1,SIN,SIN
+Chefs of the Caribbean,,1,MIA,MIA
+Chengdu Bowl,chinese,1,SIN,SIN
+Chengmeng,,1,TPE,TPE
+Cheongjindong Sundubu,korean,1,ICN,ICN
+Cheongun Miga,korean,1,ICN,ICN
+Chia,,1,MAD,MAD
+Chicago Cubs Bar & Grill,,1,ORD,ORD
+Chicago Essentials Vending Machine,,1,ORD,ORD
+Chicago Neighborhood Market & Goods,,1,ORD,ORD
+Chick-fil-A - Food Court,,1,MCO,MCO
+Chick-fil-A - Terminal C Palm Court,,1,MCO,MCO
+Chicken Guy,chicken,1,LAX,LAX
+Chicken Licken,,1,JNB,JNB
+Chicken Republic,chicken,1,LOS,LOS
+Chicken Tikke Inn,,1,DXB,DXB
+Chilis / Vips / Starbucks,,1,MEX,MEX
+China King,,1,MEX,MEX
+China Town,chinese,1,BKK,BKK
+Chinese Herb Rib Stew,,1,TPE,TPE
+Chipotle - Gates 100-129,,1,MCO,MCO
+Chocnette,,1,IST,IST
+Chocolat palette,,1,ICN,ICN
+Chocolate,,1,JNB,JNB
+Choi Dining,,1,ICN,ICN
+ChoLon Modern Asian,,1,DEN,DEN
+Chopt,,1,LGA,LGA
+Chow Zan Dessert,chinese,1,SIN,SIN
+Chreis 14 / Café BelleVUE,,1,ZRH,ZRH
+Church's Texas Chicken,,1,YVR,YVR
+Chutney Mary,indian,1,SIN,SIN
+Chök,,1,MAD,MAD
+Ciao Amici,,1,MUC,MUC
+Ciao Italia,,1,FRA,FRA
+Cibo,,1,DUB,DUB
+Cibo Express,coffee_shop,1,JFK,JFK
+CIBO Express - Gate 72,,1,MCO,MCO
+CIBO Express - Gate 80,,1,MCO,MCO
+CIBO Express - Gate 92,,1,MCO,MCO
+CIBO Express Foodhall,,1,LGA,LGA
+Cinnabon - Food Court,,1,MCO,MCO
+Cioccolati italiani,,1,FCO,FCO
+City Crepes,,1,IAH,IAH
+City Pho,,1,DEN,DEN
+City Wok,,1,DEN,DEN
+Claypot Daddy,singaporean,1,SIN,SIN
+Clink Bar,,1,BOM,BOM
+Cloud 7,,1,MUC,MUC
+Cloud Picker,,1,DUB,DUB
+Cloud Picker - Gate 402,,1,DUB,DUB
+Cloud Picker - Gate 409,,1,DUB,DUB
+Clubrooms by No. 1,,1,BHX,BHX
+Cluny Grille,,1,YYZ,YYZ
+Co-Pilots,,1,LHR,LHR
+Cobblestones Biergarten & Bar,,1,JFK,JFK
+Coca-Cola Bar & Biergarten,,1,MUC,MUC
+Cockpit,,1,LIS,LIS
+Cockpit Coffee Shop,,1,LIS,LIS
+CoCo,,1,PKX,PKX
+COCO'S Airport Dining,,1,KIX,KIX
+CoCo+Mr.Fruits,,1,PKX,PKX
+Coffee Bean & Tea Leaf,coffee_shop,1,LAX,LAX
+Coffee Bean & Tea Leaf (CBTL),,1,BOM,BOM
+Coffee Berry,,1,ATH,ATH
+Coffee Capital,,1,MEL,MEL
+COFFEE MAN,,1,TPE,TPE
+Coffee Republic,,1,MAD,MAD
+Coffee World,coffee_shop,1,BKK,BKK
+coffeesmith,coffee_shop,1,ICN,ICN
+CoffeeSpot,coffee_shop,1,GIG,GIG
+COLDSTONE,,1,TPE,TPE
+COLECTIVO,,1,ICN,ICN
+Colorado Collective Marketplace,,1,DEN,DEN
+COLOSSEO,italian,1,KIX,KIX
+Comebuy,,1,TPE,TPE
+COMEME,,1,TPE,TPE
+Comfort Zone,,1,YYZ,YYZ
+Confeitaria Nacional,,1,LIS,LIS
+Confiserie Sprüngli Café & Lounge,,1,ZRH,ZRH
+Confiseur Bachmann,,1,ZRH,ZRH
+Connect Bar,,1,ORD,ORD
+Connie Cocktail Lounge,,1,JFK,JFK
+Conti'S,,1,MNL,MNL
+Cookhouse,,1,SIN,SIN
+Coors Silver Bullet Bar,,1,DEN,DEN
+Copper,,1,LIM,LIM
+Corcoran's Irish Pub,,1,LAS,LAS
+Corner by Real Madrid,,1,MAD,MAD
+Corso Pizza and Pasta,,1,YYZ,YYZ
+Cosi,,1,BOS,BOS
+Cotto Trattoria & Market Place,,1,LGA,LGA
+Cousin's Back Porch,,1,DFW,DFW
+Croissant Lab,,1,MEL,MEL
+Crossroads,,1,AMS,AMS
+Crown Prince Kitchenette,chinese,1,SIN,SIN
+CRU Food & Wine Bar,,1,DFW,DFW
+Cru Wine Bar,,1,DEN,DEN
+Crystal Jade GO,chinese,1,SIN,SIN
+Crêpes Your Way,,1,JFK,JFK
+Cuan,,1,DUB,DUB
+Cucara Macara,,1,MEX,MEX
+Cucina & Co. - Gates C230-C245,,1,MCO,MCO
+Cucina Popolare,,1,MUC,MUC
+Cuisine Anatolia,turkish,1,IST,IST
+Cultivos,,1,ATH,ATH
+Culto Cafe,"Coffee, Italian, Café",1,AUH,AUH
+Cup Stop,,1,MEX,MEX
+Cupping Room Coffee Roasters,coffee_shop,1,HKG,HKG
+Cups & Clouds,coffee_shop,1,IST,IST
+Custom Burgers,burger,1,JFK,JFK
+D Bar,,1,DEN,DEN
+D'Good Café,,1,TPE,TPE
+D3 Bar,,1,TPE,TPE
+Daily Chef Noof,"Middle Eastern, Qatari",1,DOH,DOH
+Daily Deli,,1,FRA,FRA
+Dairy Queen,ice_cream,1,BKK,BKK
+Dallas Cowboys Club,,1,DFW,DFW
+Dallmayr Bistro,,1,MUC,MUC
+Dammer's Tap,,1,AMS,AMS
+Dan Dan Noodles,,1,TPE,TPE
+Daniel's Donuts,,1,MEL,MEL
+Dashichazuke EN,,1,NRT,NRT
+Dave's Hot Chicken,,1,LAS,LAS
+Davio's Northern Italian Steakhouse,,1,BOS,BOS
+DAZZLING Café,,1,TPE,TPE
+DEAN & DELUCA CAFÉ Terminal1,,1,NRT,NRT
+DEAN & DELUCA CAFÉ Terminal2,,1,NRT,NRT
+dean&david,,1,MUC,MUC
+Dear NYC,,1,JFK,JFK
+Debonairs Pizza,,1,JNB,JNB
+Dehesa Santa María,,1,MAD,MAD
+Delhi Capitals,,1,DEL,DEL
+Deli Aux Pain,,1,IST,IST
+DELI BROS,,1,FRA,FRA
+Deli&Cia Daily Smart Food,,1,MEX,MEX
+Delicass,,1,LIM,LIM
+Delione,,1,JNB,JNB
+Deliquo,,1,MAD,MAD
+Delta Café,,1,LIS,LIS
+Delta Café Central,,1,LIS,LIS
+Deltaexpresso,,1,GIG,GIG
+Denny's,,1,IAH,IAH
+Denny'S Diner,,1,MNL,MNL
+Denver Central Market,,1,DEN,DEN
+Denver Street Eats,,1,DEN,DEN
+Desano Pizzeria - Terminal C Palm Court,,1,MCO,MCO
+Desi Village,,1,DXB,DXB
+Di Shui Dong Dumplings,,1,TPE,TPE
+Dian Xiao Er,chinese,1,SIN,SIN
+Dicos,chicken,1,CAN,CAN
+Dilettante Mocha Cafe,,1,SEA,SEA
+DINO Snack Bar & Fast Food,,1,MEX,MEX
+Dirty Apron,,1,YVR,YVR
+Dish D'Lish,,1,SEA,SEA
+Distillery Bar,,1,YYZ,YYZ
+District Market,,1,LGA,LGA
+Divalicious By The Lechon Diva,,1,MNL,MNL
+Divino Fogão,,1,GIG,GIG
+Dodo Pizza,pizza,1,LOS,LOS
+Dome,,1,TPE,TPE
+Donburi Kitchen,,1,TPE,TPE
+Donna Italia,,1,BOM,BOM
+Doppio Malto,,1,FCO,FCO
+Dos Toros,,1,LGA,LGA
+Dos Toros Tequila Bar,mexican,1,JFK,JFK
+Dosa Plaza,,1,BOM,BOM
+DOSUN,korean,1,ICN,ICN
+Dotcom,,1,MEX,MEX
+DOTONBORIKAMUKURA,japanese,1,KIX,KIX
+Dots Bakery,,1,LIS,LIS
+Double Smash,burger,1,LAX,LAX
+Dough & Co,,1,JNB,JNB
+Doutor Coffee Shop,coffee_shop,1,KIX,KIX
+Douwe Egberts Coffee Bar,,1,AMS,AMS
+Dovecat,,1,TPE,TPE
+Downtown Market,,1,JFK,JFK
+Drew Pearson's Sports 88,,1,DFW,DFW
+Drip Tea,,1,MNL,MNL
+Dubai Surfing,,1,DXB,DXB
+Dubh,,1,DUB,DUB
+Dubh Express - Gate 417,,1,DUB,DUB
+Duddell's,chinese,1,HKG,HKG
+Dumpling Co,,1,MEL,MEL
+Dumplings loved by Xihe,chinese,1,PKX,PKX
+Dunkin Donuts Express,"donut, coffee_shop",1,JFK,JFK
+Dunkin' (Open 24 Hours),,1,MIA,MIA
+Dunkin' Pop-Up,,1,BRU,BRU
+Dutch Kitchen Bar & Cocktails,,1,AMS,AMS
+Eagle Al SAQR Restaurant,,1,DXB,DXB
+EARL Canteen,,1,MEL,MEL
+EARL Dine,,1,SYD,SYD
+Earl of Sandwich,,1,MIA,MIA
+East Bar & Bites,,1,AMS,AMS
+East x West Dine,,1,SYD,SYD
+Eastward,,1,JFK,JFK
+EASY grab-n-go,,1,ATH,ATH
+Eat & Drink Restaurant,,1,DXB,DXB
+Eat & Joy,,1,IST,IST
+Eat and go,,1,JFK,JFK
+Eat Greek,,1,ATH,ATH
+Eat Well Travel Further,,1,ORD,ORD
+EatGreek Kouzina,"Greek, Mediterranean",1,DOH,DOH
+Edelweiss Café,,1,ZRH,ZRH
+EGGDROP,,1,ICN,ICN
+Eggy Weggy / Essex Burger,,1,LGA,LGA
+Einstein Bros. Bagels / Mile High Spirits,,1,DEN,DEN
+El Alcatraz,,1,MEX,MEX
+El Café Bar,,1,MEX,MEX
+El Catrin Taqueria,,1,YYZ,YYZ
+El Chingon,,1,DEN,DEN
+EL&N London,,1,FRA,FRA
+Elfuego by COLLIN'S,,1,SIN,SIN
+Eli's Cheesecake - Home Run Inn Pizza - Vienna Beef,,1,ORD,ORD
+Ella Robot Coffee,,1,MNL,MNL
+Elway's,,1,DEN,DEN
+Elway's Taproom and Grill,,1,DEN,DEN
+Embarque Whiskey Grill,,1,SEA,SEA
+"Emmer Pizza, Bar & Cafe",pizza,1,HKG,HKG
+Empanadas y Tal,,1,GIG,GIG
+Emporio Armani Caffe,"Italian, Café",1,DOH,DOH
+Emporio Armani Ristorante,Italian,1,DOH,DOH
+Emporio Express,,1,WLG,WLG
+Engine,,1,LAX,LAX
+Enrique Tomás experience,,1,MAD,MAD
+Enva,,1,IST,IST
+Erdinger Bar & Biergarten,,1,MUC,MUC
+Ergon Greek Cuisine,,1,ATH,ATH
+Escape Lounge,,1,MAN,MAN
+Escape Lounge (T3),,1,MAN,MAN
+Eslite Spectrum Café,,1,TPE,TPE
+Esplanade Bar,,1,LAS,LAS
+ESPRESSO & BAKERY,,1,KIX,KIX
+Espresso House,,1,FRA,FRA
+Espresso Urbano by Sambalatte,,1,LAS,LAS
+Ess Corner Cafe,,1,BKK,BKK
+Esspresamente Illy,,1,MIA,MIA
+Estefan Kitchen Express,,1,MIA,MIA
+Estrels,,1,MNL,MNL
+Euro Cafe,,1,JFK,JFK
+Europa,,1,JNB,JNB
+Everest,,1,ATH,ATH
+Everest Exclusive,,1,ATH,ATH
+Evergreen Organics,"Healthy, Organic, Café",1,DOH,DOH
+Evergreens,,1,SEA,SEA
+Facades Bar,,1,ORD,ORD
+Factory,,1,GIG,GIG
+Falconi's,,1,FRA,FRA
+FamilyMart,,1,TPE,TPE
+Famous Famiglia,,1,MIA,MIA
+Farine,,1,MAD,MAD
+Farinella,,1,FCO,FCO
+Farinella T3,,1,FCO,FCO
+Farmair's Café,,1,MIA,MIA
+FarmAir's Market - Gate 103,,1,MCO,MCO
+FarmAir's Market - Gate 123,,1,MCO,MCO
+Farolito,,1,MEX,MEX
+Fat Sal's,,1,LAX,LAX
+Fat Sully's Pizza NY Pizza,,1,DEN,DEN
+Fat Yak Bar,,1,SYD,SYD
+Feltman's of Coney Island,,1,JFK,JFK
+Fendi Caffe,"Italian, Café, Luxury",1,DOH,DOH
+Fetta,,1,YYZ,YYZ
+Fever-Tree Cocktail & Champagne Bar,,1,MAN,MAN
+Fig & Fennel,,1,MIA,MIA
+Filli,tea,1,DXB,DXB
+FINEPRINT,coffee_shop,1,HKG,HKG
+Fionn MacCool's,,1,YYZ,YYZ
+Fiorello Market,,1,LGA,LGA
+Firehouse Subs - Food Court,,1,MCO,MCO
+First Café,,1,LIS,LIS
+First Class Café,,1,LIS,LIS
+Fish & Co,seafood,1,SIN,SIN
+Fitzgeralds,,1,DUB,DUB
+Five Borough Food Hall,,1,JFK,JFK
+Flat Chat Espresso & Bar,,1,MEL,MEL
+Flat White Specialty Coffee,"Coffee, Café",1,DOH,DOH
+Flatiron Coffee Roasters,,1,JFK,JFK
+Flatiron Tavern & Provisions,,1,LGA,LGA
+Flax & Kale,,1,MAD,MAD
+Flight Club,,1,KUL,KUL
+Flight Club Signature,,1,KUL,KUL
+Flocafe Espresso Room,,1,ATH,ATH
+Floret by Cafe Flora,,1,SEA,SEA
+flour + stone,,1,DXB,DXB
+Flurys,,1,BOM,BOM
+Fly By Wings,,1,MEX,MEX
+Fly-By Bagels,,1,JFK,JFK
+Flying Bites,,1,DEL,DEL
+Flying Saucer Draught Emporium,,1,DFW,DFW
+Flying Tacos,mexican,1,JFK,JFK
+Food & Café,,1,CDG,CDG
+FOOD EMPIRE EAST,,1,ICN,ICN
+FOOD EMPIRE WEST,,1,ICN,ICN
+Food Market,"International, Food Court",1,DOH,DOH
+Food Republic,,1,SIN,SIN
+Food Village,,1,DUB,DUB
+Foodies,,1,MAD,MAD
+Foodies' Clan,,1,SIN,SIN
+Foodji,,1,MUC,MUC
+Foody's,,1,BOM,BOM
+FORMOSA CHANG,,1,TPE,TPE
+Forno Magico Neapolitan Pizza,,1,IAH,IAH
+Fortnum & Mason Bar,,1,LHR,LHR
+Fox & Flight,,1,BOS,BOS
+Franks,,1,DEL,DEL
+Freddo,ice_cream,1,GIG,GIG
+Fresco,,1,BOM,BOM
+Fresh & Healthy,,1,DEL,DEL
+Fresh Brothers,,1,LAX,LAX
+Freshens Yogurt & Smoothies,,1,DFW,DFW
+FRESHNESS BURGER,,1,NRT,NRT
+Fruitality,,1,DUB,DUB
+Fruitas,,1,MNL,MNL
+FRUITPARLOR Mi'z,,1,NRT,NRT
+Fruitzone,,1,DXB,DXB
+Fuddruckers,burger,1,DXB,DXB
+Fujian Noodles,,1,TPE,TPE
+Fulton Street Cafe,,1,ORD,ORD
+Fürstenlounge,,1,MUC,MUC
+Gachi Sushi & Noodles,,1,BOS,BOS
+GAIL's,coffee_shop,1,LGW,LGW
+Gajokhoegwan,korean,1,ICN,ICN
+Galeão Coffee Shop,coffee_shop,1,GIG,GIG
+Galiano Cafe,,1,YVR,YVR
+Galileo Bar & Grill,,1,ORD,ORD
+Gaming Lounge,,1,LAS,LAS
+Garbanzo Fresh Mediterranean,,1,DEN,DEN
+Gaslight Club,,1,ORD,ORD
+Gastrohub - Gates 30-59,,1,MCO,MCO
+Gastrohub To Go - Gates 30-59,,1,MCO,MCO
+Gelatissimo,,1,SIN,SIN
+GELATO COMBO,ice_cream,1,HKG,HKG
+GELCCINE,,1,ICN,ICN
+Geneal e Sorvetes Itália,ice_cream,1,GIG,GIG
+GENKI SHOUTEN,,1,KIX,KIX
+Gentry Noodle,,1,TPE,TPE
+George's International Market,,1,IAH,IAH
+Ghewar Coffe Shop,,1,DXB,DXB
+Gilbert's Food Bar (Post-Security),,1,MIA,MIA
+Ginebra San Miguel Spirits,,1,MNL,MNL
+Gino's,,1,MEX,MEX
+Ginshari Hokkaido,,1,NRT,NRT
+Ginza Kagari,,1,NRT,NRT
+Giraffas,,1,GIG,GIG
+Giraffe World Kitchen,"International, World Cuisine",1,DOH,DOH
+Global Topps & Noodles,,1,MNL,MNL
+Globe@YVR,,1,YVR,YVR
+Go Natural,,1,LIS,LIS
+Go To Café,,1,LIS,LIS
+Go! Espresso and Bar,,1,MEL,MEL
+Gochi-So Shokudo,japanese,1,SIN,SIN
+Godiva,,1,IST,IST
+Goethe Bar,,1,FRA,FRA
+Gold Coast Dogs,,1,ORD,ORD
+Golden Fork,,1,DXB,DXB
+Golestan,,1,DXB,DXB
+Gontran Cherrier,,1,TPE,TPE
+Good Day,,1,WLG,WLG
+Good Flippin' Burgers,,1,BOM,BOM
+Goodman & Filippo,,1,FRA,FRA
+Goose Island Pub,,1,ORD,ORD
+GORAESA,,1,ICN,ICN
+Gordon Ramsay Burger,"Burgers, American, Gourmet",1,DOH,DOH
+Gordon Ramsay Plane Food Market,,1,LHR,LHR
+Gordon Ramsay Plane Food To Go,,1,HKG,HKG
+Gordon Ramsay Street Pizza,"Pizza, Italian",1,DOH,DOH
+Gotham News,,1,LGA,LGA
+Gotham Speakeasy,,1,JFK,JFK
+Goto King,,1,MNL,MNL
+Gourmet Focus Group,,1,HKG,HKG
+Gourmet Sarawak,asian,1,SIN,SIN
+Grab & Go,,1,DEL,DEL
+gram,,1,IST,IST
+Grandma's Home,chinese,1,PKX,PKX
+Grandmamas,,1,KUL,KUL
+GRAZ COFFEE LAB,coffee_shop,1,ICN,ICN
+Great Divide Brewing,,1,DEN,DEN
+Great Mann Hann,,1,MNL,MNL
+Great Northern Dine,,1,SYD,SYD
+Great Northern Market,,1,MAN,MAN
+Great State Burger,,1,SEA,SEA
+Greedy Cow Burger,,1,SEA,SEA
+Green Leaf's,,1,LGA,LGA
+Green Leaf's Beyond Great Salads - Gates 100-129,,1,MCO,MCO
+Green Mango,,1,IAH,IAH
+Green Veneti 1948,,1,ATH,ATH
+Greenbeat - Terminal C Palm Court,,1,MCO,MCO
+Greendot Plus,vegetarian,1,SIN,SIN
+Greens,,1,ZRH,ZRH
+Gregory's,,1,ATH,ATH
+Grill'd Healthy Burgers,,1,MEL,MEL
+Grindsmith,,1,MAN,MAN
+Guangfangyuan,,1,PKX,PKX
+Guangzhou Restaurant,chinese,1,CAN,CAN
+Guapa,,1,BRU,BRU
+Guiji,,1,TPE,TPE
+Gullivers Restaurant,,1,BRU,BRU
+Guy Fieri's Flavortown,,1,JFK,JFK
+Guzman y Gomez,mexican,1,SIN,SIN
+Gwangjang GAON,korean,1,SIN,SIN
+GYEINGSEONG BUNSIK,korean,1,ICN,ICN
+Gyukatsu Kyoto Katsugyu,,1,NRT,NRT
+HA-HA Braised Pork Rice,,1,TPE,TPE
+Habit Burger & Grill,burger,1,LAX,LAX
+Hachi-ko,,1,SEA,SEA
+Haferkater,,1,FRA,FRA
+Haha Chicken,korean,1,WLG,WLG
+HAKATA ITTENMON,,1,NRT,NRT
+Hakka Yu,chinese,1,SIN,SIN
+Haldiram's,,1,BOM,BOM
+hana-musubi,japanese,1,HKG,HKG
+Hanami Express,,1,YVR,YVR
+Hanazato,japanese,1,KIX,KIX
+HANBIJAE,,1,NRT,NRT
+Hangar 49,,1,YVR,YVR
+Hanlin Tea House,,1,TPE,TPE
+Hanlin Tea Room,,1,TPE,TPE
+Hanna's Cafe,,1,MEL,MEL
+HANOKJIB KIMCHIJJIM,korean,1,ICN,ICN
+Hanokjip Kimchijjim,korean,1,ICN,ICN
+Hans im Glück,,1,MUC,MUC
+Hansik Sodam-gil,korean,1,ICN,ICN
+Hao Hao Chi,,1,TPE,TPE
+Hardee's,burger,1,DXB,DXB
+HARRODS TEA ROOM,"British, Tea Room, Café",1,DOH,DOH
+Harry's Bar and Dining,,1,SIN,SIN
+Harvest & Vine Wine Bar,,1,BOS,BOS
+Harvest and Grounds,,1,MCO,MCO
+Harvest Table,,1,IAH,IAH
+Hatti Kappi,,1,DEL,DEL
+Hausmann's,,1,FRA,FRA
+Hausmann's Bar (To Go) by Tim Mälzer,,1,FRA,FRA
+Hausmann's Restaurant (by Tim Mälzer),,1,FRA,FRA
+Havanna,,1,GIG,GIG
+Hawaa Al Wedian,,1,DXB,DXB
+Hayat,,1,DXB,DXB
+HD Döner,kebab,1,IST,IST
+Heavenly Wang,local,1,SIN,SIN
+Heberer Traditional Bakery,,1,FRA,FRA
+Heineken Grand Café,,1,LIS,LIS
+Heineken House,,1,SYD,SYD
+Helados Santa Clara,,1,MEX,MEX
+Hello Goodbye Bar,,1,DEL,DEL
+Hemingway's Restaurant & Bar,,1,BOS,BOS
+Hemisphere on LVL 9,,1,MCO,MCO
+Henderson's Bottle Shop,,1,YYZ,YYZ
+Hermann's,,1,FRA,FRA
+Hi! Brussels,,1,BRU,BRU
+Hickory,,1,DFW,DFW
+Hickory by Kent Rathbun,,1,DFW,DFW
+HighBorn Coffee,coffee_shop,1,IST,IST
+Highlands Coffee,,1,MNL,MNL
+Hikari Ramen & Donburi,japanese,1,SYD,SYD
+Hill Country Barbecue Market,,1,LGA,LGA
+Hitoyoshi Izakaya,japanese,1,SIN,SIN
+Ho Fan Ho Sung,chinese,1,HKG,HKG
+Ho Hung Kee,chinese,1,HKG,HKG
+Hoegaarden Bar,,1,BOM,BOM
+Hofbräu Bistro,,1,MUC,MUC
+HOHOKATSU,japanese,1,ICN,ICN
+Hokkaido Baked Cheese Tart,,1,SIN,SIN
+HOLLYS (T1 Store),coffee_shop,1,ICN,ICN
+HOLLYS COFFEE,coffee_shop,1,ICN,ICN
+Holy Burger,,1,ATH,ATH
+Holy Cow!,,1,ZRH,ZRH
+Home of Joe,,1,JNB,JNB
+Homeboy Cafe,,1,LAX,LAX
+Homemade Udon KINEYA MUGIMARU,japanese,1,KIX,KIX
+Homemade Udon Noodles KINEYAMUGIMARU,,1,NRT,NRT
+Hong Master Danzai Noodles,,1,TPE,TPE
+HOPE TREE,chinese,1,PKX,PKX
+Horizon Bakery - CEGM,,1,JFK,JFK
+Hoshino Coffee,coffee_shop,1,SIN,SIN
+Hot Dog & Chicken,,1,ICN,ICN
+Hot Tomato,,1,SIN,SIN
+HUB & SPOKE CAFÉ,coffee_shop,1,SIN,SIN
+Hub 51,,1,ORD,ORD
+Hubcap Grill & Beer Yard,,1,IAH,IAH
+Hucks Lieblingsplatz,,1,FRA,FRA
+Hudson,,1,LGA,LGA
+Hula Poké,,1,YVR,YVR
+HUNG FOOK TONG,,1,HKG,HKG
+Hung's Delicacies,chinese,1,HKG,HKG
+Hungry Club,,1,MAD,MAD
+Hungry Korean,korean,1,PKX,PKX
+Hunt and Fish Grill,,1,LGA,LGA
+HYOJA GOMTANG,korean,1,ICN,ICN
+Häagen-Dazs,"Ice Cream, Café",1,AUH,AUH
+Hédiard,,1,LIS,LIS
+hómee KITCHEN,,1,TPE,TPE
+Hómee RICE,,1,TPE,TPE
+I love Paris by Guy Martin,,1,CDG,CDG
+I-MEI CLASSIC RESTAURANT,,1,TPE,TPE
+Ice Bar,,1,YYZ,YYZ
+Ice Cream & Flowers,,1,LIS,LIS
+ICE Dishes & Drinks,,1,ORD,ORD
+Icebergs,,1,SYD,SYD
+Ichikokudo Hokkaido Ramen,ramen,1,SIN,SIN
+Icons Sports Bar & Grill,,1,YVR,YVR
+Icons Victoria,,1,MEL,MEL
+IJYSHENG,,1,TPE,TPE
+IKARI Coffee,,1,TPE,TPE
+Il Viaggio,,1,LGA,LGA
+Illy Cafe,,1,KUL,KUL
+illy Caffe Vending,,1,YVR,YVR
+Illy Café Express/Subway,,1,MNL,MNL
+Illy Go,,1,JNB,JNB
+illycaffe and Relay,,1,YVR,YVR
+Imm Rice & Noodle,thai,1,BKK,BKK
+Imperial Treasure Super Peking Duck,chinese,1,SIN,SIN
+Inbound Café,,1,SYD,SYD
+India,,1,ZRH,ZRH
+India Palace,indian,1,DXB,DXB
+Indian Brewery,,1,BHX,BHX
+Indomie Cafe,,1,LOS,LOS
+Ink Sack,sandwich,1,LAX,LAX
+Insomnia,,1,DUB,DUB
+INTERVALS Sky Bar & Restaurant,,1,HKG,HKG
+Ipoh Town,malaysian,1,SIN,SIN
+Ippudo Express,ramen,1,SIN,SIN
+Irish house,,1,BOM,BOM
+Ironside Fish & Oyster,,1,BOS,BOS
+Italiannis,,1,MEX,MEX
+ITEA Premium,,1,SIN,SIN
+J&G Fried Chicken,,1,TPE,TPE
+J.B. Sullivan's,,1,BOS,BOS
+Jack in the Box,,1,IAH,IAH
+Jack's Bar and Grill,,1,DXB,DXB
+Jack's Place,,1,SIN,SIN
+Jackie's,,1,IST,IST
+Jackson Soul Food,,1,MIA,MIA
+Jacksons Republic,,1,JNB,JNB
+Jacob's Pickles,,1,JFK,JFK
+Jailbird,burger,1,DXB,DXB
+Jaipur,Indian,1,DOH,DOH
+Jalasat,,1,DXB,DXB
+Jamba Juice T1-AIR,juice,1,ICN,ICN
+Jamba Juice T2-AIR,juice,1,ICN,ICN
+Jamba Juice T2-LAND,juice,1,ICN,ICN
+Jamie Oliver Pizzeria,,1,KUL,KUL
+Jamie's Deli,,1,GIG,GIG
+JAMUNBAK,korean,1,ICN,ICN
+Japadog,,1,YVR,YVR
+Japan Traveling Restaurant by BOTEJYU,japanese,1,KIX,KIX
+Japanese cuisine restaurant KAMI-HIKOKI,,1,NRT,NRT
+JAPANESE RESTAURANT,japanese,1,KIX,KIX
+Jardin de Jade,chinese,1,HKG,HKG
+JAVA Coffee House,,1,BRU,BRU
+Jazz Bar,,1,ORD,ORD
+Jco Reserve,,1,MNL,MNL
+Jeju Dombeok,korean,1,ICN,ICN
+Jeju Seho Haejangguk,korean,1,ICN,ICN
+Jersey Mike's,,1,LGA,LGA
+Jersey Mike's - Gates 100-129,,1,MCO,MCO
+Jetside Lounge,,1,YVR,YVR
+Ji Xiang Hun Tun,chinese,1,CAN,CAN
+Jibby Chow,,1,KUL,KUL
+Jimmy John's,sandwich,1,JFK,JFK
+Jin Xian Platinum Braised Pork Rice,,1,TPE,TPE
+JINROKU,,1,NRT,NRT
+Joe and The Juice,,1,YVR,YVR
+Joe Coffee,coffee_shop,1,JFK,JFK
+Jones the Grocer Social,"Café, Gourmet, Restaurant",1,DOH,DOH
+Jose Cuervo Tequileria,,1,LAS,LAS
+Josh's Grill,,1,SIN,SIN
+Joy Full House,chinese,1,HKG,HKG
+Juice & More,juice,1,BKK,BKK
+Juice Bear,,1,TPE,TPE
+Juice Press,,1,LGA,LGA
+Jumbo King,,1,BOM,BOM
+Jump Juice,,1,DUB,DUB
+Junior's Restaurant and Cheesecake,,1,LGA,LGA
+Juniper & Co,,1,LGW,LGW
+Just Arrived,,1,LIS,LIS
+Jwala,"Indian, Street Food",1,DOH,DOH
+K-mealkit Smart Restaurant,korean,1,ICN,ICN
+Ka Tunying,,1,MNL,MNL
+Ka Tunying'S,,1,MNL,MNL
+Ka Tunying'S Café,,1,MNL,MNL
+Kabuki,,1,MAD,MAD
+kafeD,,1,TPE,TPE
+Kagonoya,japanese,1,KIX,KIX
+Kailash Parbat,,1,BOM,BOM
+Kaimakk,,1,IST,IST
+Kaishu Rice & Noodles Express,,1,MNL,MNL
+Kake Da Dhaba,indian,1,DXB,DXB
+Kakurega,,1,TPE,TPE
+Kam's Roast,chinese,1,SIN,SIN
+KANE MOCHI,,1,SIN,SIN
+Kanekohannosuke,japanese,1,KIX,KIX
+KANNO COFFEE,,1,NRT,NRT
+Kanom,,1,BKK,BKK
+Kantin,singaporean,1,SIN,SIN
+Karak,,1,DXB,DXB
+Karakccino,,1,DXB,DXB
+Katsu-ichi Narita,,1,NRT,NRT
+Katsuichi,,1,NRT,NRT
+Kayak,,1,ATH,ATH
+KEIKA RAMEN,,1,NRT,NRT
+Kenny Rogers,,1,MNL,MNL
+Kenny Rogers Roasters,,1,MNL,MNL
+Kentucky Fried Chicken,chicken,1,LAX,LAX
+KFC Express / Pizza Hut Express,,1,DEN,DEN
+KFC Kentucky Fried Chicken,,1,FRA,FRA
+KIEFEL,,1,KIX,KIX
+Kiku,japanese,1,DXB,DXB
+Kimbo,,1,BRU,BRU
+Kimbok,,1,DUB,DUB
+Kimchi Mama,korean,1,SIN,SIN
+Kimukatsu,,1,NRT,NRT
+Kin Japanese Restaurant,japanese,1,BKK,BKK
+KING BAKERY,,1,HKG,HKG
+King David Tacos,,1,LGA,LGA
+Kirei,,1,CDG,CDG
+Kitchen by Mike,,1,SYD,SYD
+Kitchen Open House,,1,KUL,KUL
+Kiwami Ramen,ramen,1,SIN,SIN
+KIX BEER,,1,KIX,KIX
+KO,,1,LIM,LIM
+Koh Hop Bar,"burger, thai, breakfast, pasta, sandwich, fish, seafood",1,BKK,BKK
+Kohantei Bifteck & Wine,,1,NRT,NRT
+KOI Express,,1,SIN,SIN
+Koi Kitchen,,1,LAS,LAS
+Koi Shi Sushi Bar,,1,SEA,SEA
+Koi Sushi Bar,,1,ATH,ATH
+KOMERAKU,,1,NRT,NRT
+Komyuniti Bar & Restaurant,,1,IST,IST
+KONATSU,,1,NRT,NRT
+Konjiki Hototogisu,ramen,1,HKG,HKG
+Kopikakis,coffee_shop,1,SIN,SIN
+Korea Culture,korean,1,SIN,SIN
+Korea Food & Pancakes,korean,1,ICN,ICN
+Kosher food,,1,FRA,FRA
+KOSUKE,japanese,1,BKK,BKK
+Koulourades,,1,ATH,ATH
+Kozinha Sushi Bar & Árabe,japanese,1,GIG,GIG
+Kura Sushi,,1,TPE,TPE
+Kushitei,,1,NRT,NRT
+Kyochon,,1,KUL,KUL
+Käfer,,1,MUC,MUC
+Käfer - factory of enjoyment,,1,MUC,MUC
+Käfer Bistro,,1,MUC,MUC
+l'Oro di Napoli,,1,ZRH,ZRH
+L.A Chicks,,1,MNL,MNL
+La Baguetelle,,1,MEX,MEX
+La Barra de la Bientirada,,1,MAD,MAD
+LA BETTOLA da Ochiai Terminal1,,1,NRT,NRT
+LA BETTOLA da Ochiai Terminal2,,1,NRT,NRT
+La Bientirada,,1,MAD,MAD
+La Bonbonniere,,1,LIM,LIM
+La Bottega del Tartufo,,1,MAD,MAD
+La Brioche Dorée,"French, Bakery",1,DOH,DOH
+La Buena Tierra,,1,MEX,MEX
+La Cachondita Pibil,,1,MEX,MEX
+La Carreta,,1,MIA,MIA
+La Casita,,1,DEN,DEN
+La Chinata,,1,MAD,MAD
+La Chula Bar & Taqueria,,1,LGA,LGA
+La Colombe & The Great Bagel,,1,MIA,MIA
+La Crème Coffee & Tea,,1,DFW,DFW
+La Jamonería,,1,MAD,MAD
+La Kaffa,,1,TPE,TPE
+La Lucha,,1,LIM,LIM
+La Madeleine,,1,DFW,DFW
+La Masion,,1,MEX,MEX
+La Pasteria - Flocafe,,1,ATH,ATH
+La Pausa Self Service,,1,LIS,LIS
+La Taba Express,,1,MEX,MEX
+La Taba Sport Bar,,1,MEX,MEX
+La Vie En Rose,,1,SEA,SEA
+La Vieja Molienda,,1,MEX,MEX
+Ladurée,,1,CDG,CDG
+Lady M,,1,SIN,SIN
+Lady M New York,,1,HKG,HKG
+LAGRILLIA,italian,1,ICN,ICN
+Lancôme Café De La Rose,"French, Café, Luxury",1,DOH,DOH
+Lanzhou Noodles,noodles,1,CAN,CAN
+Lanzhou Ramen Daikokuya,,1,NRT,NRT
+Lao Guang Ji,chinese,1,CAN,CAN
+LAOSHE TEAHOUSE,tea,1,PKX,PKX
+LAS MKT,,1,LAS,LAS
+Las Reyes,,1,LIM,LIM
+Las Reyes Swing,,1,LIM,LIM
+Last Call,"Bar, International",1,DOH,DOH
+Latitude,,1,GIG,GIG
+Lavazza,,1,DEN,DEN
+Lawson,,1,TPE,TPE
+Le Amoretto,,1,MNL,MNL
+Le Bar,,1,CDG,CDG
+Le Cafe Louis Vuitton,,1,LHR,LHR
+LE Congee,chinese,1,SIN,SIN
+Le Coq,,1,MAD,MAD
+Le Crogbag,,1,FRA,FRA
+Le Grand Comptoir - Gate 22,,1,MCO,MCO
+Le Pain Quotidien,,1,BRU,BRU
+LE PAN Kobe Kitano,,1,KIX,KIX
+Le Petit Camion,"French, Café",1,DOH,DOH
+Le Petite Belge,"Belgian, International",1,DOH,DOH
+Lebaneese,,1,DXB,DXB
+Lee Cafe,,1,BKK,BKK
+LEE Kitchen by Susur Lee,,1,YYZ,YYZ
+Lee's Donuts,,1,YVR,YVR
+Leffe Bar,,1,BRU,BRU
+Lenbachs Bar & Gallery,,1,MUC,MUC
+LEON,"burger, sandwich",1,LHR,LHR
+Leon's Bagels,,1,JFK,JFK
+Leon's Bodega,,1,ZRH,ZRH
+Leon's Loft,,1,ZRH,ZRH
+Levadura madre,,1,MAD,MAD
+Levito: Pizza – Pasta,"Italian, Pizza, Pasta",1,AUH,AUH
+Lift Bar and Grill,,1,YVR,YVR
+Light Cafeteria,,1,DXB,DXB
+LiHO,,1,SIN,SIN
+Lilian's,,1,DUB,DUB
+Lilong by Taste of Shanghai,chinese,1,SYD,SYD
+Lime Garden (Sky)+,,1,HKG,HKG
+Listo,,1,LIM,LIM
+Little Flour,,1,MNL,MNL
+Little Lygon,,1,MEL,MEL
+Little Man Ice Cream,,1,DEN,DEN
+Little Melbourne,,1,MEL,MEL
+Little Orient,,1,ZRH,ZRH
+Liv Eat,,1,SYD,SYD
+Liv Eat Healthy Eating,,1,MEL,MEL
+livfarm,,1,ICN,ICN
+LiXin Teochew Fishball Noodle,singaporean,1,SIN,SIN
+Loba Coffee,,1,IST,IST
+Lobby Bar at Hyatt Regency,,1,MCO,MCO
+Lok Tao,chinese,1,CAN,CAN
+London's Pride by Fullers,,1,LHR,LHR
+Long Yin,chinese,1,DXB,DXB
+Loop Bagels,,1,SYD,SYD
+Lorena Garcia Tapas y Cocina,,1,DFW,DFW
+Loretta's Last Call,,1,BOS,BOS
+Lotus Dumpling Bar,chinese,1,SYD,SYD
+Louis Vuitton Lounge,"Luxury, Café, French",1,DOH,DOH
+Loulou,,1,SYD,SYD
+Love Shack,,1,DFW,DFW
+Lucky Bread,,1,JNB,JNB
+Lucky Louie Fish Shack,,1,SEA,SEA
+Lucky Streak Cocktail Lounge,,1,LAS,LAS
+Lucullus Nero,,1,FRA,FRA
+Lucy's Asian Kitchen,asian,1,JFK,JFK
+Luggaw,,1,BKK,BKK
+Luke's Bistro & Bar,,1,SYD,SYD
+Luke's Lobster,seafood,1,SIN,SIN
+Lumos Cafe,,1,SYD,SYD
+Lunchbox Laboratory,,1,SEA,SEA
+M's Beef Bistro,steak,1,DXB,DXB
+M's Seafood Bistro,seafood,1,DXB,DXB
+Ma Mum,thai,1,SIN,SIN
+MA MUM To Go,thai,1,SIN,SIN
+Macaroni Grill,,1,ORD,ORD
+Mad Ave. Market,,1,LGA,LGA
+Mad Over Donuts,,1,BOM,BOM
+Madhuban Modern Indian,indian,1,JFK,JFK
+Madras Coffee House,,1,BOM,BOM
+Madrí,,1,MAD,MAD
+Maeda Coffee,,1,TPE,TPE
+Maestro Della Pizza,,1,MIA,MIA
+Maggiano's,,1,DFW,DFW
+Maggio's,,1,SYD,SYD
+Magnolia Bakery,,1,LGA,LGA
+Magnum Gate,,1,MUC,MUC
+Maia Coffee & Chocolate,"Coffee, Chocolates, Café",1,DOH,DOH
+maidoookinishokudo kankushokudo,japanese,1,KIX,KIX
+Mailo's The Pasta Project,,1,ATH,ATH
+Main Bissen,,1,FRA,FRA
+Maisen,,1,NRT,NRT
+Maisen Terminal2,,1,NRT,NRT
+Maison Pradier,,1,CDG,CDG
+Malatya Pazarı,,1,IST,IST
+Mama Lou'S,,1,MNL,MNL
+Mamak,,1,MNL,MNL
+Mamma Mia,italian,1,SIN,SIN
+Manga Sushi,,1,FRA,FRA
+Mango Star,,1,BKK,BKK
+Mango Tree & Heineken World Bar,,1,SIN,SIN
+Mania de Churrasco,barbecue,1,GIG,GIG
+Manis Cafe,,1,BOM,BOM
+Manseokjang,korean,1,ICN,ICN
+Marathi,,1,YYZ,YYZ
+Marché,,1,SIN,SIN
+Marché coffee bar,,1,ZRH,ZRH
+Marché Restaurant,,1,ZRH,ZRH
+Marczyk Fine Foods,,1,DEN,DEN
+Mareb Mandi,,1,DXB,DXB
+Margaritaville,,1,LAS,LAS
+Marhaba Mandi,,1,DXB,DXB
+Maria Empanada,,1,DEN,DEN
+Mariposa,,1,GIG,GIG
+Market by Villa,,1,MCO,MCO
+Marqette,,1,DUB,DUB
+Marugame Udon,,1,MNL,MNL
+Mary Grace Café,,1,MNL,MNL
+MasQMenos,,1,MAD,MAD
+Master Hung,chinese,1,HKG,HKG
+Master Kong / Meetrice,chinese,1,CAN,CAN
+Master Kong Chef's Table,,1,PKX,PKX
+Master Siomai,,1,MNL,MNL
+MASUNG TTEOKBOKKI,korean,1,ICN,ICN
+Mata Tofu Pudding,,1,TPE,TPE
+Matsudo Tomitamendan,,1,NRT,NRT
+MATSUYA,,1,NRT,NRT
+MAURITIUS BROWN,,1,ICN,ICN
+Max Brenner,,1,IST,IST
+Mazuvillage,,1,TPE,TPE
+Mc Donald's Sorvete,,1,GIG,GIG
+McAlister's Deli,,1,DFW,DFW
+McCoy's Bar & Grill at Hyatt Regency - Level 4,,1,MCO,MCO
+McCoy's Bar & Grill To-Go,,1,MCO,MCO
+McDonald's & McCafé,burger,1,HKG,HKG
+McDonald's - Food Court,,1,MCO,MCO
+McDonald's - Gates 100-129,,1,MCO,MCO
+McDonald's Terminal1 3F,,1,NRT,NRT
+McDonald's Terminal1 4F,,1,NRT,NRT
+McDonald's Terminal2,,1,NRT,NRT
+MEALBON,,1,ICN,ICN
+Meallions,,1,ICN,ICN
+MEBUYTEA,,1,TPE,TPE
+Meltise,,1,SIN,SIN
+Mempci Coop,,1,MNL,MNL
+Men Wah Bing Teng,hong_kong,1,HKG,HKG
+MENSHO,ramen,1,KIX,KIX
+Mercantile Dining & Provision,,1,DEN,DEN
+Messo,,1,BOM,BOM
+Metro Pizza,,1,LAS,LAS
+Metropolis Coffee Company,,1,ORD,ORD
+Mezze,,1,LGA,LGA
+Mezze Za Za,,1,MEL,MEL
+Mi Solo Yakiniku,,1,TPE,TPE
+Midtown Bistro,,1,JFK,JFK
+Mifuneyama Ramen,,1,NRT,NRT
+Mija Cantina & Tequila Bar,,1,BOS,BOS
+Milch,,1,BKK,BKK
+Milk Cafe,,1,HKG,HKG
+Mill Street Brewery Pub,,1,YYZ,YYZ
+Mimi Dandan,,1,ICN,ICN
+Minibar,,1,FRA,FRA
+Mint & Mirchi,,1,BOM,BOM
+Mionetto Bar,,1,MUC,MUC
+Misojeong,asian,1,ICN,ICN
+Mister Donut,,1,MNL,MNL
+Mister Softee,,1,JFK,JFK
+Mito,,1,JFK,JFK
+MITSUMOTO TEI Terminal1,,1,NRT,NRT
+Mitti Café,,1,BOM,BOM
+Miyatake Sanuki Udon,,1,NRT,NRT
+Miyou,,1,CDG,CDG
+Mizu Sushi Izakaya,,1,DEN,DEN
+MODAKK SNACK,,1,ICN,ICN
+Modelo Cantina,,1,LAS,LAS
+Moe's Indian Kitchen,,1,SEA,SEA
+Moe's Southwest Grill,,1,LAS,LAS
+Moe's Southwest Grill - Food Court,,1,MCO,MCO
+Mon Kooloor,,1,ATH,ATH
+MONDO Restaurant,,1,FRA,FRA
+Monica's Mercato,,1,BOS,BOS
+Monster Curry,japanese,1,SIN,SIN
+Moo Parlour,,1,DUB,DUB
+Mood Up,,1,IST,IST
+MOONMOONFOOD,,1,TPE,TPE
+Moscovitas,,1,MAD,MAD
+Moti Mahal,,1,BOM,BOM
+Moti Mahal Deluxe,,1,DEL,DEL
+Mountain Hub Gourmet,,1,MUC,MUC
+Mountain Hub Social Dining,,1,MUC,MUC
+Mountain Room,,1,SEA,SEA
+Mr Teh Tarik Express,,1,SIN,SIN
+Mr Toads Pub & Kitchen,,1,DXB,DXB
+Mr. Coconut,,1,SIN,SIN
+Mr. Oso by Senor Bear,,1,DEN,DEN
+Mrs Fields Bakery Cafe,,1,SYD,SYD
+Mrs Pho,vietnamese,1,SIN,SIN
+Mugg & Bean,,1,JNB,JNB
+Mugi To Olive-Rousokuya,,1,NRT,NRT
+Muhlach Ensaymada,,1,MNL,MNL
+Mulberry Street,,1,LGA,LGA
+Mumbai Central,,1,DEL,DEL
+Mumbai Se,,1,BOM,BOM
+Mumbai Snacks,,1,BOM,BOM
+Munchi Pancakes,,1,SIN,SIN
+MUSUBIYA HINONE MIZUNONE,japanese,1,KIX,KIX
+mvnch,,1,IST,IST
+My Bistro,,1,LIS,LIS
+My Bistro Coffee & Drinks,,1,LIS,LIS
+Méridien Village Terrace,,1,DXB,DXB
+Münchner Leibspeise,,1,MUC,MUC
+N.E. MKT,,1,BOS,BOS
+Naashto,,1,BOM,BOM
+NADAMAN,,1,NRT,NRT
+NADRI HOEGWAN,korean,1,ICN,ICN
+Nadri Jjolmyeon,korean,1,ICN,ICN
+Nagaoka,,1,MEX,MEX
+NAGASAKASARASINA NUNOYATAHEE,,1,NRT,NRT
+Naixue,,1,SIN,SIN
+NAKAU,japanese,1,KIX,KIX
+Nam Kee Pau,singaporean,1,SIN,SIN
+NamNam,vietnamese,1,SIN,SIN
+Namsan King Pork Cutlet,korean,1,ICN,ICN
+nana's green tea,japanese,1,KIX,KIX
+Nanny's Northwest BBQ Joint,,1,SEA,SEA
+Nanyang,,1,MNL,MNL
+Nap Tea,tea,1,HKG,HKG
+Nasty Cookie,,1,SIN,SIN
+Nathan Rd Asian Kitchen,,1,MEL,MEL
+Nathan's Famous,,1,MIA,MIA
+Nathan's Famous Hot Dogs,,1,LAS,LAS
+Nathan's Famous Hot Dogs - Gates 70-79,,1,MCO,MCO
+Naturals,,1,BOM,BOM
+Navarre,,1,LAX,LAX
+Naya,,1,JFK,JFK
+Negishi Sushi Bar,,1,ZRH,ZRH
+Neighborhood Bubble Tea & Coffee,,1,SEA,SEA
+Neighborhood Cafe,,1,SEA,SEA
+NENI Deli,,1,FRA,FRA
+Nenrinya CAFÉ & DINER,,1,NRT,NRT
+Nescafé,,1,GIG,GIG
+Nespresso,,1,LIS,LIS
+Nesuto,,1,SIN,SIN
+Network 18 Café,,1,DEL,DEL
+New Belgium Brewing,,1,DEN,DEN
+New Defood Restaurant,,1,DXB,DXB
+New York Burrito Company,,1,BOM,BOM
+Nightflight Bar,,1,MUC,MUC
+Nine Fresh,chinese,1,SIN,SIN
+Nineteen40,,1,DUB,DUB
+Ninth & Pike,,1,SEA,SEA
+Nippon Ramen,ramen,1,HKG,HKG
+No. 1 Traveller Lounge,,1,BHX,BHX
+Nobel Burger,,1,YYZ,YYZ
+nodi,,1,HKG,HKG
+nodi | Moleskine,,1,HKG,HKG
+Nolita Wine Bar,,1,JFK,JFK
+Nom Wah,chinese,1,JFK,JFK
+Nom Wah Bar,chinese,1,JFK,JFK
+Nomad,,1,DUB,DUB
+NOMALO COFFEE,coffee_shop,1,ICN,ICN
+Nong Geng Ji,chinese,1,SIN,SIN
+Nono'S Comfort Kitchen & Bakery,,1,MNL,MNL
+Noodle Wok,,1,DEL,DEL
+Noodles XO,,1,MEL,MEL
+Noooodle,,1,KUL,KUL
+Not Your Average Joe's,,1,BOS,BOS
+Novu Campus Coffee Bar,,1,ZRH,ZRH
+Noyah La Maison & Zero Degree,,1,SIN,SIN
+Nuevo,,1,DXB,DXB
+Nusr-Et,,1,IST,IST
+Nutella,,1,DXB,DXB
+Nuts On Clark - Popcorn Vending,,1,ORD,ORD
+NUTTEA,tea,1,HKG,HKG
+Nutty Bavarian,,1,GIG,GIG
+NY Char Grill,,1,SIN,SIN
+NY Creperie,,1,LGA,LGA
+NY Deli / Gateway Bake Shop,,1,JFK,JFK
+NY Fresh Subs,,1,JFK,JFK
+NY Minute,,1,JFK,JFK
+NYC Aglow,,1,LGA,LGA
+NZZ Café,,1,ZRH,ZRH
+O Mercado,,1,LIS,LIS
+O Pasquim Bar e Prosa,,1,GIG,GIG
+O'Briens Restaurant & Bar,,1,ORD,ORD
+O'Coffee Club,coffee_shop,1,SIN,SIN
+O'Coffee Club Roastery,,1,SIN,SIN
+O'Coffee Club Xpress,,1,SIN,SIN
+OAKBERRY AÇAI,,1,ICN,ICN
+Obica,italian,1,IST,IST
+Ocean Basket,,1,JNB,JNB
+Old Chang Kee,singaporean,1,SIN,SIN
+OldTown White Coffee,coffee_shop,1,HKG,HKG
+Oliva & Bellota,,1,MAD,MAD
+Olive Hill,,1,KIX,KIX
+OMEGA Pork Noodle,singaporean,1,SIN,SIN
+On the Border - Gates 1-29,,1,MCO,MCO
+On the Border To Go - Gates 1-29,,1,MCO,MCO
+On your way,,1,MAD,MAD
+OnigiriBurger,japanese,1,KIX,KIX
+ONTANGJIP,korean,1,ICN,ICN
+Ooosh Oregano Bakery,,1,SYD,SYD
+Open Space Tap Room,,1,SEA,SEA
+Operation Falafel,"Middle Eastern, Street Food",1,AUH,AUH
+Orange County Brewery,,1,MCO,MCO
+Orange County Brewery - Gates C230-C245,,1,MCO,MCO
+Orchard View,"International, Restaurant",1,DOH,DOH
+Orchid Padaria Café Express,,1,HKG,HKG
+Oreo Café,"Desserts, Café",1,DOH,DOH
+ORIENTAL KOPI,,1,KUL,KUL
+Origin Bar & Eatery,,1,FRA,FRA
+Orlando Pride City Pub,,1,MCO,MCO
+Orpheus + Apollo,,1,LGA,LGA
+Osaka Gochi Shokudou,japanese,1,KIX,KIX
+OSAKA OHSHO,,1,NRT,NRT
+OSAKA TENMA SUSHI NISHIYA,japanese,1,KIX,KIX
+Oshu Wafuu Dining Kanaami-Tsuji,,1,NRT,NRT
+Osmow's Shawarma,,1,YYZ,YYZ
+Osteria Marco,,1,DEN,DEN
+Ottoman Eats,,1,BOM,BOM
+OURDANG and In The Box,,1,ICN,ICN
+Outback Steakhouse - Gates 70-79,,1,MCO,MCO
+Outback Take Away - Gates 70-79,,1,MCO,MCO
+Overflow,,1,SIN,SIN
+Pacific Coast News Café,,1,YVR,YVR
+Pacific Coffee,coffee_shop,1,CAN,CAN
+Pacific Farms Market,,1,YVR,YVR
+Pacific Market,,1,SEA,SEA
+Padaria Lisboa,,1,LIS,LIS
+Pajo's Fish & Chips,,1,YVR,YVR
+Palaphita,,1,GIG,GIG
+Palm Grill,,1,MNL,MNL
+Palm Strip Bar & Restaurant,,1,CMB,CMB
+Pan De Coco Diner,,1,MNL,MNL
+Pan Sal Aire,,1,LIM,LIM
+Pana,"Bar, Café, International",1,AUH,AUH
+Pancake House,,1,MNL,MNL
+Panda Express - Food Court,,1,MCO,MCO
+Panda Express and Bar,,1,DFW,DFW
+Pane & Cuore,,1,LIS,LIS
+Panera Bread,,1,DFW,DFW
+Pannus,,1,MAD,MAD
+Panorama Bar,,1,LGA,LGA
+Panos Sweet Bakery,,1,BRU,BRU
+Papa John's,,1,DUB,DUB
+Papacho's,burger,1,LIM,LIM
+Paper Planes Cafe,,1,YVR,YVR
+Pappadeaux Seafood Bar,,1,DFW,DFW
+Paradise Dynasty,chinese,1,SIN,SIN
+Paragon Tea Room,,1,YVR,YVR
+Paramount Fine Foods,,1,YYZ,YYZ
+Pardos Chicken,chicken,1,LIM,LIM
+Paris Cafe,,1,JFK,JFK
+Pasta Evangelists,,1,MAN,MAN
+Pasta Station,,1,BOM,BOM
+PastaMania,italian,1,SIN,SIN
+Pastelaria Versailles,,1,LIS,LIS
+Patamar,"Indian, Asian",1,AUH,AUH
+Patamar To Go,"Indian, Asian",1,AUH,AUH
+PAUL Bakery,,1,SIN,SIN
+Paul Le Cafe,,1,KUL,KUL
+Paulaner Bar & Biergarten,,1,MUC,MUC
+Paulaner Bierhaus,,1,MUC,MUC
+Paşa Döner,kebab,1,IST,IST
+Peach Garden,chinese,1,SIN,SIN
+Peet's at Night,,1,BOS,BOS
+Peet's Coffee & Tea,,1,BOS,BOS
+Peloton Bar & Eatery,,1,WLG,WLG
+Penang Culture,malaysian,1,SIN,SIN
+Pepsi Vending,,1,ORD,ORD
+perfect day,,1,FRA,FRA
+perfect day micro,,1,FRA,FRA
+Peroni Bar,,1,SYD,SYD
+Perusuyo,peruvian,1,LIM,LIM
+Pete's Pies,,1,SYD,SYD
+Peter Steak House,steak,1,CAN,CAN
+Petit Gourmet,,1,JFK,JFK
+Pezzo di Pane,,1,FRA,FRA
+PGA TO GO,,1,LAS,LAS
+PGA Tour Grill,,1,LAS,LAS
+Philly Cheesesteaks,,1,JFK,JFK
+Pho Hoa,,1,MNL,MNL
+Phoenix Lane - Gate 424,,1,DUB,DUB
+Phoenix Lane - South Gates,,1,DUB,DUB
+Phoenix Lane Express - Gate 114,,1,DUB,DUB
+Phoenix Lane Express - Gate 336,,1,DUB,DUB
+Piazza Café & Bar Tnp,,1,MNL,MNL
+Picard,,1,MEX,MEX
+Pick & Joy,,1,MEX,MEX
+Pick Up Stix,asian,1,LAX,LAX
+Pickett's Deli & Rotisserie,,1,MEL,MEL
+Pidem,,1,IST,IST
+Pie Face,,1,BKK,BKK
+Pier D,"Bar, International",1,AUH,AUH
+Pierre Hermes,,1,IST,IST
+Pilots Bar and Kitchen,,1,LHR,LHR
+PINE KOREAN Restaurant,,1,TPE,TPE
+Pipocassa,,1,GIG,GIG
+Pizza,,1,ZRH,ZRH
+Pizza  Pub,pizza,1,JFK,JFK
+Pizza Al Taglio,,1,MEL,MEL
+Pizza Bar,,1,MEX,MEX
+Pizza CreAfe',,1,TPE,TPE
+Pizza Hut & Delifrance,,1,CMB,CMB
+Pizza Please,pizza,1,LAX,LAX
+Pizza Vino Bar,pizza,1,JFK,JFK
+Pizza Vino Kitchen & Bar,,1,JFK,JFK
+PizzaExpress,,1,LGW,LGW
+Pizzeria Enzo,pizza,1,IST,IST
+PLE:EATING,korean,1,ICN,ICN
+Plum Market Bar,,1,DFW,DFW
+Poke Poke,,1,LAS,LAS
+Poke to the Max,,1,SEA,SEA
+Ponnusamy Restaurant,,1,DXB,DXB
+Pool Bar,,1,JFK,JFK
+Pop Play Planet Cafe,,1,SIN,SIN
+Poppy's Bagels / Chuko Ramen,,1,LGA,LGA
+Port of Subs/Mrs. Fields,,1,LAS,LAS
+Pot Kettle Black,,1,MAN,MAN
+Potbelly,,1,LGA,LGA
+Potzollcalli,,1,MEX,MEX
+Poulet Bijou,,1,SIN,SIN
+Pour Authority,,1,LGA,LGA
+Prime Steakhouse,,1,LGA,LGA
+Pronto Sandwiches,,1,ORD,ORD
+PRONTO TERMINAL 1,,1,KIX,KIX
+Protein Bar & Kitchen,,1,LGA,LGA
+Protein Bar & Kitchen Kiosk,,1,ORD,ORD
+Protein Bar and Kitchen,,1,ORD,ORD
+PS.Cafe,,1,SIN,SIN
+Publican Quality Bread,,1,ORD,ORD
+Publican Tavern,,1,ORD,ORD
+Puku Puku,,1,LIM,LIM
+Pulp + Grind,,1,SYD,SYD
+Punjabi Kulfi,,1,DEL,DEL
+Pura Brasa,,1,MAD,MAD
+Pure,,1,LGW,LGW
+Purebread,,1,YVR,YVR
+Purefoods Street Sarap,,1,MNL,MNL
+PUTIEN,chinese,1,SIN,SIN
+Q Bar,,1,IAH,IAH
+Qaser Casablanca Cafe,,1,DXB,DXB
+Qing-Feng Steamed Dumpling Shop,chinese,1,PKX,PKX
+Quanjude Roast Duck Restaurant,chinese,1,PKX,PKX
+Que Bueno! Mexican Grill,,1,DEN,DEN
+Que Bueno! Mexican Grille,,1,DEN,DEN
+QUEEN COFFEE & MEALS,,1,KUL,KUL
+Queens Corner,,1,LGA,LGA
+Queic by Olivia,,1,SIN,SIN
+Quick Bite Restaurant,,1,DXB,DXB
+Quikshots,,1,MEL,MEL
+Quiznos,,1,DEN,DEN
+Qwench Juice Bar,juice,1,LAX,LAX
+R.J. Grunts Burgers & Fries,,1,ORD,ORD
+Rachel's Kitchen,,1,LAS,LAS
+Racks / Tenya,,1,MNL,MNL
+Raju Omlet,,1,BOM,BOM
+Ralph's Coffee,"Coffee, Café, Luxury",1,DOH,DOH
+RAMEN ICHIKAKUYA,,1,NRT,NRT
+RAMEN IROHA,,1,TPE,TPE
+Ramen Keisuke Singapore,ramen,1,SIN,SIN
+Ramen Makotoya,,1,TPE,TPE
+Ramen Miraku,,1,NRT,NRT
+Ravenous Pig Brewing Co. General Store - Gates C230-C245,,1,MCO,MCO
+raw JUCE,,1,MCO,MCO
+Rawabina,,1,DXB,DXB
+Red Grill,"Steakhouse, Grill, International",1,DOH,DOH
+REES Specialty Coffee,coffee_shop,1,BKK,BKK
+Refresh,,1,IST,IST
+Refreshments by NIWA no HOTORI,,1,NRT,NRT
+Rel'Lish Burger Lounge,,1,SEA,SEA
+Relax Inn,,1,CMB,CMB
+Remman Cafe,"Middle Eastern, Café",1,DOH,DOH
+Replenish with Illy's Coffee - Gates C230-C245,,1,MCO,MCO
+Restaurant,,1,DXB,DXB
+Revive,,1,JFK,JFK
+Revive - Gate 80,,1,MCO,MCO
+Revive - Gate 90,,1,MCO,MCO
+Revolucion,mexican,1,JFK,JFK
+Rey Food & Drink,,1,IST,IST
+Rey Organic,,1,IST,IST
+Rice Up!,,1,ZRH,ZRH
+Roasted Notes,,1,DUB,DUB
+ROBOTGIMBAP,korean,1,ICN,ICN
+Rock Squeeze,,1,YYZ,YYZ
+RODILLA,,1,MAD,MAD
+Roger's Fish Co.,,1,BOS,BOS
+ROJI-URA CURRY SAMURAI.,,1,NRT,NRT
+Roll'd,vietnamese,1,SYD,SYD
+Roll'd Vietnamese,,1,MEL,MEL
+Rolling Stone,,1,LAX,LAX
+Romano's Macaroni Grill,,1,MCO,MCO
+Romano's On the Fly,,1,MCO,MCO
+Romers Fresh Kitchen and Bar,,1,YVR,YVR
+Roost,,1,SIN,SIN
+Root Down,,1,DEN,DEN
+Root Down DIA,,1,DEN,DEN
+Root98,,1,YVR,YVR
+Roots,,1,ZRH,ZRH
+Rosenberg's Bagels & Delicatessen,,1,DEN,DEN
+Rosso Vivo Artizan Pizza,pizza,1,DXB,DXB
+Rossopomodoro,,1,FCO,FCO
+Rotiboy,,1,SIN,SIN
+Round D Clock,,1,DEL,DEL
+Royal Host,japanese,1,SIN,SIN
+Royal-House,,1,TPE,TPE
+Ruam Samai,thai,1,BKK,BKK
+Rush Street Bar,,1,ORD,ORD
+Rustica,,1,MEL,MEL
+Ryan's,,1,DUB,DUB
+Ryu-ka Seian Toushomen,chinese,1,KIX,KIX
+S&P,thai,1,BKK,BKK
+S.V.H. SNACKS,,1,CMB,CMB
+Saap Saap Thai,thai,1,SIN,SIN
+Sablier Rooftop Restaurant & Bar,,1,ZRH,ZRH
+SAINT MARC CAFÉ,,1,KIX,KIX
+Sakamoto,japanese,1,LIM,LIM
+Sal Y Limon,,1,YVR,YVR
+Sal's Pizza,,1,BOS,BOS
+Salad Bar,,1,BOM,BOM
+Salad Works,,1,ORD,ORD
+Salch&Pão,,1,GIG,GIG
+Salmon n' Bannock On The Fly,,1,YVR,YVR
+Salsas Fresh Mex,,1,MEL,MEL
+Salt & Grinder,,1,DEN,DEN
+Salt & Smoke,,1,DEN,DEN
+Salty's at the SEA,,1,SEA,SEA
+Salute MX,,1,MEX,MEX
+SAMCHUNGDANG,,1,ICN,ICN
+SAMJINAMOOK,korean,1,ICN,ICN
+Sammy's Beach Bar & Grill,,1,LAS,LAS
+Sammy's Woodfired Pizza,,1,LAS,LAS
+Sammy's Woodfired Pizza & Grill,pizza,1,LAX,LAX
+Sampanman,seafood,1,SIN,SIN
+San Carlo,,1,MAN,MAN
+San Marco,,1,DUB,DUB
+San Marco Curry,curry,1,KIX,KIX
+Sangeetha Vegetarian Restaurant,indian,1,DXB,DXB
+Sanook Kitchen,thai,1,SIN,SIN
+Sans Rival,,1,MNL,MNL
+Santa Gloria,,1,MAD,MAD
+Santa Monica Brew Works,,1,LAX,LAX
+Santo,,1,DEN,DEN
+Santouka,ramen,1,LAX,LAX
+Sapori d'Italia,,1,ZRH,ZRH
+Satellite restaurant TEPPAN YAKI,,1,NRT,NRT
+Savor Japanese Izakaya,,1,NRT,NRT
+Sayad Bahar,,1,DXB,DXB
+Sbarro - Food Court,,1,MCO,MCO
+Schlotzky's Deli,,1,IAH,IAH
+Schnitz,,1,MEL,MEL
+Scoop'd,ice_cream,1,LOS,LOS
+Seafood meets Asia,,1,MUC,MUC
+Seattle Beer Union,,1,SEA,SEA
+Seattle Dawg House,,1,SEA,SEA
+Second Master & Young Young Bak Kut Teh,,1,TPE,TPE
+Seferi,,1,IST,IST
+Segafredo,,1,MUC,MUC
+SEIYOKEN,,1,NRT,NRT
+Selmans Restaurant & Bar,,1,MUC,MUC
+Semillero,,1,MEX,MEX
+Sense of Malaysia - Kueh Kita,,1,KUL,KUL
+SENSIB Café,coffee_shop,1,BKK,BKK
+Seoul-Street,,1,ICN,ICN
+Serai,,1,KUL,KUL
+Serenitea,,1,MNL,MNL
+Sergio's GO,,1,MIA,MIA
+Sewar,lebanese,1,DXB,DXB
+SF Fruits & Juices,juice,1,SIN,SIN
+SG Hawker,,1,SIN,SIN
+Shake Shack - Terminal C Palm Court,,1,MCO,MCO
+Shan Shui,chinese,1,LHR,LHR
+Shater,,1,DXB,DXB
+Shawa,"Lebanese, Middle Eastern",1,AUH,AUH
+Shawarma Shack,,1,BOM,BOM
+Shawarma Station,"Middle Eastern, Street Food",1,DOH,DOH
+Shelby and Co,,1,BHX,BHX
+Shin Ramyun,ramen,1,JFK,JFK
+Shiv Sagar,,1,BOM,BOM
+Shu Sheep a Bowl of Lamb,,1,TPE,TPE
+Sibarium,,1,MAD,MAD
+Sichuan Impression,,1,TPE,TPE
+Simit Sarayi,"Turkish, Bakery, Café",1,DOH,DOH
+Simit Sarayı,,1,IST,IST
+Singapore Food Street,singaporean,1,SIN,SIN
+Singgah,,1,KUL,KUL
+Sinpo Sundae,korean,1,ICN,ICN
+Siomai King,,1,MNL,MNL
+Sissi & Franz,,1,MUC,MUC
+Sissi & Franz Bar,,1,MUC,MUC
+Sky Elephant Thai Restaurant,,1,TPE,TPE
+Skybridge Bar & Grill,,1,ORD,ORD
+Skyscrapers Bar,,1,ORD,ORD
+Slater's 50/50,,1,DEN,DEN
+Slicy,"Pizza, Italian",1,DOH,DOH
+Slim Chicken's,chicken,1,IST,IST
+Slim's Quality Burger,burger,1,SYD,SYD
+Small Holdings,,1,MEL,MEL
+Smiling BKK (Thai),,1,DXB,DXB
+Smoke's Burritorie,,1,YYZ,YYZ
+Smoke's Poutinerie,,1,YYZ,YYZ
+Smokey Joe's,,1,MUC,MUC
+Snack Shack,,1,LAS,LAS
+Snarf's Sandwiches,,1,DEN,DEN
+Snek & Co,,1,KUL,KUL
+Snowflakes Ice Cream,"Ice Cream, Desserts",1,DOH,DOH
+So Chocolate,,1,JFK,JFK
+So Fresh,salad,1,LOS,LOS
+SO! Coffee,"Coffee, Café",1,AUH,AUH
+Soho,,1,LIS,LIS
+Soho Bites,,1,JFK,JFK
+SOI YEONNAM,thai,1,ICN,ICN
+SOJIBO,japanese,1,KIX,KIX
+Sokcho Kodari Naengmyeon,korean,1,ICN,ICN
+Sol Bowl,,1,SYD,SYD
+Soleil Brasserie,,1,LGA,LGA
+Song Fa Bak Kut Teh,singaporean,1,SIN,SIN
+Sonny Bryan's Smokehouse,,1,DFW,DFW
+Sonoma,,1,LGW,LGW
+Sonsuheon,korean,1,ICN,ICN
+SOUL BOWL,,1,ICN,ICN
+Soup Restaurant,singaporean,1,SIN,SIN
+Sourced Market,,1,SEA,SEA
+South Downs Bar,,1,LGW,LGW
+Soy & Sake,,1,JFK,JFK
+Specially,,1,LIS,LIS
+Spirit & Bell,,1,LGA,LGA
+Spoleto,italian,1,GIG,GIG
+Sportalm,,1,MUC,MUC
+Sporting Chance,,1,MAN,MAN
+Sports Edition Bar,,1,ORD,ORD
+Sportsbar & Terrace,,1,ZRH,ZRH
+Sprüngli Café-Bar,,1,ZRH,ZRH
+Spur,,1,JNB,JNB
+Squeeze Juice,,1,BOM,BOM
+SSOJA TOAST,,1,ICN,ICN
+ST. ALi,,1,MEL,MEL
+St. Mia - Ristorante Italiano,italian,1,DXB,DXB
+Stanley's Blackhawks Kitchen & Tap,,1,ORD,ORD
+STAR HOSEKI,,1,TPE,TPE
+Star Light,,1,LHR,LHR
+Starbucks (Baggage Claim),,1,SEA,SEA
+Starbucks - Gate 332,,1,DUB,DUB
+Starbucks - Gates 1-29,,1,MCO,MCO
+Starbucks - Gates 100-129,,1,MCO,MCO
+Starbucks - Gates 70-99,,1,MCO,MCO
+Starbucks - Terminal A Level 2 Baggage Claim,,1,MCO,MCO
+Starbucks - Terminal A Level 3,,1,MCO,MCO
+Starbucks - Terminal C Level 6,,1,MCO,MCO
+Starbucks - Terminal C Palm Court,,1,MCO,MCO
+STARBUCKS COFFEE 1F South Shop,coffee_shop,1,KIX,KIX
+STARBUCKS COFFEE 2F Shop,coffee_shop,1,KIX,KIX
+STARBUCKS COFFEE Terminal1 4F,,1,NRT,NRT
+Starbucks Evenings,,1,SEA,SEA
+Starbucks Reserve,"Coffee, Café, Premium",1,DOH,DOH
+Startbar,,1,ZRH,ZRH
+Steers,,1,JNB,JNB
+Steiner Flughafebeck,,1,ZRH,ZRH
+Sternen Grill,,1,ZRH,ZRH
+Steve's Snappin' Dogs,,1,DEN,DEN
+Stitch Coffee,,1,SYD,SYD
+Stomping Ground Brewery,,1,MEL,MEL
+Stone & Wood Dine,,1,SYD,SYD
+Street Foods by Punjab Grill,,1,BOM,BOM
+Street Kitchen,,1,DUB,DUB
+Subralott,,1,MUC,MUC
+Subway (Open 24 Hours),,1,MIA,MIA
+Sugar & Spice,,1,TPE,TPE
+SugarBelly,,1,SIN,SIN
+Sugarland Beer Garden,,1,IAH,IAH
+Sukhothai,thai,1,DXB,DXB
+Summer House Orlando - Terminal C Palm Court,,1,MCO,MCO
+Summer House Santa Monica,,1,ORD,ORD
+SumoSalad Green on Green,,1,SYD,SYD
+Sunday Supper Trattoria,,1,LGA,LGA
+Sunset Loop Bar & Grill,,1,DEN,DEN
+Sunset Loop Market,,1,DEN,DEN
+Sunshine Diner by Chef Art Smith - Gates C230-C245,,1,MCO,MCO
+Superfood,,1,FRA,FRA
+Superfruit Republic,,1,DEN,DEN
+Supermac's,,1,DUB,DUB
+SuperSubs,,1,DUB,DUB
+Supply Five Co.,,1,JFK,JFK
+Surf and Turf,,1,MUC,MUC
+Sushi Jiro,,1,MEL,MEL
+Sushi Kyotatsu Terminal1 North Wing,,1,NRT,NRT
+Sushi Kyotatsu Terminal2,,1,NRT,NRT
+Sushi Nama,japanese,1,BKK,BKK
+SUSHI OTAKU,japanese,1,KIX,KIX
+Sushi Shop,,1,CDG,CDG
+Sushi Tei,japanese,1,SIN,SIN
+Sushi Uogashi Nihon-ichi,,1,NRT,NRT
+Sushi-go-round GANSOZUSHI,,1,NRT,NRT
+Sushi-Itto,,1,MEX,MEX
+Sushiichiban Satellite,,1,NRT,NRT
+Sussex House Kitchen & Bar,,1,LGW,LGW
+Sweet Ideas,,1,MNL,MNL
+Sweet Maple Lounge,,1,YVR,YVR
+Sweet Stop,"Sweets, Desserts, Café",1,DOH,DOH
+Sweets on the Go,,1,JNB,JNB
+Swensen's,,1,SIN,SIN
+Sydney Coffee Trader,,1,SYD,SYD
+T's TANTAN,,1,NRT,NRT
+T2 Tea,,1,TPE,TPE
+Tacañon,,1,MEX,MEX
+Taco Bell Cantina,,1,DEN,DEN
+Taco Inn,,1,MEX,MEX
+Tacos Locos,,1,LAS,LAS
+Tacos Locos - Gates 70-79,,1,MCO,MCO
+Tacos Tequila Whiskey,,1,DEN,DEN
+Tagliare,,1,IAH,IAH
+Taim Mediterranean Kitchen,,1,LGA,LGA
+Taiwan Culture,taiwanese,1,SIN,SIN
+Take Away,,1,MAD,MAD
+TAKOMASA,japanese,1,KIX,KIX
+Talde Noodle Bar,,1,LGA,LGA
+TANG DYNASTY TO-SHO-MEN,,1,NRT,NRT
+Tanta,peruvian,1,LIM,LIM
+Tanta To Go,peruvian,1,LIM,LIM
+TANTAN NOODLES KITCHEN,asian,1,ICN,ICN
+Tante Ju's Speisenwerkstatt,,1,MUC,MUC
+Tao Tao Ju,chinese,1,CAN,CAN
+Taoyuan Village,chinese,1,PKX,PKX
+Tap & Brew,,1,DUB,DUB
+Tap & Pour,,1,YYZ,YYZ
+Tapa King,,1,MNL,MNL
+Tapas Sky Bar,,1,DEN,DEN
+Tasca Don Quino,,1,MEX,MEX
+Taste of India,Indian,1,AUH,AUH
+Taste of NY,,1,JFK,JFK
+TASTY CUBE,,1,ICN,ICN
+TawBan,,1,ICN,ICN
+TAXIING 5,,1,ICN,ICN
+tealive,,1,SIN,SIN
+Teatulia Tea & Coffee Bar,,1,DEN,DEN
+Ted & Rose,,1,WLG,WLG
+Temakinho,,1,FCO,FCO
+Temazcal Cantina,,1,BOS,BOS
+Tempura Nihonbashi Tamai,,1,NRT,NRT
+Tender Crush,,1,JFK,JFK
+Tentazioni Cafè,,1,FCO,FCO
+TEPPAN YAKI MITSUMOTO TEI / MITSUMOTO COFFEE TEN,,1,NRT,NRT
+Teppanyaki Dotonbori Kurita,,1,NRT,NRT
+Tequileria Grille,,1,LAS,LAS
+Tere Cazola,,1,MEX,MEX
+Teriyaki Chicken ITOME,,1,NRT,NRT
+Terrace Chinese Kitchen,chinese,1,SIN,SIN
+Terraza MX,,1,MEX,MEX
+Thai Express,,1,YYZ,YYZ
+Thai Restaurant Jai Thai,,1,NRT,NRT
+Thai Street Food,thai,1,BKK,BKK
+The 1872 Clipper Tea Co.,,1,SIN,SIN
+THE ALCHEMIST CAFE,,1,HKG,HKG
+The B Lounge,,1,LAS,LAS
+The Bagel Deli,,1,DEN,DEN
+The Bar,,1,FRA,FRA
+The Beehive,,1,LGW,LGW
+The Beer House,,1,ATH,ATH
+The Bindery,,1,DEN,DEN
+The Bistro by Wolfgang Puck,,1,SYD,SYD
+The Blinded Tiger,,1,JFK,JFK
+The Bowery Bay Shops,,1,LGA,LGA
+The Brasserie,,1,KIX,KIX
+The Breakfast Club,american,1,LGW,LGW
+The Breakfast Klub,,1,IAH,IAH
+The Brick Wall Sports Bar,,1,DXB,DXB
+The Bridgewater Exchange,,1,MAN,MAN
+The Bronze Pizza,,1,ORD,ORD
+The Bronze Tap,,1,ORD,ORD
+The Brooklyn Counter,burger,1,JFK,JFK
+The Burger Federation,,1,YYZ,YYZ
+The Cellar Bar & Bistro,,1,MEL,MEL
+The Chocolate Box,,1,MEL,MEL
+The Chocolate Shack by Dominique Persoone,,1,BRU,BRU
+The Coach Restaurant,,1,SIN,SIN
+The Coffee Beans,,1,KUL,KUL
+The Coffee Club,coffee_shop,1,BKK,BKK
+The Connie,,1,JFK,JFK
+The Counter,burger,1,LAX,LAX
+The Craft Beer Garden,,1,IAH,IAH
+The Cram Bar,,1,BOM,BOM
+The Crown Rivers Wetherspoon,,1,LHR,LHR
+The Curator,,1,LHR,LHR
+The Daily,"Café, International",1,AUH,AUH
+The Daily - Urban Street Food,,1,DXB,DXB
+The Dearborn,,1,ORD,ORD
+The Dirty Bird Chicken & Waffles Express,,1,YYZ,YYZ
+The Dubliner's,,1,DXB,DXB
+The Emirates Lounge,,1,BHX,BHX
+The Evergreen Bar and Brasserie,,1,MAN,MAN
+The Evergreen Bar and Restaurant,,1,LHR,LHR
+The Factory Bar and Kitchen,,1,BHX,BHX
+The Fallow Kitchen & Bar,,1,DUB,DUB
+The Flave of Munich,,1,MUC,MUC
+The Flying Horse,,1,LGW,LGW
+The Forest Bakery,,1,HKG,HKG
+The Gallery Restaurant,,1,ZRH,ZRH
+The Gang Foods,,1,IST,IST
+The Garden Terrace,,1,DUB,DUB
+The Gate Clock,,1,DUB,DUB
+The Gin Garden,,1,DXB,DXB
+The Globe,,1,LHR,LHR
+The Goddess and Grocer,,1,ORD,ORD
+The Golden Krust,,1,JFK,JFK
+The Great American Bagel,,1,IAH,IAH
+The Great American Bagel Bakery,,1,LAS,LAS
+The Grille,,1,LGA,LGA
+The Habit Burger,burger,1,LAX,LAX
+The Hainan Story,singaporean,1,SIN,SIN
+The Hainan Story Bakery,,1,SIN,SIN
+The Hampton Social,,1,ORD,ORD
+The Hearth by Lynn Crawford,,1,YYZ,YYZ
+The House Cafe,,1,IST,IST
+The Irish House,,1,DEL,DEL
+The Irish Village,,1,DXB,DXB
+The Italian Kitchen by Wolfgang Puck,,1,DFW,DFW
+The Line Sports Grill,,1,LGA,LGA
+The Loaf,,1,KUL,KUL
+The Local,,1,JFK,JFK
+The Local Taphouse,,1,MEL,MEL
+The Magic Pan,,1,DEN,DEN
+The Majilis,"Middle Eastern, International",1,AUH,AUH
+The Market by Villa,,1,IAH,IAH
+The Meat District,"American, Burgers",1,AUH,AUH
+The Mezz,,1,DUB,DUB
+The Noodle Cart,"Asian, Noodles",1,DOH,DOH
+The Nook,,1,MAN,MAN
+The Oceanic,,1,LHR,LHR
+the ODEON by Käfer,,1,MUC,MUC
+The Palm Bar & Grill,,1,JFK,JFK
+The Pelican,,1,MEL,MEL
+The Pizza Company,pizza,1,BKK,BKK
+The Playa Cafe,,1,LAX,LAX
+The Queen's Arms,,1,LHR,LHR
+The Rail,,1,IAH,IAH
+The Red Lion,,1,LGW,LGW
+The Reserve,,1,DUB,DUB
+The Rodeo Bar,,1,DFW,DFW
+The Sunken Lounge,,1,JFK,JFK
+The Sushi Platter,japanese,1,SYD,SYD
+The Sweet Shop,,1,JNB,JNB
+THE TACO BOOTH,mexican,1,ICN,ICN
+The Urban Deli & Café,,1,MEX,MEX
+The Villa Halal,halal,1,BKK,BKK
+The Vinery,,1,LHR,LHR
+TheJellyHearts,,1,SIN,SIN
+Think Asia,,1,MEL,MEL
+THINK CURRY HOUSE,,1,TPE,TPE
+Third Wave Coffee,,1,BOM,BOM
+Thong Thai,,1,FRA,FRA
+Three Quarter Society,,1,WLG,WLG
+Three Quarter Society Junior,,1,WLG,WLG
+Tianlu,chinese,1,ICN,ICN
+Tickerdaze,,1,IST,IST
+TICO,,1,BOS,BOS
+Tiger Bar & Restaurant,,1,SIN,SIN
+Tiger Den,,1,SIN,SIN
+TIKG (The Indian Kebab Grill) Bar,,1,BOM,BOM
+Tim Ho Wan,chinese,1,SIN,SIN
+Tim Hortons SG,coffee_shop,1,SIN,SIN
+Timber's,,1,DEN,DEN
+Timeless Korean Dining (Hansik Sodam-gil),korean,1,ICN,ICN
+Tip Top,local,1,SIN,SIN
+TJ Katsu Dumplings and Noodles,japanese,1,WLG,WLG
+TJ Katsu Sushi,japanese,1,WLG,WLG
+TKK Fried Chicken x KUNG FU TEA,,1,TPE,TPE
+To Go,,1,ATH,ATH
+Toast Box & Thye Moh Chan,,1,SIN,SIN
+Toasties,,1,LOS,LOS
+Tocabe,,1,DEN,DEN
+Todd English Market & Pub,"International, Bar",1,AUH,AUH
+Tofu Hot Pot,,1,TPE,TPE
+Toh-Lee,chinese,1,KIX,KIX
+Tokyo Food Bar,,1,NRT,NRT
+Tokyo Milk Cheese Factory,,1,SIN,SIN
+TOKYO-TONKOTSU-BASE MADE by IPPUDO,,1,NRT,NRT
+Tong Kee Bao Dim,dim_sum,1,HKG,HKG
+TONKATSU,,1,TPE,TPE
+Tonkatsu by Ma Maison,japanese,1,SIN,SIN
+TONKATSU INABA WAKO,,1,NRT,NRT
+Tonkatsu shinjuku saboten,,1,NRT,NRT
+TONKATSU WAKO KEITEI,japanese,1,KIX,KIX
+Tony and Benny's Pizza Parlor,,1,LGA,LGA
+Tony Roma's,,1,MAD,MAD
+Top Cafeteria,,1,DXB,DXB
+Top Ten Thai Restaurant,thai,1,BKK,BKK
+Tori,,1,LIM,LIM
+Torrons Vicens,,1,MAD,MAD
+Tortas Don Polo,,1,MEX,MEX
+Torteria San Cosme,,1,YYZ,YYZ
+Tortilla,tex-mex,1,LGW,LGW
+TORUNG BANGKOK,thai,1,ICN,ICN
+TP TEA,,1,SIN,SIN
+Tranzeet,burger,1,DXB,DXB
+Travel Market,,1,GIG,GIG
+Treasures Yi Dian Xin,chinese,1,SIN,SIN
+Treats - Tinapay Ni Nanay,,1,MNL,MNL
+Treehouse Juicery,,1,DXB,DXB
+Tres Tacos,mexican,1,SYD,SYD
+Trib's,,1,FRA,FRA
+Trinity Burgers,,1,LGA,LGA
+Trinity Groves Food Lockers,,1,DFW,DFW
+Trinity Groves Kitchen & Bar,,1,DFW,DFW
+Triple O's,,1,YVR,YVR
+Tropical Hut,,1,MNL,MNL
+TRT World Cafe,,1,IST,IST
+True Burger,burger,1,JFK,JFK
+True Food Kitchen,,1,DEN,DEN
+Tsui Wah,hong_kong,1,SIN,SIN
+tsukiji - Sushiiwa,,1,NRT,NRT
+Tsukiji Magoemon,japanese,1,KIX,KIX
+Tsukiji Sushisei,,1,NRT,NRT
+TSUKIZEN,japanese,1,ICN,ICN
+Tsuta Japanese Soba Noodles,ramen,1,SIN,SIN
+TUK,,1,ZRH,ZRH
+TULLY'S COFFEE Terminal1,,1,NRT,NRT
+Tun Xiang,chinese,1,SIN,SIN
+Tuscany Cafe,,1,ORD,ORD
+Tutti Frutti,,1,MAD,MAD
+Tutto by Da Paolo,italian,1,SIN,SIN
+TWA Corner Store,,1,JFK,JFK
+Twist by Roger Mooking,,1,YYZ,YYZ
+Twisted Root,,1,DFW,DFW
+Two Johns Taphouse,,1,MEL,MEL
+TX/MX,,1,DFW,DFW
+Ucc Mentore,,1,MNL,MNL
+Ufufu Cafe,japanese,1,HKG,HKG
+Umaizushi,,1,ZRH,ZRH
+Umami Burger,burger,1,LAX,LAX
+Uncle,,1,DEN,DEN
+United Brew Works,,1,WLG,WLG
+Uno Due Go,,1,DFW,DFW
+UOICHI,,1,NRT,NRT
+upperdeck,,1,ZRH,ZRH
+Uptown Bar,,1,JFK,JFK
+Uptown Essentials,,1,LGA,LGA
+Uptown Market,,1,JFK,JFK
+urban Biergarten,,1,MUC,MUC
+Urban Coffee Roaster,coffee_shop,1,HKG,HKG
+Urban Corner,,1,MEX,MEX
+Urban Crave - Gates 1-29,,1,MCO,MCO
+Urban Market,,1,YYZ,YYZ
+Urban Olive,,1,ORD,ORD
+Urban Provodore,,1,MEL,MEL
+Usta,"Turkish, Kebab",1,DOH,DOH
+Van Wyck Bar & Grill,,1,JFK,JFK
+Vegas Baby Bar,,1,LAS,LAS
+VEGE CREEK,,1,TPE,TPE
+Venchi,"Italian, Chocolates, Gelato",1,DOH,DOH
+Vending Machine - M&Ms,,1,LAS,LAS
+Veneti,,1,ATH,ATH
+Veneti-GO!,,1,ATH,ATH
+Veneziano Coffee Roasters,,1,MEL,MEL
+Ventana Fresh,,1,GIG,GIG
+Veteran Roasters/Brown Sugar Bakery,,1,ORD,ORD
+Via Bakery,,1,IST,IST
+Via Fıçı,,1,IST,IST
+Via Kiosk,,1,IST,IST
+Viaggio Espresso + Bar,,1,SYD,SYD
+Viandas,,1,MAD,MAD
+Vida e Cafe,,1,JNB,JNB
+Viktualien Stubn,,1,MUC,MUC
+Villa Antinori da Bindella,,1,ZRH,ZRH
+Villa Fresh Italian Kitchen,,1,LAS,LAS
+Villa Italian Kitchen - Gates 100-129,,1,MCO,MCO
+Villa Russo,italian,1,JFK,JFK
+Village Pub,,1,SEA,SEA
+Vineyard Grille,,1,BOS,BOS
+VINNY'S Panini,sandwich,1,JFK,JFK
+Vino Volo - Gates 70-79,,1,MCO,MCO
+Vino Volo Wine Bar,,1,YYZ,YYZ
+VIT,"Juices, Café",1,AUH,AUH
+Vivanda Burger,burger,1,IST,IST
+Voodoo Doughnut,,1,DEN,DEN
+VWI COFFEE BAR,,1,TPE,TPE
+Vyne Washington Tasting Room,,1,SEA,SEA
+W.H. Smith,,1,LGA,LGA
+Wa-En Wagyu,japanese,1,SIN,SIN
+Wafflemeister,,1,LHR,LHR
+Wahoo's Fish Taco,"seafood, mexican",1,LAX,LAX
+Wanderlust,,1,SEA,SEA
+Wang Noodle House,chinese,1,SIN,SIN
+WANG'S BROTH,,1,TPE,TPE
+Warehouse,,1,DXB,DXB
+Watami,,1,MNL,MNL
+Wawee Coffee,coffee_shop,1,BKK,BKK
+Way Yu Lau,chinese,1,CAN,CAN
+Wee Nam Kee Hainanese Chicken Rice,singaporean,1,SIN,SIN
+Welcome Bar,,1,BRU,BRU
+Western Mahua,chinese,1,PKX,PKX
+WH Smith Australia,,1,MEL,MEL
+Whiskey Bread,,1,DUB,DUB
+Whiskey Lima Golf,,1,WLG,WLG
+Whistler Taphouse & Grill,,1,YVR,YVR
+White Restaurant,,1,SIN,SIN
+White Spot,,1,YVR,YVR
+Wicker Park Market,,1,ORD,ORD
+Wicker Park Sushi Bar,,1,ORD,ORD
+Wiener Feinbäckerei,,1,FRA,FRA
+Wiener's,,1,MUC,MUC
+Wild Olive,,1,LHR,LHR
+Williams,,1,NRT,NRT
+Williams & Graham,,1,DEN,DEN
+Wimpey,,1,JNB,JNB
+Wine Bar George - Terminal C Palm Court,,1,MCO,MCO
+Wine Selectors,,1,MEL,MEL
+Wing Café,,1,TPE,TPE
+Wingstop,,1,DFW,DFW
+WithGreen,,1,NRT,NRT
+Wok & Roll,,1,JFK,JFK
+Wok to Gate,asian,1,LIM,LIM
+Wok to Walk,"Asian, Stir Fry, Street Food",1,DOH,DOH
+Woke Ramen,ramen,1,SIN,SIN
+Wondertree,,1,LGW,LGW
+Woody Creek Bakery & Cafe,,1,DEN,DEN
+Work & Fly,"Café, Co-working",1,DOH,DOH
+World Cup,,1,DXB,DXB
+Wow Momo,,1,BOM,BOM
+Wrapchic,,1,MAN,MAN
+Wu Fang Zhai,chinese,1,SIN,SIN
+Wurst Sausages,,1,JFK,JFK
+Xi Bei,chinese,1,PKX,PKX
+Xi Zai Bian Grilled Meat Rice,,1,TPE,TPE
+XIABUXIABU,chinese,1,PKX,PKX
+Xiao Noodles,noodles,1,CAN,CAN
+Xing Fu Tang,,1,TPE,TPE
+XINGKAI,chinese,1,ICN,ICN
+Xishaoye,chinese,1,PKX,PKX
+Xocolia,,1,MEX,MEX
+XW Western Grill,,1,SIN,SIN
+Ya Kun Family Cafe,,1,SIN,SIN
+Yabase,,1,NRT,NRT
+YAKISUKI MEAT DISHES YANMA,,1,NRT,NRT
+Yasamin,"International, Café, Bar",1,AUH,AUH
+Yeongju Bubu Maeul,korean,1,ICN,ICN
+Yi Fong Tang,,1,TPE,TPE
+YOOIL DAK GANG JEONG,korean,1,ICN,ICN
+Yooji's,,1,ZRH,ZRH
+Yukimura,japanese,1,HKG,HKG
+Yuksu Gojip,,1,ICN,ICN
+Yum Cha,"Chinese, Dim Sum",1,DOH,DOH
+YUMEAN,,1,NRT,NRT
+Yummy Town,,1,TPE,TPE
+Yun Nans,chinese,1,SIN,SIN
+Yung Kee,chinese,1,HKG,HKG
+Zafrana,,1,DXB,DXB
+Zambar,,1,BOM,BOM
+ZaZa To Go - Gates 1-29,,1,MCO,MCO
+Zen Akasaka,,1,NRT,NRT
+ZETTERIA,,1,KIX,KIX
+Zigolini,,1,FRA,FRA
+ZKG RESTAURANT,,1,NRT,NRT
+Zoom Restaurant & Bar,,1,ZRH,ZRH
+Zum Mitnäh (by Hyatt Regency),,1,ZRH,ZRH
+Zurich Bread Café,,1,BKK,BKK
+Züri Kafi,,1,ZRH,ZRH
+Çay Saati,,1,IST,IST
+ÜberQuell,,1,FRA,FRA
+☆Soup,,1,KIX,KIX

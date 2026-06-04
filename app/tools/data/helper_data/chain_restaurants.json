@@ -1,0 +1,2876 @@
+[
+  {
+    "name": "1915 Lanzhou Beef Noodles",
+    "logo_url": "",
+    "cuisine": "Chinese Noodles",
+    "description": "A restaurant chain serving the iconic hand-pulled Lanzhou-style beef noodles in a rich bone broth, a staple of north-western Chinese cuisine."
+  },
+  {
+    "name": "@café",
+    "logo_url": "https://img.logo.dev/at.cafe?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Coffee & Café",
+    "description": "An airport and transit hub café concept serving espresso drinks and light snacks for travellers on the go."
+  },
+  {
+    "name": "A Nature-Inspired Korean Food",
+    "logo_url": "",
+    "cuisine": "Korean",
+    "description": "A health-conscious Korean restaurant concept offering nature-inspired Korean dishes made with wholesome, seasonal ingredients in an airport setting."
+  },
+  {
+    "name": "A Twosome Place",
+    "logo_url": "https://img.logo.dev/twosome.co.kr?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Korean Café",
+    "description": "A Twosome Place is a South Korean premium café chain offering specialty coffees, teas, and an extensive selection of cakes and desserts in a cosy, upscale setting."
+  },
+  {
+    "name": "A&W",
+    "logo_url": "https://img.logo.dev/aweber.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fast Food / Root Beer",
+    "description": "A&W is an American fast food chain established in 1919, famous for its root beer served in frosty mugs, root beer floats, and classic American burgers and hot dogs."
+  },
+  {
+    "name": "AJISEN RAMEN",
+    "logo_url": "https://img.logo.dev/ajisen.com.sg?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese Ramen",
+    "description": "Ajisen Ramen is a Japanese ramen chain popular across Asia, known for its tonkotsu-based broth and Japanese noodle dishes served at accessible prices."
+  },
+  {
+    "name": "Alfred Coffee",
+    "logo_url": "https://img.logo.dev/alfred.la?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Alfred Coffee is an LA-born specialty coffee brand known for its laid-back aesthetic, curated single-origin blends, and the signature 'But First, Coffee' mantra."
+  },
+  {
+    "name": "All Bar One",
+    "logo_url": "https://img.logo.dev/allbarone.co.uk?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bar & Restaurant",
+    "description": "All Bar One is a British bar and restaurant chain offering a wide range of cocktails, wines, and casual food in a relaxed, sociable atmosphere across the UK."
+  },
+  {
+    "name": "AMORE",
+    "logo_url": "https://img.logo.dev/ap-beauty.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Italian Café",
+    "description": "An Italian-inspired café concept serving espresso drinks, pastries, and light Italian fare commonly found in airports and travel hubs."
+  },
+  {
+    "name": "Amorino",
+    "logo_url": "https://img.logo.dev/amorino.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Gelato",
+    "description": "Amorino is an Italian gelato chain celebrated for its flower-shaped cones filled with artisanal, natural-ingredient gelato and sorbets made from authentic Italian recipes."
+  },
+  {
+    "name": "ANGELINUS",
+    "logo_url": "https://img.logo.dev/lottegrs.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Korean Coffee & Café",
+    "description": "Angel-in-us Coffee is a South Korean café chain offering espresso drinks, smoothies, and a wide selection of pastries and desserts in a warm, welcoming setting."
+  },
+  {
+    "name": "Angels Pizza",
+    "logo_url": "https://img.logo.dev/angelspizza.com.ph?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Pizza",
+    "description": "Angels Pizza is a Filipino pizza chain known for its thin-crust pizzas with creative local and international toppings, served in a family-friendly restaurant setting."
+  },
+  {
+    "name": "Anton & Anni",
+    "logo_url": "",
+    "cuisine": "Bakery & Café",
+    "description": "Anton & Anni is a European bakery café concept found in airports, offering freshly baked breads, sandwiches, and pastries for travellers."
+  },
+  {
+    "name": "Applebee's",
+    "logo_url": "https://img.logo.dev/applebees.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "American Casual Dining",
+    "description": "Applebee's is a leading American casual dining chain serving a broad menu of burgers, ribs, salads, and cocktails in a neighbourhood bar-and-grill atmosphere."
+  },
+  {
+    "name": "Arabica",
+    "logo_url": "https://img.logo.dev/arabica.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "% Arabica is a Japanese specialty coffee brand celebrated for its minimalist aesthetic and high-quality single-origin pour-overs and espresso drinks served globally."
+  },
+  {
+    "name": "Arby's",
+    "logo_url": "https://img.logo.dev/arbys.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fast Food",
+    "description": "Arby's is an American fast food chain best known for its slow-roasted beef sandwiches, curly fries, and the tagline 'We Have The Meats.'"
+  },
+  {
+    "name": "Asian Street Kitchen",
+    "logo_url": "",
+    "cuisine": "Asian Street Food",
+    "description": "A pan-Asian street food concept serving noodles, rice dishes, and Asian street food favourites from across the continent in a fast-casual setting."
+  },
+  {
+    "name": "Au Bon Pain",
+    "logo_url": "https://img.logo.dev/aubonpain.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bakery & Café",
+    "description": "Au Bon Pain is an American fast-casual bakery café chain offering freshly baked breads, soups, sandwiches, and salads, found widely in airports, hospitals, and universities."
+  },
+  {
+    "name": "Auntie Anne's",
+    "logo_url": "https://img.logo.dev/auntieannes.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Pretzels & Bakery",
+    "description": "Auntie Anne's is an American pretzel bakery chain famous for its hand-rolled, freshly baked soft pretzels served plain or in sweet and savoury varieties."
+  },
+  {
+    "name": "Aviano Coffee",
+    "logo_url": "https://img.logo.dev/avianocoffee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Aviano Coffee is a Denver-based specialty coffee concept found in airports, known for its quality espresso drinks and carefully sourced single-origin coffees."
+  },
+  {
+    "name": "B.GOOD",
+    "logo_url": "https://img.logo.dev/bgood.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Healthy Burgers",
+    "description": "B.GOOD is an American fast-casual chain offering farm-to-table burgers, grain bowls, and salads made with fresh, locally sourced ingredients and no artificial additives."
+  },
+  {
+    "name": "Banh Shop",
+    "logo_url": "https://img.logo.dev/banhshop.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Vietnamese",
+    "description": "Banh Shop is a fast-casual Vietnamese restaurant concept serving bánh mì sandwiches, pho, and Vietnamese street food in airport and urban settings."
+  },
+  {
+    "name": "Bar Festiv",
+    "logo_url": "",
+    "cuisine": "Bar",
+    "description": "Bar Festiv is an airport or travel hub bar concept offering a selection of drinks and light bites in a festive, social atmosphere."
+  },
+  {
+    "name": "Bar Louie",
+    "logo_url": "https://img.logo.dev/barlouie.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "American Gastrobar",
+    "description": "Bar Louie is an American neighbourhood gastrobar chain offering craft cocktails, local beers, and a menu of elevated bar bites and shareable plates."
+  },
+  {
+    "name": "Barburrito",
+    "logo_url": "https://img.logo.dev/barburrito.ca?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Mexican",
+    "description": "Barburrito is a UK-based fast-casual Mexican chain specialising in freshly made burritos, tacos, and bowls with bold flavours and customisable fillings."
+  },
+  {
+    "name": "BARista",
+    "logo_url": "https://img.logo.dev/barista.co.in?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Coffee Bar",
+    "description": "BARista is a coffee bar concept with a bar-style setting, serving espresso drinks, specialty coffees, and light bites in airports and urban locations."
+  },
+  {
+    "name": "Baskin-Robbins",
+    "logo_url": "https://img.logo.dev/baskinrobbins.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Ice Cream",
+    "description": "Baskin-Robbins is one of the world's largest ice cream specialty chains, renowned for its iconic 31 flavours concept and wide range of ice cream cakes and sundaes."
+  },
+  {
+    "name": "Beecher's Handmade Cheese",
+    "logo_url": "https://img.logo.dev/beechershandmadecheese.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "American Artisan Cheese",
+    "description": "Beecher's Handmade Cheese is a Seattle-born artisan cheese brand and restaurant celebrated for its handcrafted mac and cheese and fresh-made cheeses produced in an open kitchen."
+  },
+  {
+    "name": "Beerhive",
+    "logo_url": "https://img.logo.dev/beerhive.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bar / Pub",
+    "description": "Beerhive is an airport bar concept offering a curated selection of craft and mainstream beers alongside pub-style food for travellers."
+  },
+  {
+    "name": "Bellota-Bellota",
+    "logo_url": "https://img.logo.dev/bellota-bellota.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Spanish / Iberian",
+    "description": "Bellota-Bellota is a Parisian luxury Iberian food boutique and restaurant specialising in premium Jamón ibérico, fine charcuterie, and Spanish delicacies."
+  },
+  {
+    "name": "Ben & Jerry's",
+    "logo_url": "https://img.logo.dev/benjerry.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Ice Cream",
+    "description": "Ben & Jerry's is an iconic American ice cream brand known for its chunky, creatively named flavours, commitment to social activism, and use of fair-trade ingredients."
+  },
+  {
+    "name": "Bento Sushi",
+    "logo_url": "https://img.logo.dev/bentosushi.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese / Sushi",
+    "description": "Bento Sushi is a Canadian sushi chain offering fresh bento boxes, sushi rolls, and Japanese meals in airports, universities, and food courts across North America."
+  },
+  {
+    "name": "BHC Chicken",
+    "logo_url": "https://img.logo.dev/bhcchicken.global?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Korean Fried Chicken",
+    "description": "BHC Chicken is a South Korean fried chicken franchise known for its crispy, sauced chicken and a diverse range of Korean fried chicken styles and flavours."
+  },
+  {
+    "name": "Big Bowl",
+    "logo_url": "https://img.logo.dev/bigbowl.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Asian Noodles",
+    "description": "Big Bowl is an American Asian-inspired restaurant chain serving noodles, stir-fries, and fresh dishes drawing on pan-Asian flavours."
+  },
+  {
+    "name": "Bikanervala",
+    "logo_url": "https://img.logo.dev/bikanervala.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Indian Sweets & Snacks",
+    "description": "Bikanervala is a heritage Indian sweets and snacks chain originating from Bikaner, offering traditional mithai, namkeen, chaat, and North Indian vegetarian meals."
+  },
+  {
+    "name": "Bizeun",
+    "logo_url": "",
+    "cuisine": "Korean",
+    "description": "Bizeun is a Korean snack and meal concept serving traditional Korean dishes and street-style snacks."
+  },
+  {
+    "name": "Black Sheep Coffee",
+    "logo_url": "https://img.logo.dev/blacksheepcoffee.co.uk?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Black Sheep Coffee is a UK specialty coffee chain offering robusta-based espresso drinks, standing apart from the industry norm by championing single-origin robusta beans."
+  },
+  {
+    "name": "Blaze Pizza",
+    "logo_url": "https://img.logo.dev/blazepizza.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Pizza",
+    "description": "Blaze Pizza is an American fast-casual chain where guests build their own artisanal pizzas from a wide selection of fresh toppings, baked in a high-heat open-flame oven."
+  },
+  {
+    "name": "Bo'S Coffee",
+    "logo_url": "https://img.logo.dev/boscoffee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Filipino Coffee",
+    "description": "Bo's Coffee is a Philippine coffee chain serving espresso drinks crafted from locally sourced Sagada beans, celebrating Filipino coffee culture and heritage."
+  },
+  {
+    "name": "Bob's",
+    "logo_url": "https://img.logo.dev/bobs.com.br?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fast Food",
+    "description": "Bob's is one of Brazil's oldest fast food chains, offering burgers, milkshakes, and Brazilian-inspired fast food since its founding in Rio de Janeiro in 1952."
+  },
+  {
+    "name": "Bonchon",
+    "logo_url": "https://img.logo.dev/bonchon.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Korean Fried Chicken",
+    "description": "Bonchon is a Korean fried chicken chain famous for its double-fried, hand-brushed wings and drumsticks glazed in signature soy garlic or spicy sauce."
+  },
+  {
+    "name": "Boost Juice",
+    "logo_url": "https://img.logo.dev/boostjuice.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Juice & Smoothies",
+    "description": "Boost Juice is Australia's largest juice and smoothie bar chain, blending fresh fruits, vegetables, and natural boosters into health-focused drinks and snacks."
+  },
+  {
+    "name": "Booster Juice",
+    "logo_url": "https://img.logo.dev/boosterjuice.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Juice & Smoothies",
+    "description": "Booster Juice is a Canadian juice and smoothie chain offering freshly blended smoothies, juices, and health bowls made from whole, natural ingredients across North America."
+  },
+  {
+    "name": "Breadtalk",
+    "logo_url": "https://img.logo.dev/breadtalk.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bakery",
+    "description": "BreadTalk is a Singaporean bakery chain celebrated for its innovative and creative bread creations, pastries, and cakes across Asia and beyond."
+  },
+  {
+    "name": "Brew'd",
+    "logo_url": "",
+    "cuisine": "Craft Beer Bar",
+    "description": "Brew'd is a craft beer bar concept found in airports and travel hubs serving a rotating selection of draught and bottled craft beers."
+  },
+  {
+    "name": "BrewDog",
+    "logo_url": "https://img.logo.dev/brewdog.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Craft Beer Bar",
+    "description": "BrewDog is a Scottish craft brewery and bar chain known for its bold, irreverent branding and wide selection of craft beers, including its flagship Punk IPA."
+  },
+  {
+    "name": "Brezelkönig",
+    "logo_url": "https://img.logo.dev/brezelkoenig.ch?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Pretzels & Bakery",
+    "description": "Brezelkönig is a Swiss bakery chain specialising in freshly baked soft pretzels and savoury snacks, commonly found in train stations and shopping centres."
+  },
+  {
+    "name": "Brioche Dorée",
+    "logo_url": "https://img.logo.dev/briochedoree.fr?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "French Bakery & Café",
+    "description": "Brioche Dorée is a French bakery café chain found widely in airports and shopping centres, serving freshly baked croissants, sandwiches, and coffee."
+  },
+  {
+    "name": "Broth Kitchen",
+    "logo_url": "",
+    "cuisine": "Bone Broth / Soups",
+    "description": "Broth Kitchen is a restaurant concept specialising in nourishing bone broths, wholesome soups, and comforting bowls."
+  },
+  {
+    "name": "Buffalo Wild Wings",
+    "logo_url": "https://img.logo.dev/buffalowildwings.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Wings & Sports Bar",
+    "description": "Buffalo Wild Wings is an American sports bar chain famous for its chicken wings in dozens of sauces and seasonings, served alongside live sports."
+  },
+  {
+    "name": "Built Custom Burgers",
+    "logo_url": "https://img.logo.dev/builtcustomburgers.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Burgers",
+    "description": "Built Custom Burgers is an American build-your-own gourmet burger concept allowing guests to customise premium burgers with fresh toppings and house-made sauces."
+  },
+  {
+    "name": "Bunsik Gotgan",
+    "logo_url": "",
+    "cuisine": "Korean Street Food",
+    "description": "Bunsik Gotgan is a Korean snack restaurant serving traditional bunsik (street food) including tteokbokki (spicy rice cakes), fish cake, and sundae."
+  },
+  {
+    "name": "Burger King",
+    "logo_url": "https://img.logo.dev/bk.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fast Food",
+    "description": "Burger King is a global American fast food chain best known for the flame-grilled Whopper burger and its 'Have It Your Way' customisation philosophy."
+  },
+  {
+    "name": "Burger Station",
+    "logo_url": "",
+    "cuisine": "Burgers / Fast Food",
+    "description": "Burger Station is a fast food burger outlet concept found in airport and food court settings, offering classic burgers and quick bites."
+  },
+  {
+    "name": "Butlers Chocolate Café",
+    "logo_url": "https://img.logo.dev/butlerschocolates.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Irish Chocolate & Café",
+    "description": "Butlers Chocolate Café is an Irish chocolatier and café chain offering premium handcrafted chocolates, truffles, and indulgent hot chocolate drinks."
+  },
+  {
+    "name": "BuzzFeed",
+    "logo_url": "https://img.logo.dev/buzzfeed.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Media / Pop-Up Food",
+    "description": "A pop-up food and café experience associated with the BuzzFeed media brand, offering branded food and beverage items."
+  },
+  {
+    "name": "BYULMI BUNSIK",
+    "logo_url": "",
+    "cuisine": "Korean Street Food",
+    "description": "BYULMI BUNSIK is a Korean bunsik (street snack) restaurant offering traditional Korean snack dishes such as tteokbokki and fried snacks."
+  },
+  {
+    "name": "Cafe Descartes",
+    "logo_url": "",
+    "cuisine": "French Café",
+    "description": "A French-style café concept found in airports or cultural venues, serving quality coffee, pastries, and light French fare."
+  },
+  {
+    "name": "Cafe Espresso",
+    "logo_url": "",
+    "cuisine": "Coffee & Café",
+    "description": "Cafe Espresso is a travel hub coffee bar concept serving classic espresso drinks and light snacks."
+  },
+  {
+    "name": "Cafeccino",
+    "logo_url": "",
+    "cuisine": "Coffee & Café",
+    "description": "Cafeccino is an airport and travel hub café concept serving classic espresso drinks and light snacks for on-the-go travellers."
+  },
+  {
+    "name": "Caffe D'arte",
+    "logo_url": "https://img.logo.dev/caffedarte.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Caffè D'arte is a Seattle-based Italian-style espresso roaster and café known for its traditional Italian roasting methods and authentic espresso culture."
+  },
+  {
+    "name": "Caffe Tonino",
+    "logo_url": "",
+    "cuisine": "Italian Coffee",
+    "description": "Caffe Tonino is an Italian coffee bar concept serving classic espresso drinks and light pastries in airports and transit locations."
+  },
+  {
+    "name": "Caffè Nero",
+    "logo_url": "https://img.logo.dev/caffenero.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Caffè Nero is a British coffeehouse chain with an Italian-inspired approach to coffee, serving handcrafted espresso drinks, food, and a popular loyalty programme."
+  },
+  {
+    "name": "Caffè Ritazza",
+    "logo_url": "https://img.logo.dev/ritazza.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Coffee & Café",
+    "description": "Caffè Ritazza is an international café chain operated by SSP Group, commonly found in airports and travel hubs, serving espresso drinks, teas, and light food."
+  },
+  {
+    "name": "Caffè Vergnano",
+    "logo_url": "https://img.logo.dev/caffevergnano.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Italian Coffee",
+    "description": "Caffè Vergnano is a historic Italian coffee brand established in 1882, operating espresso bars worldwide and serving premium Italian coffee in airports and city locations."
+  },
+  {
+    "name": "Café Flor",
+    "logo_url": "",
+    "cuisine": "French Café",
+    "description": "Café Flor is a casual café concept offering coffee, light meals, and pastries in a Parisian café style, found in airports and urban settings."
+  },
+  {
+    "name": "Café Kitsuné",
+    "logo_url": "https://img.logo.dev/maisonkitsune.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Café Kitsuné is a Parisian-Japanese lifestyle café from Maison Kitsuné, blending French sophistication with Japanese precision to serve premium coffees and pastries."
+  },
+  {
+    "name": "Café Versailles",
+    "logo_url": "",
+    "cuisine": "Cuban Café",
+    "description": "Café Versailles is a Miami Cuban café institution known for its strong café cubano, Cuban sandwiches, pastelitos, and bustling window counter culture."
+  },
+  {
+    "name": "Café-Konditorei Aida",
+    "logo_url": "https://img.logo.dev/aida.at?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Austrian Coffeehouse",
+    "description": "Café-Konditorei Aida is a beloved Viennese coffeehouse and pastry shop chain, known for its traditional Mehlspeisen, tortes, and timeless old-world café charm."
+  },
+  {
+    "name": "California Pizza Kitchen",
+    "logo_url": "https://img.logo.dev/californiapizzakitchen.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Pizza",
+    "description": "California Pizza Kitchen is an American casual dining chain known for its innovative, globally inspired pizza toppings and wood-fired pies, alongside salads and pastas."
+  },
+  {
+    "name": "Camden Food Co.",
+    "logo_url": "https://img.logo.dev/camdenfoodco.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "British Café & Deli",
+    "description": "Camden Food Co. is a British café and deli concept found predominantly in UK airports and train stations, offering fresh sandwiches, salads, and hot drinks."
+  },
+  {
+    "name": "Caribou Coffee",
+    "logo_url": "https://img.logo.dev/cariboucoffee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Caribou Coffee is an American specialty coffee chain with Nordic-inspired branding, offering handcrafted coffees, teas, and bakery items across the US and internationally."
+  },
+  {
+    "name": "Carl's Jr",
+    "logo_url": "https://img.logo.dev/carlsjr.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fast Food",
+    "description": "Carl's Jr is an American fast food chain known for its premium hand-crafted burgers, Famous Star, and bold marketing of its thick, messy charbroiled burgers."
+  },
+  {
+    "name": "Carlo's Bake Shop Express",
+    "logo_url": "",
+    "cuisine": "Bakery",
+    "description": "Carlo's Bake Shop Express is an American bakery chain from the Cake Boss TV show's Carlo's Bakery, offering elaborate cakes, pastries, and baked goods."
+  },
+  {
+    "name": "Carluccio's",
+    "logo_url": "https://img.logo.dev/carluccios.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Italian",
+    "description": "Carluccio's is a British-Italian restaurant chain founded by renowned Italian chef Antonio Carluccio, serving rustic Italian dishes, antipasti, pasta, and seasonal specials."
+  },
+  {
+    "name": "Carnatic Café",
+    "logo_url": "",
+    "cuisine": "South Indian",
+    "description": "Carnatic Café is a South Indian restaurant concept serving traditional Carnatic cuisine including dosas, idlis, vadas, and authentic filter coffee."
+  },
+  {
+    "name": "Carvel",
+    "logo_url": "",
+    "cuisine": "Ice Cream",
+    "description": "Carvel is an American ice cream chain famous for its soft-serve, iconic Fudgie the Whale and Cookie Puss ice cream cakes, and signature flying saucer sandwiches."
+  },
+  {
+    "name": "Casa do Pão de Queijo",
+    "logo_url": "https://img.logo.dev/casadopaodequeijo.com.br?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Brazilian Snacks",
+    "description": "Casa do Pão de Queijo is a Brazilian chain dedicated to the iconic cheese bread (pão de queijo), serving freshly baked varieties alongside juices and coffee."
+  },
+  {
+    "name": "Casa Ávila",
+    "logo_url": "",
+    "cuisine": "Mexican",
+    "description": "Casa Ávila is a Mexican restaurant concept serving traditional Mexican dishes including tacos, enchiladas, and classic Mexican comfort food."
+  },
+  {
+    "name": "Cava",
+    "logo_url": "https://img.logo.dev/cava.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Mediterranean",
+    "description": "Cava is an American fast-casual Mediterranean chain where guests build personalised bowls, pitas, and salads from a spread of house-made dips, proteins, and toppings."
+  },
+  {
+    "name": "Chaayos",
+    "logo_url": "https://img.logo.dev/chaayos.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Indian Tea & Snacks",
+    "description": "Chaayos is an Indian chai café chain known for its customisable masala chai, snacks, and Indian street food bites served in a cosy, contemporary setting."
+  },
+  {
+    "name": "CHAGEE",
+    "logo_url": "https://img.logo.dev/chagee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Chinese Tea",
+    "description": "CHAGEE is a premium Chinese tea brand offering freshly brewed teas with a modern, clean aesthetic and a focus on high-quality tea leaves and ingredients."
+  },
+  {
+    "name": "Chai Point",
+    "logo_url": "https://img.logo.dev/chaipoint.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Indian Chai & Snacks",
+    "description": "Chai Point is an Indian chai and snacks chain bringing quality masala chai, sandwiches, and quick bites to offices, airports, and travel hubs."
+  },
+  {
+    "name": "Chatime",
+    "logo_url": "https://img.logo.dev/chatime.ca?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bubble Tea",
+    "description": "Chatime is a Taiwanese bubble tea chain offering a vast range of freshly brewed teas, milk teas, and bubble drink creations with customisable sweetness and ice levels."
+  },
+  {
+    "name": "Cheers",
+    "logo_url": "",
+    "cuisine": "Bar / Pub",
+    "description": "Cheers is an airport or entertainment bar concept serving drinks and bar food in a friendly, welcoming atmosphere."
+  },
+  {
+    "name": "Chi Life Market",
+    "logo_url": "",
+    "cuisine": "Market & Café",
+    "description": "Chi Life Market is an airport food market concept offering fresh meals, snacks, and health-conscious grab-and-go options for travellers."
+  },
+  {
+    "name": "CHICHA San Chen",
+    "logo_url": "https://img.logo.dev/chichasanchen.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Taiwanese Tea",
+    "description": "CHICHA San Chen is a Taiwanese premium tea chain known for its high-quality, traditionally crafted bubble teas and specially brewed oolong and jasmine teas."
+  },
+  {
+    "name": "Chick-fil-A",
+    "logo_url": "https://img.logo.dev/chick-fil-a.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Chicken Fast Food",
+    "description": "Chick-fil-A is an American fast food chain specialising in chicken sandwiches, nuggets, and waffle fries, known for its exceptional customer service and Sunday closures."
+  },
+  {
+    "name": "Chicken Licken",
+    "logo_url": "https://img.logo.dev/chickenlicken.co.za?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fried Chicken",
+    "description": "Chicken Licken is a South African fast food chain known for its spicy fried chicken, Soul Burgers, and Hot Wings, with a cult following across southern Africa."
+  },
+  {
+    "name": "Chicken Republic",
+    "logo_url": "https://img.logo.dev/chickenrepublic.ng?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fried Chicken",
+    "description": "Chicken Republic is a West African fast food chain headquartered in Nigeria, serving fried chicken, burgers, and rice dishes tailored to local West African tastes."
+  },
+  {
+    "name": "Chili's",
+    "logo_url": "https://img.logo.dev/chilis.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "American Casual Dining",
+    "description": "Chili's Grill & Bar is an American casual dining chain known for its Tex-Mex-inspired dishes, baby back ribs, sizzling fajitas, and signature margaritas."
+  },
+  {
+    "name": "Chilim Balam",
+    "logo_url": "",
+    "cuisine": "Mexican",
+    "description": "Chilim Balam is a Mexican restaurant concept serving traditional Mexican cuisine and street food in a contemporary, casual setting."
+  },
+  {
+    "name": "China Wok",
+    "logo_url": "",
+    "cuisine": "Chinese Fast Food",
+    "description": "China Wok is a Chinese fast-casual restaurant concept serving wok-fried dishes, fried rice, and noodles in food courts and airport terminals."
+  },
+  {
+    "name": "Chipotle",
+    "logo_url": "https://img.logo.dev/chipotle.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Mexican",
+    "description": "Chipotle Mexican Grill is an American fast-casual chain known for its customisable burritos, bowls, tacos, and salads made with responsibly sourced, fresh ingredients."
+  },
+  {
+    "name": "Chowking",
+    "logo_url": "https://img.logo.dev/chowking.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Filipino Fast Food",
+    "description": "Chowking is a Filipino fast food chain with Chinese-Filipino influences, known for its fried chicken, congee, lauriat meals, and noodle dishes."
+  },
+  {
+    "name": "Church's Texas Chicken",
+    "logo_url": "https://img.logo.dev/churchstexaschicken.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fried Chicken",
+    "description": "Church's Texas Chicken is an American fast food chain serving Southern-style fried chicken, honey-butter biscuits, and classic sides since 1952."
+  },
+  {
+    "name": "Ciao Gourmet Market",
+    "logo_url": "",
+    "cuisine": "Market & Italian Café",
+    "description": "Ciao Gourmet Market is an airport gourmet market concept offering Italian-inspired food, freshly made snacks, and beverages for travellers."
+  },
+  {
+    "name": "CIBO Express Gourmet Markets",
+    "logo_url": "https://img.logo.dev/ciboexpress.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Market & Café",
+    "description": "CIBO Express Gourmet Markets is a North American airport gourmet market concept offering fresh grab-and-go meals, artisan snacks, wines, and specialty beverages for travellers."
+  },
+  {
+    "name": "Cinnabon",
+    "logo_url": "https://img.logo.dev/cinnabon.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bakery",
+    "description": "Cinnabon is an American bakery chain world-famous for its freshly baked, gooey cinnamon rolls made with signature Makara cinnamon and cream cheese frosting."
+  },
+  {
+    "name": "CIRCULO K",
+    "logo_url": "",
+    "cuisine": "Convenience Store",
+    "description": "CIRCULO K is a convenience store concept (a variant of Circle K) offering snacks, drinks, prepared foods, and everyday essentials in travel locations."
+  },
+  {
+    "name": "Classic Noodles",
+    "logo_url": "",
+    "cuisine": "Noodles",
+    "description": "Classic Noodles is a fast-casual noodle restaurant concept serving classic Asian noodle dishes in airport and food court settings."
+  },
+  {
+    "name": "Coffee & More",
+    "logo_url": "",
+    "cuisine": "Coffee & Café",
+    "description": "Coffee & More is a coffee and snack kiosk concept found in airports and transit hubs, offering espresso drinks and a variety of light bites."
+  },
+  {
+    "name": "Coffee Fellows",
+    "logo_url": "https://img.logo.dev/coffee-fellows.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Coffee & Café",
+    "description": "Coffee Fellows is a German coffeehouse chain inspired by American café culture, serving specialty coffees, waffles, and baked goods in airports and city locations."
+  },
+  {
+    "name": "COFFEE@WORKS",
+    "logo_url": "",
+    "cuisine": "Specialty Coffee",
+    "description": "COFFEE@WORKS is a specialty café concept found in airports and business hubs, offering artisan coffees and light bites for business travellers."
+  },
+  {
+    "name": "coffeesmith",
+    "logo_url": "https://img.logo.dev/coffeesmith.kr?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "coffeesmith is a South Korean specialty coffee chain focused on artisanal brewing methods, single-origin beans, and a minimalist, design-led café experience."
+  },
+  {
+    "name": "Cold Stone Creamery",
+    "logo_url": "https://img.logo.dev/coldstonecreamery.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Ice Cream",
+    "description": "Cold Stone Creamery is an American ice cream chain where premium ice cream is custom-blended with mix-ins on a frozen granite stone for a made-to-order experience."
+  },
+  {
+    "name": "Comptoir Libanais",
+    "logo_url": "https://img.logo.dev/comptoirlibanais.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Lebanese",
+    "description": "Comptoir Libanais is a British Lebanese restaurant chain offering colourful, fresh Lebanese street food, mezze platters, and flatbreads in a casual, vibrant setting."
+  },
+  {
+    "name": "Confiserie Sprüngli",
+    "logo_url": "https://img.logo.dev/confiserie-sprungli.ch?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Swiss Confectionery",
+    "description": "Confiserie Sprüngli is a legendary Zurich luxury confectionery and café, renowned for its Luxemburgerli macarons, pralines, and finest Swiss chocolates since 1836."
+  },
+  {
+    "name": "Corcoran's",
+    "logo_url": "",
+    "cuisine": "Irish Pub",
+    "description": "Corcoran's is an Irish pub chain found primarily in international airports and travel hubs, offering a traditional pub atmosphere with Irish beers and classic pub fare."
+  },
+  {
+    "name": "Cosi",
+    "logo_url": "",
+    "cuisine": "Sandwiches & Café",
+    "description": "Cosi is an American sandwich and café chain known for its signature flatbread baked in a stone hearth, used as the base for toasted sandwiches, salads, and wraps."
+  },
+  {
+    "name": "Cosmic Candy",
+    "logo_url": "",
+    "cuisine": "Candy Store",
+    "description": "Cosmic Candy is a specialty candy and confectionery store found in airports and tourist areas, offering a colourful selection of sweets and novelty treats."
+  },
+  {
+    "name": "Costa Coffee",
+    "logo_url": "https://img.logo.dev/costa.co.uk?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Costa Coffee is a British multinational coffeehouse chain, the UK's largest, serving handcrafted coffees, teas, and food in a warm and welcoming atmosphere."
+  },
+  {
+    "name": "Cousin's Bar-B-Q",
+    "logo_url": "",
+    "cuisine": "BBQ",
+    "description": "Cousin's Bar-B-Q is a Texas-based BBQ restaurant serving slow-smoked meats and classic BBQ sides, commonly found in airport food courts in the Dallas-Fort Worth area."
+  },
+  {
+    "name": "Cozy Kitchen",
+    "logo_url": "",
+    "cuisine": "Casual Dining",
+    "description": "Cozy Kitchen is a casual dining concept offering comfort food and home-style meals in an airport or hotel setting."
+  },
+  {
+    "name": "Crafted Bar",
+    "logo_url": "",
+    "cuisine": "Bar / Craft Cocktails",
+    "description": "Crafted Bar is an airport or travel hub craft cocktail and beer bar offering a curated selection of spirits, wines, and mixed drinks."
+  },
+  {
+    "name": "Crispy Pork Cutlet",
+    "logo_url": "",
+    "cuisine": "Korean / Pork Cutlet",
+    "description": "A Korean pork cutlet (donkkaseu) restaurant serving crispy, golden breaded pork cutlets with rice and dipping sauce."
+  },
+  {
+    "name": "Crystal Jade",
+    "logo_url": "https://img.logo.dev/crystaljade.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Chinese",
+    "description": "Crystal Jade is a renowned Singaporean restaurant group offering authentic Chinese cuisine across multiple dining concepts, from dim sum to Shanghainese and Cantonese fare."
+  },
+  {
+    "name": "Culinary Square",
+    "logo_url": "",
+    "cuisine": "Food Hall",
+    "description": "Culinary Square is an airport food hall concept offering multiple cuisine options under one roof for diverse traveller preferences."
+  },
+  {
+    "name": "Curry Kitchen",
+    "logo_url": "",
+    "cuisine": "Indian / Curry",
+    "description": "Curry Kitchen is a fast-casual Indian restaurant concept serving curry dishes, rice, and naan in airport and food court settings."
+  },
+  {
+    "name": "Dairy Queen",
+    "logo_url": "",
+    "cuisine": "Ice Cream & Fast Food",
+    "description": "Dairy Queen is an iconic American chain famous for its signature soft-serve Blizzard treats, Dilly Bars, and a full fast food menu including burgers and hot dogs."
+  },
+  {
+    "name": "Dave's Hot Chicken",
+    "logo_url": "https://img.logo.dev/daveshotchicken.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Nashville Hot Chicken",
+    "description": "Dave's Hot Chicken is a fast-casual chain specialising in Nashville-style hot chicken tenders and sliders available in seven heat levels, from No Spice to Reaper."
+  },
+  {
+    "name": "Davio's",
+    "logo_url": "https://img.logo.dev/davios.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Italian Steakhouse",
+    "description": "Davio's is an upscale American Italian steakhouse from Boston offering prime steaks, hand-made pastas, and an extensive wine list in an elegant dining setting."
+  },
+  {
+    "name": "Day2Day Eats",
+    "logo_url": "",
+    "cuisine": "Market & Café",
+    "description": "Day2Day Eats is a convenience food and beverage concept in airports or travel hubs, offering quick grab-and-go meals and snacks."
+  },
+  {
+    "name": "Dazbog Coffee",
+    "logo_url": "https://img.logo.dev/dazbog.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Dazbog Coffee is a Denver-based Russian-American specialty coffee roaster and café chain named after a Slavic sun god, known for its bold and distinctive roasts."
+  },
+  {
+    "name": "dean&david",
+    "logo_url": "https://img.logo.dev/deananddavid.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Healthy Fast Casual",
+    "description": "dean&david is a German fresh food chain offering healthy, seasonal dishes including salads, wraps, soups, and smoothies made from high-quality natural ingredients."
+  },
+  {
+    "name": "Debonairs Pizza",
+    "logo_url": "https://img.logo.dev/debonairspizza.co.za?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Pizza",
+    "description": "Debonairs Pizza is a South African pizza chain known for its Triple-Decker and Odd One Out novelty pizzas, as well as classic hand-stretched options."
+  },
+  {
+    "name": "Denny's",
+    "logo_url": "https://img.logo.dev/dennys.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "American Diner",
+    "description": "Denny's is a classic American diner chain open around the clock, renowned for its all-day breakfast, Grand Slam platters, and hearty comfort food at accessible prices."
+  },
+  {
+    "name": "Dhaba",
+    "logo_url": "",
+    "cuisine": "Indian",
+    "description": "Dhaba is an Indian restaurant concept serving hearty North Indian dhaba-style cuisine including dal, curries, and tandoor-baked breads."
+  },
+  {
+    "name": "Dickey's Barbecue Pit",
+    "logo_url": "https://img.logo.dev/dickeysbarbecuepit.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "BBQ",
+    "description": "Dickey's Barbecue Pit is an American barbecue chain founded in Dallas in 1941, serving slow-smoked meats, ribs, and classic BBQ sides."
+  },
+  {
+    "name": "Dilli Streat",
+    "logo_url": "",
+    "cuisine": "Indian Street Food",
+    "description": "Dilli Streat is an Indian street food restaurant concept serving Delhi-style chaat, rolls, and iconic street food snacks."
+  },
+  {
+    "name": "Din Tai Fung",
+    "logo_url": "https://img.logo.dev/dintaifung.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Taiwanese / Dim Sum",
+    "description": "Din Tai Fung is an internationally acclaimed Taiwanese restaurant chain famous for its meticulously crafted xiao long bao (soup dumplings) and refined noodle dishes."
+  },
+  {
+    "name": "Domino's",
+    "logo_url": "https://img.logo.dev/dominos.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Pizza Delivery",
+    "description": "Domino's is an American multinational pizza delivery chain known for its fast delivery, online ordering, and wide range of pizza, sides, and desserts."
+  },
+  {
+    "name": "Dos Toros Taqueria",
+    "logo_url": "https://img.logo.dev/dostoros.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Mexican",
+    "description": "Dos Toros Taqueria is a New York-based fast-casual taqueria serving California Mission-style burritos, tacos, and bowls with fresh, quality ingredients."
+  },
+  {
+    "name": "Dosa factory & Noodle",
+    "logo_url": "",
+    "cuisine": "South Indian / Asian",
+    "description": "A restaurant concept combining South Indian dosa specialities with Asian noodle dishes for a unique fusion dining experience."
+  },
+  {
+    "name": "Doutor Coffee",
+    "logo_url": "https://img.logo.dev/doutor.co.jp?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Coffee & Café",
+    "description": "Doutor Coffee is Japan's pioneering low-cost coffee chain, offering affordable espresso drinks, sandwiches, and light snacks in convenient neighbourhood locations."
+  },
+  {
+    "name": "Dunkin'",
+    "logo_url": "https://img.logo.dev/dunkindonuts.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Coffee & Donuts",
+    "description": "Dunkin' is one of the world's largest coffee and baked goods chains, serving freshly brewed coffee, espresso drinks, and a wide variety of donuts and sandwiches."
+  },
+  {
+    "name": "Earl of Sandwich",
+    "logo_url": "https://img.logo.dev/earlofsandwichusa.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Sandwiches",
+    "description": "Earl of Sandwich is an American fast-casual chain inspired by the legendary sandwich inventor, serving hot, made-to-order sandwiches on freshly baked artisan bread."
+  },
+  {
+    "name": "Eataly",
+    "logo_url": "https://img.logo.dev/eataly.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Italian Market & Restaurant",
+    "description": "Eataly is an Italian marketplace and restaurant complex offering an immersive retail and dining experience celebrating Italian food, wine, and culture under one roof."
+  },
+  {
+    "name": "Einstein Bros. Bagels",
+    "logo_url": "https://img.logo.dev/einsteinbros.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bagels & Café",
+    "description": "Einstein Bros. Bagels is an American bakery café chain offering a wide variety of freshly baked bagels, schmears, egg sandwiches, and specialty coffees."
+  },
+  {
+    "name": "El Fogoncito",
+    "logo_url": "https://img.logo.dev/fogoncito.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Mexican",
+    "description": "El Fogoncito is a Mexican taqueria chain from Mexico City known for its traditional tacos al pastor and other classic Mexican street food dishes."
+  },
+  {
+    "name": "El Globo",
+    "logo_url": "https://img.logo.dev/elglobo.com.mx?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Mexican Bakery",
+    "description": "El Globo is a Mexican bakery chain known for its traditional pan dulce (sweet bread), pastries, and cakes, with a long heritage in Mexican baking culture."
+  },
+  {
+    "name": "El Gran Pastor",
+    "logo_url": "",
+    "cuisine": "Mexican",
+    "description": "El Gran Pastor is a Mexican taqueria serving traditional tacos al pastor and classic Mexican street food dishes."
+  },
+  {
+    "name": "Emporio Armani Caffè",
+    "logo_url": "https://img.logo.dev/armani.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Italian Café",
+    "description": "Emporio Armani Caffè is a luxury café and restaurant concept by the Armani Group, serving refined Italian cuisine, aperitivo, and coffee in an elegant branded setting."
+  },
+  {
+    "name": "Eric Kayser",
+    "logo_url": "https://img.logo.dev/maison-kayser.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "French Bakery",
+    "description": "Maison Eric Kayser is a French artisan bakery by master baker Éric Kayser, renowned for its organic sourdough breads, croissants, and French pastries worldwide."
+  },
+  {
+    "name": "Espresso House",
+    "logo_url": "https://img.logo.dev/espressohouse.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Espresso House is Scandinavia's largest coffee chain, offering handcrafted espresso drinks, pastries, and sandwiches in a warm, Nordic-inspired café environment."
+  },
+  {
+    "name": "Evergreens",
+    "logo_url": "https://img.logo.dev/evergreens.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Healthy Fast Casual",
+    "description": "Evergreens is an American fast-casual chain dedicated to fresh, flavourful salads, wraps, and grain bowls made with responsibly sourced seasonal ingredients."
+  },
+  {
+    "name": "Evolvending Vending Machine",
+    "logo_url": "",
+    "cuisine": "Vending",
+    "description": "Evolvending is a modern vending machine concept found in airports, offering a curated range of snacks, drinks, and convenience items through smart vending technology."
+  },
+  {
+    "name": "Ex Tea",
+    "logo_url": "",
+    "cuisine": "Tea / Bubble Tea",
+    "description": "Ex Tea is a bubble tea and specialty tea café concept offering milk teas, fruit teas, and customisable tea drinks."
+  },
+  {
+    "name": "Exki",
+    "logo_url": "https://img.logo.dev/exki.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Healthy Fast Casual",
+    "description": "Exki is a Belgian healthy fast food chain offering natural, fresh, and organic meals, salads, soups, and snacks, with a strong presence in airports and urban locations."
+  },
+  {
+    "name": "Falafel Express",
+    "logo_url": "",
+    "cuisine": "Middle Eastern",
+    "description": "Falafel Express is a fast-casual Middle Eastern restaurant concept serving falafel wraps, pita sandwiches, and mezze dishes."
+  },
+  {
+    "name": "FamilyMart",
+    "logo_url": "https://img.logo.dev/family.co.jp?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Convenience Store",
+    "description": "FamilyMart is one of Japan's largest convenience store chains, offering freshly prepared meals, onigiri, pastries, hot foods, and beverages around the clock."
+  },
+  {
+    "name": "Farm2Air Market",
+    "logo_url": "",
+    "cuisine": "Market & Café",
+    "description": "Farm2Air Market is an airport fresh food market concept emphasising locally sourced produce and grab-and-go meals for health-conscious travellers."
+  },
+  {
+    "name": "Farmer's Fridge",
+    "logo_url": "https://img.logo.dev/farmersfridge.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Healthy Vending",
+    "description": "Farmer's Fridge is an American automated fresh food vending concept offering salads, grain bowls, and healthy snacks dispensed from chilled vending machines in airports and offices."
+  },
+  {
+    "name": "Farmers Market",
+    "logo_url": "",
+    "cuisine": "Market & Café",
+    "description": "Farmers Market is a convenience food market concept in airport terminals offering fresh, locally inspired meals, snacks, and beverages."
+  },
+  {
+    "name": "Feltman's of Coney Island",
+    "logo_url": "https://img.logo.dev/feltmansofconeyisland.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Hot Dogs",
+    "description": "Feltman's of Coney Island is a revived American hot dog brand tracing its roots to 1867 Coney Island, where Charles Feltman is credited with inventing the hot dog on a bun."
+  },
+  {
+    "name": "Fendi Caffè",
+    "logo_url": "https://img.logo.dev/fendi.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Italian Café",
+    "description": "Fendi Caffè is a luxury café concept by the Italian fashion house Fendi, serving curated Italian pastries, coffee, and light bites in a high-design branded setting."
+  },
+  {
+    "name": "Fionn MacCool's",
+    "logo_url": "https://img.logo.dev/fionnmaccools.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Irish Pub",
+    "description": "Fionn MacCool's is a Canadian Irish pub chain offering a traditional pub experience with an extensive selection of draught beers, classic pub food, and live sports."
+  },
+  {
+    "name": "Five Guys",
+    "logo_url": "https://img.logo.dev/fiveguys.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Burgers",
+    "description": "Five Guys is an American fast-casual burger chain known for its fresh, never-frozen beef, generous free toppings, hand-cut fries, and milkshakes."
+  },
+  {
+    "name": "FLO Café",
+    "logo_url": "",
+    "cuisine": "French Café",
+    "description": "FLO Café is a French café concept found in airports and brasseries, serving coffee, pastries, and light bites inspired by French bistro culture."
+  },
+  {
+    "name": "FOOD GARDEN",
+    "logo_url": "",
+    "cuisine": "Food Hall",
+    "description": "FOOD GARDEN is an airport or mall food garden concept offering a variety of cuisine options in a shared, open dining environment."
+  },
+  {
+    "name": "Fresh Attractions",
+    "logo_url": "",
+    "cuisine": "Market & Café",
+    "description": "Fresh Attractions is an airport food concept offering freshly prepared, attractively presented meals and snacks for travellers."
+  },
+  {
+    "name": "Fresh Market On The Go",
+    "logo_url": "",
+    "cuisine": "Market & Café",
+    "description": "Fresh Market On The Go is a convenience food market in airport terminals offering fresh meals, snacks, and beverages for departing passengers."
+  },
+  {
+    "name": "Freshens",
+    "logo_url": "https://img.logo.dev/freshens.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Smoothies & Yogurt",
+    "description": "Freshens is an American smoothie and premium yogurt franchise found primarily in universities and food courts, serving blended beverages and healthy snack options."
+  },
+  {
+    "name": "Freshii",
+    "logo_url": "https://img.logo.dev/freshii.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Healthy Fast Casual",
+    "description": "Freshii is a Canadian healthy fast food franchise offering burritos, bowls, salads, juices, and smoothies made with fresh, nutritious ingredients."
+  },
+  {
+    "name": "Freshness Burger",
+    "logo_url": "https://img.logo.dev/freshnessburger.co.jp?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Burgers",
+    "description": "Freshness Burger is a Japanese fast-casual burger chain committed to quality and freshness, serving handmade burgers with premium ingredients inspired by American diner culture."
+  },
+  {
+    "name": "Fuddruckers",
+    "logo_url": "https://img.logo.dev/fuddruckers.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Burgers",
+    "description": "Fuddruckers is an American restaurant chain famous for its 'World's Greatest Hamburgers,' with guests building their own burgers from a fresh toppings bar."
+  },
+  {
+    "name": "Fujiya Restaurant",
+    "logo_url": "",
+    "cuisine": "Japanese",
+    "description": "Fujiya Restaurant is a Japanese food chain offering bento sets, Western-style Japanese dishes, and traditional sweets, drawing on Fujiya's heritage as a beloved Japanese confectionery brand."
+  },
+  {
+    "name": "Full Bar",
+    "logo_url": "",
+    "cuisine": "Bar",
+    "description": "Full Bar is a full-service airport bar offering a wide selection of cocktails, spirits, wines, and beers for travellers."
+  },
+  {
+    "name": "Garabatos",
+    "logo_url": "",
+    "cuisine": "Spanish Café",
+    "description": "Garabatos is a Spanish-style café chain offering coffee, tapas-inspired light bites, and pastries in airports and travel hubs."
+  },
+  {
+    "name": "Garbanzo",
+    "logo_url": "https://img.logo.dev/eatgarbanzo.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Mediterranean",
+    "description": "Garbanzo Mediterranean Fresh is an American fast-casual chain offering build-your-own Mediterranean plates, pitas, and salads with fresh, flavourful ingredients."
+  },
+  {
+    "name": "Garrett Popcorn Shops",
+    "logo_url": "https://img.logo.dev/garrettpopcorn.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Gourmet Popcorn",
+    "description": "Garrett Popcorn Shops is a Chicago-born gourmet popcorn brand famous for its Chicago Mix (caramel and cheese blend), with a devoted global following."
+  },
+  {
+    "name": "Gelatissimo",
+    "logo_url": "https://img.logo.dev/gelatissimo.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Gelato",
+    "description": "Gelatissimo is an Australian gelato chain crafting fresh, authentic Italian-style gelato on-site daily using natural ingredients, seasonal fruits, and traditional recipes."
+  },
+  {
+    "name": "Get Your FIX",
+    "logo_url": "",
+    "cuisine": "Healthy Smoothies",
+    "description": "Get Your FIX is a health-focused café concept offering smoothies, bowls, and nutritious quick bites in airport and urban settings."
+  },
+  {
+    "name": "Giraffas",
+    "logo_url": "https://img.logo.dev/giraffas.com.br?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Brazilian Fast Casual",
+    "description": "Giraffas is a Brazilian fast-casual restaurant chain serving grilled meats, rice-and-bean plates, and classic Brazilian comfort food in a quick, affordable format."
+  },
+  {
+    "name": "Giraffe World Kitchen",
+    "logo_url": "https://img.logo.dev/giraffe.net?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "World Kitchen",
+    "description": "Giraffe World Kitchen is a British casual dining chain offering a globally inspired menu of dishes from around the world in a fun, vibrant, family-friendly atmosphere."
+  },
+  {
+    "name": "Gloria Jean's Coffees",
+    "logo_url": "https://img.logo.dev/gloriajeans.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Gloria Jean's Coffees is an Australian specialty coffee chain offering handcrafted espresso drinks and flavoured coffees, with a particularly strong presence in Asia Pacific."
+  },
+  {
+    "name": "Godiva",
+    "logo_url": "https://img.logo.dev/godiva.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Chocolate & Café",
+    "description": "Godiva is a Belgian luxury chocolate brand with global cafés and boutiques offering premium pralines, truffles, hot chocolate, and indulgent dessert-inspired drinks."
+  },
+  {
+    "name": "Gold Coast Dogs",
+    "logo_url": "",
+    "cuisine": "Hot Dogs",
+    "description": "Gold Coast Dogs is a Chicago-based hot dog chain serving classic Chicago-style hot dogs and Italian beef sandwiches, staying true to the city's iconic street food traditions."
+  },
+  {
+    "name": "GONG CHA",
+    "logo_url": "https://img.logo.dev/gongcha.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bubble Tea",
+    "description": "Gong Cha is a Taiwanese bubble tea chain offering a wide range of premium milk teas, fruit teas, and drinks with customisable sweetness and ice levels."
+  },
+  {
+    "name": "GONGPYEONG-DONG GIANT CUTLET",
+    "logo_url": "",
+    "cuisine": "Korean Pork Cutlet",
+    "description": "GONGPYEONG-DONG GIANT CUTLET is a Korean restaurant concept serving oversized, crispy donkkaseu (pork cutlets) that have become a viral food attraction."
+  },
+  {
+    "name": "Goose Island Beer Company",
+    "logo_url": "https://img.logo.dev/gooseisland.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Craft Beer",
+    "description": "Goose Island Beer Company is a Chicago-born craft brewery and brewpub, known for its Bourbon County Brand Stout and 312 Urban Wheat Ale."
+  },
+  {
+    "name": "GOPIZZA",
+    "logo_url": "https://img.logo.dev/gopizza.kr?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Pizza",
+    "description": "GOPIZZA is a fast-casual pizza concept offering individually portioned artisan pizzas with Asian-inspired flavours and quick service."
+  },
+  {
+    "name": "Grab & Fly",
+    "logo_url": "",
+    "cuisine": "Travel Retail / Café",
+    "description": "Grab & Fly is an airport food and beverage concept offering ready-to-go meals, snacks, and drinks for passengers on the move."
+  },
+  {
+    "name": "Grand Cru",
+    "logo_url": "",
+    "cuisine": "Wine Bar",
+    "description": "Grand Cru is an upscale airport wine bar and restaurant offering a curated selection of fine wines alongside cheese, charcuterie, and small plates."
+  },
+  {
+    "name": "Great American Bagel Company",
+    "logo_url": "",
+    "cuisine": "Bagels",
+    "description": "The Great American Bagel Company is an American bagel chain found primarily in airports and food courts, serving freshly baked bagels with a range of spreads and fillings."
+  },
+  {
+    "name": "Green Market",
+    "logo_url": "",
+    "cuisine": "Market & Café",
+    "description": "Green Market is a fresh, eco-conscious food market concept in airports offering healthy grab-and-go options and sustainably sourced produce."
+  },
+  {
+    "name": "Greendot",
+    "logo_url": "https://img.logo.dev/greendot.com.sg?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Vegetarian / Asian",
+    "description": "Greendot is a Singaporean plant-based fast-casual chain offering flavourful, meat-free Asian dishes proving that vegetarian food can be vibrant, satisfying, and affordable."
+  },
+  {
+    "name": "Greggs",
+    "logo_url": "https://img.logo.dev/greggs.co.uk?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "British Bakery",
+    "description": "Greggs is Britain's largest bakery chain, beloved for its sausage rolls, steak bakes, and freshly filled sandwiches at accessible prices across the UK."
+  },
+  {
+    "name": "Gujrati Svado",
+    "logo_url": "",
+    "cuisine": "Indian / Gujarati",
+    "description": "Gujrati Svado is an Indian restaurant specialising in Gujarati cuisine, known for its vegetarian thali and authentic traditional flavours from the Gujarat region."
+  },
+  {
+    "name": "Gusto Pasta Bar",
+    "logo_url": "",
+    "cuisine": "Italian / Pasta",
+    "description": "Gusto Pasta Bar is a fast-casual pasta bar concept offering freshly made pasta dishes with a range of sauces and toppings."
+  },
+  {
+    "name": "Guzman y Gomez",
+    "logo_url": "https://img.logo.dev/guzmanygomez.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Mexican",
+    "description": "Guzman y Gomez is an Australian-born Mexican restaurant chain serving made-to-order burritos, tacos, and nachos with authentic flavours and fresh, quality ingredients."
+  },
+  {
+    "name": "H & H Bagels",
+    "logo_url": "https://img.logo.dev/hhbagels.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bagels",
+    "description": "H & H Bagels is a New York City legendary bagel institution known for its hand-rolled, water-kettle-boiled bagels, which have been a city staple since 1972."
+  },
+  {
+    "name": "Habit Burger",
+    "logo_url": "https://img.logo.dev/habitburger.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Burgers",
+    "description": "The Habit Burger Grill is an American fast-casual chain renowned for its Charburger — a char-grilled beef burger with fresh toppings — and a menu of salads and shakes."
+  },
+  {
+    "name": "Haldiram's",
+    "logo_url": "https://img.logo.dev/haldirams.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Indian Snacks & Sweets",
+    "description": "Haldiram's is India's most iconic snack and sweet brand, offering a vast range of namkeen, bhujia, mithai, and ready-to-eat meals rooted in authentic Indian flavours."
+  },
+  {
+    "name": "Half Moon Empanadas",
+    "logo_url": "",
+    "cuisine": "Latin American / Empanadas",
+    "description": "Half Moon Empanadas is a fast-casual restaurant specialising in freshly baked and fried empanadas with a diverse range of sweet and savoury fillings."
+  },
+  {
+    "name": "Haneulmaru Cafe",
+    "logo_url": "",
+    "cuisine": "Korean Café",
+    "description": "Haneulmaru Cafe is a Korean café concept found in airports and shopping areas, offering coffee, teas, and Korean-style baked goods."
+  },
+  {
+    "name": "Hans im Glück",
+    "logo_url": "https://img.logo.dev/hansimglueck-burgergrill.de?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Burgers",
+    "description": "Hans im Glück is a German premium burger restaurant inspired by the Brothers Grimm fairy tale, serving gourmet burgers in a distinctive birch-forest-themed setting."
+  },
+  {
+    "name": "Hard Rock Cafe",
+    "logo_url": "https://img.logo.dev/hardrock.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "American / Music Themed",
+    "description": "Hard Rock Cafe is an American themed restaurant and bar chain celebrating rock music and pop culture, serving classic American fare including burgers and ribs."
+  },
+  {
+    "name": "Hardee's",
+    "logo_url": "https://img.logo.dev/hardees.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fast Food",
+    "description": "Hardee's is an American fast food chain known for its Thickburgers made with 100% Angus beef, hand-breaded chicken tenders, and made-from-scratch biscuits served all day."
+  },
+  {
+    "name": "Harry's",
+    "logo_url": "https://img.logo.dev/harrys.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bar / Restaurant",
+    "description": "Harry's is an airport or hotel bar and restaurant concept offering cocktails, wines, and a casual dining menu in a relaxed, stylish setting."
+  },
+  {
+    "name": "Havanna",
+    "logo_url": "https://img.logo.dev/havanna.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Argentine Café & Confectionery",
+    "description": "Havanna is an iconic Argentine confectionery and café chain, best known for its alfajores — delicate cookies sandwiched with dulce de leche and coated in chocolate or meringue."
+  },
+  {
+    "name": "Heberer Bakery",
+    "logo_url": "https://img.logo.dev/heberer.de?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bakery",
+    "description": "Heberer Bakery is a German family-run bakery chain with over a century of heritage, offering fresh breads, rolls, pastries, and snacks baked to traditional recipes."
+  },
+  {
+    "name": "Heineken",
+    "logo_url": "https://img.logo.dev/heineken.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Beer Bar",
+    "description": "Heineken operates branded beer bars and kiosks in international airports, serving its iconic lager alongside premium draught beers in a relaxed setting."
+  },
+  {
+    "name": "Heirloom Bakery Cafe",
+    "logo_url": "",
+    "cuisine": "Bakery & Café",
+    "description": "Heirloom Bakery Cafe is an artisan bakery and café offering heritage-recipe baked goods, pastries, and specialty coffees in airport and urban settings."
+  },
+  {
+    "name": "Henlin",
+    "logo_url": "",
+    "cuisine": "Filipino Fast Food",
+    "description": "Henlin is a Filipino fast food chain known for its fried chicken, snacks, and local Filipino fast food offerings at affordable prices."
+  },
+  {
+    "name": "Hermann's Mobile",
+    "logo_url": "",
+    "cuisine": "German / Snacks",
+    "description": "Hermann's Mobile is a mobile food concept serving German-style pretzels, snacks, and sandwiches in airports and events."
+  },
+  {
+    "name": "HEYTEA",
+    "logo_url": "https://img.logo.dev/heytea.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Chinese Tea",
+    "description": "HEYTEA is a premium Chinese bubble tea brand known for its fruit teas, cheese-topped teas, and innovative beverages that sparked a global cheese tea trend."
+  },
+  {
+    "name": "Highlands Coffee",
+    "logo_url": "https://img.logo.dev/highlandscoffee.com.vn?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Coffee & Café",
+    "description": "Highlands Coffee is Vietnam's leading homegrown coffee chain, serving Vietnamese-style iced coffees, milk teas, and light meals in a modern, comfortable café setting."
+  },
+  {
+    "name": "Hissho Sushi",
+    "logo_url": "https://img.logo.dev/hisshosushi.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese / Sushi",
+    "description": "Hissho Sushi is an American sushi brand operating kiosk-style sushi bars in supermarkets, airports, and food courts, offering fresh rolls and Japanese snacks."
+  },
+  {
+    "name": "Hokkaido Baked Cheese Tart",
+    "logo_url": "https://img.logo.dev/hbct.com.my?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bakery & Desserts",
+    "description": "Hokkaido Baked Cheese Tart is a Malaysian chain specialising in freshly baked cheese tarts filled with a warm, creamy Hokkaido cheese custard encased in a crisp pastry shell."
+  },
+  {
+    "name": "Hollys Coffee",
+    "logo_url": "https://img.logo.dev/hollys.co.kr?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Coffee & Café",
+    "description": "Hollys Coffee is a South Korean premium café chain offering specialty coffees, blended beverages, teas, and desserts in a sophisticated and comfortable atmosphere."
+  },
+  {
+    "name": "Home Run Inn Pizza",
+    "logo_url": "https://img.logo.dev/homeruninnpizza.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Chicago Pizza",
+    "description": "Home Run Inn is a Chicago family-owned pizza restaurant chain known for its Chicago-style thin-crust pizza, made to a treasured recipe since 1947."
+  },
+  {
+    "name": "Hudson",
+    "logo_url": "https://img.logo.dev/hudsongroup.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Travel Retail & Café",
+    "description": "Hudson is a leading North American travel retailer found in airports and transit hubs, offering grab-and-go food, beverages, books, and travel essentials to travellers."
+  },
+  {
+    "name": "Hudson News",
+    "logo_url": "https://img.logo.dev/hudsonnews.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Travel Retail",
+    "description": "Hudson News is an American airport and travel hub news and specialty retail chain offering books, magazines, snacks, beverages, and travel essentials to passengers."
+  },
+  {
+    "name": "Hudsons Coffee",
+    "logo_url": "https://img.logo.dev/hudsonscoffee.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Coffee & Café",
+    "description": "Hudsons Coffee is an Australian coffee chain with a strong airport presence, serving specialty coffees and food in a casual café setting."
+  },
+  {
+    "name": "Hungry Jack's",
+    "logo_url": "https://img.logo.dev/hungryjacks.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fast Food",
+    "description": "Hungry Jack's is an Australian fast food chain and the local Burger King franchise, known for its flame-grilled Whopper and Australian-exclusive menu items."
+  },
+  {
+    "name": "Hwangsaengga Kalguksu",
+    "logo_url": "",
+    "cuisine": "Korean Noodles",
+    "description": "Hwangsaengga Kalguksu is a Korean restaurant specialising in kalguksu (hand-cut knife noodles) served in a rich, nourishing broth."
+  },
+  {
+    "name": "Häagen-Dazs",
+    "logo_url": "https://img.logo.dev/haagendazs.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Ice Cream",
+    "description": "Häagen-Dazs is a premium American ice cream brand offering rich, dense ice cream, gelato, sorbet, and bars made with simple, high-quality natural ingredients."
+  },
+  {
+    "name": "Idli.com",
+    "logo_url": "",
+    "cuisine": "South Indian",
+    "description": "Idli.com is an Indian restaurant concept specialising in idli, vada, and South Indian breakfast items made from traditional fermented rice and lentil batter."
+  },
+  {
+    "name": "Ile Bar",
+    "logo_url": "",
+    "cuisine": "Bar / French",
+    "description": "Ile Bar is a French-themed bar concept serving cocktails, wines, and aperitifs in an airport or urban setting."
+  },
+  {
+    "name": "illy",
+    "logo_url": "https://img.logo.dev/illy.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "illy is a premium Italian coffee brand and café operator renowned for its signature single-blend espresso, sustainably sourced Arabica beans, and global café concepts."
+  },
+  {
+    "name": "Indomie Café",
+    "logo_url": "https://img.logo.dev/indomie.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Indonesian Noodles",
+    "description": "Indomie Café is a restaurant concept from the iconic Indonesian instant noodle brand, serving creative noodle dishes and sides inspired by the beloved Indomie range."
+  },
+  {
+    "name": "Insomnia",
+    "logo_url": "https://img.logo.dev/insomnia.ie?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Coffee & Café",
+    "description": "Insomnia is Ireland's largest indigenous coffee chain, offering handcrafted espresso drinks, teas, freshly made sandwiches, and baked goods across hundreds of locations."
+  },
+  {
+    "name": "Ippudo",
+    "logo_url": "https://img.logo.dev/ippudo.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese Ramen",
+    "description": "Ippudo is a world-renowned Japanese ramen chain founded in Fukuoka in 1985, celebrated for its rich Hakata-style tonkotsu broth and silky thin noodles."
+  },
+  {
+    "name": "Irving Farm Coffee Roasters",
+    "logo_url": "https://img.logo.dev/irvingfarm.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Irving Farm Coffee Roasters is a New York-based specialty coffee roaster and café chain committed to direct-trade sourcing and meticulous single-origin roasting."
+  },
+  {
+    "name": "itsu",
+    "logo_url": "https://img.logo.dev/itsu.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese / Sushi",
+    "description": "itsu is a British Japanese food chain offering freshly made sushi, hot dishes, and noodles inspired by Asian cuisine for health-conscious urban diners."
+  },
+  {
+    "name": "Jack in the Box",
+    "logo_url": "https://img.logo.dev/jackinthebox.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fast Food",
+    "description": "Jack in the Box is an American fast food chain known for its diverse 24-hour menu including tacos, burgers, and breakfast items, anchored by its quirky mascot."
+  },
+  {
+    "name": "Jamba Juice",
+    "logo_url": "https://img.logo.dev/jamba.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Smoothies & Juice",
+    "description": "Jamba is an American smoothie and juice chain offering a wide range of blended fruit and vegetable smoothies, freshly squeezed juices, and health-boosting bowls."
+  },
+  {
+    "name": "JAMOCHA CAFÉ",
+    "logo_url": "",
+    "cuisine": "Coffee & Café",
+    "description": "JAMOCHA CAFÉ is a coffee café concept serving specialty coffee drinks and light snacks, found in airports and travel locations."
+  },
+  {
+    "name": "JaYeon",
+    "logo_url": "",
+    "cuisine": "Korean",
+    "description": "JaYeon is a Korean restaurant concept serving traditional Korean cuisine dishes in an airport or dining setting."
+  },
+  {
+    "name": "Jco",
+    "logo_url": "https://img.logo.dev/jcodonuts.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Donuts & Coffee",
+    "description": "J.CO Donuts & Coffee is an Indonesian chain celebrated for its light, airy yeast donuts with creative glazes and fillings, paired with specialty coffees and yogurt drinks."
+  },
+  {
+    "name": "Jeondongjib",
+    "logo_url": "",
+    "cuisine": "Korean",
+    "description": "Jeondongjib is a Korean restaurant concept known for traditional Korean home-style dishes and hearty meals."
+  },
+  {
+    "name": "Jersey Mike's",
+    "logo_url": "https://img.logo.dev/jerseymikes.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Sandwiches",
+    "description": "Jersey Mike's is an American sub sandwich chain known for its fresh-sliced, authentic East Coast-style subs served 'Mike's Way' with oil, vinegar, and seasonings."
+  },
+  {
+    "name": "Jimmy John's",
+    "logo_url": "https://img.logo.dev/jimmyjohns.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Sandwiches",
+    "description": "Jimmy John's is an American sandwich chain known for its 'freaky fast' delivery and simple menu of gourmet sub sandwiches on freshly baked French bread."
+  },
+  {
+    "name": "Joe and the Juice",
+    "logo_url": "https://img.logo.dev/joejuice.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Juice & Coffee",
+    "description": "Joe and the Juice is a Danish lifestyle café chain serving freshly made juices, shakes, and specialty coffees in a vibrant, music-forward atmosphere with a focus on health."
+  },
+  {
+    "name": "Jollibee",
+    "logo_url": "https://img.logo.dev/jollibee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Filipino Fast Food",
+    "description": "Jollibee is the Philippines' most beloved fast food chain, famous for its Chickenjoy fried chicken, Jolly Spaghetti, and Yumburger, with a passionate global fanbase."
+  },
+  {
+    "name": "Jones the Grocer",
+    "logo_url": "https://img.logo.dev/jonesthegrocer.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Australian Deli & Café",
+    "description": "Jones the Grocer is an Australian premium deli and café brand offering artisan cheeses, charcuterie, fine groceries, and café dining in a sophisticated setting."
+  },
+  {
+    "name": "Jones the Grocer Express",
+    "logo_url": "",
+    "cuisine": "Australian Deli & Café",
+    "description": "Jones the Grocer Express is the quick-service format of Jones the Grocer, offering premium deli items, sandwiches, and specialty coffees for travellers on the go."
+  },
+  {
+    "name": "Juan Valdez Café",
+    "logo_url": "https://img.logo.dev/juanvaldez.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Colombian Coffee",
+    "description": "Juan Valdez Café is a Colombian coffee brand and café chain representing the Colombian Coffee Growers Federation, serving 100% Colombian coffees and pastries."
+  },
+  {
+    "name": "Juice Press",
+    "logo_url": "https://img.logo.dev/juicepress.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Cold-Pressed Juice",
+    "description": "Juice Press is a New York-based cold-pressed juice and wellness brand offering organic juices, cleanses, smoothies, and plant-based food to fuel a healthy lifestyle."
+  },
+  {
+    "name": "JUMBO Seafood",
+    "logo_url": "https://img.logo.dev/jumbo-seafood.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Chinese / Seafood",
+    "description": "JUMBO Seafood is a Singaporean seafood restaurant group renowned for its fresh, premium seafood dishes and the iconic chilli crab."
+  },
+  {
+    "name": "Kabod Coffee",
+    "logo_url": "",
+    "cuisine": "Specialty Coffee",
+    "description": "Kabod Coffee is a Korean specialty coffee concept offering handcrafted espresso drinks and single-origin coffees in a design-conscious setting."
+  },
+  {
+    "name": "Kailash Parbat",
+    "logo_url": "",
+    "cuisine": "Indian Vegetarian",
+    "description": "Kailash Parbat is a legendary Sindhi vegetarian restaurant chain from Mumbai, renowned for its chaat, dahi puri, pav bhaji, and traditional Indian sweets."
+  },
+  {
+    "name": "Kamps",
+    "logo_url": "",
+    "cuisine": "German Bakery",
+    "description": "Kamps is a German bakery chain offering freshly baked breads, rolls, pastries, and snacks, commonly found in airports and travel hubs across Germany."
+  },
+  {
+    "name": "Kape Manila",
+    "logo_url": "",
+    "cuisine": "Filipino Coffee",
+    "description": "Kape Manila is a Philippine coffee concept celebrating local coffee culture and Filipino-origin coffee beans from regions like Benguet, Sagada, and Mt. Apo."
+  },
+  {
+    "name": "Ke Rico",
+    "logo_url": "",
+    "cuisine": "Mexican",
+    "description": "Ke Rico is a Mexican food concept serving traditional Mexican flavours and dishes including tacos, burritos, and antojitos."
+  },
+  {
+    "name": "KFC",
+    "logo_url": "https://img.logo.dev/kfc.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fried Chicken",
+    "description": "KFC (Kentucky Fried Chicken) is a global fast food chain founded by Colonel Harland Sanders, famous for its original recipe fried chicken seasoned with 11 herbs and spices."
+  },
+  {
+    "name": "KOI Thé",
+    "logo_url": "https://img.logo.dev/koithe.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Taiwanese Tea",
+    "description": "KOI Thé is a Taiwanese bubble tea brand known for its high-quality, hand-crafted oolong and jasmine tea-based drinks."
+  },
+  {
+    "name": "KONThai",
+    "logo_url": "",
+    "cuisine": "Thai",
+    "description": "KONThai is a Thai fast-casual restaurant concept serving traditional Thai curries, pad thai, noodles, and rice dishes."
+  },
+  {
+    "name": "Krispy Kreme",
+    "logo_url": "https://img.logo.dev/krispykreme.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Donuts",
+    "description": "Krispy Kreme is an American multinational donut company and coffeehouse chain renowned for its original glazed yeast doughnuts, freshly made and served hot from the oven."
+  },
+  {
+    "name": "Krispy Pork Cutlet",
+    "logo_url": "",
+    "cuisine": "Korean Pork Cutlet",
+    "description": "Krispy Pork Cutlet is a Korean restaurant concept specialising in extra-crispy, golden breaded pork cutlets (donkkaseu) served with rice and sauce."
+  },
+  {
+    "name": "Kura Sushi",
+    "logo_url": "https://img.logo.dev/kurasushi.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese / Conveyor Belt Sushi",
+    "description": "Kura Sushi is a Japanese kaiten-zushi chain offering affordable fresh sushi on a conveyor belt, enhanced by a fun game-reward system and an entertaining dining experience."
+  },
+  {
+    "name": "Kyochon",
+    "logo_url": "https://img.logo.dev/kyochon.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Korean Fried Chicken",
+    "description": "Kyochon is a premium South Korean fried chicken chain known for its twice-fried wings glazed in honey-soy or red pepper sauce, prized for their crispy texture and rich flavour."
+  },
+  {
+    "name": "La Madeleine",
+    "logo_url": "https://img.logo.dev/lamadeleine.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "French Café & Bakery",
+    "description": "La Madeleine is an American French country café chain offering a warm, farmhouse-style dining experience with French-inspired soups, salads, pastries, and quiches."
+  },
+  {
+    "name": "La Place",
+    "logo_url": "https://img.logo.dev/laplace.nl?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Dutch Café / Market",
+    "description": "La Place is a Dutch café and food market chain offering fresh, hot meals, salads, pastries, and juices in a vibrant, self-service market-style setting."
+  },
+  {
+    "name": "La Taba",
+    "logo_url": "",
+    "cuisine": "Spanish Tapas",
+    "description": "La Taba is a Spanish-inspired tapas and wine bar concept offering a selection of small plates, charcuterie, and Spanish drinks."
+  },
+  {
+    "name": "La Table de Michel Roth",
+    "logo_url": "",
+    "cuisine": "French Fine Dining",
+    "description": "La Table de Michel Roth is a French gastronomic restaurant concept by Michelin-starred chef Michel Roth, offering refined French cuisine in an airport setting."
+  },
+  {
+    "name": "La Tapenade Mediterranean Cafe",
+    "logo_url": "",
+    "cuisine": "Mediterranean",
+    "description": "La Tapenade Mediterranean Cafe is a Mediterranean café concept serving tapas-style dishes, wraps, and salads inspired by the cuisines of the Mediterranean coast."
+  },
+  {
+    "name": "Ladurée",
+    "logo_url": "https://img.logo.dev/laduree.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "French Patisserie",
+    "description": "Ladurée is a legendary Parisian luxury patisserie and salon de thé, celebrated as the creator of the double-decker macaron and for its exquisite pastries and gifts."
+  },
+  {
+    "name": "Lancôme Café",
+    "logo_url": "https://img.logo.dev/lancome.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "French Luxury Café",
+    "description": "Lancôme Café is an exclusive café concept by the French luxury beauty brand Lancôme, offering rose-themed pastries, desserts, and drinks inspired by its iconic products."
+  },
+  {
+    "name": "Lawson",
+    "logo_url": "https://img.logo.dev/lawson.co.jp?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Convenience Store",
+    "description": "Lawson is a major Japanese convenience store chain offering a diverse range of freshly prepared meals, pastries, onigiri, and beverages available around the clock."
+  },
+  {
+    "name": "Le Grand Comptoir",
+    "logo_url": "",
+    "cuisine": "French Brasserie",
+    "description": "Le Grand Comptoir is a French brasserie concept serving classic French dishes, charcuterie, oysters, and a curated wine list in a stylish airport setting."
+  },
+  {
+    "name": "Le Pain Quotidien",
+    "logo_url": "https://img.logo.dev/lepainquotidien.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Belgian Bakery & Café",
+    "description": "Le Pain Quotidien is a Belgian bakery café known for its communal wooden tables, organic sourdough bread, open tartines, and wholesome, seasonal menu items."
+  },
+  {
+    "name": "Legal Sea Foods",
+    "logo_url": "https://img.logo.dev/legalseafoods.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Seafood",
+    "description": "Legal Sea Foods is an American upscale seafood restaurant chain from Boston, known for its fresh, sustainable seafood and iconic New England clam chowder."
+  },
+  {
+    "name": "LeMa Dumpling",
+    "logo_url": "",
+    "cuisine": "Chinese / Dumplings",
+    "description": "LeMa Dumpling is a Chinese restaurant concept specialising in freshly made dumplings and dim sum dishes."
+  },
+  {
+    "name": "LEON",
+    "logo_url": "https://img.logo.dev/leon.co?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Healthy Fast Food",
+    "description": "LEON is a British fast-food chain on a mission to make it easier for everyone to eat well, offering Mediterranean-inspired meals, wraps, and bowls made with whole ingredients."
+  },
+  {
+    "name": "Levito",
+    "logo_url": "",
+    "cuisine": "Bakery / Pizza",
+    "description": "Levito is an Italian-style bakery and pizza concept offering artisan-baked breads and Roman-style pizza."
+  },
+  {
+    "name": "LiHO",
+    "logo_url": "https://img.logo.dev/lihotea.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bubble Tea",
+    "description": "LiHO is a Singaporean bubble tea chain known for its cheese tea, milk teas, and fruit-based drinks crafted with quality tea leaves and fresh ingredients."
+  },
+  {
+    "name": "LINA'S",
+    "logo_url": "",
+    "cuisine": "Sandwiches & Café",
+    "description": "LINA'S is a Belgian fast-casual café chain offering fresh salads, sandwiches, wraps, and hot drinks in airports and urban locations."
+  },
+  {
+    "name": "Little Xingkai",
+    "logo_url": "",
+    "cuisine": "Chinese",
+    "description": "Little Xingkai is a Chinese restaurant concept likely specialising in Yunnan or northeastern Chinese cuisine."
+  },
+  {
+    "name": "Llaollao",
+    "logo_url": "https://img.logo.dev/llaollao.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Frozen Yogurt",
+    "description": "Llaollao is a Spanish premium frozen yogurt chain known for its natural, probiotic-rich yogurt served with fresh toppings and granola."
+  },
+  {
+    "name": "Lotteria",
+    "logo_url": "",
+    "cuisine": "Fast Food",
+    "description": "Lotteria is a South Korean fast food chain known for its burgers, fried chicken, and shrimp-based menu items, with a major presence in South Korea and Southeast Asia."
+  },
+  {
+    "name": "Louis Vuitton Café",
+    "logo_url": "https://img.logo.dev/louisvuitton.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "French Luxury Café",
+    "description": "Louis Vuitton's café and restaurant concepts, found in select flagship stores, offer a refined dining experience by acclaimed chefs within settings designed by the house's creative team."
+  },
+  {
+    "name": "Luckin Coffee",
+    "logo_url": "https://img.logo.dev/luckincoffee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Coffee",
+    "description": "Luckin Coffee is a Chinese fast-growing coffee chain known for its app-based mobile ordering system, convenient pick-up locations, and affordable specialty coffee drinks."
+  },
+  {
+    "name": "Mad Mex",
+    "logo_url": "https://img.logo.dev/madmex.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Mexican",
+    "description": "Mad Mex is an Australian fast-casual Mexican chain serving fresh burritos, tacos, and bowls inspired by Californian Mexican cuisine with quality ingredients."
+  },
+  {
+    "name": "Mad Over Donuts",
+    "logo_url": "https://img.logo.dev/madoverdonuts.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Donuts & Coffee",
+    "description": "Mad Over Donuts is an Indian donut chain founded in Singapore offering over 30 varieties of freshly baked, creatively flavoured donuts alongside coffees and beverages."
+  },
+  {
+    "name": "Maggiano's",
+    "logo_url": "https://img.logo.dev/maggianos.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Italian American",
+    "description": "Maggiano's Little Italy is an American Italian restaurant chain offering classic Italian-American dishes, family-style platters, and private dining in a warm, nostalgic setting."
+  },
+  {
+    "name": "Magnolia Bakery",
+    "logo_url": "https://img.logo.dev/magnoliabakery.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bakery",
+    "description": "Magnolia Bakery is an iconic New York City bakery famous for its classic American baked goods, including the beloved vanilla buttercream cupcakes and banana pudding."
+  },
+  {
+    "name": "Maison Kayser",
+    "logo_url": "https://img.logo.dev/maison-kayser.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "French Bakery",
+    "description": "Maison Kayser is a French artisan bakery founded by master baker Éric Kayser, renowned for its organic sourdough breads, croissants, and French pastries."
+  },
+  {
+    "name": "Malatya Pazarı",
+    "logo_url": "",
+    "cuisine": "Turkish Dried Fruits & Nuts",
+    "description": "Malatya Pazarı is a Turkish chain specialising in premium dried fruits, nuts, spices, and traditional Turkish delights, named after the apricot-producing city of Malatya."
+  },
+  {
+    "name": "Manchu Wok",
+    "logo_url": "https://img.logo.dev/manchuwok.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Chinese Fast Food",
+    "description": "Manchu Wok is a North American Chinese fast food chain found primarily in food courts, serving wok-fried dishes, fried rice, and noodle dishes."
+  },
+  {
+    "name": "Marché",
+    "logo_url": "https://img.logo.dev/marche-restaurants.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "International Market-Style",
+    "description": "Marché Mövenpick is a Swiss restaurant chain offering a vibrant market-style dining concept where guests select fresh, made-to-order dishes from live cooking stations."
+  },
+  {
+    "name": "Margaritaville",
+    "logo_url": "https://img.logo.dev/margaritaville.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "American / Caribbean",
+    "description": "Margaritaville is an American themed restaurant and bar chain inspired by Jimmy Buffett's iconic song, serving tropical cocktails, seafood, and casual coastal fare."
+  },
+  {
+    "name": "Marugame Udon",
+    "logo_url": "https://img.logo.dev/marugame-udon.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese Udon",
+    "description": "Marugame Udon is a Japanese fast-casual chain where fresh udon noodles are hand-stretched and cut in-store daily, served cafeteria-style with tempura and toppings."
+  },
+  {
+    "name": "Masala Twist",
+    "logo_url": "",
+    "cuisine": "Indian",
+    "description": "Masala Twist is an Indian fast-casual restaurant offering a modern, contemporary twist on classic Indian masala dishes and street food."
+  },
+  {
+    "name": "Matsuya",
+    "logo_url": "https://img.logo.dev/matsuyafoods.co.jp?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese Gyudon",
+    "description": "Matsuya is a Japanese fast food chain known for affordable gyudon (beef rice bowls), teishoku set meals, and curry, catering to busy workers and students."
+  },
+  {
+    "name": "Max Brenner",
+    "logo_url": "https://img.logo.dev/maxbrenner.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Chocolate Café",
+    "description": "Max Brenner is an Israeli-born chocolate café and retail brand offering an indulgent world of chocolate-centric drinks, desserts, waffles, and fondue experiences."
+  },
+  {
+    "name": "McAlister's Deli",
+    "logo_url": "https://img.logo.dev/mcalistersdeli.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Deli",
+    "description": "McAlister's Deli is an American fast-casual deli chain known for its overstuffed sandwiches, fresh-made salads, loaded baked potatoes, and Famous Sweet Tea."
+  },
+  {
+    "name": "McCafé",
+    "logo_url": "https://img.logo.dev/mcdonalds.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Coffee & Café",
+    "description": "McCafé is McDonald's premium café sub-brand serving handcrafted espresso drinks, frappes, smoothies, and baked goods alongside the McDonald's menu."
+  },
+  {
+    "name": "McDonald's",
+    "logo_url": "https://img.logo.dev/mcdonalds.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fast Food",
+    "description": "McDonald's is the world's largest fast food chain, serving billions of customers daily with iconic menu items including the Big Mac, McChicken, and golden french fries."
+  },
+  {
+    "name": "Melt Shop",
+    "logo_url": "https://img.logo.dev/meltshop.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Grilled Cheese & Sandwiches",
+    "description": "Melt Shop is an American fast-casual chain specialising in crispy, melty grilled cheese sandwiches and gourmet burgers with creative topping combinations."
+  },
+  {
+    "name": "Meyer Deli Coffee Kitchen",
+    "logo_url": "",
+    "cuisine": "Deli & Coffee",
+    "description": "Meyer Deli Coffee Kitchen is an airport deli and coffee concept offering fresh sandwiches, salads, and specialty coffees for travellers."
+  },
+  {
+    "name": "Mi Casa Cantina",
+    "logo_url": "",
+    "cuisine": "Mexican",
+    "description": "Mi Casa Cantina is a Mexican restaurant concept serving quesadillas, burritos, tacos, and other Tex-Mex dishes in an airport or food hall setting."
+  },
+  {
+    "name": "Misha's Cupcakes",
+    "logo_url": "",
+    "cuisine": "Bakery / Cupcakes",
+    "description": "Misha's Cupcakes is an artisan cupcake bakery offering freshly baked, creatively decorated cupcakes and custom cakes."
+  },
+  {
+    "name": "Mister Donut",
+    "logo_url": "https://img.logo.dev/misterdonut.jp?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Donuts & Coffee",
+    "description": "Mister Donut is a beloved donut and coffee chain with a massive following in Japan and Southeast Asia, known for its pon de ring chewy donuts and classic varieties."
+  },
+  {
+    "name": "Modern Market",
+    "logo_url": "https://img.logo.dev/modernmarket.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Healthy Casual Dining",
+    "description": "Modern Market is an American fast-casual restaurant group focusing on made-from-scratch, ingredient-forward dishes with a creative, seasonal menu."
+  },
+  {
+    "name": "Modern Shanghai",
+    "logo_url": "",
+    "cuisine": "Chinese / Shanghai",
+    "description": "Modern Shanghai is a Chinese restaurant concept specialising in Shanghai cuisine including dim sum, xiao long bao, and classic Shanghainese noodle dishes."
+  },
+  {
+    "name": "Moe's Southwest Grill",
+    "logo_url": "https://img.logo.dev/moes.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Mexican",
+    "description": "Moe's Southwest Grill is an American fast-casual Mexican chain known for its 'Welcome to Moe's!' greeting, customisable burritos, and free chips and salsa with every order."
+  },
+  {
+    "name": "Mojo",
+    "logo_url": "",
+    "cuisine": "Bar / Cocktails",
+    "description": "Mojo is a bar concept found in airports or entertainment venues, serving cocktails, spirits, and mixed drinks."
+  },
+  {
+    "name": "MONDO Bar",
+    "logo_url": "",
+    "cuisine": "Bar",
+    "description": "MONDO Bar is an airport bar concept offering a global selection of spirits, wines, cocktails, and international beers."
+  },
+  {
+    "name": "Mos Burger",
+    "logo_url": "https://img.logo.dev/mos.jp?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese Burgers",
+    "description": "Mos Burger is a Japanese fast food chain known for its rice burgers, teriyaki burgers, and Japanese-inspired fresh ingredients, made to order."
+  },
+  {
+    "name": "Mount Comfort Coffee",
+    "logo_url": "",
+    "cuisine": "Specialty Coffee",
+    "description": "Mount Comfort Coffee is a travel hub coffee concept serving specialty coffees, teas, and comfort food for travellers."
+  },
+  {
+    "name": "Mugg & Bean",
+    "logo_url": "https://img.logo.dev/mugg-bean.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Coffee Shop & Casual Dining",
+    "description": "Mugg & Bean is a South African coffee shop and restaurant chain beloved for its generous portions, indulgent muffins, filter coffees, and all-day breakfast options."
+  },
+  {
+    "name": "MUKYOKU",
+    "logo_url": "",
+    "cuisine": "Japanese",
+    "description": "MUKYOKU is a Japanese food concept found in airport settings, serving Japanese cuisine dishes."
+  },
+  {
+    "name": "Nakau",
+    "logo_url": "https://img.logo.dev/nakau.co.jp?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese Fast Food",
+    "description": "Nakau is a Japanese fast food chain specialising in oyakodon (chicken and egg rice bowls), udon noodles, and teriyaki set meals at wallet-friendly prices."
+  },
+  {
+    "name": "Namsan King Size Pork Cutlet",
+    "logo_url": "",
+    "cuisine": "Korean Pork Cutlet",
+    "description": "Namsan King Size Pork Cutlet is a Korean restaurant famous for its oversized, crispy donkkaseu (pork cutlets), a popular draw in Seoul's Namsan area."
+  },
+  {
+    "name": "Nando's",
+    "logo_url": "https://img.logo.dev/nandos.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Portuguese Chicken",
+    "description": "Nando's is a South African-Portuguese casual dining chain world-famous for its Afro-Portuguese peri-peri flame-grilled chicken served with signature sauces and sides."
+  },
+  {
+    "name": "Nathan's Famous",
+    "logo_url": "https://img.logo.dev/nathansfamous.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Hot Dogs",
+    "description": "Nathan's Famous is an iconic American hot dog brand founded in 1916 on Coney Island, New York, home of the world-famous Fourth of July Hot Dog Eating Contest."
+  },
+  {
+    "name": "Natoo",
+    "logo_url": "",
+    "cuisine": "Healthy / Snacks",
+    "description": "Natoo is a health-focused vending and café concept offering nutritious snacks and beverages in transit locations."
+  },
+  {
+    "name": "NIMAT",
+    "logo_url": "",
+    "cuisine": "Middle Eastern",
+    "description": "NIMAT is a Middle Eastern restaurant concept serving halal food and traditional Arab cuisine dishes."
+  },
+  {
+    "name": "Nooodles",
+    "logo_url": "",
+    "cuisine": "Noodles",
+    "description": "Nooodles is a fast-casual noodle restaurant concept serving pan-Asian noodle dishes in airport and transit locations."
+  },
+  {
+    "name": "Not Your Average Joe's",
+    "logo_url": "https://img.logo.dev/notyouraveragejoes.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "American Casual Dining",
+    "description": "Not Your Average Joe's is an American casual dining chain offering an inventive menu of globally inspired comfort food, craft cocktails, and local draught beers."
+  },
+  {
+    "name": "Nourish",
+    "logo_url": "",
+    "cuisine": "Healthy / Plant-Based",
+    "description": "Nourish is a health-focused restaurant or café concept offering nutritious, plant-forward meals and wholesome snacks."
+  },
+  {
+    "name": "Novo Coffee",
+    "logo_url": "https://img.logo.dev/novocoffee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Novo Coffee is a Denver-based specialty coffee roaster and café known for its carefully sourced and roasted single-origin beans."
+  },
+  {
+    "name": "Nusr-Et",
+    "logo_url": "https://img.logo.dev/nusr-et.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Steakhouse",
+    "description": "Nusr-Et is a global upscale steakhouse chain by Turkish celebrity chef Nusret Gökçe — known as Salt Bae — famous for its theatrical meat-salting technique and premium cuts."
+  },
+  {
+    "name": "Nutella Café",
+    "logo_url": "https://img.logo.dev/nutella.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Dessert Café",
+    "description": "Nutella Café is an immersive branded café by Ferrero celebrating all things Nutella, serving crepes, waffles, cakes, and beverages all featuring the iconic hazelnut spread."
+  },
+  {
+    "name": "Nuts on Clark",
+    "logo_url": "https://img.logo.dev/nutsonclark.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Gourmet Nuts & Popcorn",
+    "description": "Nuts on Clark is a Chicago-based nut and popcorn shop famous for its hand-roasted nuts, caramel corn, and snack mixes, with a presence in Chicago airports and markets."
+  },
+  {
+    "name": "O'briens",
+    "logo_url": "",
+    "cuisine": "Irish Sandwiches",
+    "description": "O'Briens is an Irish sandwich and coffee chain offering freshly made wraps, sandwiches, and hot drinks inspired by Irish café culture."
+  },
+  {
+    "name": "Ocean Basket",
+    "logo_url": "https://img.logo.dev/oceanbasket.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Seafood",
+    "description": "Ocean Basket is a South African seafood restaurant chain offering generous portions of fresh fish, calamari, prawns, and other seafood dishes at accessible prices."
+  },
+  {
+    "name": "Old Chang Kee",
+    "logo_url": "https://img.logo.dev/oldchangkee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Singaporean Snacks",
+    "description": "Old Chang Kee is a Singaporean chain famous for its crispy, golden curry puffs filled with spiced potato and chicken, alongside a range of traditional local snacks."
+  },
+  {
+    "name": "OldTown White Coffee",
+    "logo_url": "https://img.logo.dev/oldtown.com.my?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Malaysian Café",
+    "description": "OldTown White Coffee is a Malaysian café chain built around the heritage of Ipoh white coffee, serving traditional Malaysian beverages, toast, and Hainanese-style meals."
+  },
+  {
+    "name": "Olive & Finch Grab & Go",
+    "logo_url": "",
+    "cuisine": "Café / Grab & Go",
+    "description": "Olive & Finch Grab & Go is the quick-service format of the beloved Denver café, offering fresh sandwiches, salads, pastries, and coffee."
+  },
+  {
+    "name": "On the Border",
+    "logo_url": "https://img.logo.dev/ontheborder.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Tex-Mex",
+    "description": "On the Border Mexican Grill & Cantina is an American Tex-Mex chain offering fajitas, enchiladas, margaritas, and signature house-made chips and salsa in a festive setting."
+  },
+  {
+    "name": "One Minute Gourmet",
+    "logo_url": "",
+    "cuisine": "Fast Food / Gourmet",
+    "description": "One Minute Gourmet is a quick-service food concept offering quality gourmet meals in minimal time, found in airports and transit hubs."
+  },
+  {
+    "name": "Oporto",
+    "logo_url": "https://img.logo.dev/oporto.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Portuguese Chicken",
+    "description": "Oporto is an Australian fast food chain specialising in charcoal-grilled Portuguese-style chicken, burgers, and wraps with signature Bondi and chilli sauces."
+  },
+  {
+    "name": "Oriental Bay",
+    "logo_url": "",
+    "cuisine": "Asian Fusion",
+    "description": "Oriental Bay is an Asian fusion restaurant concept serving dishes from across Asia in an airport or casual dining setting."
+  },
+  {
+    "name": "OURHOME's Kimchi Cuisine",
+    "logo_url": "",
+    "cuisine": "Korean",
+    "description": "OURHOME's Kimchi Cuisine is a Korean food concept specialising in kimchi-based dishes and traditional Korean home-style cuisine."
+  },
+  {
+    "name": "Outback Steakhouse",
+    "logo_url": "https://img.logo.dev/outback.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Steakhouse",
+    "description": "Outback Steakhouse is an Australian-themed American steakhouse chain known for its Bloomin' Onion, wood-fire grilled steaks, and relaxed outback-inspired atmosphere."
+  },
+  {
+    "name": "OXXO",
+    "logo_url": "https://img.logo.dev/oxxo.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Mexican Convenience Store",
+    "description": "OXXO is a Mexican convenience store chain operated by FEMSA, offering snacks, drinks, prepared foods, and everyday items across Latin America."
+  },
+  {
+    "name": "Paname Tap House",
+    "logo_url": "",
+    "cuisine": "Bar / Craft Beer",
+    "description": "Paname Tap House is a French tap house concept found in airports serving a selection of craft beers, wines, and light bites."
+  },
+  {
+    "name": "Pancake House",
+    "logo_url": "https://img.logo.dev/pancakehouse.com.ph?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Filipino Breakfast & American",
+    "description": "Pancake House is a beloved Filipino restaurant chain serving classic American-style pancakes, waffles, and comfort food alongside Filipino breakfast favourites since 1974."
+  },
+  {
+    "name": "Panda Express",
+    "logo_url": "https://img.logo.dev/pandaexpress.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "American Chinese",
+    "description": "Panda Express is America's largest Chinese fast food chain, known for its Orange Chicken, Kung Pao Beef, and customisable plate combos with fried rice and noodles."
+  },
+  {
+    "name": "Panera Bread",
+    "logo_url": "https://img.logo.dev/panerabread.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bakery Café",
+    "description": "Panera Bread is an American bakery café chain offering freshly baked artisan breads, soups in bread bowls, sandwiches, salads, and clean-label beverages."
+  },
+  {
+    "name": "Panos",
+    "logo_url": "",
+    "cuisine": "Belgian Sandwiches",
+    "description": "Panos is a Belgian fast food chain known for its freshly made sandwiches on artisan bread, soups, and salads, widely found in Belgian airports and stations."
+  },
+  {
+    "name": "Papa John's",
+    "logo_url": "https://img.logo.dev/papajohns.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Pizza",
+    "description": "Papa John's is a major American pizza chain known for its 'Better Ingredients, Better Pizza' philosophy, fresh dough, and signature garlic butter dipping sauce."
+  },
+  {
+    "name": "Pappadeaux",
+    "logo_url": "https://img.logo.dev/pappadeaux.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Cajun Seafood",
+    "description": "Pappadeaux Seafood Kitchen is an American upscale Cajun seafood restaurant chain serving Louisiana-inspired dishes including crawfish étouffée, blackened fish, and fresh oysters."
+  },
+  {
+    "name": "PappaRich",
+    "logo_url": "https://img.logo.dev/papparich.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Malaysian",
+    "description": "PappaRich is a Malaysian fast-casual restaurant chain bringing authentic Malaysian flavours — including nasi lemak, roti canai, and curry laksa — to global markets."
+  },
+  {
+    "name": "Papparoti",
+    "logo_url": "https://img.logo.dev/papparoti.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Malaysian Buns",
+    "description": "Papparoti is a Malaysian bakery chain known for its warm, soft buns topped with a caramelised coffee-butter glaze, enjoyed across Asia and the Middle East."
+  },
+  {
+    "name": "Pappasito's Cantina",
+    "logo_url": "https://img.logo.dev/pappasitos.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Tex-Mex",
+    "description": "Pappasito's Cantina is an upscale American Tex-Mex restaurant chain from the Pappas family, serving premium fajitas, margaritas, and classic Mexican cuisine."
+  },
+  {
+    "name": "Paradise Classic",
+    "logo_url": "",
+    "cuisine": "Chinese / Singaporean",
+    "description": "Paradise Classic is a Singaporean casual dining concept by the Paradise Group, offering Chinese comfort food, dim sum, and classic Cantonese dishes."
+  },
+  {
+    "name": "Paradise Dynasty",
+    "logo_url": "https://img.logo.dev/paradisedynasty.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Chinese",
+    "description": "Paradise Dynasty is a Singaporean upscale Chinese restaurant celebrated for its eight-flavour coloured xiao long bao (soup dumplings) and refined la mian noodle dishes."
+  },
+  {
+    "name": "Paris Baguette",
+    "logo_url": "https://img.logo.dev/parisbaguette.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Korean Bakery & Café",
+    "description": "Paris Baguette is a South Korean bakery café chain offering French-inspired breads, pastries, cakes, and beverages with a premium artisan approach."
+  },
+  {
+    "name": "Paris Croissant",
+    "logo_url": "",
+    "cuisine": "Korean Bakery",
+    "description": "Paris Croissant is a South Korean French-style bakery chain known for its croissants, breads, and café beverages inspired by Parisian boulangerie culture."
+  },
+  {
+    "name": "PASCUCCI",
+    "logo_url": "",
+    "cuisine": "Italian Coffee & Café",
+    "description": "PASCUCCI is an Italian espresso bar concept serving authentic Italian coffees, pastries, and light meals, found in airports and travel hubs worldwide."
+  },
+  {
+    "name": "Pasión del Cielo",
+    "logo_url": "https://img.logo.dev/pasiondelcielocoffee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Colombian Coffee",
+    "description": "Pasión del Cielo is a Miami-based Latin American specialty coffee shop known for its high-quality Colombian and Latin American coffee beans and Cuban-inspired café culture."
+  },
+  {
+    "name": "PastaMania",
+    "logo_url": "https://img.logo.dev/pastamania.com.sg?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Italian / Pasta",
+    "description": "PastaMania is a Singaporean fast-casual pasta chain offering an extensive menu of pasta, baked rice, and pizza dishes with Asian-friendly flavours at affordable prices."
+  },
+  {
+    "name": "Paul",
+    "logo_url": "https://img.logo.dev/paul.fr?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "French Bakery & Café",
+    "description": "PAUL is a French artisan bakery and café with heritage dating to 1889, offering traditional baguettes, viennoiseries, sandwiches, and pâtisseries in a classic boulangerie setting."
+  },
+  {
+    "name": "Paul Bassett",
+    "logo_url": "https://img.logo.dev/paulbassett.co.kr?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Paul Bassett is an Australian specialty coffee brand founded by World Barista Champion Paul Bassett, known for its precise barista techniques and premium single-origin coffees."
+  },
+  {
+    "name": "Peet's Coffee",
+    "logo_url": "https://img.logo.dev/peets.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Peet's Coffee is an American specialty coffee chain founded in Berkeley in 1966, widely credited with inspiring the US specialty coffee movement through its deep-roasted blends."
+  },
+  {
+    "name": "Penang Culture",
+    "logo_url": "https://img.logo.dev/penangculture.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Malaysian / Penang",
+    "description": "Penang Culture is a Singaporean casual dining chain bringing authentic Penang street food — including char kway teow, assam laksa, and rojak — to a restaurant setting."
+  },
+  {
+    "name": "PHO",
+    "logo_url": "",
+    "cuisine": "Vietnamese Noodles",
+    "description": "PHO is a Vietnamese restaurant concept specialising in pho (noodle soup) and other Vietnamese dishes, bringing the flavours of Vietnamese street food to airports."
+  },
+  {
+    "name": "Piece a Pizza",
+    "logo_url": "",
+    "cuisine": "Pizza",
+    "description": "Piece a Pizza is a fast-casual pizza concept serving fresh pizza by the slice with a variety of classic and creative toppings."
+  },
+  {
+    "name": "Pierre Hermé",
+    "logo_url": "https://img.logo.dev/pierreherme.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "French Patisserie",
+    "description": "Pierre Hermé is a celebrated French pastry chef and luxury patisserie brand known for reinventing the macaron and creating audaciously flavoured pastries and haute confiserie."
+  },
+  {
+    "name": "Pinkberry",
+    "logo_url": "https://img.logo.dev/pinkberry.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Frozen Yogurt",
+    "description": "Pinkberry is an American premium frozen yogurt chain known for its tart, natural frozen yogurt topped with fresh fruit, granola, and other premium toppings."
+  },
+  {
+    "name": "Pizza Hut",
+    "logo_url": "https://img.logo.dev/pizzahut.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Pizza",
+    "description": "Pizza Hut is one of the world's largest pizza restaurant chains, serving pan pizzas, stuffed crusts, pasta, and sides across dine-in, delivery, and carry-out formats."
+  },
+  {
+    "name": "PizzaExpress",
+    "logo_url": "https://img.logo.dev/pizzaexpress.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Italian Pizza",
+    "description": "PizzaExpress is a British-founded international pizza restaurant chain known for its classic thin-crust pizzas, dough balls, and menu inspired by Italian trattoria traditions."
+  },
+  {
+    "name": "Popeyes",
+    "logo_url": "https://img.logo.dev/popeyes.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fried Chicken",
+    "description": "Popeyes is an American fast food chain founded in New Orleans, famous for its Louisiana-style Cajun-spiced fried chicken, buttermilk biscuits, and bold Cajun flavours."
+  },
+  {
+    "name": "Port of Subs",
+    "logo_url": "https://img.logo.dev/portofsubs.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Sandwiches",
+    "description": "Port of Subs is an American sub sandwich chain founded in Reno, Nevada, offering fresh-sliced deli subs and wraps made to order."
+  },
+  {
+    "name": "Potato Corner",
+    "logo_url": "https://img.logo.dev/potatocorner.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Filipino Flavoured Fries",
+    "description": "Potato Corner is a Filipino franchise renowned for its flavoured fries dusted in bold seasonings like BBQ, cheese, and sour cream, popular throughout Asia."
+  },
+  {
+    "name": "Potbelly",
+    "logo_url": "https://img.logo.dev/potbelly.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Sandwiches",
+    "description": "Potbelly Sandwich Works is an American sandwich chain offering toasty, made-to-order subs, milkshakes, and live acoustic music in a quirky, neighbourhood-feel shop."
+  },
+  {
+    "name": "Pret A Manger",
+    "logo_url": "https://img.logo.dev/pret.co.uk?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Sandwiches & Café",
+    "description": "Pret A Manger is a British-born multinational sandwich and café chain known for its freshly made, handcrafted sandwiches, salads, and organic coffees."
+  },
+  {
+    "name": "Pronto Gino's",
+    "logo_url": "",
+    "cuisine": "Italian / Pizza",
+    "description": "Pronto Gino's is an Italian fast-casual pizza and pasta concept serving classic Italian dishes in a quick, accessible format."
+  },
+  {
+    "name": "Protein Bar & Kitchen",
+    "logo_url": "https://img.logo.dev/theproteinbar.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Healthy Fast Casual",
+    "description": "Protein Bar & Kitchen is an American health-focused fast-casual chain offering high-protein bowls, wraps, salads, and smoothies designed to fuel an active lifestyle."
+  },
+  {
+    "name": "Puro Gusto",
+    "logo_url": "",
+    "cuisine": "Italian Coffee",
+    "description": "Puro Gusto is an Italian espresso bar and café concept serving traditional Italian coffee culture with premium espresso drinks and light bites."
+  },
+  {
+    "name": "PUTIEN",
+    "logo_url": "https://img.logo.dev/putien.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fujian Chinese",
+    "description": "PUTIEN is a Michelin-starred Singaporean restaurant chain specialising in the authentic cuisine of Fujian's Putian region, known for dishes like braised pork trotters and oyster cake."
+  },
+  {
+    "name": "Qdoba Mexican Eats",
+    "logo_url": "https://img.logo.dev/qdoba.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Mexican",
+    "description": "Qdoba Mexican Eats is an American fast-casual Mexican chain offering burritos, tacos, nachos, and bowls with fresh ingredients, known for its free queso topping."
+  },
+  {
+    "name": "Que Bueno!",
+    "logo_url": "",
+    "cuisine": "Latin American",
+    "description": "Que Bueno! is a Latin American fast-casual restaurant concept commonly found in travel and airport venues, offering Mexican and Latin-inspired dishes with vibrant fresh flavours."
+  },
+  {
+    "name": "Quick",
+    "logo_url": "https://img.logo.dev/quick.be?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fast Food",
+    "description": "Quick is a Belgian and French fast food chain founded in 1971, serving burgers, sandwiches, and french fries, now primarily operating in airports and international locations."
+  },
+  {
+    "name": "QUICKER's",
+    "logo_url": "",
+    "cuisine": "Fast Food",
+    "description": "QUICKER's is a quick-service restaurant concept found in international airports offering burgers, sandwiches, and fast food options."
+  },
+  {
+    "name": "Quiznos",
+    "logo_url": "https://img.logo.dev/quiznos.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Sandwiches",
+    "description": "Quiznos is an American fast-food sandwich chain known for its toasted sub sandwiches made with premium meats, cheeses, and signature sauces melted in a conveyor oven."
+  },
+  {
+    "name": "Qwench Juice Bar",
+    "logo_url": "https://img.logo.dev/qwenchjuicebar.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Juice & Smoothies",
+    "description": "Qwench Juice Bar is an American juice and smoothie franchise offering freshly blended smoothies, cold-pressed juices, acai bowls, and health-focused snacks."
+  },
+  {
+    "name": "Ralph's Coffee",
+    "logo_url": "https://img.logo.dev/ralphlauren.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Ralph's Coffee is a branded café concept by Ralph Lauren, offering expertly sourced single-origin coffees, classic pastries, and a preppy, sophisticated café experience."
+  },
+  {
+    "name": "raw JUCE",
+    "logo_url": "https://img.logo.dev/rawjuce.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Cold-Pressed Juice",
+    "description": "raw JUCE is an American cold-pressed juice and wellness brand offering organic, HPP-processed juices, smoothies, açaí bowls, and plant-based food for health-conscious consumers."
+  },
+  {
+    "name": "Reggio's Chicago Style Pizza",
+    "logo_url": "",
+    "cuisine": "Pizza",
+    "description": "Reggio's Chicago Style Pizza is a Chicago-based pizza chain serving deep-dish and thin-crust Chicago-style pizzas, primarily in Chicago airports and venues."
+  },
+  {
+    "name": "Relay",
+    "logo_url": "https://img.logo.dev/relay.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Travel Retail & Café",
+    "description": "Relay is a global travel retail chain found in airports and transit hubs, offering a curated selection of press, books, snacks, beverages, and travel essentials."
+  },
+  {
+    "name": "Rocky Mountain Chocolate Factory",
+    "logo_url": "https://img.logo.dev/rmcf.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Chocolate & Candy",
+    "description": "Rocky Mountain Chocolate Factory is a Canadian-American gourmet chocolate and confectionery franchise known for handcrafted chocolates, fudge, and caramel apples."
+  },
+  {
+    "name": "Romano's Macaroni Grill",
+    "logo_url": "https://img.logo.dev/macaronigrill.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Italian American",
+    "description": "Romano's Macaroni Grill is an American casual dining chain offering a rustic Italian-American menu of house-made pastas, wood-fired pizzas, and classic Italian entrées."
+  },
+  {
+    "name": "Rossopomodoro",
+    "logo_url": "https://img.logo.dev/rossopomodoro.it?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Neapolitan Pizza",
+    "description": "Rossopomodoro is an Italian pizza chain from Naples committed to authentic Vera Pizza Napoletana, using San Marzano tomatoes, buffalo mozzarella, and traditional techniques."
+  },
+  {
+    "name": "Saboten",
+    "logo_url": "https://img.logo.dev/saboten.co.jp?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese Tonkatsu",
+    "description": "Saboten is a Japanese tonkatsu (breaded pork cutlet) restaurant chain known for quality pork cutlets, finely shredded cabbage, and house-made dipping sauces."
+  },
+  {
+    "name": "Sahara Grill",
+    "logo_url": "",
+    "cuisine": "Mediterranean / Middle Eastern",
+    "description": "Sahara Grill is a Mediterranean grill concept serving shawarma, kebabs, hummus, and Middle Eastern grilled meats in a fast-casual format."
+  },
+  {
+    "name": "Salute",
+    "logo_url": "",
+    "cuisine": "Bar / Italian",
+    "description": "Salute is an Italian-themed bar or restaurant concept serving wines, aperitivos, and Italian-inspired food."
+  },
+  {
+    "name": "Santouka",
+    "logo_url": "https://img.logo.dev/santouka.co.jp?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese Ramen",
+    "description": "Hokkaido Ramen Santouka is a Japanese ramen chain originating from Asahikawa, Hokkaido, celebrated for its rich, creamy tonkotsu-based broth and tender chashu pork."
+  },
+  {
+    "name": "Sbarro",
+    "logo_url": "https://img.logo.dev/sbarro.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Italian / Pizza",
+    "description": "Sbarro is an Italian-American pizza chain synonymous with mall and food court dining, known for its giant New York-style pizza slices, stromboli, and pasta dishes."
+  },
+  {
+    "name": "Schlotzky's",
+    "logo_url": "https://img.logo.dev/schlotzskys.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Sandwiches",
+    "description": "Schlotzsky's is an American sandwich chain famous for its distinctive sourdough bun sandwiches, flatbread pizzas, and a range of toasted hot and cold options."
+  },
+  {
+    "name": "Segafredo",
+    "logo_url": "https://img.logo.dev/segafredo.it?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Italian Coffee",
+    "description": "Segafredo Zanetti is an Italian coffee brand and café chain offering authentic Italian espresso culture, from creamy cappuccinos to traditional affogatos, worldwide."
+  },
+  {
+    "name": "Shake Shack",
+    "logo_url": "https://img.logo.dev/shakeshack.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Burgers",
+    "description": "Shake Shack is an American fast-casual chain that began as a hot dog cart in NYC's Madison Square Park, now globally renowned for its ShackBurger, crinkle-cut fries, and hand-spun shakes."
+  },
+  {
+    "name": "Simit Sarayı",
+    "logo_url": "https://img.logo.dev/simitsarayi.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Turkish Bakery",
+    "description": "Simit Sarayı is a Turkish bakery café chain built around the simit — a sesame-encrusted circular bread — served alongside çay, coffee, and savoury pastries."
+  },
+  {
+    "name": "Skillet",
+    "logo_url": "",
+    "cuisine": "American Comfort Food",
+    "description": "Skillet is an American comfort food and skillet-style cooking concept serving hearty, flavourful dishes in a casual setting."
+  },
+  {
+    "name": "Slim Chickens",
+    "logo_url": "https://img.logo.dev/slimchickens.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Chicken",
+    "description": "Slim Chickens is an American fast-casual chain specialising in hand-battered chicken tenders, wings, and sandwiches served with a range of house-made dipping sauces."
+  },
+  {
+    "name": "Smashburger",
+    "logo_url": "https://img.logo.dev/smashburger.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Burgers",
+    "description": "Smashburger is an American fast-casual burger chain famous for its smashing technique, pressing beef patties on a hot griddle for a crispy, caramelised crust."
+  },
+  {
+    "name": "Smoothie King",
+    "logo_url": "https://img.logo.dev/smoothieking.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Smoothies",
+    "description": "Smoothie King is an American smoothie franchise offering a wide range of purpose-driven blended smoothies designed to help achieve specific health and fitness goals."
+  },
+  {
+    "name": "Snooze an A.M. Eatery",
+    "logo_url": "https://img.logo.dev/snoozeeatery.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "American Breakfast",
+    "description": "Snooze an A.M. Eatery is an American breakfast and brunch restaurant chain known for its innovative pancakes, eggs Benedict variations, and breakfast cocktails."
+  },
+  {
+    "name": "SO! Coffee",
+    "logo_url": "",
+    "cuisine": "Coffee & Café",
+    "description": "SO! Coffee is a Turkish café chain offering specialty coffees, cold drinks, and a selection of light bites in modern, stylish locations across Turkey."
+  },
+  {
+    "name": "SODAM BANSANG",
+    "logo_url": "",
+    "cuisine": "Korean",
+    "description": "SODAM BANSANG is a Korean restaurant concept serving traditional Korean home-style side dishes and meal sets."
+  },
+  {
+    "name": "SOHO Coffee",
+    "logo_url": "https://img.logo.dev/sohocoffee.co.uk?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "SOHO Coffee is a British specialty coffee chain offering artisanal coffees, teas, and freshly prepared food in a warm, neighbourhood café atmosphere."
+  },
+  {
+    "name": "Song Fa Bak Kut Teh",
+    "logo_url": "https://img.logo.dev/songfa.com.sg?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Singaporean / Chinese",
+    "description": "Song Fa Bak Kut Teh is a Singaporean heritage brand established in 1969, specialising in the iconic pork rib soup (bak kut teh) with a peppery, clear Teochew-style broth."
+  },
+  {
+    "name": "Sonsoo Ok",
+    "logo_url": "",
+    "cuisine": "Korean Noodles",
+    "description": "Sonsoo Ok is a Korean noodle restaurant concept serving naengmyeon (cold noodles) and other traditional Korean noodle dishes."
+  },
+  {
+    "name": "Sophia Loren",
+    "logo_url": "",
+    "cuisine": "Italian / Bar",
+    "description": "Sophia Loren is an Italian-themed restaurant or bar concept, named after the iconic actress, serving Italian cuisine and aperitivos."
+  },
+  {
+    "name": "Soul Origin",
+    "logo_url": "https://img.logo.dev/soulorigin.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Australian Café",
+    "description": "Soul Origin is an Australian café franchise offering freshly made sandwiches, salads, and specialty coffees at competitive prices."
+  },
+  {
+    "name": "Spur",
+    "logo_url": "https://img.logo.dev/spurcorporation.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Steakhouse",
+    "description": "Spur is a South African family steakhouse chain with a Native American theme, known for its burgers, ribs, steaks, and an extensive children's menu."
+  },
+  {
+    "name": "Starbucks",
+    "logo_url": "https://img.logo.dev/starbucks.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Coffee & Café",
+    "description": "Starbucks is the world's largest coffeehouse chain, offering handcrafted espresso beverages, Frappuccinos, teas, and seasonal drinks alongside food items and merchandise."
+  },
+  {
+    "name": "Steers",
+    "logo_url": "https://img.logo.dev/steers.co.za?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Burgers",
+    "description": "Steers is South Africa's leading flame-grilled burger chain, known for its 100% pure beef patties, hand-cut chips, and locally loved Jalapeno Cheese and BBQ Crunch burgers."
+  },
+  {
+    "name": "Steiner Flughafenbeck",
+    "logo_url": "",
+    "cuisine": "German Bakery",
+    "description": "Steiner Flughafenbeck is a German airport bakery specialising in freshly baked pretzels, rolls, pastries, and snacks crafted for travellers passing through German airports."
+  },
+  {
+    "name": "Stephanie's",
+    "logo_url": "",
+    "cuisine": "American Casual Dining",
+    "description": "Stephanie's is a casual dining restaurant concept offering comfort food and American dishes in an airport or hotel setting."
+  },
+  {
+    "name": "Strada by It",
+    "logo_url": "",
+    "cuisine": "Italian / Pasta",
+    "description": "Strada by It is an Italian pasta and café concept serving handcrafted pasta dishes and Italian bites in a relaxed setting."
+  },
+  {
+    "name": "strEAT",
+    "logo_url": "",
+    "cuisine": "International Street Food",
+    "description": "strEAT is an international street food concept offering diverse global street food options under one roof."
+  },
+  {
+    "name": "Subway",
+    "logo_url": "https://img.logo.dev/subway.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Sandwiches",
+    "description": "Subway is the world's largest submarine sandwich chain, offering customisable subs, wraps, and salads made to order on freshly baked bread with a wide choice of toppings."
+  },
+  {
+    "name": "Sukiya",
+    "logo_url": "https://img.logo.dev/sukiya.jp?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese Gyudon",
+    "description": "Sukiya is a Japanese fast food chain specialising in gyudon (beef rice bowls) and is one of the largest gyudon restaurant chains in Japan."
+  },
+  {
+    "name": "Supermac's",
+    "logo_url": "https://img.logo.dev/supermacs.ie?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fast Food",
+    "description": "Supermac's is Ireland's largest indigenous fast food chain, serving burgers, chicken, and traditional Irish comfort food at value prices since 1978."
+  },
+  {
+    "name": "Sushi Maki",
+    "logo_url": "https://img.logo.dev/sushimaki.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese / Sushi",
+    "description": "Sushi Maki is a South Florida-based Japanese restaurant chain offering sushi, sashimi, and Japanese cuisine in a casual dining setting."
+  },
+  {
+    "name": "Sushi Shop",
+    "logo_url": "https://img.logo.dev/sushishop.fr?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese / Sushi",
+    "description": "Sushi Shop is a French sushi delivery and takeaway chain offering a broad menu of traditional and creative sushi rolls, poke bowls, and Japanese-inspired dishes."
+  },
+  {
+    "name": "Sushi Sushi",
+    "logo_url": "",
+    "cuisine": "Japanese / Sushi",
+    "description": "Sushi Sushi is an Australian sushi chain offering freshly made sushi rolls, hand rolls, and Japanese snacks in a fast-casual format."
+  },
+  {
+    "name": "Sushi Tei",
+    "logo_url": "https://img.logo.dev/sushitei.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese / Sushi",
+    "description": "Sushi Tei is a Singaporean Japanese restaurant chain offering an extensive menu of sushi, sashimi, donburi, and Japanese hot dishes in a relaxed café-style setting."
+  },
+  {
+    "name": "Sushi-Itto",
+    "logo_url": "https://img.logo.dev/sushi-itto.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese / Sushi",
+    "description": "Sushi-Itto is a Mexican Japanese restaurant chain offering a creative fusion of traditional sushi rolls and Japanese dishes tailored for Latin American palates."
+  },
+  {
+    "name": "Sushia",
+    "logo_url": "",
+    "cuisine": "Japanese / Sushi",
+    "description": "Sushia is a sushi restaurant concept found in European airports and food courts, offering sushi rolls and Japanese dishes."
+  },
+  {
+    "name": "Sushiro",
+    "logo_url": "https://img.logo.dev/sushiro.co.jp?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese / Conveyor Belt Sushi",
+    "description": "Sushiro is a Japanese kaiten-zushi (revolving sushi) restaurant chain offering affordable, fresh sushi on a conveyor belt, known for its seasonal specials and creative menu."
+  },
+  {
+    "name": "Swensen's",
+    "logo_url": "https://img.logo.dev/swensens.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Ice Cream & Casual Dining",
+    "description": "Swensen's is an American ice cream and casual dining chain with a particularly strong presence in Southeast Asia, known for its sundaes, banana splits, and comfort food."
+  },
+  {
+    "name": "Sūshi",
+    "logo_url": "",
+    "cuisine": "Japanese / Sushi",
+    "description": "Sūshi is a sushi restaurant concept offering Japanese sushi and related dishes."
+  },
+  {
+    "name": "Taco Bell",
+    "logo_url": "https://img.logo.dev/tacobell.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Mexican Fast Food",
+    "description": "Taco Bell is a global American fast food chain serving Tex-Mex inspired menu items including tacos, burritos, quesadillas, and the iconic Crunchwrap Supreme."
+  },
+  {
+    "name": "Taste of Nature",
+    "logo_url": "",
+    "cuisine": "Healthy / Natural",
+    "description": "Taste of Nature is a health-oriented restaurant or kiosk concept offering natural, clean-label food and snacks for wellness-conscious travellers."
+  },
+  {
+    "name": "Taste of Thai",
+    "logo_url": "",
+    "cuisine": "Thai",
+    "description": "Taste of Thai is a Thai food fast-casual concept serving pad thai, curries, and classic Thai dishes in airport and food court settings."
+  },
+  {
+    "name": "Tealive",
+    "logo_url": "https://img.logo.dev/tealive.com.my?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bubble Tea",
+    "description": "Tealive is Southeast Asia's largest home-grown bubble tea chain, serving a wide range of brewed teas, milk teas, and fruity creations with customisable toppings."
+  },
+  {
+    "name": "Terrace Bar",
+    "logo_url": "",
+    "cuisine": "Bar",
+    "description": "Terrace Bar is an airport or hotel bar offering drinks and light bites with a relaxed, open-air terrace setting."
+  },
+  {
+    "name": "TGI Fridays",
+    "logo_url": "https://img.logo.dev/tgifridays.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "American Casual Dining",
+    "description": "TGI Fridays is an American casual dining restaurant chain inspired by New York bar culture, serving burgers, ribs, cocktails, and American comfort food since 1965."
+  },
+  {
+    "name": "The Coffee Bean & Tea Leaf",
+    "logo_url": "https://img.logo.dev/coffeebean.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Coffee & Tea",
+    "description": "The Coffee Bean & Tea Leaf is an American specialty coffee and tea chain founded in Los Angeles, known for its Original Ice Blended drinks and wide tea selection."
+  },
+  {
+    "name": "The Satay Club",
+    "logo_url": "",
+    "cuisine": "Singaporean / Malaysian",
+    "description": "The Satay Club is a Singaporean restaurant concept specialising in satay (grilled skewered meat) and local hawker-style dishes."
+  },
+  {
+    "name": "The Scoop",
+    "logo_url": "",
+    "cuisine": "Ice Cream",
+    "description": "The Scoop is an ice cream and dessert concept offering freshly scooped ice cream, shakes, and sweet treats."
+  },
+  {
+    "name": "Theobroma",
+    "logo_url": "https://img.logo.dev/theobroma.in?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Indian Desserts & Patisserie",
+    "description": "Theobroma is an Indian patisserie and café brand from Mumbai known for its exquisite European-style cakes, pastries, brownies, and chocolate desserts."
+  },
+  {
+    "name": "Third Wave Coffee",
+    "logo_url": "https://img.logo.dev/thirdwavecoffee.in?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Third Wave Coffee is an Indian specialty coffee chain pioneering single-origin, artisanally roasted coffees and modern brewing methods across India's urban coffee scene."
+  },
+  {
+    "name": "Tim Ho Wan",
+    "logo_url": "https://img.logo.dev/timhowan.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Dim Sum",
+    "description": "Tim Ho Wan is a Michelin-starred Hong Kong dim sum chain, known as one of the most affordable Michelin-starred restaurants in the world, celebrated for its baked BBQ pork buns."
+  },
+  {
+    "name": "Tim Hortons",
+    "logo_url": "https://img.logo.dev/timhortons.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Coffee & Café",
+    "description": "Tim Hortons is Canada's most iconic coffee and baked goods chain, beloved for its double-double coffee, Timbits donut holes, and classic breakfast sandwiches."
+  },
+  {
+    "name": "TJT Snack Bar",
+    "logo_url": "",
+    "cuisine": "Snacks",
+    "description": "TJT Snack Bar is an airport snack bar concept offering a variety of quick bites and snacks for travellers."
+  },
+  {
+    "name": "Toast Box",
+    "logo_url": "https://img.logo.dev/toastbox.com.sg?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Singaporean Café",
+    "description": "Toast Box is a Singaporean café chain celebrating traditional Nanyang coffee culture, serving kaya toast, soft-boiled eggs, and handcrafted kopi in heritage-style settings."
+  },
+  {
+    "name": "Toby's Estate",
+    "logo_url": "https://img.logo.dev/tobysestate.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Specialty Coffee",
+    "description": "Toby's Estate is an Australian specialty coffee roaster and café brand known for its meticulous sourcing, roasting, and brewing of premium single-origin coffees."
+  },
+  {
+    "name": "Tocabe",
+    "logo_url": "https://img.logo.dev/tocabe.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Native American",
+    "description": "Tocabe is an American fast-casual restaurant celebrating Indigenous and Native American cuisine, offering Indian tacos, fry bread, and traditional dishes with modern touches."
+  },
+  {
+    "name": "Tony Roma's",
+    "logo_url": "https://img.logo.dev/tonyromas.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Ribs & American",
+    "description": "Tony Roma's is an American casual dining chain that built its reputation on world-famous baby back ribs, alongside steaks, seafood, and a variety of shareable starters."
+  },
+  {
+    "name": "Top Juice",
+    "logo_url": "https://img.logo.dev/topjuice.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Juice & Smoothies",
+    "description": "Top Juice is an Australian juice and smoothie bar chain offering freshly pressed juices and blended smoothies in airports and shopping centres."
+  },
+  {
+    "name": "Tortas Frontera by Rick Bayless",
+    "logo_url": "",
+    "cuisine": "Mexican",
+    "description": "Tortas Frontera by Rick Bayless is a Chicago airport restaurant by celebrity chef Rick Bayless, serving Mexican tortas (sandwiches) and authentic Mexican dishes."
+  },
+  {
+    "name": "Tortilla",
+    "logo_url": "https://img.logo.dev/tortilla.co.uk?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Mexican",
+    "description": "Tortilla is the UK's largest fast-casual Mexican restaurant chain, serving freshly made burritos, tacos, and nachos with responsibly sourced ingredients and bold flavours."
+  },
+  {
+    "name": "Tous Les Jours",
+    "logo_url": "https://img.logo.dev/touslesjours.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Korean Bakery",
+    "description": "Tous Les Jours is a South Korean French-inspired bakery chain offering a wide variety of European and Asian-inspired breads, cakes, and pastries."
+  },
+  {
+    "name": "Tropical Hut",
+    "logo_url": "",
+    "cuisine": "Filipino Fast Food",
+    "description": "Tropical Hut is one of the Philippines' oldest fast food chains, serving classic burgers, fried chicken, spaghetti, and Filipino comfort food since its founding in 1962."
+  },
+  {
+    "name": "Tsim Sha Tsui",
+    "logo_url": "",
+    "cuisine": "Chinese / Hong Kong",
+    "description": "Tsim Sha Tsui is a restaurant concept named after Hong Kong's famous Tsim Sha Tsui district, serving Hong Kong-style cuisine and Cantonese dishes."
+  },
+  {
+    "name": "Tsuta",
+    "logo_url": "https://img.logo.dev/tsuta.co.jp?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese Ramen",
+    "description": "Tsuta is a Japanese ramen restaurant that made history as the world's first ramen shop to receive a Michelin star, celebrated for its artisanal soy-based tare broth."
+  },
+  {
+    "name": "Ultra Bar",
+    "logo_url": "",
+    "cuisine": "Bar",
+    "description": "Ultra Bar is an airport or entertainment bar serving premium spirits, cocktails, and drinks in a vibrant atmosphere."
+  },
+  {
+    "name": "Umami Burger",
+    "logo_url": "https://img.logo.dev/umamiburger.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Gourmet Burgers",
+    "description": "Umami Burger is an American gourmet burger chain pioneering umami-rich ingredients — Parmesan crisps, roasted tomatoes, shiitake mushrooms — in its signature patties."
+  },
+  {
+    "name": "Upper Crust",
+    "logo_url": "https://img.logo.dev/uppercrust.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "British Sandwiches",
+    "description": "Upper Crust is a British airport sandwich and food chain specialising in freshly filled baguettes, pastries, and hot drinks, found across UK and international airports."
+  },
+  {
+    "name": "Urban Crave",
+    "logo_url": "",
+    "cuisine": "American Casual Dining",
+    "description": "Urban Crave is an American casual dining concept found in airports, offering gourmet burgers, sandwiches, and comfort food."
+  },
+  {
+    "name": "Urban Food Market",
+    "logo_url": "",
+    "cuisine": "Market & Café",
+    "description": "Urban Food Market is an airport food market concept offering a variety of fresh grab-and-go meals, artisan snacks, and beverages."
+  },
+  {
+    "name": "Vaango",
+    "logo_url": "https://img.logo.dev/vaango.in?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "South Indian",
+    "description": "Vaango is an Indian fast-casual chain specialising in South Indian cuisine including thalis, dosas, and appam in a contemporary, welcoming setting."
+  },
+  {
+    "name": "Veloce Espresso",
+    "logo_url": "",
+    "cuisine": "Italian Coffee",
+    "description": "Veloce Espresso is an Italian espresso concept serving fast, authentic Italian-style espresso drinks and light bites."
+  },
+  {
+    "name": "Venchi",
+    "logo_url": "https://img.logo.dev/venchi.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Italian Chocolate & Gelato",
+    "description": "Venchi is a premium Italian chocolatier and gelato brand founded in 1878 in Cuneo, offering artisanal chocolate bars, pralines, and rich gelato from the finest ingredients."
+  },
+  {
+    "name": "Villa Italian Kitchen",
+    "logo_url": "https://img.logo.dev/villaitaliankitchen.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Italian / Pizza",
+    "description": "Villa Italian Kitchen is an American fast-casual Italian chain found in malls and food courts, serving Neapolitan-style pizza by the slice, pasta, and Italian entrées."
+  },
+  {
+    "name": "Villa Pizza",
+    "logo_url": "",
+    "cuisine": "Italian / Pizza",
+    "description": "Villa Pizza is an American fast-casual pizza concept found in food courts, serving pizza by the slice and Italian-style dishes."
+  },
+  {
+    "name": "Vinifera",
+    "logo_url": "",
+    "cuisine": "Wine Bar",
+    "description": "Vinifera is an upscale airport wine bar offering a curated wine list, cheese, and charcuterie for wine enthusiasts on the move."
+  },
+  {
+    "name": "Vino Volo",
+    "logo_url": "https://img.logo.dev/vinovolo.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Wine Bar",
+    "description": "Vino Volo is an American airport wine bar and restaurant offering a carefully curated wine list with food pairings in a sophisticated, relaxed setting."
+  },
+  {
+    "name": "Voodoo Doughnut",
+    "logo_url": "https://img.logo.dev/voodoodoughnut.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Donuts",
+    "description": "Voodoo Doughnut is an American artisan donut shop from Portland, Oregon, famous for its wildly creative over-the-top creations, from bacon maple bars to voodoo doll donuts."
+  },
+  {
+    "name": "Wafflemeister",
+    "logo_url": "https://img.logo.dev/wafflemeister.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Waffles & Desserts",
+    "description": "Wafflemeister is a British waffle chain serving freshly made Belgian waffles with indulgent sweet and savoury toppings, from Nutella and berries to pulled pork and cheese."
+  },
+  {
+    "name": "Wagamama",
+    "logo_url": "https://img.logo.dev/wagamama.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese Noodles",
+    "description": "Wagamama is a British-Japanese noodle bar chain offering pan-Asian cuisine including ramen, teppanyaki, and rice dishes in a fast-casual, canteen-style setting."
+  },
+  {
+    "name": "Wahlburgers",
+    "logo_url": "https://img.logo.dev/wahlburgers.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Burgers",
+    "description": "Wahlburgers is an American burger chain co-founded by the Wahlberg family, serving hand-crafted burgers, sides, and milkshakes in a casual, fun atmosphere."
+  },
+  {
+    "name": "Wetherspoons",
+    "logo_url": "https://img.logo.dev/jdwetherspoon.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "British Pub",
+    "description": "J.D. Wetherspoon is a UK pub chain known for its affordable drinks, food served all day, and no-music policy, operating in converted historic buildings and high streets."
+  },
+  {
+    "name": "Whataburger",
+    "logo_url": "https://img.logo.dev/whataburger.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Fast Food",
+    "description": "Whataburger is an American regional fast food chain from Texas known for its large, made-to-order burgers, Whataburger sauce, and 24/7 service."
+  },
+  {
+    "name": "Whisk & Bowl",
+    "logo_url": "",
+    "cuisine": "Café / Healthy",
+    "description": "Whisk & Bowl is a café concept offering freshly prepared bowls, wraps, and handcrafted meals made with care and quality ingredients."
+  },
+  {
+    "name": "Wiener Feinbäckerei",
+    "logo_url": "",
+    "cuisine": "German / Austrian Bakery",
+    "description": "Wiener Feinbäckerei is a German fine bakery chain offering traditional Viennese-style breads, pastries, and cakes crafted using artisanal techniques and quality ingredients."
+  },
+  {
+    "name": "Wings",
+    "logo_url": "",
+    "cuisine": "Chicken Wings",
+    "description": "Wings is a quick-service chicken wings concept found in food courts and airports, offering a range of chicken wing flavours and sides."
+  },
+  {
+    "name": "Wingstop",
+    "logo_url": "https://img.logo.dev/wingstop.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Chicken Wings",
+    "description": "Wingstop is an American restaurant chain dedicated entirely to chicken wings, offering them in a variety of flavours from Original Hot to Mango Habanero, with seasoned fries."
+  },
+  {
+    "name": "Wok to Walk",
+    "logo_url": "https://img.logo.dev/woktowalk.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Asian Stir-Fry",
+    "description": "Wok to Walk is a Dutch fast-casual chain serving freshly cooked stir-fry noodle and rice dishes made to order in a wok, with a choice of proteins, vegetables, and sauces."
+  },
+  {
+    "name": "Wolfgang Puck Express",
+    "logo_url": "https://img.logo.dev/wolfgangpuck.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "American / International",
+    "description": "Wolfgang Puck Express is a celebrity chef airport restaurant concept serving quality casual fare including artisan pizzas, salads, soups, and sandwiches."
+  },
+  {
+    "name": "Wow Bao",
+    "logo_url": "https://img.logo.dev/wowbao.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Asian Buns",
+    "description": "Wow Bao is an American fast-casual chain specialising in steamed Asian bao (buns) and potsticker dumplings with American and Asian fusion flavours."
+  },
+  {
+    "name": "Wow Momo",
+    "logo_url": "https://img.logo.dev/wowmomo.in?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Indian / Momos",
+    "description": "Wow Momo is India's largest momo (Tibetan dumpling) chain, offering steamed, fried, and baked momos in creative flavours alongside rolls, biryani, and thupka."
+  },
+  {
+    "name": "Wrapafella",
+    "logo_url": "",
+    "cuisine": "Wraps & Fast Casual",
+    "description": "Wrapafella is a fast-casual wrap restaurant concept serving customisable wraps and sandwiches with a range of fillings and flavour combinations."
+  },
+  {
+    "name": "Wrapchic",
+    "logo_url": "https://img.logo.dev/wrapchic.co.uk?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Indian-Mexican Fusion",
+    "description": "Wrapchic is a UK fast-casual chain fusing Indian flavours with Mexican formats, serving burritos, tacos, and wraps filled with tikka masala, dal, and Indian-spiced fillings."
+  },
+  {
+    "name": "Xing Fu Tang",
+    "logo_url": "https://img.logo.dev/xingfutang.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Bubble Tea",
+    "description": "Xing Fu Tang is a Taiwanese bubble tea chain famous for its freshly hand-made brown sugar boba, tiger milk tea, and caramelised tapioca pearls cooked in-store."
+  },
+  {
+    "name": "Ya Kun",
+    "logo_url": "https://img.logo.dev/yakun.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Singaporean Café",
+    "description": "Ya Kun Kaya Toast is a Singaporean heritage breakfast chain established in 1944, serving traditional kaya toast, soft-boiled eggs, and hand-drip Nanyang kopi."
+  },
+  {
+    "name": "YO! Sushi",
+    "logo_url": "https://img.logo.dev/yosushi.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese / Conveyor Belt Sushi",
+    "description": "YO! Sushi is a British Japanese food chain that popularised the kaiten (conveyor belt) dining concept in the UK, serving fresh sushi, hot dishes, and Japanese snacks."
+  },
+  {
+    "name": "Yooji's",
+    "logo_url": "https://img.logo.dev/yoojis.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese / Sushi",
+    "description": "Yooji's is a European sushi and Japanese food chain offering conveyor belt sushi dining alongside a menu of hot dishes, noodles, and Japanese-inspired small plates."
+  },
+  {
+    "name": "Yoshinoya",
+    "logo_url": "https://img.logo.dev/yoshinoya.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Japanese Gyudon",
+    "description": "Yoshinoya is a Japanese fast food chain founded in 1899, specialising in gyudon (beef rice bowls) and known as one of the oldest and most iconic gyudon chains in the world."
+  },
+  {
+    "name": "Zaro's Family Bakery",
+    "logo_url": "",
+    "cuisine": "Bakery",
+    "description": "Zaro's Family Bakery is a New York institution known for its fresh-baked breads, pastries, and sandwiches, with a major presence in NYC transit hubs since 1927."
+  },
+  {
+    "name": "ZUS Coffee",
+    "logo_url": "https://img.logo.dev/zuscoffee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": "Malaysian Coffee",
+    "description": "ZUS Coffee is a Malaysian specialty coffee chain offering high-quality espresso drinks and local beverages through a technology-driven mobile app ordering experience."
+  },
+  {
+    "name": "È PRONTO",
+    "logo_url": "",
+    "cuisine": "Italian / Café",
+    "description": "È PRONTO is an Italian-themed café and dining concept found in airports, offering espresso, panini, and Italian light bites for travellers."
+  }
+]

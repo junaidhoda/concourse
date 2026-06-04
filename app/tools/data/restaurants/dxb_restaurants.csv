@@ -1,0 +1,102 @@
+name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
+Cadiz,Terminal 1,restaurant,,,spanish,25.2470694,55.3635356,,,,,,,,5831038904,node
+Comptoir Libanais,Terminal 3,restaurant,,,lebanese,25.2443672,55.3703309,,,,24/7,limited,,,10863830605,node
+Costa,Terminal 1,cafe,,,coffee_shop,25.2432549,55.3716494,,,,24/7,limited,yes,Costa,6074464202,node
+flour + stone,Terminal 3,cafe,,1;2,,25.2475342,55.3631567,,,,,,,,12128892066,node
+Giraffe,Terminal 3,restaurant,,,"international, burger",25.2421968,55.3746857,,,,24/7,limited,,Giraffe,10292537460,node
+Hard Rock Cafe,Terminal 3,restaurant,,,american,25.2475026,55.363839,,,,,,,Hard Rock Cafe,7027728503,node
+Heineken,Terminal 1,bar,,,,25.2441277,55.3703141,,,,24/7,limited,,,6074466776,node
+Jack's Bar and Grill,Terminal 1,cafe,,,,25.2417812,55.3741946,,,,24/7,limited,,,7068404393,node
+Jones the Grocer Express,Terminal 3,cafe,,2,"coffee_shop, pastry",25.244508,55.3700954,,+971 52 244 9224,https://www.jonesthegrocer.com/dubai-international-airport-dubai-i84?srsltid=AfmBOoprOeu4l-L9uckf5q9XeDqU7Qrbhm964p4uhzkJ1c2UZn3Flw7A,24/7,yes,,,13687684909,node
+Nutella,Terminal 1,cafe,,,,25.2469045,55.3639406,,,,,,,,5831003840,node
+Pret A Manger,Terminal 1,fast_food,,2,sandwich,25.2423483,55.3746057,,,,24/7,,yes,Pret A Manger,10292550518,node
+ستاربكس,Terminal 1,cafe,,1;2,coffee_shop,25.2475967,55.3632061,,,,,,only,ستاربكس,5831003834,node
+Al Baraka Restaurant,Terminal 2,restaurant,,,,25.2382007,55.3641177,Marrakech Road,,,,,,,503426503,way
+Al Dahleez,Terminal 2,cafe,,,,25.2528448,55.3371236,شارع الشيخ راشد,,,,,,,4924644267,node
+Al Hallab,Terminal 2,restaurant,,,,25.2453157,55.3390249,Sheikh Rashid Road,,,,,,,4913440471,node
+Al Musaharati,Terminal 2,restaurant,,,,25.253285,55.3414943,,,,,,,,4919128642,node
+Al Takia,Terminal 2,restaurant,,,,25.2554474,55.3387892,,,,,,,,4926761313,node
+Arajeel,Terminal 2,restaurant,,,,25.2534176,55.3412694,,,,,,,,4919128640,node
+Ashrafi,Terminal 2,restaurant,,,,25.251751,55.3454441,,,,,,,,4165248487,node
+Ayyam Al Khair,Terminal 2,restaurant,,,,25.243471,55.3397799,Sheikh Rashid Road,,,,,,,4929612261,node
+Blue Elephant Restaurant,Terminal 2,restaurant,,,,25.2477376,55.3450822,,,,,limited,,,4519219289,node
+Brummanah Restaurant and Cafe,Terminal 2,restaurant,,,,25.2498403,55.3402013,,,,,,,,5701322543,node
+Caffè Nero,Terminal 2,cafe,,,coffee_shop,25.2489132,55.3613684,,,,,,yes,Caffè Nero,5831038926,node
+Camdem Food Co.,Terminal 2,fast_food,,,,25.2490563,55.3609124,,,,,,,,5831038930,node
+Casa Mia,Terminal 2,restaurant,,,italian,25.2476795,55.3460833,,+971 4 286 8949,https://www.casamia-dubai.com/,"12:30-15:30,19:30-23:30",limited,,,3725053793,node
+Century Express,Terminal 2,restaurant,,,"indian, chinese, arabic",25.2438346,55.347682,,,,,limited,,,10716118200,node
+Chili's,Terminal 2,restaurant,,,tex-mex,25.2464213,55.3386003,Sheikh Rashid Road,,,,,,Chili's,4929612270,node
+Chilis,Terminal 2,fast_food,,,,25.2344083,55.3501126,,,,,,,,4860242923,node
+Costa coffee,Terminal 2,cafe,,,,25.2430181,55.3589152,,,,,,,,11756439210,node
+Desi Village,Terminal 2,restaurant,,,,25.243793,55.3396515,Sheikh Rashid Road,,,,,,,4929612262,node
+Dubai Surfing,Terminal 2,fast_food,,,,25.2491558,55.3599978,,,,,,,,5831038940,node
+Eat & Drink Restaurant,Terminal 2,cafe,,,,25.2437915,55.3473344,31a Street,,,Mo-Su 08:00-12:00,limited,,,4533092792,node
+Five Guys,Terminal 3,fast_food,,,burger,25.2496373,55.3597423,,,,,,yes,Five Guys,13414890669,node
+Fruitzone,Terminal 2,restaurant,,,,25.2497863,55.3395147,,,,,,,,5701322545,node
+Fuddruckers,Terminal 2,restaurant,,,burger,25.2494982,55.3374213,55 Street,,,,,,Fuddruckers,4924644281,node
+Fujiya Restaurant,Terminal 2,restaurant,,,,25.248875,55.343855,دبي,+971 4 702 8846,https://www.millenniumhotels.com/,Mo-Su 12:00-02:00,limited,,,7138796300,node
+Ghewar Coffe Shop,Terminal 2,cafe,,,,25.2527502,55.3371343,Sheikh Rashid Road,,,,,,,4924644268,node
+Golestan,Terminal 2,restaurant,,,,25.2525076,55.3371209,Sheikh Rashid Road,,,,,,,4924644270,node
+Hawaa Al Wedian,Terminal 2,restaurant,,,,25.2432883,55.3399031,Sheikh Rashid Road,,,,,,,4929612260,node
+Hayat,Terminal 2,cafe,,,,25.2422957,55.3462919,27a Street,,,,,,,4938941658,node
+India Palace,Terminal 2,restaurant,,,indian,25.2489157,55.3375744,,+971 4 286 9600,https://indiapalace.ae,,,,,12548951189,node
+Jailbird,Terminal 2,fast_food,,,burger,25.2493403,55.359686,,,,,,,,11337255369,node
+Jalasat,Terminal 2,restaurant,,,,25.2552803,55.3379141,,,,,,,,4166044589,node
+Kake Da Dhaba,Terminal 2,restaurant,,,indian,25.2554884,55.3386942,Airport Road,,,,,only,,4926761312,node
+Karakccino,Terminal 2,fast_food,,,,25.233279,55.351051,,+971 4 323 1397;+971 58 903 5885,,24/7,,,,7232248015,node
+Kiku,Terminal 2,restaurant,,,japanese,25.2491912,55.3471276,,,,"12:30-14:30,18:30-23:00",limited,,,3712552594,node
+Long Yin,Terminal 2,restaurant,,,chinese,25.2485279,55.3476468,,+971 4 217 0000,https://www.longyin-dubai.com/,"12:30-17:00,18:00-23:00",limited,,,3725053796,node
+M's Beef Bistro,Terminal 2,restaurant,,,steak,25.2486961,55.3475319,,,http://www.msbeefbistro-dubai.com/,12:30-23:00,limited,,,3725166284,node
+M's Seafood Bistro,Terminal 2,restaurant,,,seafood,25.2487559,55.3474966,,,http://www.msseafoodbistro-dubai.com/,Sa-Th 12:30-23:00; Fr 19:00-23:00,limited,,,3725053795,node
+Mareb Mandi,Terminal 2,restaurant,,,,25.2525271,55.3376373,2 Street,,,,,,,501783815,way
+Mr Toads Pub & Kitchen,Terminal 2,pub,,,,25.2429665,55.359082,,,,,,,,11756440432,node
+Méridien Village Terrace,Terminal 2,restaurant,,,,25.2488606,55.3470755,,,https://www.meridienvillageterrace-dubai.com/,20:00-23:00,limited,,,3725057565,node
+New Defood Restaurant,Terminal 2,restaurant,,,,25.2526713,55.3415211,65 Street,,,,,,,4924887662,node
+Nuevo,Terminal 2,restaurant,,,,25.2428405,55.3591485,,,,,,,,11756447123,node
+Paul,Terminal 3,cafe,,,,25.2494347,55.3594426,,,,,,,Paul,5831038946,node
+Qaser Casablanca Cafe,Terminal 2,restaurant,,,,25.2553551,55.3389621,Airport Road,,,,,,,4926761314,node
+Rawabina,Terminal 2,restaurant,,,,25.2522967,55.3371422,Sheikh Rashid Road,,,,,,,4913582340,node
+Restaurant,Terminal 2,restaurant,,,,25.2519601,55.3456816,,,,,,,,6438708985,node
+Rosso Vivo Artizan Pizza,Terminal 2,fast_food,,,pizza,25.2496022,55.360083,,,,,,,,5831276715,node
+Sayad Bahar,Terminal 2,restaurant,,,,25.2518611,55.3371222,,,,,,,,4924644271,node
+Sewar,Terminal 2,restaurant,,,lebanese,25.2473843,55.3465634,,,,,,,,11927859361,node
+Smiling BKK (Thai),Terminal 2,restaurant,,,,25.2457636,55.3396631,,,,,,,,4849440222,node
+St. Mia - Ristorante Italiano,Terminal 2,restaurant,,,italian,25.2491461,55.3598154,,,,,,,,5831038941,node
+Starbucks,Terminal 2,cafe,,0,coffee_shop,25.2523884,55.3545053,,,,24/7,,yes,,11087785525,node
+Sukhothai,Terminal 2,restaurant,,,thai,25.2486152,55.3471586,,+971 4 217 0000,https://www.sukhothai-dubai.com/,"12:30-14:45,19:00-23:45",limited,,,3725053794,node
+Texas Chicken,Terminal 2,fast_food,,,chicken,25.2338247,55.3575438,5 Street,,,,limited,yes,,503402007,way
+The Brick Wall Sports Bar,Terminal 2,pub,,,,25.2426409,55.3596671,,,,,,,,11756459226,node
+The Daily - Urban Street Food,Terminal 2,restaurant,,,,25.2492669,55.3597894,,,,,,,,5831276721,node
+The Dubliner's,Terminal 2,bar,,,,25.247849,55.3460897,,,,,limited,,,3725053799,node
+The Gin Garden,Terminal 2,cafe,,,,25.2493431,55.3594823,,,,,,,,5831276719,node
+The Irish Village,Terminal 2,bar,,,,25.2432821,55.3418249,"Aviation Club, -Al Garhoud",,http://www.irishvillage.ae/HomePage,,yes,,,2246442670,node
+Tranzeet,Terminal 3,restaurant,,,burger,25.2494881,55.3602446,,,,,,,,5831038942,node
+Treehouse Juicery,Terminal 3,fast_food,,,,25.2487822,55.3606013,,,,,,,,5831038933,node
+Warehouse,Terminal 2,bar,,,,25.2474504,55.3467222,,,https://www.warehouse-dubai.com/,12:00-03:00,limited,,,3725053798,node
+Zafrana,Terminal 2,restaurant,,,,25.2515524,55.3376754,2 Street,,,,,,,4924887674,node
+مطعم ومقهى المشاوي الحلبية فرع دبي,Terminal 2,restaurant,,,"arab, grill, lebanese",25.2515628,55.3371251,,,https://garhoud.aleppo-grills.com/en/,,,,,12564681701,node
+Amba restaurant,Terminal 3,restaurant,,,indian,25.2726005,55.3819971,Damascus street,,,24/7,,,,4703196389,node
+Bangalore Empire Restaurant - Qusais,Terminal 3,restaurant,,,indian,25.2682872,55.3789018,,+971 4 2611433,,,,,,246308739,way
+Baskin Robins,Terminal 3,ice_cream,,,,25.2687184,55.3780665,شارع دمشق,,,,,,,4941243406,node
+Belad Al Sham Rest.,Terminal 3,restaurant,,,,25.268369,55.3762225,Al Nahda Road,042613332,,Mo-Su 09:00-22:00,,,,4787906129,node
+Caesars,Terminal 3,restaurant,,,,25.2640573,55.385599,,,,,,,,4911303327,node
+Chicken Tikke Inn,Terminal 3,restaurant,,,,25.2712263,55.37975,شارع دمشق,,,,,,,4941243404,node
+China Wok,Terminal 3,restaurant,,,chinese,25.2722448,55.3826829,,,,,,,,13159034209,node
+Dhaba,Terminal 3,restaurant,,,pakistani,25.2724405,55.3823263,,,,,,,,4444485259,node
+Eagle Al SAQR Restaurant,Terminal 3,restaurant,,,,25.2721087,55.3812776,,,,,,,,11080738656,node
+Filli,Terminal 3,cafe,,,tea,25.2678053,55.3771361,,,,,,,,13042905084,node
+Golden Fork,Terminal 3,restaurant,,,,25.2694828,55.3794448,شارع دمشق,,,,,,,4942447987,node
+Hardee's,Terminal 3,fast_food,,,burger,25.2552895,55.3982828,,+971 600 56q9000,https://uae.hardees.me,24/7,,yes,Hardee's,146036798,way
+Karak,Terminal 3,restaurant,,,,25.2614793,55.3936246,,,,,,,,4919723084,node
+Lebaneese,Terminal 3,restaurant,,,,25.2682046,55.3765094,,,,,,,,4438701889,node
+Light Cafeteria,Terminal 3,fast_food,,,,25.267066,55.3943043,Beirut Street,,,,,,,501806808,way
+Marhaba Mandi,Terminal 3,restaurant,,,,25.2692715,55.3793757,شارع دمشق,,,,,,,4942447988,node
+Ponnusamy Restaurant,Terminal 3,restaurant,,,,25.2714739,55.3799113,شارع دمشق,,,,,,,4941243403,node
+Quick Bite Restaurant,Terminal 3,restaurant,,,,25.2722972,55.3826169,,,,,,,,13159043105,node
+Sangeetha Vegetarian Restaurant,Terminal 3,restaurant,,,indian,25.2713723,55.3798545,دبي,+971 4 261 0082,https://sangeethavegrestaurants.com/,,,yes,,3519723209,node
+Shater,Terminal 3,cafe,,,,25.2633332,55.3919224,Beirut Street,,,,,,,4924887834,node
+Top Cafeteria,Terminal 3,restaurant,,,,25.262396,55.3974021,,,,,,,,4919797063,node
+World Cup,Terminal 3,cafe,,,,25.2584884,55.4027474,13c Street,,,,,,,4919599069,node
+Get Your FIX,Terminal 1,cafe,True,,coffee_shop,,,,,,,,,,,
+Get Your FIX,Terminal 3,cafe,True,,coffee_shop,,,,,,,,,,,
+Asian Street Kitchen,Terminal 3,restaurant,True,,asian,,,,,,,,,,,

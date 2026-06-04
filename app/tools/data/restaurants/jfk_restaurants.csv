@@ -1,0 +1,109 @@
+name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
+Bento Sushi,Terminal 1,restaurant,True,2,sushi,40.6411104,-73.7826241,,,,,,,Bento Sushi,6201867911,node
+Buffalo Wild Wings,Terminal 1,restaurant,True,2,wings,40.6409777,-73.7825279,,,,,,,Buffalo Wild Wings,5810913532,node
+Eastward,Terminal 1,fast_food,True,1,,40.6358759,-73.7808126,,,,,,,,6442360486,node
+Jamba,Terminal 1,fast_food,True,2,juice,40.6406544,-73.7820044,"Jamaica, 11430",+1 917-280-4451,https://locations.jamba.com/ny/jamaica/jfk-international-airport,05:00-22:00,,yes,Jamba,6201867910,node
+Peet's Coffee,Terminal 1,cafe,True,2,coffee_shop,40.6410569,-73.7825643,,,,Mo-Su 04:00-22:00,,yes,Peet's Coffee,6201867798,node
+Pizza Vino Bar,Terminal 1,restaurant,True,2,pizza,40.6401426,-73.781829,,,,,,,,6201868127,node
+Beacon Bar and Kitchen,Terminal 4,restaurant,True,0,"pizza, sandwich",40.6422513,-73.7781632,,,,,,,,11009135682,node
+Boulton & Watt,Terminal 4,restaurant,True,2,,40.6435048,-73.7796414,,,,,,,,6442303690,node
+Camden Food Co.,Terminal 4,cafe,True,2,,40.6431615,-73.7825919,,,,,,,,6442303487,node
+Cibo Express,Terminal 4,cafe,,,coffee_shop,40.6458041,-73.7723637,,,,,,,,7212990518,node
+Five Borough Food Hall,Terminal 4,fast_food,True,2,,40.6429493,-73.7830119,,,,,,,,6442291191,node
+Flatiron Coffee Roasters,Terminal 4,cafe,True,2,,40.643698,-73.781688,,,,,,,,4109992400,node
+Le Grand Comptoir,Terminal 4,bar,True,2,,40.6430437,-73.7824039,,,,,,,,6442303686,node
+McDonald's,Terminal 4,fast_food,True,2,burger,40.6438842,-73.7810165,"Jamaica, 11430",+1 718-751-4288,https://www.mcdonalds.com/us/en-us/location/36312.html,24/7,yes,yes,McDonald's,4109967907,node
+Melt Shop,Terminal 4,fast_food,True,2,burger,40.6435474,-73.7797549,,,,,,,,6442303496,node
+Mi Casa Cantina,Terminal 4,restaurant,True,2,mexican,40.6423465,-73.7831926,,,,,,,,5810897175,node
+Paris Cafe,Terminal 4,cafe,,1,,40.6454846,-73.7778471,,,,,,,,6898319068,node
+Pizza Vino Kitchen & Bar,Terminal 4,bar,True,2,,40.643606,-73.781504,,,,,,,,4109992397,node
+Revive,Terminal 4,bar,,,,40.6458039,-73.7723175,,,,,,,,7212990524,node
+Revolucion,Terminal 4,restaurant,,,mexican,40.6457431,-73.7728079,,,,,,,,7212990523,node
+Shake Shack,Terminal 4,fast_food,True,2,burger,40.642438,-73.783269,,,,,,yes,Shake Shack,4109967906,node
+The Connie,Terminal 4,bar,,,,40.6456295,-73.7771134,"Idlewild Drive, Springfield Gardens",,,Mo-Su 16:00-22:30,,,,6898319071,node
+The Palm Bar & Grill,Terminal 4,restaurant,True,2,,40.64285,-73.783303,,,,,,,,4109969101,node
+Dunkin Donuts Express,Terminal 5,fast_food,True,2,"donut, coffee_shop",40.6427634,-73.7834095,"Jamaica, 11430",+1 718-751-4797,https://locations.dunkindonuts.com/en/ny/jamaica/jfk-intl-airport/350651,05:00-23:00,,yes,Dunkin',6201869839,node
+Baskin-Robbins,Terminal 7,ice_cream,,,ice_cream,40.6501119,-73.7924691,,,,,,,Baskin-Robbins,6379955374,node
+Brooklyn Deli,Terminal 7,fast_food,,,,40.6499972,-73.7927634,,,,,,,,5906983187,node
+Downtown Market,Terminal 7,fast_food,,,,40.6437025,-73.7910465,,,,,,,,12228199413,node
+Dunkin',Terminal 7,fast_food,,0,"donut, coffee_shop",40.643287,-73.790235,"Terminal Drive, Queens, 11430",+1 646-450-8644,https://locations.dunkindonuts.com/en/ny/queens/500-terminal-drive/359752,09:00-21:00,,yes,Dunkin',6898411601,node
+Starbucks,Terminal 7,cafe,,,coffee_shop,40.6471704,-73.7911643,"Jamaica, 11430",+1 718-553-2151,https://www.starbucks.com/store-locator/store/1005566/jfk-terminal-8-food-court-jfk-airport-jamaica-ny-11430-us,,,yes,Starbucks,5906982490,node
+Wok & Roll,Terminal 7,fast_food,,,,40.6472593,-73.7913088,,,,,,,,5906982492,node
+Eat and go,Terminal 8,fast_food,,,,40.6415327,-73.7926237,,,,,,,,12228188357,node
+Midtown Bistro,Terminal 8,fast_food,,,,40.641613,-73.7925555,,,,,,,,13720190476,node
+Pizza  Pub,Terminal 8,fast_food,,,pizza,40.6413284,-73.7926647,,,,,,,,12211203812,node
+Soy & Sake,Terminal 8,restaurant,,,,40.6422391,-73.791496,,,,,,,,13720789048,node
+The Local,Terminal 8,fast_food,,,,40.6418776,-73.7919857,,,,,,,,13720851083,node
+Uptown Market,Terminal 8,fast_food,,,,40.6413823,-73.7927244,,,,,,,,12228188356,node
+Arrivals Eatery,Terminal 1,restaurant,,,,,,,,,,,,,,
+Connie Cocktail Lounge,Terminal 4,bar,,,,,,,,,,,,,,
+Dos Toros Taqueria,Terminal 4,fast_food,,,mexican,,,,,,,,,,,
+Dos Toros Tequila Bar,Terminal 4,bar,,,mexican,,,,,,,,,,,
+Eataly,Terminal 4,restaurant,,,italian,,,,,,,,,,,
+Farmer's Fridge,Terminal 4,fast_food,,,,,,,,,,,,,,
+Joe Coffee,Terminal 4,cafe,,,coffee_shop,,,,,,,,,,,
+Naya,Terminal 4,fast_food,,,,,,,,,,,,,,
+Nolita Wine Bar,Terminal 4,bar,,,,,,,,,,,,,,
+Pret a Manger,Terminal 4,fast_food,,,sandwich,,,,,,,,,Pret a Manger,,
+Tim Hortons,Terminal 4,cafe,,,coffee_shop,,,,,,,,,Tim Hortons,,
+Artichoke Pizzeria,Terminal 5,restaurant,,,pizza,,,,,,,,,,,
+Aunt Butchie's Bakery Cafe,Terminal 5,cafe,,,,,,,,,,,,,,
+Black Star Bakery & Cafe,Terminal 5,cafe,,,,,,,,,,,,,,
+Dunkin' Express,Terminal 5,fast_food,,,"donut, coffee_shop",,,,,,,,,Dunkin',,
+Fly-By Bagels,Terminal 5,fast_food,,,,,,,,,,,,,,
+Jacob's Pickles,Terminal 5,restaurant,,,,,,,,,,,,,,
+Jimmy John's,Terminal 5,fast_food,,,sandwich,,,,,,,,,Jimmy John's,,
+Lucy's Asian Kitchen,Terminal 5,restaurant,,,asian,,,,,,,,,,,
+Madhuban Modern Indian,Terminal 5,restaurant,,,indian,,,,,,,,,,,
+Apartment 7B Deli & Market,Terminal 7,fast_food,,,,,,,,,,,,,,
+Brindle Room,Terminal 7,restaurant,,,,,,,,,,,,,,
+Brooklyn Rebel,Terminal 7,restaurant,,,,,,,,,,,,,,
+Bryant Park Market,Terminal 7,fast_food,,,,,,,,,,,,,,
+Caribbean Kitchen,Terminal 7,restaurant,,,caribbean,,,,,,,,,,,
+Cobblestones Biergarten & Bar,Terminal 7,bar,,,,,,,,,,,,,,
+Crêpes Your Way,Terminal 7,fast_food,,,,,,,,,,,,,,
+Custom Burgers,Terminal 7,fast_food,,,burger,,,,,,,,,,,
+Dear NYC,Terminal 7,fast_food,,,,,,,,,,,,,,
+Euro Cafe,Terminal 7,cafe,,,,,,,,,,,,,,
+Feltman's of Coney Island,Terminal 7,restaurant,,,,,,,,,,,,,,
+Flying Tacos,Terminal 7,fast_food,,,mexican,,,,,,,,,,,
+Gotham Speakeasy,Terminal 7,bar,,,,,,,,,,,,,,
+Guy Fieri's Flavortown,Terminal 7,restaurant,,,,,,,,,,,,,,
+H & H Bagels,Terminal 7,fast_food,,,,,,,,,,,,,,
+Irving Farm Coffee Roasters,Terminal 7,cafe,,,coffee_shop,,,,,,,,,,,
+Leon's Bagels,Terminal 7,fast_food,,,,,,,,,,,,,,
+Mister Softee,Terminal 7,fast_food,,,,,,,,,,,,,,
+Mito,Terminal 7,restaurant,,,,,,,,,,,,,,
+Nom Wah,Terminal 7,restaurant,,,chinese,,,,,,,,,,,
+Nom Wah Bar,Terminal 7,bar,,,chinese,,,,,,,,,,,
+NY Deli / Gateway Bake Shop,Terminal 7,fast_food,,,,,,,,,,,,,,
+NY Fresh Subs,Terminal 7,fast_food,,,,,,,,,,,,,,
+NY Minute,Terminal 7,fast_food,,,,,,,,,,,,,,
+Petit Gourmet,Terminal 7,cafe,,,,,,,,,,,,,,
+Philly Cheesesteaks,Terminal 7,fast_food,,,,,,,,,,,,,,
+Pool Bar,Terminal 7,bar,,,,,,,,,,,,,,
+Shin Ramyun,Terminal 7,restaurant,,,ramen,,,,,,,,,,,
+So Chocolate,Terminal 7,cafe,,,,,,,,,,,,,,
+Soho Bites,Terminal 7,fast_food,,,,,,,,,,,,,,
+Supply Five Co.,Terminal 7,fast_food,,,,,,,,,,,,,,
+Taste of NY,Terminal 7,restaurant,,,,,,,,,,,,,,
+Tender Crush,Terminal 7,bar,,,,,,,,,,,,,,
+The Blinded Tiger,Terminal 7,bar,,,,,,,,,,,,,,
+The Brooklyn Counter,Terminal 7,restaurant,,,burger,,,,,,,,,,,
+The Golden Krust,Terminal 7,fast_food,,,,,,,,,,,,,,
+The Sunken Lounge,Terminal 7,bar,,,,,,,,,,,,,,
+True Burger,Terminal 7,fast_food,,,burger,,,,,,,,,,,
+TWA Corner Store,Terminal 7,fast_food,,,,,,,,,,,,,,
+Uptown Bar,Terminal 7,bar,,,,,,,,,,,,,,
+Van Wyck Bar & Grill,Terminal 7,restaurant,,,,,,,,,,,,,,
+Villa Russo,Terminal 7,restaurant,,,italian,,,,,,,,,,,
+VINNY'S Panini,Terminal 7,fast_food,,,sandwich,,,,,,,,,,,
+Wurst Sausages,Terminal 7,fast_food,,,,,,,,,,,,,,
+Zaro's Family Bakery,Terminal 7,cafe,,,,,,,,,,,,,,
+Alidoro,Terminal 8,fast_food,,,sandwich,,,,,,,,,,,
+Auntie Anne's,Terminal 8,fast_food,,,pretzel,,,,,,,,,Auntie Anne's,,
+Bagel Boss,Terminal 8,fast_food,,,,,,,,,,,,,,
+BKLYN Blend,Terminal 8,cafe,,,coffee_shop,,,,,,,,,,,
+Black Tap Bar,Terminal 8,bar,,,,,,,,,,,,,,
+H & H Bagels,Terminal 8,fast_food,,,,,,,,,,,,,,
+Horizon Bakery - CEGM,Terminal 8,cafe,,,,,,,,,,,,,,

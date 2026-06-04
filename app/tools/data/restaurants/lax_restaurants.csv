@@ -1,0 +1,46 @@
+name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
+800 Degrees Pizza,Tom Bradley International Terminal,fast_food,,4,pizza,33.9438142,-118.4100452,,+1 310-307-7528,https://800degreespizza.com/,,,,,3447207449,node
+Beecher's Handmade Cheese,Tom Bradley International Terminal,fast_food,,4,,33.9434045,-118.4106524,,,,,,,,5337770221,node
+Border Grill,Tom Bradley International Terminal,fast_food,,4,,33.9435712,-118.4104774,,,,,,,,5337769719,node
+Homeboy Cafe,Terminal 3,cafe,,1,,33.9419272,-118.4068007,,,,,,,,10222485751,node
+KFC,Tom Bradley International Terminal,fast_food,,4,chicken,33.9437608,-118.4102213,"World Way, Los Angeles, 90045",,https://locations.kfc.com/ca/los-angeles/380-world-way-0000082,,,yes,KFC,3447207451,node
+Panda Express,Tom Bradley International Terminal,fast_food,,,chinese,33.9401145,-118.4043483,"World Way, El Segundo, 90245",+1 310-259-7384,https://www.pandaexpress.com/locations/ca/el-segundo/2754;https://www.pandaexpress.com/locations/ca/el-segundo/3568,Mo 06:30-22:00;Tu-Fr 07:00-22:00;Sa 08:00-22:00;Su 06:30-22:00;Mo 08:00-14:00;Th-Su 08:00-14:00,,yes,Panda Express,11980259968,node
+Santa Monica Brew Works,Tom Bradley International Terminal,pub,,4,,33.9450616,-118.4105806,,,,,,,,5337769705,node
+Umami Burger,Tom Bradley International Terminal,fast_food,,4,burger,33.9438545,-118.4099025,,,,,,,,3447207450,node
+Alfred Coffee,Terminal 3,cafe,,,coffee_shop,33.9463406,-118.4073125,,,,,,,,13657247314,node
+Jamba,Terminal 3,fast_food,,3,juice,33.946271,-118.4075437,"Los Angeles, 90045",+1 424-702-5622,https://locations.jamba.com/ca/los-angeles/lax-airport-terminal-3,05:00-23:00,,yes,Jamba,11980259970,node
+Built Custom Burgers,Terminal 2,fast_food,,,,33.9462036,-118.404165,,,,,,,,12007841595,node
+Fresh Brothers,Terminal 2,fast_food,,,,33.946158,-118.4041633,,,,,,,,12007817744,node
+Habit Burger & Grill,Terminal 6,fast_food,,,burger,33.9407987,-118.4018954,,,https://www.habitburger.com/locations/lax-terminal-6/,Mo-Su 08:00-14:00,,yes,Habit Burger & Grill,5521118051,node
+Jersey Mike's Subs,Terminal 2,fast_food,,,sandwich,33.9464785,-118.4042126,,,https://www.jerseymikes.com/20280/los-angeles-ca,,,yes,Jersey Mike's Subs,6426971285,node
+Peet's Coffee,Terminal 6,cafe,,1,coffee_shop,33.941098,-118.4017988,,,,"PH,Mo-Su 05:00-22:00",yes,only,Peet's Coffee,5521118046,node
+Pick Up Stix,Terminal 2,fast_food,,,asian,33.9461265,-118.4041415,,,,,,yes,Pick Up Stix,6426977886,node
+Starbucks,Tom Bradley International Terminal,cafe,,,coffee_shop,33.9425446,-118.4020468,"World Way, Los Angeles, 90045",+1 310-307-7525,https://www.starbucks.com/store-locator/store/1012148/lax-terminal-6-gate-60-201-world-way-los-angeles-ca-90045-us,03:30-23:00,,yes,Starbucks,5521118061,node
+Wahoo's Fish Taco,Terminal 6,fast_food,,,"seafood, mexican",33.9407964,-118.402022,,,,09:00-20:00,,yes,Wahoo's Fish Taco,5521118050,node
+Ace Cerveceria & Tacos,Terminal 1,pub,,,mexican,33.9460275,-118.4013673,,,,,,,,9820160189,node
+Betcha Burgers & Bar,Terminal 1,fast_food,,,burger,33.9460596,-118.4013624,,,,,,,,9113106490,node
+California Pizza Kitchen,Terminal 6,restaurant,,2,pizza,33.9469187,-118.4011639,,,,,,,California Pizza Kitchen,985772238,way
+Chick-fil-A,Terminal 1,fast_food,,,chicken,33.9459832,-118.4013208,"World Way, Los Angeles, 90045",+1 310-343-8309,https://www.chick-fil-a.com/locations/ca/los-angeles-international-airport,Mo-Sa 05:00-19:00; Su off,,yes,Chick-fil-A,9113106487,node
+Einstein Bros. Bagels,Terminal 1,fast_food,,,bagel,33.9460631,-118.4012661,"World Way, University Hall, 90045",+1 800-224-3563,https://locations.einsteinbros.com/us/ca/los-angeles/1-world-way,03:30-20:00,,yes,Einstein Bros. Bagels,9113106488,node
+Qwench Juice Bar,Terminal 1,fast_food,,2,juice,33.9470856,-118.4014443,,,,,,,,985772235,way
+Rolling Stone,Terminal 7,restaurant,,1,,33.9416042,-118.3995165,,,,,,,,5519052607,node
+The Counter,Terminal 7,restaurant,,1,burger,33.9413227,-118.399461,,,,,,,The Counter,5519052601,node
+Wolfgang Puck Express,Terminal 7,restaurant,,1,italian,33.9413555,-118.3998207,,,https://www.wolfgangpuck.com/restaurants/casual-dining/wolfgang-puck-express/7632/section-overview,05:30-22:30,,,,2708100437,node
+Engine,Terminal 8,pub,,,,33.9421784,-118.3973166,,+1-213-235-0244,https://www.flylax.com/lax-dining-and-shopping-details?id=1170,05:30-23:30,,,,5517321851,node
+Coffee Bean & Tea Leaf,Terminal 1,cafe,,,coffee_shop,,,,,,,,,The Coffee Bean & Tea Leaf,,
+Cava,Terminal 3,fast_food,,,mediterranean,,,,,,,,,,,
+Double Smash,Terminal 3,fast_food,,,burger,,,,,,,,,,,
+Fat Sal's,Terminal 3,fast_food,,,,,,,,,,,,,,
+Pizza Please,Terminal 3,fast_food,,,pizza,,,,,,,,,,,
+Sammy's Woodfired Pizza & Grill,Terminal 4,restaurant,,,pizza,,,,,,,,,,,
+The Habit Burger,Terminal 6,fast_food,,,burger,,,,,,,,,The Habit Burger Grill,,
+The Kitchen By Wolfgang Puck,Terminal 6,restaurant,,,,,,,,,,,,,,
+WPizza by Wolfgang Puck,Terminal 6,fast_food,,,pizza,,,,,,,,,,,
+Burger King,Tom Bradley International Terminal,fast_food,,,burger,,,,,,,,,Burger King,,
+Chicken Guy,Tom Bradley International Terminal,fast_food,,,chicken,,,,,,,,,,,
+Ink Sack,Tom Bradley International Terminal,fast_food,,,sandwich,,,,,,,,,,,
+Kentucky Fried Chicken,Tom Bradley International Terminal,fast_food,,,chicken,,,,,,,,,KFC,,
+Navarre,Tom Bradley International Terminal,restaurant,,,,,,,,,,,,,,
+Santouka,Tom Bradley International Terminal,restaurant,,,ramen,,,,,,,,,,,
+The Playa Cafe,Tom Bradley International Terminal,cafe,,,,,,,,,,,,,,
+Carl's Jr.,Terminal 8,fast_food,,,burger,,,,,,,,,Carl's Jr.,,

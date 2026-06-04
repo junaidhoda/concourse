@@ -1,0 +1,45 @@
+name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
+Burger King,Main Terminal,fast_food,,,burger,13.6902198,100.7546547,,,,24/7,,yes,Burger King,4778502582,node
+Camden Food Co.,Main Terminal,restaurant,,,,13.682479,100.7469297,,,,24/7,,,,12255787587,node
+Imm Rice & Noodle,Main Terminal,restaurant,,,thai,13.6824532,100.7470993,,,,24/7,,,,12255787585,node
+Koh Hop Bar,Main Terminal,fast_food,,,"burger, thai, breakfast, pasta, sandwich, fish, seafood",13.6826344,100.7467249,,,,24/7,,,,11658425715,node
+Potato Corner,Main Terminal,fast_food,,,,13.6829886,100.7456292,,,,,,,,13663893472,node
+Starbucks,Main Terminal,cafe,,,coffee_shop,13.6913488,100.7527348,,,https://www.starbucks.co.th/,24/7,,yes,Starbucks,3431296255,node
+Subway,Main Terminal,fast_food,,,sandwich,13.6905336,100.7548284,,,,24/7,yes,yes,Subway,4778503429,node
+The Coffee Club,Main Terminal,cafe,,,coffee_shop,13.6818633,100.7489221,,,,24/7,,yes,The Coffee Club,12255810606,node
+The Pizza Company,Main Terminal,fast_food,,,pizza,13.690253,100.7545765,,,,24/7,,yes,The Pizza Company,4778501851,node
+Upper Crust,Main Terminal,restaurant,,,,13.6828145,100.745581,,,,24/7,,,,12255804235,node
+Bonchon,Main Terminal,fast_food,,,chicken,,,,,,,,,Bonchon,,
+Kin Japanese Restaurant,Main Terminal,restaurant,,,japanese,,,,,,,,,,,
+Milch,Main Terminal,cafe,,,,,,,,,,,,,,
+REES Specialty Coffee,Main Terminal,cafe,,,coffee_shop,,,,,,,,,,,
+Thai Street Food,Main Terminal,fast_food,,,thai,,,,,,,,,,,
+Juice & More,Main Terminal,fast_food,,,juice,,,,,,,,,,,
+Coffee World,Main Terminal,cafe,,,coffee_shop,,,,,,,,,,,
+SENSIB Café,Main Terminal,cafe,,,coffee_shop,,,,,,,,,,,
+The Villa Halal,Main Terminal,restaurant,,,halal,,,,,,,,,,,
+Aim Deli,Main Terminal,fast_food,,,,,,,,,,,,,,
+Asian Corner,Main Terminal,restaurant,,,asian,,,,,,,,,,,
+KOSUKE,Main Terminal,restaurant,,,japanese,,,,,,,,,,,
+McDonald's,Main Terminal,fast_food,,,burger,,,,,,,,,McDonald's,,
+Dairy Queen,Main Terminal,fast_food,,,ice_cream,,,,,,,,,Dairy Queen,,
+Gloria Jean's Coffees,Main Terminal,cafe,,,coffee_shop,,,,,,,,,Gloria Jean's,,
+One Minute Gourmet,Main Terminal,fast_food,,,,,,,,,,,,,,
+Aroi Restaurant,Main Terminal,restaurant,,,thai,,,,,,,,,,,
+Chaw X Lavazza,Main Terminal,cafe,,,coffee_shop,,,,,,,,,,,
+Taco Bell,Main Terminal,fast_food,,,mexican,,,,,,,,,Taco Bell,,
+Zurich Bread Café,Main Terminal,cafe,,,,,,,,,,,,,,
+Kanom,Main Terminal,cafe,,,,,,,,,,,,,,
+Krispy Kreme,Main Terminal,fast_food,,,donut,,,,,,,,,Krispy Kreme,,
+Pie Face,Main Terminal,fast_food,,,,,,,,,,,,,,
+Wawee Coffee,Main Terminal,cafe,,,coffee_shop,,,,,,,,,,,
+Charm Boat Noodle,Main Terminal,restaurant,,,thai,,,,,,,,,,,
+China Town,Main Terminal,restaurant,,,chinese,,,,,,,,,,,
+Lee Cafe,Main Terminal,cafe,,,,,,,,,,,,,,
+Ruam Samai,Main Terminal,restaurant,,,thai,,,,,,,,,,,
+S&P,Main Terminal,restaurant,,,thai,,,,,,,,,S&P,,
+Sushi Nama,Main Terminal,restaurant,,,japanese,,,,,,,,,,,
+Top Ten Thai Restaurant,Main Terminal,restaurant,,,thai,,,,,,,,,,,
+Ess Corner Cafe,Main Terminal,cafe,,,,,,,,,,,,,,
+Luggaw,Main Terminal,restaurant,,,,,,,,,,,,,,
+Mango Star,Main Terminal,fast_food,,,,,,,,,,,,,,

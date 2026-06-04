@@ -1,0 +1,10 @@
+name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
+Chicken Republic,Main Terminal,fast_food,,,chicken,,,,,,,,,Chicken Republic,,
+KFC,Main Terminal,fast_food,,,chicken,,,,,,,,,KFC,,
+Burger King,Main Terminal,fast_food,,,burger,,,,,,,,,Burger King,,
+Scoop'd,Main Terminal,cafe,,,ice_cream,,,,,,,,,,,
+Indomie Cafe,Main Terminal,cafe,,,,,,,,,,,,,,
+Eric Kayser,Main Terminal,bakery,,,,,,,,,,,,Eric Kayser,,
+Dodo Pizza,Main Terminal,restaurant,,,pizza,,,,,,,,,,,
+So Fresh,Main Terminal,restaurant,,,salad,,,,,,,,,,,
+Toasties,Main Terminal,cafe,,,,,,,,,,,,,,

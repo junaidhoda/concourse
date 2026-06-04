@@ -1,0 +1,32 @@
+name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
+Black Sheep Coffee,North Terminal,cafe,True,3,coffee_shop,51.1593535,-0.1784641,,,,,,yes,Black Sheep Coffee,5124083377,node
+BrewDog,North Terminal,pub,True,3,,51.1597442,-0.178623,"London Gatwick Airport, North Terminal,, RH6 0JN",,https://www.brewdog.com/uk/gatwick-airport,Mo-Su 04:00-19:00,,,BrewDog,12612779401,node
+Juniper & Co,North Terminal,restaurant,True,2,,51.1603031,-0.1779611,"North Terminal Airside, Departures Road, Crawley",,,,,,,5124092183,node
+Krispy Kreme,North Terminal,fast_food,True,3,donut,51.1593972,-0.1782399,,,,,,only,Krispy Kreme,5124083222,node
+Pret A Manger,North Terminal,fast_food,True,3,sandwich,51.1594681,-0.1779884,"North Terminal Airside, Departures Road, Gatwick, RH6 0NP",,https://www.pret.co.uk/en-GB/shop-finder/l/gatwick/departures-road/10363,,,yes,Pret A Manger,5048781829,node
+Pure,North Terminal,fast_food,True,3,,51.1597958,-0.1782728,,,,,,yes,Pure,9926672883,node
+Shake Shack,North Terminal,fast_food,True,3,burger,51.1604408,-0.1791347,"North Terminal Airside, Departures Road, Crawley, RH6 0PJ",,,,,yes,Shake Shack,5124085282,node
+Sonoma,North Terminal,restaurant,True,3,,51.1608068,-0.1792136,"North Terminal Airside, Departures Road, RH6 0PJ",,,,,,,5048781834,node
+Starbucks,North Terminal,cafe,False,2,coffee_shop,51.160965,-0.176829,"North Terminal Landside, Arrivals Road, Crawley, RH6 0PJ",,https://www.starbucks.com/store-locator/store/1044086/gatwick-north-terminal-landsid-north-terminal-landside-departures-west-sussex-eng,,yes,yes,Starbucks,5124093307,node
+Sussex House Kitchen & Bar,North Terminal,pub,False,2,,51.1613821,-0.1770226,,,,,yes,,,5124094862,node
+The Breakfast Club,North Terminal,restaurant,True,3,american,51.1595422,-0.1787771,,,,,,,The Breakfast Club,5124084005,node
+The Red Lion,North Terminal,pub,True,2,,51.1612259,-0.1790688,"After Security, Gatwick Airport, Crawley, RH6 0PJ",+44 1293 569874,https://www.jdwetherspoon.com/pubs/all-pubs/england/west-sussex/the-red-lion-after-security-north-terminal,"Mo,Tu,We 04:00-21:00; Th,Fr,Sa,Su 03:00-21:00",yes,,Wetherspoon,4485727695,node
+Tortilla,North Terminal,fast_food,True,3,tex-mex,51.1606258,-0.1791644,North Terminal Airside,,,,,yes,Tortilla,5048781833,node
+Caffè Nero,South Terminal,cafe,,2,coffee_shop,51.1561501,-0.1622468,"South Terminal Landside, London Road, RH6 0NN",,https://www.caffenero.com/uk/stores/gatwick-south-village-landside/,24/7,,yes,Caffè Nero,5046986698,node
+Giraffe,South Terminal,restaurant,,2,"international, burger",51.1566801,-0.1626143,"South Terminal Landside, London Road, RH6 0NN",,https://www.giraffe.net/restaurants/gatwick-airport,,,,Giraffe,5046986702,node
+itsu,South Terminal,fast_food,,2,asian,51.1555629,-0.1627161,"South Terminal Airside, London Road, RH6 0NN",,https://www.itsu.com/location/surrey/gatwick-south-terminal/,,,yes,itsu,5046986723,node
+Nando's,South Terminal,restaurant,,2,,51.1559466,-0.1643577,"South Terminal Airside, London Road",,https://www.nandos.co.uk/restaurants/gatwick-south-terminal-airside,,,,Nando's,5046986737,node
+The Beehive,South Terminal,pub,,2,,51.1570031,-0.162448,"South Terminal Landside, London Road, RH6 0NN",,https://www.jdwetherspoon.com/pubs/all-pubs/england/west-sussex/the-beehive-before-security-south-terminal,,,,Wetherspoon,5046986705,node
+The Flying Horse,South Terminal,pub,,2,,51.1558381,-0.1626146,"South Terminal Airside, London Road, RH6 0NN",,https://www.jdwetherspoon.com/pubs/all-pubs/england/west-sussex/the-flying-horse-after-security-south-terminal,,,,Wetherspoon,5046986721,node
+Wagamama,South Terminal,restaurant,,2,asian,51.1561569,-0.1628369,,,https://www.wagamama.com/restaurants/gatwick/gatwick-south,,,yes,Wagamama,5046986719,node
+Big Smoke,South Terminal,restaurant,True,,,,,,,https://www.bigsmoke-taphousekitchen.co.uk/big-smoke-gatwick/,,,,,,
+GAIL's,South Terminal,cafe,True,,coffee_shop,,,,,https://gails.com/pages/gatwick-airport,,,,,,
+Greggs,South Terminal,fast_food,False,,,,,,,https://www.greggs.co.uk/shop-finder?shop-code=5541,,,,,,
+Joe & The Juice,South Terminal,cafe,True,,,,,,,https://www.joejuice.com/store/fa0710b5-ed6d-4b5f-bc1b-8ae3d3db578b,,,,,,
+PizzaExpress,South Terminal,restaurant,True,,,,,,,https://www.pizzaexpress.com/gatwick-airport-south-terminal,,,,,,
+South Downs Bar,South Terminal,bar,True,,,,,,,,,,,,,
+Wondertree,South Terminal,restaurant,True,,,,,,,,,,,,,
+Black Sheep Coffee,South Terminal,cafe,False,,coffee_shop,,,,,https://leavetheherdbehind.com/,,,,Black Sheep Coffee,,
+wagamama,North Terminal,restaurant,True,,asian,,,,,https://www.wagamama.com/restaurants/gatwick/,,,,Wagamama,,
+Pret A Manger,South Terminal,fast_food,True,,sandwich,,,,,https://www.pret.co.uk/,,,,Pret A Manger,,
+Starbucks,South Terminal,cafe,True,,coffee_shop,,,,,https://www.starbucks.co.uk/,,,,Starbucks,,

@@ -1,20 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 
 class FirebaseService {
   static final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  static const _codeToSlug = {
-    'LGW': 'gatwick',
-    'LHR': 'heathrow',
-    'BHX': 'birmingham',
-    'MAN': 'manchester',
-    'CDG': 'cdg',
-    'FRA': 'fra',
-    'HND': 'haneda',
-  };
-
-  static String _slug(String airportCode) =>
-      _codeToSlug[airportCode.toUpperCase()] ?? airportCode.toLowerCase();
+  static String _slug(String airportCode) => airportCode.toLowerCase();
 
   static Future<Map<String, dynamic>?> getAirportData(String airportCode) async {
     try {
@@ -24,7 +14,7 @@ class FirebaseService {
           .get();
       return doc.exists ? doc.data() : null;
     } catch (e) {
-      print('Error fetching airport data: $e');
+      debugPrint('Error fetching airport data: $e');
       return null;
     }
   }
@@ -38,7 +28,7 @@ class FirebaseService {
           .get();
       return snap.docs.map((d) => {'id': d.id, ...d.data()}).toList();
     } catch (e) {
-      print('Error fetching terminals: $e');
+      debugPrint('Error fetching terminals: $e');
       return [];
     }
   }
@@ -55,7 +45,7 @@ class FirebaseService {
           .get();
       return snap.docs.map((d) => {'id': d.id, ...d.data()}).toList();
     } catch (e) {
-      print('Error fetching restaurants for $terminalId: $e');
+      debugPrint('Error fetching restaurants for $terminalId: $e');
       return [];
     }
   }
@@ -94,7 +84,7 @@ class FirebaseService {
       final snap = await _firestore.collection('airports').get();
       return snap.docs.map((d) => {'_docId': d.id, ...d.data()}).toList();
     } catch (e) {
-      print('Error fetching airports: $e');
+      debugPrint('Error fetching airports: $e');
       return [];
     }
   }
