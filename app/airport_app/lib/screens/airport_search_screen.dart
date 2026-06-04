@@ -46,6 +46,9 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
   List<Airport> _results = [];
   bool _hasQuery = false;
   String? _selectedContinent;
+  String? _selectedCountry;
+  int _navDepth = 0;    // 0=continents, 1=countries, 2=airports
+  int _prevNavDepth = 0;
 
   late final AnimationController _headerCtrl;
   late final AnimationController _contentCtrl;
@@ -79,6 +82,9 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
     'North America': 'assets/images/north_america.png',
     'Asia': 'assets/images/asia.png',
     'Middle East': 'assets/images/middle_east.png',
+    'Africa': 'assets/images/africa.png',
+    'South America': 'assets/images/south_america.png',
+    'Oceania': 'assets/images/oceania.png',
   };
 
   String _subtitleForContinent(String continent) {
@@ -180,8 +186,67 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
     _searchFocus.requestFocus();
   }
 
-  void _selectContinent(String c) => setState(() => _selectedContinent = c);
-  void _backToContinents() => setState(() => _selectedContinent = null);
+  // ── Flag emoji helper ─────────────────────────────────────
+  static const _countryIso = {
+    'United Kingdom': 'GB', 'UK': 'GB', 'France': 'FR', 'Germany': 'DE',
+    'Turkey': 'TR', 'USA': 'US', 'United States': 'US', 'Singapore': 'SG',
+    'UAE': 'AE', 'United Arab Emirates': 'AE', 'Qatar': 'QA', 'Japan': 'JP',
+    'Thailand': 'TH', 'China': 'CN', 'Hong Kong': 'HK', 'Taiwan': 'TW',
+    'South Korea': 'KR', 'Australia': 'AU', 'New Zealand': 'NZ',
+    'Philippines': 'PH', 'India': 'IN', 'Sri Lanka': 'LK', 'Vietnam': 'VN',
+    'Netherlands': 'NL', 'Greece': 'GR', 'Brazil': 'BR', 'Peru': 'PE',
+    'Nigeria': 'NG', 'South Africa': 'ZA', 'Malaysia': 'MY', 'Portugal': 'PT',
+    'Ireland': 'IE', 'Spain': 'ES', 'Austria': 'AT', 'Belgium': 'BE',
+    'Italy': 'IT', 'Switzerland': 'CH', 'Canada': 'CA', 'Mexico': 'MX',
+    'Colombia': 'CO', 'Indonesia': 'ID', 'Saudi Arabia': 'SA', 'Jordan': 'JO',
+    'Kenya': 'KE', 'Ethiopia': 'ET', 'Egypt': 'EG', 'Morocco': 'MA',
+    'Pakistan': 'PK', 'Bangladesh': 'BD', 'Nepal': 'NP', 'Myanmar': 'MM',
+    'Cambodia': 'KH', 'Laos': 'LA', 'Israel': 'IL', 'Kuwait': 'KW',
+    'Bahrain': 'BH', 'Oman': 'OM', 'Chile': 'CL', 'Argentina': 'AR',
+  };
+
+  static String flagEmoji(String countryName) {
+    final iso = _countryIso[countryName] ?? '';
+    if (iso.length != 2) return '🌍';
+    const base = 0x1F1E6 - 65;
+    return String.fromCharCode(iso.codeUnitAt(0) + base) +
+           String.fromCharCode(iso.codeUnitAt(1) + base);
+  }
+
+  // ── Navigation ────────────────────────────────────────────
+  List<String> _countriesForContinent(String continent) {
+    final countries = (_airportsByContinent[continent] ?? [])
+        .map((a) => a.country)
+        .where((c) => c.isNotEmpty)
+        .toSet()
+        .toList()
+      ..sort();
+    return countries;
+  }
+
+  void _selectContinent(String c) => setState(() {
+    _prevNavDepth = _navDepth;
+    _selectedContinent = c;
+    _navDepth = 1;
+  });
+
+  void _selectCountry(String c) => setState(() {
+    _prevNavDepth = _navDepth;
+    _selectedCountry = c;
+    _navDepth = 2;
+  });
+
+  void _back() => setState(() {
+    _prevNavDepth = _navDepth;
+    if (_navDepth == 2) {
+      _selectedCountry = null;
+      _navDepth = 1;
+    } else {
+      _selectedContinent = null;
+      _navDepth = 0;
+    }
+  });
+
 
   // ─── BUILD ───────────────────────────────────────────────
   @override
@@ -208,24 +273,29 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
                           switchInCurve: Curves.easeOut,
                           switchOutCurve: Curves.easeIn,
                           transitionBuilder: (child, animation) {
-                            final isForward = child.key == ValueKey(_selectedContinent);
+                            final goingForward = _navDepth > _prevNavDepth;
                             return SlideTransition(
                               position: Tween<Offset>(
-                                begin: Offset(isForward ? 1.0 : -1.0, 0.0),
+                                begin: Offset(goingForward ? 1.0 : -1.0, 0.0),
                                 end: Offset.zero,
                               ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut)),
                               child: FadeTransition(opacity: animation, child: child),
                             );
                           },
-                          child: _selectedContinent != null
-                              ? KeyedSubtree(
-                                  key: ValueKey(_selectedContinent),
+                          child: switch (_navDepth) {
+                              2 => KeyedSubtree(
+                                  key: ValueKey('airports_${_selectedContinent}_$_selectedCountry'),
                                   child: _buildAirportList(),
-                                )
-                              : KeyedSubtree(
+                                ),
+                              1 => KeyedSubtree(
+                                  key: ValueKey('countries_$_selectedContinent'),
+                                  child: _buildCountryList(),
+                                ),
+                              _ => KeyedSubtree(
                                   key: const ValueKey('continents'),
                                   child: _buildContinentList(),
                                 ),
+                            },
                         ), _contentCtrl),
                   ),
                 ],
@@ -304,9 +374,9 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
     );
   }
 
-  // ─── Airport list (inside continent) ─────────────────────
-  Widget _buildAirportList() {
-    final airports = _airportsByContinent[_selectedContinent] ?? [];
+  // ─── Country list (level 1) ───────────────────────────────
+  Widget _buildCountryList() {
+    final countries = _countriesForContinent(_selectedContinent!);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -314,21 +384,7 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
           padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
           child: Row(
             children: [
-              GestureDetector(
-                onTap: _backToContinents,
-                child: Container(
-                  padding: const EdgeInsets.all(9),
-                  decoration: BoxDecoration(
-                    color: appCardSurface(context),
-                    borderRadius: BorderRadius.circular(3),
-                    border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-                    boxShadow: [
-                      BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 6, offset: const Offset(0, 2)),
-                    ],
-                  ),
-                  child: Icon(Icons.arrow_back_ios_new, size: 13, color: context.appOnSurface.withValues(alpha: 0.55)),
-                ),
-              ),
+              _backButton(),
               const SizedBox(width: 12),
               Expanded(child: _SectionHeader(title: _selectedContinent!)),
             ],
@@ -338,13 +394,97 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
         Expanded(
           child: ListView.builder(
             padding: const EdgeInsets.fromLTRB(24, 0, 24, 40),
-            itemCount: airports.length,
-            itemBuilder: (context, i) => _AirportCard(airport: airports[i]),
+            itemCount: countries.length,
+            itemBuilder: (context, i) {
+              final country = countries[i];
+              final flag = flagEmoji(country);
+              return GestureDetector(
+                onTap: () => _selectCountry(country),
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 10),
+                  padding: const EdgeInsets.all(14),
+                  decoration: BoxDecoration(
+                    color: appCardSurface(context),
+                    borderRadius: BorderRadius.circular(3),
+                    border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+                    boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 44, height: 44,
+                        decoration: BoxDecoration(
+                          color: kTeal.withValues(alpha: 0.08),
+                          borderRadius: BorderRadius.circular(3),
+                        ),
+                        child: Center(
+                          child: Text(flag, style: const TextStyle(fontSize: 24)),
+                        ),
+                      ),
+                      const SizedBox(width: 14),
+                      Expanded(
+                        child: Text(
+                          country,
+                          style: GoogleFonts.jost(fontSize: 15, fontWeight: FontWeight.w400, color: context.appOnSurface),
+                        ),
+                      ),
+                      Icon(Icons.chevron_right_rounded, size: 16, color: context.appMutedFg(0.35)),
+                    ],
+                  ),
+                ),
+              );
+            },
           ),
         ),
       ],
     );
   }
+
+  // ─── Airport list (level 2) ───────────────────────────────
+  Widget _buildAirportList() {
+    final country = _selectedCountry!;
+    final flag = flagEmoji(country);
+    final airports = (_airportsByContinent[_selectedContinent] ?? [])
+        .where((a) => a.country == country)
+        .toList();
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
+          child: Row(
+            children: [
+              _backButton(),
+              const SizedBox(width: 12),
+              Expanded(child: _SectionHeader(title: country)),
+            ],
+          ),
+        ),
+        const SizedBox(height: 14),
+        Expanded(
+          child: ListView.builder(
+            padding: const EdgeInsets.fromLTRB(24, 0, 24, 40),
+            itemCount: airports.length,
+            itemBuilder: (context, i) => _AirportCard(airport: airports[i], flagEmoji: flag),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _backButton() => GestureDetector(
+    onTap: _back,
+    child: Container(
+      padding: const EdgeInsets.all(9),
+      decoration: BoxDecoration(
+        color: appCardSurface(context),
+        borderRadius: BorderRadius.circular(3),
+        border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+        boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 6, offset: const Offset(0, 2))],
+      ),
+      child: Icon(Icons.arrow_back_ios_new, size: 13, color: context.appOnSurface.withValues(alpha: 0.55)),
+    ),
+  );
 
   // ─── Search results ────────────────────────────────────────
   Widget _buildSearchResults() {
@@ -625,7 +765,9 @@ class _ContinentCardState extends State<_ContinentCard> {
                     ),
                   ),
                 ),
-                Row(
+                SizedBox.expand(
+                  child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     // Text content
                     Expanded(
@@ -644,39 +786,6 @@ class _ContinentCardState extends State<_ContinentCard> {
                                 letterSpacing: 0.2,
                               ),
                             ),
-                            const SizedBox(height: 2),
-                            Text(
-                              widget.subtitle,
-                              style: GoogleFonts.jost(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: context.appMutedFg(0.40),
-                                letterSpacing: 0.4,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            Row(
-                              children: [
-                                Text(
-                                  '${widget.count}',
-                                  style: GoogleFonts.cormorant(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                    color: kTeal,
-                                  ),
-                                ),
-                                const SizedBox(width: 4),
-                                Text(
-                                  'airport${widget.count == 1 ? '' : 's'}',
-                                  style: GoogleFonts.jost(
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w400,
-                                    color: context.appMutedFg(0.40),
-                                    letterSpacing: 1.2,
-                                  ),
-                                ),
-                              ],
-                            ),
                           ],
                         ),
                       ),
@@ -689,7 +798,6 @@ class _ContinentCardState extends State<_ContinentCard> {
                       ),
                       child: SizedBox(
                         width: 140,
-                        height: double.infinity,
                         child: widget.imagePath.isNotEmpty
                             ? Image.asset(
                                 widget.imagePath,
@@ -701,6 +809,7 @@ class _ContinentCardState extends State<_ContinentCard> {
                     ),
                   ],
                 ),
+                ), // SizedBox.expand
                 // Chevron over image
                 Positioned(
                   right: 10,
@@ -728,7 +837,8 @@ class _ContinentCardState extends State<_ContinentCard> {
 // ─────────────────────────────────────────────────────────────
 class _AirportCard extends StatelessWidget {
   final Airport airport;
-  const _AirportCard({required this.airport});
+  final String flagEmoji;
+  const _AirportCard({required this.airport, this.flagEmoji = '🌍'});
 
   @override
   Widget build(BuildContext context) {
@@ -745,18 +855,19 @@ class _AirportCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            // Plane icon
+            // Flag emoji icon
             Container(
-              width: 44,
-              height: 44,
+              width: 44, height: 44,
               decoration: BoxDecoration(
-                color: kTeal.withValues(alpha: 0.10),
+                color: kTeal.withValues(alpha: 0.08),
                 borderRadius: BorderRadius.circular(3),
               ),
-              child: const Icon(Icons.flight_rounded, color: kTeal, size: 20),
+              child: Center(
+                child: Text(flagEmoji, style: const TextStyle(fontSize: 22)),
+              ),
             ),
             const SizedBox(width: 14),
-            // Info
+            // Info — IATA is the hero text
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -764,29 +875,21 @@ class _AirportCard extends StatelessWidget {
                   Text(
                     airport.iataCode,
                     style: GoogleFonts.cormorant(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w400,
-                      color: kTeal,
-                      letterSpacing: 0.6,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: context.appOnSurface,
+                      letterSpacing: 0.5,
                     ),
                   ),
-                  const SizedBox(height: 1),
                   Text(
                     airport.name,
                     style: GoogleFonts.jost(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: context.appOnSurface,
-                    ),
-                  ),
-                  const SizedBox(height: 1),
-                  Text(
-                    '${airport.city}, ${airport.country}',
-                    style: GoogleFonts.jost(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
-                      color: context.appMutedFg(0.40),
+                      color: context.appMutedFg(0.55),
                     ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),

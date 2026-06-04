@@ -44,6 +44,8 @@ dependencies:
   image_picker: ^1.1.2
   google_fonts: ^6.2.1
   shared_preferences: ^2.3.0
+  palette_generator: ^0.3.3
+  geolocator: ^13.0.2
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +70,8 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/data/chain_restaurants.json
+    - assets/data/independents_enriched.json
     - assets/images/airports/fra.jpg
     - assets/images/airports/cdg.jpg
     - assets/images/airports/man.jpg
@@ -81,6 +85,9 @@ flutter:
     - assets/images/north_america.png
     - assets/images/asia.png
     - assets/images/middle_east.png
+    - assets/images/africa.png
+    - assets/images/south_america.png
+    - assets/images/oceania.png
     - assets/images/flag_gb.png
     - assets/images/flag_fr.png
     - assets/images/flag_de.png

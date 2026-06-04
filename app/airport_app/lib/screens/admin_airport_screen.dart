@@ -222,8 +222,12 @@ class _AdminAirportScreenState extends State<AdminAirportScreen> {
         },
       ),
     ).whenComplete(() {
-      nameCtrl.dispose(); codeCtrl.dispose(); cityCtrl.dispose();
-      countryCtrl.dispose(); latCtrl.dispose(); lonCtrl.dispose();
+      // Defer disposal to after the dismiss animation finishes, otherwise
+      // setState in save() can trigger a rebuild while controllers are gone.
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        nameCtrl.dispose(); codeCtrl.dispose(); cityCtrl.dispose();
+        countryCtrl.dispose(); latCtrl.dispose(); lonCtrl.dispose();
+      });
     });
   }
 
