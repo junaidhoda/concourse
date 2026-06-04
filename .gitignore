@@ -46,3 +46,7 @@ app/airport_app/android/
 app/airport_app/windows/
 app/airport_app/linux/
 app/airport_app/build/
+
+# Environment variables
+.env
+.env.*
