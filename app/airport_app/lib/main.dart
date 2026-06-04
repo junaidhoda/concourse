@@ -22,6 +22,7 @@ import 'screens/admin_dashboard_screen.dart';
 import 'screens/admin_airport_screen.dart';
 import 'screens/admin_restaurant_editor_screen.dart';
 import 'services/auth_service.dart';
+import 'services/chain_restaurant_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -197,8 +198,8 @@ class ScaffoldWithNavBar extends StatelessWidget {
     final unselectedColor = isDark ? Colors.white.withValues(alpha: 0.48) : kInk.withValues(alpha: 0.42);
 
     final tabs = [
+      (Icons.home_outlined, Icons.home_rounded, 'Home'),
       (Icons.explore_outlined, Icons.explore_rounded, 'Explore'),
-      (Icons.search_rounded, Icons.search_rounded, 'Search'),
       (Icons.person_outline_rounded, Icons.person_rounded, 'Account'),
       (Icons.more_horiz_rounded, Icons.more_horiz_rounded, 'More'),
     ];
