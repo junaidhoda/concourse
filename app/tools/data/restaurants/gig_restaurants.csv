@@ -1,41 +1,41 @@
-name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
-A Saideira,Terminal 2,restaurant,Airside,Mezzanine,,,,,,,04:00-23:00,,,,,
-Aero Sport Bar,Main Terminal,restaurant,,,,,,,,,,,,,,
-Bob's,Main Terminal,fast_food,,,,,,,,,24h,,,Bob's,,
-Burger King,Main Terminal,fast_food,,,,,,,,,,,,Burger King,,
-Casa Bauducco,Main Terminal,cafe,,,,,,,,,24h,,,Casa Bauducco,,
-Casa do Pão de Queijo,Main Terminal,cafe,,,,,,,,,24h,,,,,
-CoffeeSpot,Main Terminal,cafe,,,coffee_shop,,,,,,24h,,,,,
-Deltaexpresso,Main Terminal,cafe,,,,,,,,,24h,,,,,
-Divino Fogão,Main Terminal,restaurant,,,,,,,,,,,,,,
-Empanadas y Tal,Main Terminal,cafe,,,,,,,,,,,,,,
-Factory,Main Terminal,restaurant,,,,,,,,,24h,,,,,
-Freddo,Main Terminal,cafe,,,ice_cream,,,,,,,,,,,
-Galeão Coffee Shop,Main Terminal,cafe,,,coffee_shop,,,,,,24h,,,,,
-Geneal e Sorvetes Itália,Main Terminal,cafe,,,ice_cream,,,,,,,,,,,
-Giraffas,Main Terminal,restaurant,,,,,,,,,,,,,,
-Grand Cru,Main Terminal,restaurant,,,,,,,,,,,,,,
-Havanna,Main Terminal,cafe,,,,,,,,,,,,Havanna,,
-Jamie's Deli,Main Terminal,restaurant,,,,,,,,,24h,,,,,
-KFC,Main Terminal,fast_food,,,,,,,,,,,,KFC,,
-Kozinha Sushi Bar & Árabe,Main Terminal,restaurant,,,japanese,,,,,,,,,,,
-Latitude,Main Terminal,cafe,,,,,,,,,,,,,,
-Mania de Churrasco,Main Terminal,restaurant,,,barbecue,,,,,,,,,,,
-Mariposa,Main Terminal,restaurant,,,,,,,,,24h,,,,,
-Mc Donald's,Main Terminal,fast_food,,,,,,,,,,,,McDonald's,,
-Mc Donald's Sorvete,Main Terminal,fast_food,,,,,,,,,,,,McDonald's,,
-Nescafé,Main Terminal,cafe,,,,,,,,,24h,,,Nescafé,,
-Nutty Bavarian,Main Terminal,fast_food,,,,,,,,,,,,,,
-O Pasquim Bar e Prosa,Main Terminal,restaurant,,,,,,,,,,,,,,
-Palaphita,Main Terminal,restaurant,,,,,,,,,,,,,,
-Pipocassa,Main Terminal,fast_food,,,,,,,,,,,,,,
-Pizza Hut,Main Terminal,restaurant,,,pizza,,,,,,,,,Pizza Hut,,
-Ritazza,Main Terminal,restaurant,,,,,,,,,24h,,,,,
-Salch&Pão,Main Terminal,fast_food,,,,,,,,,,,,,,
-Spoleto,Main Terminal,restaurant,,,italian,,,,,,,,,,,
-Starbucks Coffee,Main Terminal,cafe,,,coffee_shop,,,,,,24h,,,Starbucks,,
-Subway,Main Terminal,fast_food,,,,,,,,,,,,Subway,,
-TGI Fridays,Main Terminal,restaurant,,,,,,,,,,,,TGI Friday's,,
-Travel Market,Main Terminal,cafe,,,,,,,,,,,,,,
-Upper Crust,Main Terminal,cafe,,,,,,,,,24h,,,,,
-Ventana Fresh,Main Terminal,cafe,,,,,,,,,,,,,,
+name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type,description,logo_url
+A Saideira,Terminal 2,restaurant,Airside,Mezzanine,"Bar, Latin American",,,,,,04:00-23:00,,,,,,"A Brazilian bar and grill serving cold beers, caipirinhas, and typical Brazilian bar snacks and finger foods.",
+Aero Sport Bar,Main Terminal,restaurant,,,Bar,,,,,,,,,,,,"A sports bar serving beers, cocktails, and casual Brazilian bar food with live sports broadcasts.",
+Bob's,Main Terminal,fast_food,,,Fast Food,,,,,,24h,,,Bob's,,,"Bob's is one of Brazil's oldest fast food chains, offering burgers, milkshakes, and Brazilian-inspired fast food since its founding in Rio de Janeiro in 1952.",https://img.logo.dev/bobs.com.br?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Burger King,Main Terminal,fast_food,,,Fast Food,,,,,,,,,Burger King,,,Burger King is a global American fast food chain best known for the flame-grilled Whopper burger and its 'Have It Your Way' customisation philosophy.,https://img.logo.dev/bk.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Casa Bauducco,Main Terminal,cafe,,,"Bakery, Latin American",,,,,,24h,,,Casa Bauducco,,,"A Brazilian bakery and cafe concept from Bauducco, serving breads, panettone, cakes, and hot beverages.",https://img.logo.dev/casabauducco.com.br?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Casa do Pão de Queijo,Main Terminal,cafe,,,"Grab & Go, Latin American",,,,,,24h,,,,,,"Casa do Pão de Queijo is a Brazilian chain dedicated to the iconic cheese bread (pão de queijo), serving freshly baked varieties alongside juices and coffee.",https://img.logo.dev/casadopaodequeijo.com.br?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+CoffeeSpot,Main Terminal,cafe,,,Café,,,,,,24h,,,,,,"A specialty coffee shop serving espresso drinks, cold brews, and light cafe snacks.",https://img.logo.dev/coffeespot.cz?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Deltaexpresso,Main Terminal,cafe,,,Café,,,,,,24h,,,,,,"A quick-service espresso bar offering coffee drinks, juices, and light snacks for travelers on the go.",https://img.logo.dev/deltaexpresso.com.br?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Divino Fogão,Main Terminal,restaurant,,,Latin American,,,,,,,,,,,,"A Brazilian restaurant chain serving traditional comida mineira (Minas Gerais) dishes including feijão tropeiro, frango ao molho, and rice and bean plates.",https://img.logo.dev/divinofogao.com.br?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Empanadas y Tal,Main Terminal,cafe,,,Latin American,,,,,,,,,,,,A Latin American empanada restaurant serving South American-style baked and fried empanadas with various fillings.,
+Factory,Main Terminal,restaurant,,,"Latin American, International",,,,,,24h,,,,,,A casual restaurant serving Brazilian and international dishes in a factory-themed industrial setting.,
+Freddo,Main Terminal,cafe,,,Desserts,,,,,,,,,,,,An upscale Argentine ice cream chain serving creamy artisan gelato-style ice cream in classic and gourmet flavors.,
+Galeão Coffee Shop,Main Terminal,cafe,,,Café,,,,,,24h,,,,,,"An in-terminal coffee shop serving espresso drinks, pastries, and light snacks for Brazilian and international travelers.",
+Geneal e Sorvetes Itália,Main Terminal,cafe,,,Desserts,,,,,,,,,,,,An Italian-style ice cream parlor serving artisan gelato and sorbet in a variety of traditional and tropical Brazilian fruit flavors.,
+Giraffas,Main Terminal,restaurant,,,"Latin American, Fast Food",,,,,,,,,,,,"Giraffas is a Brazilian fast-casual restaurant chain serving grilled meats, rice-and-bean plates, and classic Brazilian comfort food in a quick, affordable format.",https://img.logo.dev/giraffas.com.br?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Grand Cru,Main Terminal,restaurant,,,Bar,,,,,,,,,,,,"Grand Cru is an upscale airport wine bar and restaurant offering a curated selection of fine wines alongside cheese, charcuterie, and small plates.",
+Havanna,Main Terminal,cafe,,,"Bakery, Café, Latin American",,,,,,,,,Havanna,,,"Havanna is an iconic Argentine confectionery and café chain, best known for its alfajores — delicate cookies sandwiched with dulce de leche and coated in chocolate or meringue.",https://img.logo.dev/havanna.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Jamie's Deli,Main Terminal,restaurant,,,Sandwiches & Deli,,,,,,24h,,,,,,"A deli concept inspired by Jamie Oliver, serving freshly made sandwiches, salads, and quick international meals.",
+KFC,Main Terminal,fast_food,,,"Fast Food, Steak, Grill Chicken & BBQ",,,,,,,,,KFC,,,"KFC (Kentucky Fried Chicken) is a global fast food chain founded by Colonel Harland Sanders, famous for its original recipe fried chicken seasoned with 11 herbs and spices.",https://img.logo.dev/kfc.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Kozinha Sushi Bar & Árabe,Main Terminal,restaurant,,,"Japanese, Asian, Middle Eastern",,,,,,,,,,,,A combined sushi bar and Arabic food restaurant serving Japanese maki rolls and Middle Eastern dishes.,
+Latitude,Main Terminal,cafe,,,"Bar, Café",,,,,,,,,,,,"A bar and cafe serving cocktails, beers, and light international bites throughout the day.",
+Mania de Churrasco,Main Terminal,restaurant,,,"Latin American, Steak, Grill Chicken & BBQ",,,,,,,,,,,,"A Brazilian churrascaria-inspired counter serving grilled meats, sausages, and traditional South American BBQ items.",https://img.logo.dev/maniadechurrasco.com.br?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Mariposa,Main Terminal,restaurant,,,Latin American,,,,,,24h,,,,,,A casual restaurant serving Brazilian and international comfort food in a bright and airy setting.,
+McDonald's,Main Terminal,fast_food,,,Fast Food,,,,,,,,,McDonald's,,,"McDonald's is the world's largest fast food chain, serving billions of customers daily with iconic menu items including the Big Mac, McChicken, and golden french fries.",https://img.logo.dev/mcdonalds.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+McDonald's,Main Terminal,fast_food,,,Fast Food,,,,,,,,,McDonald's,,,"McDonald's is the world's largest fast food chain, serving billions of customers daily with iconic menu items including the Big Mac, McChicken, and golden french fries.",https://img.logo.dev/mcdonalds.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Nescafé,Main Terminal,cafe,,,Café,,,,,,24h,,,Nescafé,,,A Nescafé-branded coffee kiosk serving instant and machine-brewed coffee drinks and light snacks.,https://img.logo.dev/nescafe.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Nutty Bavarian,Main Terminal,fast_food,,,Grab & Go,,,,,,,,,,,,A cinnamon-glazed nut kiosk serving warm freshly roasted mixed nuts coated in cinnamon sugar.,https://img.logo.dev/nuttybavarian.com.br?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+O Pasquim Bar e Prosa,Main Terminal,restaurant,,,"Bar, Latin American",,,,,,,,,,,,"A carioca-themed bar celebrating Rio's bohemian culture, serving caipirinhas, Brazilian beers, and local snacks.",https://img.logo.dev/opasquimbar.com.br?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Palaphita,Main Terminal,restaurant,,,"Bar, Latin American",,,,,,,,,,,,"A casual bar and snack concept serving cold beers, tropical cocktails, and Brazilian bar food.",
+Pipocassa,Main Terminal,fast_food,,,Grab & Go,,,,,,,,,,,,A specialty popcorn kiosk serving flavored popcorn in sweet and savory varieties as a quick snack.,
+Pizza Hut,Main Terminal,restaurant,,,Pizza,,,,,,,,,Pizza Hut,,,"Pizza Hut is one of the world's largest pizza restaurant chains, serving pan pizzas, stuffed crusts, pasta, and sides across dine-in, delivery, and carry-out formats.",https://img.logo.dev/pizzahut.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Caffè Ritazza,Main Terminal,restaurant,,,Café,,,,,,24h,,,,,,"Caffè Ritazza is an international café chain operated by SSP Group, commonly found in airports and travel hubs, serving espresso drinks, teas, and light food.",https://img.logo.dev/ritazza.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Salch&Pão,Main Terminal,fast_food,,,"Latin American, Fast Food",,,,,,,,,,,,A sausage and bread snack stand serving Brazilian-style hot dogs with salsichas and various toppings.,
+Spoleto,Main Terminal,restaurant,,,Italian,,,,,,,,,,,,"A popular Brazilian pasta chain serving customizable pasta dishes with a variety of sauces, toppings, and ingredients.",
+Starbucks,Main Terminal,cafe,,,Café,,,,,,24h,,,Starbucks,,,"Starbucks is the world's largest coffeehouse chain, offering handcrafted espresso beverages, Frappuccinos, teas, and seasonal drinks alongside food items and merchandise.",https://img.logo.dev/starbucks.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Subway,Main Terminal,fast_food,,,Sandwiches & Deli,,,,,,,,,Subway,,,"Subway is the world's largest submarine sandwich chain, offering customisable subs, wraps, and salads made to order on freshly baked bread with a wide choice of toppings.",https://img.logo.dev/subway.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+TGI Fridays,Main Terminal,restaurant,,,American,,,,,,,,,TGI Friday's,,,"TGI Fridays is an American casual dining restaurant chain inspired by New York bar culture, serving burgers, ribs, cocktails, and American comfort food since 1965.",https://img.logo.dev/tgifridays.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Travel Market,Main Terminal,cafe,,,Grab & Go,,,,,,,,,,,,"A convenience market offering packaged snacks, beverages, and grab-and-go food items for travelers.",
+Upper Crust,Main Terminal,cafe,,,Sandwiches & Deli,,,,,,24h,,,,,,"Upper Crust is a British airport sandwich and food chain specialising in freshly filled baguettes, pastries, and hot drinks, found across UK and international airports.",https://img.logo.dev/uppercrust.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Ventana Fresh,Main Terminal,cafe,,,Healthy,,,,,,,,,,,,"A health food and fresh cafe serving salads, açai bowls, juices, and light Brazilian healthy fare.",

@@ -4015,6 +4015,15 @@
     "description": "Wahlburgers is an American burger chain co-founded by the Wahlberg family, serving hand-crafted burgers, sides, and milkshakes in a casual, fun atmosphere."
   },
   {
+    "name": "Wendy's",
+    "logo_url": "https://img.logo.dev/wendys.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
+    "cuisine": [
+      "Fast Food",
+      "Burgers"
+    ],
+    "description": "Wendy's is an American international fast food chain known for its square, fresh, never-frozen beef burgers, the iconic Frosty dessert, and made-to-order menu served since 1969."
+  },
+  {
     "name": "Wetherspoons",
     "logo_url": "https://img.logo.dev/jdwetherspoon.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png",
     "cuisine": [

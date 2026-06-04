@@ -1,63 +1,63 @@
-name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
-Nusr-Et,Main Terminal,restaurant,,2,,41.2618709,28.7449587,,,,,,,,13202550524,node
-Arby's,Main Terminal,fast_food,,1,sandwich,41.262172,28.7380821,,,,,,yes,Arby's,6787508047,node
-Brewmark,Main Terminal,restaurant,,2,,41.2617281,28.746483,,,,,,,,6794085815,node
-Burger King,Main Terminal,fast_food,,1,burger,41.2631012,28.7474822,,,,,yes,yes,Burger King,9032700217,node
-Caffè Nero,Main Terminal,cafe,,1,coffee_shop,41.2647937,28.7486698,,,,,yes,yes,Caffè Nero,11200644977,node
-Carl's Jr.,Main Terminal,fast_food,,3,burger,41.2620507,28.7403209,,,,24/7,yes,only,Carl's Jr.,7068105744,node
-Carluccio's,Main Terminal,restaurant,,2,italian,41.2610804,28.7408463,,,,,,,,13202550550,node
-Cups & Clouds,Main Terminal,cafe,,2,coffee_shop,41.261915,28.7463169,,,,,,yes,,11463713309,node
-gram,Main Terminal,cafe,,2,,41.2624641,28.7387454,,,,,yes,,,11200644969,node
-McDonald's,Main Terminal,fast_food,,3,burger,41.2619669,28.7396085,,+90 444 6262,https://www.mcdonalds.com.tr/,24/7,yes,only,McDonald's,12328378344,node
-mvnch,Main Terminal,fast_food,,2,,41.2616994,28.74098,,,,,,,,13202550522,node
-Pidem,Main Terminal,fast_food,,,,41.2622586,28.7399106,,,,,,,,8517883719,node
-Pierre Hermes,Main Terminal,cafe,,2,,41.2623522,28.7446148,,,,,yes,,,11200644970,node
-Pizzeria Enzo,Main Terminal,fast_food,,2,pizza,41.2626379,28.7387668,,,,,yes,yes,,11200644967,node
-Popeyes,Main Terminal,fast_food,,3,chicken,41.2621766,28.7403199,,+90 444 7677,https://www.popeyes.com.tr/,24/7,yes,only,Popeyes,12328378345,node
-Refresh,Main Terminal,ice_cream,,2,,41.2611548,28.7406022,,,,,,,,13202550549,node
-Sbarro,Main Terminal,fast_food,,3,pizza,41.2622273,28.7401525,,,https://www.sbarro.com.tr/,24/7,yes,only,Sbarro,9275086817,node
-Shake Shack,Main Terminal,fast_food,,2,burger,41.2610963,28.7410006,,,,,,yes,Shake Shack,13202550551,node
-Simit Sarayı,Main Terminal,fast_food,,1,,41.2582866,28.7366934,,,,24/7,yes,yes,Simit Sarayı,12335581397,node
-Slim Chicken's,Main Terminal,fast_food,,2,chicken,41.2611122,28.7411365,,,,,,,,13202550552,node
-Starbucks,Main Terminal,cafe,,1,coffee_shop,41.2623429,28.7467897,,,,,yes,yes,Starbucks,6787456752,node
-Subway,Main Terminal,fast_food,,3,sandwich,41.2622268,28.7400378,,,https://www.subway.com/tr-TR/,24/7,yes,only,Subway,9275086818,node
-The Gang Foods,Main Terminal,fast_food,,3,,41.2622263,28.7399231,,,,24/7,yes,only,,12328378346,node
-The House Cafe,Main Terminal,cafe,,2,,41.26238,28.7456969,,,,,yes,,,11200644972,node
-Tickerdaze,Main Terminal,restaurant,,2,,41.2613054,28.7391028,,,,,,,,6789315797,node
-TRT World Cafe,Main Terminal,cafe,,2,,41.261493,28.7435708,,,,,yes,,,6794082490,node
-Vivanda Burger,Main Terminal,fast_food,,2,burger,41.262626,28.739086,,,,,yes,,,11200644968,node
-YO! Sushi,Main Terminal,restaurant,,2,sushi,41.2621864,28.7394748,,,,,,,YO! Sushi,6794055530,node
-Avenue Bistro Bar,Main Terminal,restaurant,,,,,,,,,,,,,,
-Backhaus,Main Terminal,cafe,,,,,,,,,,,,,,
-Bi Bar,Main Terminal,bar,,,,,,,,,,,,,,
-Bi Coffee,Main Terminal,cafe,,,,,,,,,,,,,,
-Bi Coffee & Bi Bar,Main Terminal,cafe,,,,,,,,,,,,,,
-Bite,Main Terminal,restaurant,,,,,,,,,,,,,,
-Bottega Bosphorus,Main Terminal,restaurant,,,,,,,,,,,,,,
-Cafe Yanımda,Main Terminal,cafe,,,,,,,,,,,,,,
-Carls Cafe,Main Terminal,cafe,,,,,,,,,,,,,,
-Carluccio's Bar,Main Terminal,bar,,,,,,,,,,,,,,
-Çay Saati,Main Terminal,cafe,,,,,,,,,,,,,,
-Chocnette,Main Terminal,fast_food,,,,,,,,,,,,,,
-Cuisine Anatolia,Main Terminal,restaurant,,,turkish,,,,,,,,,,,
-Deli Aux Pain,Main Terminal,cafe,,,,,,,,,,,,,,
-Eat & Joy,Main Terminal,restaurant,,,,,,,,,,,,,,
-Enva,Main Terminal,restaurant,,,,,,,,,,,,,,
-Godiva,Main Terminal,cafe,,,,,,,,,,,,,,
-HD Döner,Main Terminal,fast_food,,,kebab,,,,,,,,,,,
-HighBorn Coffee,Main Terminal,cafe,,,coffee_shop,,,,,,,,,,,
-Jackie's,Main Terminal,restaurant,,,,,,,,,,,,,,
-Kaimakk,Main Terminal,restaurant,,,,,,,,,,,,,,
-Komyuniti Bar & Restaurant,Main Terminal,bar,,,,,,,,,,,,,,
-Loba Coffee,Main Terminal,cafe,,,,,,,,,,,,,,
-Malatya Pazarı,Main Terminal,fast_food,,,,,,,,,,,,,,
-Max Brenner,Main Terminal,cafe,,,,,,,,,,,,,,
-Mood Up,Main Terminal,restaurant,,,,,,,,,,,,,,
-Obica,Main Terminal,restaurant,,,italian,,,,,,,,,,,
-Paşa Döner,Main Terminal,fast_food,,,kebab,,,,,,,,,,,
-Rey Food & Drink,Main Terminal,restaurant,,,,,,,,,,,,,,
-Rey Organic,Main Terminal,restaurant,,,,,,,,,,,,,,
-Seferi,Main Terminal,restaurant,,,,,,,,,,,,,,
-Via Bakery,Main Terminal,cafe,,,,,,,,,,,,,,
-Via Fıçı,Main Terminal,bar,,,,,,,,,,,,,,
-Via Kiosk,Main Terminal,cafe,,,,,,,,,,,,,,
+name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type,description,logo_url
+Nusr-Et,Main Terminal,restaurant,,2,"Steak, Grill Chicken & BBQ",41.2618709,28.7449587,,,,,,,,13202550524,node,Nusr-Et is a global upscale steakhouse chain by Turkish celebrity chef Nusret Gökçe — known as Salt Bae — famous for its theatrical meat-salting technique and premium cuts.,https://img.logo.dev/nusr-et.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Arby's,Main Terminal,fast_food,,1,Fast Food,41.262172,28.7380821,,,,,,yes,Arby's,6787508047,node,"Arby's is an American fast food chain best known for its slow-roasted beef sandwiches, curly fries, and the tagline 'We Have The Meats.'",https://img.logo.dev/arbys.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Brewmark,Main Terminal,restaurant,,2,Bar,41.2617281,28.746483,,,,,,,,6794085815,node,A craft beer bar and casual dining spot serving a rotating selection of craft beers and bar food.,
+Burger King,Main Terminal,fast_food,,1,Fast Food,41.2631012,28.7474822,,,,,yes,yes,Burger King,9032700217,node,Burger King is a global American fast food chain best known for the flame-grilled Whopper burger and its 'Have It Your Way' customisation philosophy.,https://img.logo.dev/bk.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Caffè Nero,Main Terminal,cafe,,1,Café,41.2647937,28.7486698,,,,,yes,yes,Caffè Nero,11200644977,node,"Caffè Nero is a British coffeehouse chain with an Italian-inspired approach to coffee, serving handcrafted espresso drinks, food, and a popular loyalty programme.",https://img.logo.dev/caffenero.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Carl's Jr,Main Terminal,fast_food,,3,Fast Food,41.2620507,28.7403209,,,,24/7,yes,only,Carl's Jr.,7068105744,node,"Carl's Jr is an American fast food chain known for its premium hand-crafted burgers, Famous Star, and bold marketing of its thick, messy charbroiled burgers.",https://img.logo.dev/carlsjr.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Carluccio's,Main Terminal,restaurant,,2,Italian,41.2610804,28.7408463,,,,,,,,13202550550,node,"Carluccio's is a British-Italian restaurant chain founded by renowned Italian chef Antonio Carluccio, serving rustic Italian dishes, antipasti, pasta, and seasonal specials.",https://img.logo.dev/carluccios.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Cups & Clouds,Main Terminal,cafe,,2,Café,41.261915,28.7463169,,,,,,yes,,11463713309,node,"A specialty coffee shop serving artisan coffees, teas, and light cafe snacks in a modern cloud-inspired setting.",
+gram,Main Terminal,cafe,,2,Healthy,41.2624641,28.7387454,,,,,yes,,,11200644969,node,"A healthy food concept selling snacks, salads, and light meals sold by weight (gram).",
+McDonald's,Main Terminal,fast_food,,3,Fast Food,41.2619669,28.7396085,,+90 444 6262,https://www.mcdonalds.com.tr/,24/7,yes,only,McDonald's,12328378344,node,"McDonald's is the world's largest fast food chain, serving billions of customers daily with iconic menu items including the Big Mac, McChicken, and golden french fries.",https://img.logo.dev/mcdonalds.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+mvnch,Main Terminal,fast_food,,2,Grab & Go,41.2616994,28.74098,,,,,,,,13202550522,node,"A casual food and snack concept serving quick bites, sandwiches, and beverages throughout the day.",
+Pidem,Main Terminal,fast_food,,,Middle Eastern,41.2622586,28.7399106,,,,,,,,8517883719,node,"A Turkish pide restaurant serving freshly baked Turkish flatbreads (pide) topped with cheese, minced meat, and eggs.",
+Pierre Hermé,Main Terminal,cafe,,2,"Bakery, French, European",41.2623522,28.7446148,,,,,yes,,,11200644970,node,Pierre Hermé is a celebrated French pastry chef and luxury patisserie brand known for reinventing the macaron and creating audaciously flavoured pastries and haute confiserie.,https://img.logo.dev/pierreherme.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Pizzeria Enzo,Main Terminal,fast_food,,2,"Pizza, Italian",41.2626379,28.7387668,,,,,yes,yes,,11200644967,node,An Italian pizza restaurant serving Neapolitan-style wood-fired pizzas with classic and creative toppings.,https://img.logo.dev/pizzeria-enzo-bork.de?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Popeyes,Main Terminal,fast_food,,3,"Fast Food, Steak, Grill Chicken & BBQ",41.2621766,28.7403199,,+90 444 7677,https://www.popeyes.com.tr/,24/7,yes,only,Popeyes,12328378345,node,"Popeyes is an American fast food chain founded in New Orleans, famous for its Louisiana-style Cajun-spiced fried chicken, buttermilk biscuits, and bold Cajun flavours.",https://img.logo.dev/popeyes.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Refresh,Main Terminal,ice_cream,,2,Healthy,41.2611548,28.7406022,,,,,,,,13202550549,node,"A juice and smoothie bar offering fresh fruit juices, detox shots, and energizing blended drinks.",
+Sbarro,Main Terminal,fast_food,,3,"Pizza, Italian",41.2622273,28.7401525,,,https://www.sbarro.com.tr/,24/7,yes,only,Sbarro,9275086817,node,"Sbarro is an Italian-American pizza chain synonymous with mall and food court dining, known for its giant New York-style pizza slices, stromboli, and pasta dishes.",https://img.logo.dev/sbarro.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Shake Shack,Main Terminal,fast_food,,2,Burgers,41.2610963,28.7410006,,,,,,yes,Shake Shack,13202550551,node,"Shake Shack is an American fast-casual chain that began as a hot dog cart in NYC's Madison Square Park, now globally renowned for its ShackBurger, crinkle-cut fries, and hand-spun shakes.",https://img.logo.dev/shakeshack.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Simit Sarayı,Main Terminal,fast_food,,1,"Bakery, Middle Eastern",41.2582866,28.7366934,,,,24/7,yes,yes,Simit Sarayı,12335581397,node,"Simit Sarayı is a Turkish bakery café chain built around the simit — a sesame-encrusted circular bread — served alongside çay, coffee, and savoury pastries.",https://img.logo.dev/simitsarayi.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Slim Chickens,Main Terminal,fast_food,,2,"Fast Food, Steak, Grill Chicken & BBQ",41.2611122,28.7411365,,,,,,,,13202550552,node,"Slim Chickens is an American fast-casual chain specialising in hand-battered chicken tenders, wings, and sandwiches served with a range of house-made dipping sauces.",https://img.logo.dev/slimchickens.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Starbucks,Main Terminal,cafe,,1,Café,41.2623429,28.7467897,,,,,yes,yes,Starbucks,6787456752,node,"Starbucks is the world's largest coffeehouse chain, offering handcrafted espresso beverages, Frappuccinos, teas, and seasonal drinks alongside food items and merchandise.",https://img.logo.dev/starbucks.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Subway,Main Terminal,fast_food,,3,Sandwiches & Deli,41.2622268,28.7400378,,,https://www.subway.com/tr-TR/,24/7,yes,only,Subway,9275086818,node,"Subway is the world's largest submarine sandwich chain, offering customisable subs, wraps, and salads made to order on freshly baked bread with a wide choice of toppings.",https://img.logo.dev/subway.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+The Gang Foods,Main Terminal,fast_food,,3,Fast Food,41.2622263,28.7399231,,,,24/7,yes,only,,12328378346,node,A casual food gang concept serving a varied menu of global street food-inspired dishes and snacks.,
+The House Cafe,Main Terminal,cafe,,2,International,41.26238,28.7456969,,,,,yes,,,11200644972,node,"A Turkish upscale casual dining chain serving international dishes, brunch items, and fresh salads alongside cocktails.",https://img.logo.dev/thehousecafe.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Tickerdaze,Main Terminal,restaurant,,2,Bar,41.2613054,28.7391028,,,,,,,,6789315797,node,"A bar and snack concept catering to travelers with cocktails, beers, and light international bites.",
+TRT World Cafe,Main Terminal,cafe,,2,Café,41.261493,28.7435708,,,,,yes,,,6794082490,node,"A cafe branded with Turkey's international news channel TRT World, serving coffee, snacks, and light meals with news screens.",
+Vivanda Burger,Main Terminal,fast_food,,2,Burgers,41.262626,28.739086,,,,,yes,,,11200644968,node,A gourmet burger restaurant serving quality beef burgers with Turkish-inspired toppings and fresh local ingredients.,https://img.logo.dev/vivandaburger.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+YO! Sushi,Main Terminal,restaurant,,2,"Japanese, Asian",41.2621864,28.7394748,,,,,,,YO! Sushi,6794055530,node,"YO! Sushi is a British Japanese food chain that popularised the kaiten (conveyor belt) dining concept in the UK, serving fresh sushi, hot dishes, and Japanese snacks.",https://img.logo.dev/yosushi.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Avenue Bistro Bar,Main Terminal,restaurant,,,International,,,,,,,,,,,,"A casual European bistro and bar serving light international dishes, sandwiches, and cocktails.",
+Backhaus,Main Terminal,cafe,,,"Bakery, German, European",,,,,,,,,,,,"A German-style bakery serving artisan breads, pretzels, and pastries alongside fresh coffee.",
+Bi Bar,Main Terminal,bar,,,Bar,,,,,,,,,,,,"A casual bar serving Turkish and international beers, cocktails, and light bar snacks.",
+Bi Coffee,Main Terminal,cafe,,,Café,,,,,,,,,,,,"A specialty coffee shop serving Turkish and international coffees, teas, and light cafe snacks.",
+Bi Coffee & Bi Bar,Main Terminal,cafe,,,"Café, Bar",,,,,,,,,,,,A combined coffee shop and bar serving specialty coffees in the morning and craft beverages in the afternoon.,
+Bite,Main Terminal,restaurant,,,Grab & Go,,,,,,,,,,,,"A quick-service food counter offering grab-and-go sandwiches, snacks, and beverages.",
+Bottega Bosphorus,Main Terminal,restaurant,,,Bar,,,,,,,,,,,,A Bosphorus-themed Italian wine and prosecco bar serving sparkling wines and Italian aperitivo snacks.,
+Cafe Yanımda,Main Terminal,cafe,,,"Café, Middle Eastern",,,,,,,,,,,,"A Turkish-style neighborhood cafe concept serving Turkish tea, coffee, pastries, and light Turkish snacks.",
+Carls Cafe,Main Terminal,cafe,,,Café,,,,,,,,,,,,"A casual cafe serving espresso drinks, sandwiches, and light international bites.",
+Carluccio's Bar,Main Terminal,bar,,,"Italian, Bar",,,,,,,,,,,,"An Italian-inspired bar from the Carluccio brand serving aperitivo drinks, Italian wines, and small plates.",
+Çay Saati,Main Terminal,cafe,,,"Café, Middle Eastern",,,,,,,,,,,,A traditional Turkish tea house serving brewed çay (black tea) in tulip-shaped glasses alongside Turkish pastries and sweets.,https://img.logo.dev/caysaati.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Chocnette,Main Terminal,fast_food,,,Desserts,,,,,,,,,,,,"A chocolate and dessert kiosk serving artisan chocolates, pralines, and sweet confections.",https://img.logo.dev/chocnette.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Cuisine Anatolia,Main Terminal,restaurant,,,Middle Eastern,,,,,,,,,,,,"A Turkish restaurant celebrating Anatolian cuisine with traditional dishes including kebabs, meze, and Ottoman-inspired recipes.",
+Deli Aux Pain,Main Terminal,cafe,,,"Bakery, French, European",,,,,,,,,,,,"A French-style bakery deli serving baguette sandwiches, croissants, and French-inspired light meals.",
+Eat & Joy,Main Terminal,restaurant,,,International,,,,,,,,,,,,A modern casual restaurant serving international and Turkish-inspired light meals and snacks throughout the day.,
+Enva,Main Terminal,restaurant,,,"Café, Middle Eastern",,,,,,,,,,,,"A Turkish cafe serving traditional Anatolian snacks, Turkish pastries, and local beverages.",
+Godiva,Main Terminal,cafe,,,"Café, Desserts",,,,,,,,,,,,"Godiva is a Belgian luxury chocolate brand with global cafés and boutiques offering premium pralines, truffles, hot chocolate, and indulgent dessert-inspired drinks.",https://img.logo.dev/godiva.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+HD Döner,Main Terminal,fast_food,,,"Middle Eastern, Steak, Grill Chicken & BBQ",,,,,,,,,,,,A doner kebab fast food chain serving freshly sliced lamb and chicken doner in bread or wraps.,
+HighBorn Coffee,Main Terminal,cafe,,,Café,,,,,,,,,,,,A premium specialty coffee shop serving single-origin espresso drinks and artisan coffee preparations.,
+Jackie's,Main Terminal,restaurant,,,"Bar, American",,,,,,,,,,,,"A casual bar and grill serving American-style burgers, wings, and international comfort food.",
+Kaimakk,Main Terminal,restaurant,,,"Middle Eastern, Desserts",,,,,,,,,,,,"A Turkish dessert cafe serving kaymak (clotted cream) with honey, Turkish breakfast items, and traditional sweets.",https://img.logo.dev/kaimakk.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Komyuniti Bar & Restaurant,Main Terminal,bar,,,"Bar, International",,,,,,,,,,,,"A communal bar and restaurant serving international dishes and cocktails in a social, open-plan setting.",
+Loba Coffee,Main Terminal,cafe,,,Café,,,,,,,,,,,,A Turkish specialty coffee brand serving handcrafted espresso drinks and Turkish coffee alongside light snacks.,
+Malatya Pazarı,Main Terminal,fast_food,,,"Middle Eastern, Grab & Go",,,,,,,,,,,,"Malatya Pazarı is a Turkish chain specialising in premium dried fruits, nuts, spices, and traditional Turkish delights, named after the apricot-producing city of Malatya.",
+Max Brenner,Main Terminal,cafe,,,"Café, Desserts",,,,,,,,,,,,"Max Brenner is an Israeli-born chocolate café and retail brand offering an indulgent world of chocolate-centric drinks, desserts, waffles, and fondue experiences.",https://img.logo.dev/maxbrenner.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Mood Up,Main Terminal,restaurant,,,"Café, Healthy",,,,,,,,,,,,"A modern cafe and food concept serving mood-boosting healthy meals, bowls, and beverages.",
+Obica,Main Terminal,restaurant,,,Italian,,,,,,,,,,,,"An Italian mozzarella bar serving buffalo mozzarella di bufala with prosciutto, tomatoes, and Italian antipasti.",https://img.logo.dev/obica.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Paşa Döner,Main Terminal,fast_food,,,"Middle Eastern, Steak, Grill Chicken & BBQ",,,,,,,,,,,,A traditional Turkish doner kebab restaurant serving slow-roasted lamb doner in flatbread or as a plate.,https://img.logo.dev/pasa-doner.com.tr?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Rey Food & Drink,Main Terminal,restaurant,,,"Middle Eastern, International",,,,,,,,,,,,A Turkish cafe and food outlet serving a mix of Turkish and international quick meals and beverages.,
+Rey Organic,Main Terminal,restaurant,,,Healthy,,,,,,,,,,,,"An organic-focused cafe serving healthy organic meals, fresh juices, and plant-based dishes.",https://img.logo.dev/reyorganic.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Seferi,Main Terminal,restaurant,,,"Café, Middle Eastern",,,,,,,,,,,,"A Turkish travel-inspired cafe serving traditional Turkish tea, coffee, and regional Turkish snacks.",
+Via Bakery,Main Terminal,cafe,,,"Bakery, Middle Eastern",,,,,,,,,,,,"A Turkish bakery concept serving freshly baked Turkish breads, simit (sesame rings), pastries, and coffee.",
+Via Fıçı,Main Terminal,bar,,,"Bar, Middle Eastern",,,,,,,,,,,,A Turkish tap room and snack bar serving draft beers and Turkish-style bar snacks.,
+Via Kiosk,Main Terminal,cafe,,,Grab & Go,,,,,,,,,,,,"A quick-service kiosk offering packaged snacks, beverages, and grab-and-go items.",

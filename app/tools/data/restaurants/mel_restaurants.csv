@@ -1,57 +1,57 @@
-name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
-AFL Kitchen & Bar,Main Terminal,bar,,,,,,,,,6AM-9PM,,,,,
-Biggie Smalls,Main Terminal,cafe,,,,,,,,,5:30AM-8:30PM,,,,,
-Brunetti Classico,Main Terminal,cafe,,,,,,,,,,,,,,
-Grill'd Healthy Burgers,Main Terminal,fast_food,,,,,,,,,6:30AM-11PM,,,,,
-Pickett's Deli & Rotisserie,Main Terminal,cafe,,,,,,,,,5:30AM-11PM,,,,,
-Stomping Ground Brewery,Main Terminal,restaurant,,,,,,,,,6:30AM-8:30PM,,,,,
-WH Smith Australia,Main Terminal,restaurant,,,,,,,,,,,,,,
-Airo Restaurant - ParkRoyal,Main Terminal,bar,,,,,,,,,11:30AM-9:30PM,,,,,
-Axil Coffee Roasters,Main Terminal,cafe,,,,,,,,,4:45AM-9PM,,,,,
-Bà Xã,Main Terminal,restaurant,,,,,,,,,6AM-12AM,,,,,
-Bar Pulpo by Movida,Main Terminal,bar,,,,,,,,,6AM-11:30PM,,,,,
-Boccata Restaurant and Wine Bar,Main Terminal,restaurant,,,,,,,,,"5AM-9:30AM, 12PM-11PM, 5PM-10PM",,,,,
-Boost Juice,Main Terminal,restaurant,,,,,,,,,,,,,,
-Bridge Road Brewers,Main Terminal,cafe,,,,,,,,,6AM-9PM,,,,,
-Cafe Sol,Main Terminal,cafe,,,,,,,,,2:30AM-10:30PM,,,,,
-Coffee Capital,Main Terminal,cafe,,,,,,,,,5AM-10PM,,,,,
-Croissant Lab,Main Terminal,cafe,,,,,,,,,4:30AM-12PM,,,,,
-Daniel's Donuts,Main Terminal,cafe,,,,,,,,,4:30AM-10:30PM,,,,,
-Dumpling Co,Main Terminal,restaurant,,,,,,,,,5AM-10PM,,,,,
-EARL Canteen,Main Terminal,cafe,,,,,,,,,5:30AM-8:30PM,,,,,
-Flat Chat Espresso & Bar,Main Terminal,cafe,,,,,,,,,6AM-5:30PM,,,,,
-Go! Espresso and Bar,Main Terminal,cafe,,,,,,,,,6:30AM-8:30PM,,,,,
-Gusto Pasta Bar,Main Terminal,fast_food,,,,,,,,,4AM-9PM,,,,,
-Hanna's Cafe,Main Terminal,restaurant,,,,,,,,,6AM-5:30PM,,,,,
-Hudsons Coffee,Main Terminal,cafe,,,,,,,,,OPEN 24 HOURS,,,,,
-Hungry Jack's,Main Terminal,fast_food,,,,,,,,,,,,,,
-Icons Victoria,Main Terminal,fast_food,,,,,,,,,4:30AM-9:30PM,,,,,
-Little Lygon,Main Terminal,cafe,,,,,,,,,6AM-8PM,,,,,
-Little Melbourne,Main Terminal,fast_food,,,,,,,,,5AM-10PM,,,,,
-Liv Eat Healthy Eating,Main Terminal,fast_food,,,,,,,,,4:30AM-9:30PM,,,,,
-McDonald's,Main Terminal,fast_food,,,,,,,,,,,,,,
-Mezze Za Za,Main Terminal,restaurant,,,,,,,,,7AM-8:30PM,,,,,
-Nathan Rd Asian Kitchen,Main Terminal,fast_food,,,,,,,,,6AM-9PM,,,,,
-Noodles XO,Main Terminal,restaurant,,,,,,,,,5AM-10PM,,,,,
-Nooodles,Main Terminal,restaurant,,,,,,,,,,,,,,
-Pizza Al Taglio,Main Terminal,restaurant,,,,,,,,,12PM-8:30PM,,,,,
-Quikshots,Main Terminal,cafe,,,,,,,,,4:30AM-8:30PM,,,,,
-Roll'd Vietnamese,Main Terminal,restaurant,,,,,,,,,6AM-9PM,,,,,
-Rustica,Main Terminal,cafe,,,,,,,,,4:30AM-7:30PM,,,,,
-Salsas Fresh Mex,Main Terminal,fast_food,,,,,,,,,5:30AM-9PM,,,,,
-Schnitz,Main Terminal,fast_food,,,,,,,,,5AM-10PM,,,,,
-Small Holdings,Main Terminal,fast_food,,,,,,,,,6AM-3PM,,,,,
-Soul Origin,Main Terminal,fast_food,,,,,,,,,4AM-10PM,,,,,
-ST. ALi,Main Terminal,fast_food,,,,,,,,,,,,,,
-Subway,Main Terminal,fast_food,,,,,,,,,4AM-11PM,,,,,
-Sushi Jiro,Main Terminal,fast_food,,,,,,,,,,,,,,
-Sushi Sushi,Main Terminal,fast_food,,,,,,,,,5AM-8PM,,,,,
-The Cellar Bar & Bistro,Main Terminal,cafe,,,,,,,,,6AM-9PM,,,,,
-The Chocolate Box,Main Terminal,restaurant,,,,,,,,,,,,,,
-The Local Taphouse,Main Terminal,fast_food,,,,,,,,,6:30AM-8:30PM,,,,,
-The Pelican,Main Terminal,bar,,,,,,,,,,,,,,
-Think Asia,Main Terminal,fast_food,,,,,,,,,8AM-9:30PM,,,,,
-Two Johns Taphouse,Main Terminal,bar,,,,,,,,,,,,,,
-Urban Provodore,Main Terminal,fast_food,,,,,,,,,6AM-10PM,,,,,
-Veneziano Coffee Roasters,Main Terminal,cafe,,,,,,,,,4:30AM-9PM,,,,,
-Wine Selectors,Main Terminal,restaurant,,,,,,,,,9:30AM-9PM,,,,,
+name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type,description,logo_url
+AFL Kitchen & Bar,Main Terminal,bar,,,Bar,,,,,,6AM-9PM,,,,,,An officially licensed Australian Football League-themed bar and kitchen serving Australian pub food and beers.,
+Biggie Smalls,Main Terminal,cafe,,,"Burgers, Steak, Grill Chicken & BBQ",,,,,,5:30AM-8:30PM,,,,,,A Melbourne smash burger and fried chicken restaurant serving American-style fast food with quality Australian ingredients.,https://img.logo.dev/biggiesmalls.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Brunetti Classico,Main Terminal,cafe,,,"Café, Italian",,,,,,,,,,,,"A Melbourne Italian institution since 1974, serving authentic Italian gelato, espresso, pastries, and Italian cafe classics.",https://img.logo.dev/brunetticlassico.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Grill'd Healthy Burgers,Main Terminal,fast_food,,,Burgers,,,,,,6:30AM-11PM,,,,,,"An Australian better-burger chain serving fresh, high-quality burgers with hormone-free meat and fresh vegetables on brioche buns.",
+Pickett's Deli & Rotisserie,Main Terminal,cafe,,,Sandwiches & Deli,,,,,,5:30AM-11PM,,,,,,"An Australian deli and rotisserie serving free-range roasted chickens, artisan sandwiches, and deli products.",
+Stomping Ground Brewery,Main Terminal,restaurant,,,Bar,,,,,,6:30AM-8:30PM,,,,,,"A Melbourne craft brewery from Collingwood, serving their range of hop-forward ales, IPAs, and seasonal beers alongside pub food.",
+WH Smith Australia,Main Terminal,restaurant,,,Grab & Go,,,,,,,,,,,,"A retail and snack store offering packaged food, beverages, magazines, and travel essentials.",https://img.logo.dev/whsmith.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Airo Restaurant - ParkRoyal,Main Terminal,bar,,,"American, International",,,,,,11:30AM-9:30PM,,,,,,The restaurant at Melbourne ParkRoyal hotel serving Australian and international cuisine for hotel and airport guests.,
+Axil Coffee Roasters,Main Terminal,cafe,,,Café,,,,,,4:45AM-9PM,,,,,,A Melbourne specialty coffee roaster celebrated for producing some of Australia's finest single-origin espresso and pour-over coffees.,https://img.logo.dev/axilcoffee.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Bà Xã,Main Terminal,restaurant,,,"Vietnamese, Asian, Pan-Asian",,,,,,6AM-12AM,,,,,,"A Vietnamese restaurant serving traditional Vietnamese dishes including pho, banh mi, and other comfort food staples.",
+Bar Pulpo by Movida,Main Terminal,bar,,,"Spanish, European",,,,,,6AM-11:30PM,,,,,,"A tapas bar from Melbourne's beloved Spanish restaurant MoVida, serving Spanish pintxos, wine, and Iberian bar snacks.",
+Boccata Restaurant and Wine Bar,Main Terminal,restaurant,,,"Bar, Italian",,,,,,"5AM-9:30AM, 12PM-11PM, 5PM-10PM",,,,,,"An Italian-inspired restaurant and wine bar serving antipasti, pasta, and Italian wines in a relaxed setting.",
+Boost Juice,Main Terminal,restaurant,,,Healthy,,,,,,,,,,,,"Boost Juice is Australia's largest juice and smoothie bar chain, blending fresh fruits, vegetables, and natural boosters into health-focused drinks and snacks.",https://img.logo.dev/boostjuice.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Bridge Road Brewers,Main Terminal,cafe,,,Bar,,,,,,6AM-9PM,,,,,,"A Victorian craft brewery from Beechworth, serving their award-winning ales and seasonal beers alongside simple pub food.",https://img.logo.dev/bridgeroadbrewers.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Cafe Sol,Main Terminal,cafe,,,Café,,,,,,2:30AM-10:30PM,,,,,,"A casual Australian cafe serving Melbourne-style espresso, sandwiches, salads, and freshly baked goods.",
+Coffee Capital,Main Terminal,cafe,,,Café,,,,,,5AM-10PM,,,,,,"A specialty coffee bar celebrating Melbourne's world-famous coffee culture, serving carefully crafted espresso drinks.",
+Croissant Lab,Main Terminal,cafe,,,"Bakery, French, European",,,,,,4:30AM-12PM,,,,,,An artisan croissant bakery creating technically perfect laminated pastries in classic butter and creative seasonal flavors.,
+Daniel's Donuts,Main Terminal,cafe,,,"Desserts, Bakery",,,,,,4:30AM-10:30PM,,,,,,A Melbourne cult doughnut brand serving freshly fried ring doughnuts glazed and filled in classic and creative flavors.,https://img.logo.dev/danielsdonuts.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Dumpling Co,Main Terminal,restaurant,,,"Chinese, Asian",,,,,,5AM-10PM,,,,,,"A Chinese dumpling restaurant serving freshly made dumplings, dim sum, and Chinese noodle dishes.",
+EARL Canteen,Main Terminal,cafe,,,"Sandwiches & Deli, Healthy",,,,,,5:30AM-8:30PM,,,,,,A Melbourne sandwich and salad bar known for carefully assembled sandwiches with quality ingredients and fresh daily fillings.,https://img.logo.dev/earlcanteen.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Flat Chat Espresso & Bar,Main Terminal,cafe,,,Café,,,,,,6AM-5:30PM,,,,,,"A busy Melbourne-style espresso bar serving flat whites, piccolo lattes, and other Australian coffee orders alongside bar snacks.",
+Go! Espresso and Bar,Main Terminal,cafe,,,Café,,,,,,6:30AM-8:30PM,,,,,,"A quick espresso and drinks bar offering Melbourne-style coffees, juices, and light snacks.",
+Gusto Pasta Bar,Main Terminal,fast_food,,,Italian,,,,,,4AM-9PM,,,,,,Gusto Pasta Bar is a fast-casual pasta bar concept offering freshly made pasta dishes with a range of sauces and toppings.,
+Hanna's Cafe,Main Terminal,restaurant,,,Café,,,,,,6AM-5:30PM,,,,,,"A casual Australian cafe serving breakfast dishes, sandwiches, and Melbourne-style coffee drinks.",https://img.logo.dev/hannascafe.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Hudsons Coffee,Main Terminal,cafe,,,Café,,,,,,OPEN 24 HOURS,,,,,,"Hudsons Coffee is an Australian coffee chain with a strong airport presence, serving specialty coffees and food in a casual café setting.",https://img.logo.dev/hudsonscoffee.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Hungry Jack's,Main Terminal,fast_food,,,Fast Food,,,,,,,,,,,,"Hungry Jack's is an Australian fast food chain and the local Burger King franchise, known for its flame-grilled Whopper and Australian-exclusive menu items.",https://img.logo.dev/hungryjacks.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Icons Victoria,Main Terminal,fast_food,,,American,,,,,,4:30AM-9:30PM,,,,,,"A showcase of Victorian produce and food culture, serving dishes made with iconic Victorian ingredients alongside local wines and beers.",
+Little Lygon,Main Terminal,cafe,,,Italian,,,,,,6AM-8PM,,,,,,"A cafe and deli inspired by Melbourne's famous Italian district Lygon Street, serving espresso, pasta, and Italian-Australian food.",
+Little Melbourne,Main Terminal,fast_food,,,Café,,,,,,5AM-10PM,,,,,,"A casual concept celebrating Melbourne's vibrant cafe culture, serving Melbourne-style coffee, sandwiches, and brunch items.",https://img.logo.dev/littlemelbourne.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Liv Eat Healthy Eating,Main Terminal,fast_food,,,Healthy,,,,,,4:30AM-9:30PM,,,,,,"A healthy eating concept serving salads, protein bowls, and fresh nutritious meals with Australian produce.",https://img.logo.dev/liveat.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+McDonald's,Main Terminal,fast_food,,,Fast Food,,,,,,,,,,,,"McDonald's is the world's largest fast food chain, serving billions of customers daily with iconic menu items including the Big Mac, McChicken, and golden french fries.",https://img.logo.dev/mcdonalds.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Mezze Za Za,Main Terminal,restaurant,,,"Mediterranean, European",,,,,,7AM-8:30PM,,,,,,"A Mediterranean-inspired restaurant serving mezze plates, falafel, hummus, and Middle Eastern dishes.",
+Nathan Rd Asian Kitchen,Main Terminal,fast_food,,,Asian,,,,,,6AM-9PM,,,,,,"An Asian kitchen serving a broad selection of Chinese, Thai, and Southeast Asian dishes inspired by Hong Kong's famous Nathan Road.",
+Noodles XO,Main Terminal,restaurant,,,Asian,,,,,,5AM-10PM,,,,,,"An Asian noodle restaurant serving a diverse menu of ramen, laksa, and wok-fried noodle dishes.",
+Nooodles,Main Terminal,restaurant,,,Asian,,,,,,,,,,,,Nooodles is a fast-casual noodle restaurant concept serving pan-Asian noodle dishes in airport and transit locations.,
+Pizza Al Taglio,Main Terminal,restaurant,,,"Pizza, Italian",,,,,,12PM-8:30PM,,,,,,An Italian pizza-by-the-slice bar serving Roman-style al taglio pizza with a variety of rotating seasonal toppings.,
+Quikshots,Main Terminal,cafe,,,Café,,,,,,4:30AM-8:30PM,,,,,,A quick espresso and coffee kiosk serving fast Melbourne-style espresso shots and simple cafe beverages.,
+Roll'd Vietnamese,Main Terminal,restaurant,,,"Vietnamese, Asian, Pan-Asian",,,,,,6AM-9PM,,,,,,"An Australian Vietnamese food chain serving fresh rice paper rolls, pho, banh mi, and other Vietnamese dishes.",
+Rustica,Main Terminal,cafe,,,Bakery,,,,,,4:30AM-7:30PM,,,,,,"A Melbourne Italian-Australian bakery and cafe known for artisan sourdough loaves, pastries, and quality espresso.",
+Salsas Fresh Mex,Main Terminal,fast_food,,,"Mexican, Latin American",,,,,,5:30AM-9PM,,,,,,"An Australian-Mexican fast food chain serving burritos, tacos, nachos, and quesadillas with fresh ingredients.",https://img.logo.dev/salsas.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Schnitz,Main Terminal,fast_food,,,Bakery,,,,,,5AM-10PM,,,,,,"An Australian schnitzel chain serving crumbed chicken and pork schnitzels in wraps, salads, or plates.",
+Small Holdings,Main Terminal,fast_food,,,American,,,,,,6AM-3PM,,,,,,A modern Australian cafe and restaurant serving farm-to-table Victorian produce-driven dishes and specialty coffee.,
+Soul Origin,Main Terminal,fast_food,,,Café,,,,,,4AM-10PM,,,,,,"Soul Origin is an Australian café franchise offering freshly made sandwiches, salads, and specialty coffees at competitive prices.",https://img.logo.dev/soulorigin.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+ST. ALi,Main Terminal,fast_food,,,Café,,,,,,,,,,,,"A pioneering Melbourne specialty coffee brand that helped define Australian third-wave coffee culture, serving exceptional espresso and brunch.",https://img.logo.dev/stali.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Subway,Main Terminal,fast_food,,,Sandwiches & Deli,,,,,,4AM-11PM,,,,,,"Subway is the world's largest submarine sandwich chain, offering customisable subs, wraps, and salads made to order on freshly baked bread with a wide choice of toppings.",https://img.logo.dev/subway.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Sushi Jiro,Main Terminal,fast_food,,,"Japanese, Asian",,,,,,,,,,,,"A Japanese sushi restaurant serving fresh nigiri, maki rolls, and sashimi in a clean Japanese dining setting.",https://img.logo.dev/sushijiro.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Sushi Sushi,Main Terminal,fast_food,,,"Japanese, Asian",,,,,,5AM-8PM,,,,,,"Sushi Sushi is an Australian sushi chain offering freshly made sushi rolls, hand rolls, and Japanese snacks in a fast-casual format.",
+The Cellar Bar & Bistro,Main Terminal,cafe,,,Bar,,,,,,6AM-9PM,,,,,,A wine bar and bistro serving an excellent selection of Australian wines alongside bistro-style food.,
+The Chocolate Box,Main Terminal,restaurant,,,Desserts,,,,,,,,,,,,"An artisan chocolate boutique serving high-quality Belgian and Australian chocolates, truffles, and sweet confections.",https://img.logo.dev/chocolatebox.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+The Local Taphouse,Main Terminal,fast_food,,,Bar,,,,,,6:30AM-8:30PM,,,,,,An Australian craft beer taphouse serving rotating taps of locally brewed Australian craft beers alongside gastropub food.,
+The Pelican,Main Terminal,bar,,,Bar,,,,,,,,,,,,A casual Australian bar and kitchen serving Australian-themed drinks and comfort food in a coastal-inspired setting.,
+Think Asia,Main Terminal,fast_food,,,"Asian, Pan-Asian",,,,,,8AM-9:30PM,,,,,,"A pan-Asian restaurant serving a broad menu of Chinese, Japanese, Thai, and Southeast Asian dishes.",
+Two Johns Taphouse,Main Terminal,bar,,,Bar,,,,,,,,,,,,An Australian craft beer taphouse serving a rotating selection of Australian craft ales and lagers.,https://img.logo.dev/twojohnstaphouse.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Urban Provodore,Main Terminal,fast_food,,,Sandwiches & Deli,,,,,,6AM-10PM,,,,,,"An urban artisan food store and cafe serving quality deli items, artisan cheeses, house-made dishes, and specialty coffee.",
+Veneziano Coffee Roasters,Main Terminal,cafe,,,Café,,,,,,4:30AM-9PM,,,,,,"An acclaimed Australian specialty coffee roaster from Melbourne, serving precision-crafted espresso and filter coffee drinks.",https://img.logo.dev/venezianocoffee.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Wine Selectors,Main Terminal,restaurant,,,Bar,,,,,,9:30AM-9PM,,,,,,An Australian wine boutique and tasting bar showcasing Australian wines from premium wine regions with guided wine selection.,https://img.logo.dev/wineselectors.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png

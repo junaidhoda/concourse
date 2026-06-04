@@ -1,12 +1,12 @@
-name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
-Barista,Main Terminal,restaurant,Airside,,,,,Departure Transit Area,94-112 252 714,,24 hours,,,,,
-Burger King,Main Terminal,restaurant,Airside,,,,,Departure Transit Area,94-112 265 259,,24 hours,,,,,
-Café Nescafe,Main Terminal,restaurant,Airside,,,,,Departure Transit Area,94114230530,,24 hours,,,,,
-Coffee Bean,Main Terminal,restaurant,Airside,,,,,Departure Transit Area,,,24 hours,,,,,
-Ex Tea,Main Terminal,restaurant,Landside,,,,,"Arrival Lobby, Arrival Walkway, Arrival Outer porch area",+94112869986,,24 hours,,,,,
-Ex Tea,Main Terminal,restaurant,Airside,,,,,Pier Area,94-114 363 275,,24 hours,,,,,
-Palm Strip Bar & Restaurant,Main Terminal,restaurant,Airside,,,,,Departure Transit Area,94-112 264 984,,24 hours,,,,,
-Pizza Hut & Delifrance,Main Terminal,restaurant,Airside,,,,,Departure Transit Area,94-112 255 011,,24 hours,,,,,
-Relax Inn,Main Terminal,restaurant,Airside,,,,,Departure Transit Area,94-112 251 570,,24 hours,,,,,
-S.V.H. SNACKS,Main Terminal,restaurant,Airside,,,,,Departure Public Concourse & Walkway,94-715 902 060,,24 hours,,,,,
-Segafredo Caffe,Main Terminal,restaurant,Airside,,,,,Departure Transit Area,+94112260480,,24 hours,,,,,
+name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type,description,logo_url
+BARista,Main Terminal,restaurant,Airside,,Café,,,Departure Transit Area,94-112 252 714,,24 hours,,,,,,"BARista is a coffee bar concept with a bar-style setting, serving espresso drinks, specialty coffees, and light bites in airports and urban locations.",https://img.logo.dev/barista.co.in?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Burger King,Main Terminal,restaurant,Airside,,Fast Food,,,Departure Transit Area,94-112 265 259,,24 hours,,,,,,Burger King is a global American fast food chain best known for the flame-grilled Whopper burger and its 'Have It Your Way' customisation philosophy.,https://img.logo.dev/bk.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Café Nescafe,Main Terminal,restaurant,Airside,,Café,,,Departure Transit Area,94114230530,,24 hours,,,,,,A Nescafe-branded coffee kiosk serving instant and barista-style coffee drinks alongside light snacks.,
+The Coffee Bean & Tea Leaf,Main Terminal,restaurant,Airside,,Café,,,Departure Transit Area,,,24 hours,,,,,,"The Coffee Bean & Tea Leaf is an American specialty coffee and tea chain founded in Los Angeles, known for its Original Ice Blended drinks and wide tea selection.",https://img.logo.dev/coffeebean.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Ex Tea,Main Terminal,restaurant,Landside,,Café,,,"Arrival Lobby, Arrival Walkway, Arrival Outer porch area",+94112869986,,24 hours,,,,,,"Ex Tea is a bubble tea and specialty tea café concept offering milk teas, fruit teas, and customisable tea drinks.",
+Ex Tea,Main Terminal,restaurant,Airside,,Café,,,Pier Area,94-114 363 275,,24 hours,,,,,,"Ex Tea is a bubble tea and specialty tea café concept offering milk teas, fruit teas, and customisable tea drinks.",
+Palm Strip Bar & Restaurant,Main Terminal,restaurant,Airside,,"Indian & South Asian, International",,,Departure Transit Area,94-112 264 984,,24 hours,,,,,,A full-service bar and restaurant serving Sri Lankan and international dishes alongside cocktails and local beers.,
+Pizza Hut,Main Terminal,restaurant,Airside,,Pizza,,,Departure Transit Area,94-112 255 011,,24 hours,,,,,,"Pizza Hut is one of the world's largest pizza restaurant chains, serving pan pizzas, stuffed crusts, pasta, and sides across dine-in, delivery, and carry-out formats.",https://img.logo.dev/pizzahut.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Relax Inn,Main Terminal,restaurant,Airside,,Indian & South Asian,,,Departure Transit Area,94-112 251 570,,24 hours,,,,,,"A casual dining spot offering Sri Lankan and Asian snacks, rice-based meals, and beverages for travelers.",
+S.V.H. SNACKS,Main Terminal,restaurant,Airside,,"Indian & South Asian, Grab & Go",,,Departure Public Concourse & Walkway,94-715 902 060,,24 hours,,,,,,A snack counter offering quick bites and light Sri Lankan snacks for on-the-go travelers.,
+Segafredo,Main Terminal,restaurant,Airside,,"Café, Italian",,,Departure Transit Area,+94112260480,,24 hours,,,,,,"Segafredo Zanetti is an Italian coffee brand and café chain offering authentic Italian espresso culture, from creamy cappuccinos to traditional affogatos, worldwide.",https://img.logo.dev/segafredo.it?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png

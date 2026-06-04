@@ -1,55 +1,55 @@
-name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
-2 Cafe,Terminal 1,cafe,Airside,L8,,,,,,,05:00-23:00,,,,,
-A-1 Bakery Express,Terminal 1,bakery,Airside,,,,,,,,,,,,,
-%Arabica,Terminal 1,cafe,Airside,L6,coffee_shop,,,,,,00:00-24:00,,,,,
-Bari-Uma (霸嗎拉麵),Terminal 1,restaurant,Airside,L7,ramen,,,,,,00:00-24:00,,,,,
-BOWL,Terminal 1,restaurant,Landside,L5,,,,,,,07:00-23:00,,,,,
-Burger King,Terminal 1,fast_food,Airside,L6,burger,,,,,,06:30-23:00,,,Burger King,,
-can.teen,Terminal 1,restaurant,Airside,L7,,,,,,,05:30-23:00,,,,,
-Cha Chaan by KAM FAT CAFÉ 1986,Terminal 1,restaurant,Landside,L5,hong_kong,,,,,,07:00-23:00,,,,,
-Chagee,Terminal 1,cafe,Airside,L6,tea,,,,,,07:00-23:00,,,,,
-Chi Cha San Chen,Terminal 1,cafe,Airside,L6,tea,,,,,,07:00-23:00,,,,,
-Crystal Jade La Mian Xiao Long Bao,Terminal 1,restaurant,Landside,L5,chinese,,,,,,07:00-23:30,,,,,
-Cupping Room Coffee Roasters,Terminal 1,cafe,Airside,L7,coffee_shop,,,,,,06:00-23:00,,,,,
-Duddell's,Terminal 1,restaurant,Airside,L7,chinese,,,,,,,,,,,
-"Emmer Pizza, Bar & Cafe",Terminal 1,restaurant,Airside,L7,pizza,,,,,,07:00-01:30,,,,,
-FINEPRINT,Terminal 1,cafe,Landside,L5,coffee_shop,,,,,,06:00-23:00,,,,,
-GELATO COMBO,Terminal 1,cafe,Airside,L6,ice_cream,,,,,,07:00-23:00,,,,,
-GODIVA Café,Terminal 1,cafe,Airside,L7,,,,,,,07:00-24:00,,,Godiva,,
-Gordon Ramsay Plane Food To Go,Terminal 1,restaurant,Airside,L7,,,,,,,00:00-24:00,,,,,
-Gourmet Focus Group,Terminal 1,restaurant,Airside,L6,,,,,,,07:00-21:00,,,,,
-hana-musubi,Terminal 1,restaurant,Landside,L5,japanese,,,,,,07:00-23:00,,,,,
-Ho Fan Ho Sung,Terminal 1,restaurant,Landside,L3,chinese,,,,,,07:00-23:00,,,,,
-Ho Hung Kee,Terminal 1,restaurant,Landside,L5,chinese,,,,,,07:00-23:30,,,,,
-Hung's Delicacies,Terminal 1,restaurant,Landside,L5,chinese,,,,,,00:00-24:00,,,,,
-HUNG FOOK TONG,Terminal 1,cafe,Airside,L7,,,,,,,00:00-24:00,,,,,
-INTERVALS Sky Bar & Restaurant,Terminal 1,restaurant,Airside,L9,,,,,,,07:00-02:00,,,,,
-Jardin de Jade,Terminal 1,restaurant,Airside,L7,chinese,,,,,,07:00-23:30,,,,,
-Jollibee,Terminal 1,fast_food,Airside,L7,,,,,,,00:00-24:00,,,Jollibee,,
-Joy Full House,Terminal 1,restaurant,Airside,L7,chinese,,,,,,00:00-24:00,,,,,
-KING BAKERY,Terminal 1,bakery,Airside,L6,,,,,,,06:00-00:00,,,,,
-Konjiki Hototogisu,Terminal 1,restaurant,Landside,L5,ramen,,,,,,07:00-23:00,,,,,
-Lady M New York,Terminal 1,cafe,Airside,L7,,,,,,,07:00-23:00,,,Lady M,,
-Lime Garden (Sky)+,Terminal 1,restaurant,Airside,L8,,,,,,,06:30-00:30,,,,,
-Luckin Coffee,Terminal 1,cafe,Landside,L3,coffee_shop,,,,,,07:00-23:00,,,Luckin Coffee,,
-Master Hung,Terminal 1,restaurant,Airside,L6,chinese,,,,,,07:00-21:00,,,,,
-McDonald's & McCafé,Terminal 1,fast_food,Airside,,burger,,,,,,,,,McDonald's,,
-Men Wah Bing Teng,Terminal 1,cafe,Airside,L6,hong_kong,,,,,,00:00-24:00,,,,,
-Milk Cafe,Terminal 1,cafe,Airside,L7,,,,,,,00:00-24:00,,,,,
-Nap Tea,Terminal 1,cafe,Airside,L7,tea,,,,,,06:00-23:00,,,,,
-Nippon Ramen,Terminal 1,restaurant,Airside,L6,ramen,,,,,,07:00-23:00,,,,,
-nodi,Midfield Concourse,cafe,Airside,L6,,,,,,,07:00-23:00,,,,,
-nodi | Moleskine,Terminal 1,cafe,Airside,L6,,,,,,,07:00-23:00,,,,,
-NUTTEA,Terminal 1,cafe,Landside,L5,tea,,,,,,07:00-23:00,,,,,
-OldTown White Coffee,Terminal 1,cafe,Airside,L6,coffee_shop,,,,,,07:00-23:00,,,,,
-One Minute Gourmet,Terminal 1,fast_food,Airside,,,,,,,,,,,,,
-Orchid Padaria Café Express,Terminal 1,cafe,Landside,L3,,,,,,,07:00-23:00,,,,,
-Popeyes Louisiana Kitchen,Terminal 1,fast_food,Airside,L6,chicken,,,,,,07:00-21:00,,,Popeyes,,
-THE ALCHEMIST CAFE,Terminal 1,cafe,Landside,L5,,,,,,,06:00-24:00,,,,,
-The Forest Bakery,Terminal 1,bakery,Airside,L7,,,,,,,07:00-23:00,,,,,
-Tong Kee Bao Dim,Terminal 1,restaurant,Landside,L3,dim_sum,,,,,,07:00-23:00,,,,,
-Ufufu Cafe,Terminal 1,cafe,Airside,L7,japanese,,,,,,00:00-24:00,,,,,
-Urban Coffee Roaster,Terminal 1,cafe,Airside,L6,coffee_shop,,,,,,06:00-23:00,,,,,
-Yukimura,Terminal 1,restaurant,Airside,L7,japanese,,,,,,00:00-24:00,,,,,
-Yung Kee,Terminal 1,restaurant,Airside,L6,chinese,,,,,,12:00-22:00,,,,,
-Ajisen Ramen,Midfield Concourse,restaurant,Airside,L6,ramen,,,,,,07:00-23:00,,,Ajisen Ramen,,
+name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type,description,logo_url
+2 Cafe,Terminal 1,cafe,Airside,L8,"Chinese, Asian, Café",,,,,,05:00-23:00,,,,,,"A casual Hong Kong-style cafe serving local coffee, milk tea, and simple Chinese and Western light meals.",
+A-1 Bakery Express,Terminal 1,bakery,Airside,,"Bakery, Chinese, Asian",,,,,,,,,,,,"A Hong Kong bakery express outlet serving fresh baked buns, cakes, and pastries in the local cha chaan style.",
+Arabica,Terminal 1,cafe,Airside,L6,Café,,,,,,00:00-24:00,,,,,,% Arabica is a Japanese specialty coffee brand celebrated for its minimalist aesthetic and high-quality single-origin pour-overs and espresso drinks served globally.,https://img.logo.dev/arabica.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Bari-Uma (霸嗎拉麵),Terminal 1,restaurant,Airside,L7,"Japanese, Asian",,,,,,00:00-24:00,,,,,,A Japanese ramen restaurant from Osaka serving rich tonkotsu and soy-based ramen with pork belly and soft-boiled egg.,
+BOWL,Terminal 1,restaurant,Landside,L5,Healthy,,,,,,07:00-23:00,,,,,,"A healthy bowl concept serving grain bowls, salad bowls, and Asian-inspired rice bowls with fresh ingredients.",
+Burger King,Terminal 1,fast_food,Airside,L6,Fast Food,,,,,,06:30-23:00,,,Burger King,,,Burger King is a global American fast food chain best known for the flame-grilled Whopper burger and its 'Have It Your Way' customisation philosophy.,https://img.logo.dev/bk.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+can.teen,Terminal 1,restaurant,Airside,L7,International,,,,,,05:30-23:00,,,,,,A modern canteen concept offering a mix of Asian and Western comfort food in a self-service cafeteria setting.,
+Cha Chaan by KAM FAT CAFÉ 1986,Terminal 1,restaurant,Landside,L5,"Chinese, Asian, Café",,,,,,07:00-23:00,,,,,,"A traditional Hong Kong cha chaan teng (milk tea cafe) with roots since 1986, serving Hong Kong milk tea, toast with butter and jam, congee, and wonton noodles.",
+CHAGEE,Terminal 1,cafe,Airside,L6,"Chinese, Asian, Café",,,,,,07:00-23:00,,,,,,"CHAGEE is a premium Chinese tea brand offering freshly brewed teas with a modern, clean aesthetic and a focus on high-quality tea leaves and ingredients.",https://img.logo.dev/chagee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+CHICHA San Chen,Terminal 1,cafe,Airside,L6,"Taiwanese, Asian, Café",,,,,,07:00-23:00,,,,,,"CHICHA San Chen is a Taiwanese premium tea chain known for its high-quality, traditionally crafted bubble teas and specially brewed oolong and jasmine teas.",https://img.logo.dev/chichasanchen.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Crystal Jade,Terminal 1,restaurant,Landside,L5,"Chinese, Asian",,,,,,07:00-23:30,,,,,,"Crystal Jade is a renowned Singaporean restaurant group offering authentic Chinese cuisine across multiple dining concepts, from dim sum to Shanghainese and Cantonese fare.",https://img.logo.dev/crystaljade.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Cupping Room Coffee Roasters,Terminal 1,cafe,Airside,L7,Café,,,,,,06:00-23:00,,,,,,"A Hong Kong specialty coffee roaster serving carefully sourced single-origin espresso drinks, pour-overs, and light pastries.",https://img.logo.dev/cuppingroom.hk?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Duddell's,Terminal 1,restaurant,Airside,L7,"Chinese, Asian",,,,,,,,,,,,"A refined Cantonese restaurant serving elegant dim sum, roasted meats, and classic Hong Kong-style Chinese dishes.",https://img.logo.dev/duddells.co?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+"Emmer Pizza, Bar & Cafe",Terminal 1,restaurant,Airside,L7,"Pizza, Italian",,,,,,07:00-01:30,,,,,,A pizza and bar concept serving Neapolitan-style wood-fired pizzas alongside cocktails and light cafe snacks.,
+FINEPRINT,Terminal 1,cafe,Landside,L5,Café,,,,,,06:00-23:00,,,,,,A Hong Kong specialty coffee shop known for precision brewing and single-origin espresso drinks.,https://img.logo.dev/fineprint.co.uk?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+GELATO COMBO,Terminal 1,cafe,Airside,L6,"Italian, Desserts",,,,,,07:00-23:00,,,,,,An artisan gelato shop serving Italian-style ice cream in classic and Asian-inspired flavors.,
+Godiva,Terminal 1,cafe,Airside,L7,"Café, Desserts",,,,,,07:00-24:00,,,Godiva,,,"Godiva is a Belgian luxury chocolate brand with global cafés and boutiques offering premium pralines, truffles, hot chocolate, and indulgent dessert-inspired drinks.",https://img.logo.dev/godiva.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Gordon Ramsay Plane Food To Go,Terminal 1,restaurant,Airside,L7,Grab & Go,,,,,,00:00-24:00,,,,,,"A grab-and-go counter from Gordon Ramsay's Plane Food concept, offering pre-packaged sandwiches, salads, and gourmet snacks.",
+Gourmet Focus Group,Terminal 1,restaurant,Airside,L6,Grab & Go,,,,,,07:00-21:00,,,,,,A premium food court concept featuring multiple gourmet food stalls serving Hong Kong and international cuisine.,
+hana-musubi,Terminal 1,restaurant,Landside,L5,"Japanese, Asian",,,,,,07:00-23:00,,,,,,A Japanese onigiri and bento shop serving freshly made rice balls with various fillings and Japanese set meals.,
+Ho Fan Ho Sung,Terminal 1,restaurant,Landside,L3,"Chinese, Asian",,,,,,07:00-23:00,,,,,,A Cantonese noodle restaurant serving Hong Kong-style wonton noodles and rice noodle dishes.,
+Ho Hung Kee,Terminal 1,restaurant,Landside,L5,"Chinese, Asian",,,,,,07:00-23:30,,,,,,A Hong Kong wonton noodle institution known for their springy egg noodles and premium shrimp wonton soup.,
+Hung's Delicacies,Terminal 1,restaurant,Landside,L5,"Chinese, Asian, Steak, Grill Chicken & BBQ",,,,,,00:00-24:00,,,,,,"A Chinese roasted meat restaurant serving Cantonese roast duck, char siu (BBQ pork), and roasted meats over rice.",
+HUNG FOOK TONG,Terminal 1,cafe,Airside,L7,"Chinese, Asian, Café",,,,,,00:00-24:00,,,,,,"A Hong Kong herbal tea and health drink chain serving traditional Chinese herbal teas, soups, and healthy beverages.",https://img.logo.dev/hungfooktong.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+INTERVALS Sky Bar & Restaurant,Terminal 1,restaurant,Airside,L9,"Bar, International",,,,,,07:00-02:00,,,,,,"A sky-level bar and restaurant serving cocktails, wine, and international dishes with views of the terminal.",
+Jardin de Jade,Terminal 1,restaurant,Airside,L7,"Chinese, Asian",,,,,,07:00-23:30,,,,,,"A refined Shanghainese restaurant serving classic Shanghai dishes including xiao long bao, pan-fried dumplings, and slow-braised pork belly.",https://img.logo.dev/jardindejade.fr?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Jollibee,Terminal 1,fast_food,Airside,L7,"Filipino, Asian, Fast Food",,,,,,00:00-24:00,,,Jollibee,,,"Jollibee is the Philippines' most beloved fast food chain, famous for its Chickenjoy fried chicken, Jolly Spaghetti, and Yumburger, with a passionate global fanbase.",https://img.logo.dev/jollibee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Joy Full House,Terminal 1,restaurant,Airside,L7,"Chinese, Asian",,,,,,00:00-24:00,,,,,,"A Cantonese restaurant serving a broad menu of Hong Kong comfort food including congee, noodles, and roasted meats.",https://img.logo.dev/joyfullhouse.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+KING BAKERY,Terminal 1,bakery,Airside,L6,"Bakery, Chinese, Asian",,,,,,06:00-00:00,,,,,,"A Hong Kong-style bakery serving fresh baked buns, cakes, and pastries including classic Hong Kong pineapple buns.",https://img.logo.dev/kingbakery.com.hk?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Konjiki Hototogisu,Terminal 1,restaurant,Landside,L5,"Japanese, Asian",,,,,,07:00-23:00,,,,,,A Tokyo-origin Michelin-starred ramen restaurant known for its delicate white truffle and clam-based clear broth ramen.,
+Lady M New York,Terminal 1,cafe,Airside,L7,"Bakery, French, European",,,,,,07:00-23:00,,,Lady M,,,A New York patisserie famous for its signature mille crêpes cakes — stacks of thin crepes layered with light cream — and elegant French-inspired desserts.,
+Lime Garden (Sky)+,Terminal 1,restaurant,Airside,L8,"Bar, International",,,,,,06:30-00:30,,,,,,"A bar and cafe serving cocktails, Asian-inspired light meals, and beverages in an open sky lounge setting.",
+Luckin Coffee,Terminal 1,cafe,Landside,L3,Café,,,,,,07:00-23:00,,,Luckin Coffee,,,"Luckin Coffee is a Chinese fast-growing coffee chain known for its app-based mobile ordering system, convenient pick-up locations, and affordable specialty coffee drinks.",https://img.logo.dev/luckincoffee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Master Hung,Terminal 1,restaurant,Airside,L6,"Chinese, Asian",,,,,,07:00-21:00,,,,,,A Cantonese restaurant serving roasted meats and noodles in Hong Kong style.,
+McDonald's,Terminal 1,fast_food,Airside,,Fast Food,,,,,,,,,McDonald's,,,"McDonald's is the world's largest fast food chain, serving billions of customers daily with iconic menu items including the Big Mac, McChicken, and golden french fries.",https://img.logo.dev/mcdonalds.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Men Wah Bing Teng,Terminal 1,cafe,Airside,L6,"Chinese, Asian, Café",,,,,,00:00-24:00,,,,,,"A classic Hong Kong bing sutt (ice room) and cha chaan teng serving traditional Hong Kong snacks, milk tea, and cold desserts.",
+Milk Cafe,Terminal 1,cafe,Airside,L7,"Chinese, Asian, Café",,,,,,00:00-24:00,,,,,,"A cafe and dessert bar serving Hong Kong-style milk teas, puddings, and light cafe items.",
+Nap Tea,Terminal 1,cafe,Airside,L7,Café,,,,,,06:00-23:00,,,,,,"A specialty tea bar serving premium Chinese teas, bubble teas, and tea-based beverages.",
+Nippon Ramen,Terminal 1,restaurant,Airside,L6,"Japanese, Asian",,,,,,07:00-23:00,,,,,,"A Japanese ramen restaurant serving classic tonkotsu, shoyu, and miso ramen varieties.",
+nodi,Midfield Concourse,cafe,Airside,L6,Café,,,,,,07:00-23:00,,,,,,"A modern cafe and gathering space serving coffee, light meals, and snacks in a relaxed environment.",
+nodi | Moleskine,Terminal 1,cafe,Airside,L6,Café,,,,,,07:00-23:00,,,,,,"A co-branded cafe and stationery concept from nodi and Moleskine, serving specialty coffee and light snacks alongside notebooks and accessories.",
+NUTTEA,Terminal 1,cafe,Landside,L5,Café,,,,,,07:00-23:00,,,,,,A bubble tea and nut milk drink bar serving innovative Asian-style beverages with toppings.,https://img.logo.dev/nuttea.net?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+OldTown White Coffee,Terminal 1,cafe,Airside,L6,"Café, Malaysian, Asian, Pan-Asian",,,,,,07:00-23:00,,,,,,"OldTown White Coffee is a Malaysian café chain built around the heritage of Ipoh white coffee, serving traditional Malaysian beverages, toast, and Hainanese-style meals.",https://img.logo.dev/oldtown.com.my?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+One Minute Gourmet,Terminal 1,fast_food,Airside,,Fast Food,,,,,,,,,,,,"One Minute Gourmet is a quick-service food concept offering quality gourmet meals in minimal time, found in airports and transit hubs.",
+Orchid Padaria Café Express,Terminal 1,cafe,Landside,L3,"Bakery, European",,,,,,07:00-23:00,,,,,,"A Portuguese-inspired bakery cafe express serving pastéis de nata (egg tarts), baked goods, and espresso drinks.",
+Popeyes,Terminal 1,fast_food,Airside,L6,"Fast Food, Steak, Grill Chicken & BBQ",,,,,,07:00-21:00,,,Popeyes,,,"Popeyes is an American fast food chain founded in New Orleans, famous for its Louisiana-style Cajun-spiced fried chicken, buttermilk biscuits, and bold Cajun flavours.",https://img.logo.dev/popeyes.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+THE ALCHEMIST CAFE,Terminal 1,cafe,Landside,L5,Café,,,,,,06:00-24:00,,,,,,A specialty coffee and food concept serving experimentally crafted espresso drinks and light artisan bites.,https://img.logo.dev/thealchemist.cafe?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+The Forest Bakery,Terminal 1,bakery,Airside,L7,Bakery,,,,,,07:00-23:00,,,,,,"A nature-themed artisan bakery serving freshly baked breads, cakes, and pastries with quality local ingredients.",https://img.logo.dev/theforestbakery.co.uk?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Tong Kee Bao Dim,Terminal 1,restaurant,Landside,L3,"Chinese, Asian",,,,,,07:00-23:00,,,,,,"A Cantonese dim sum restaurant serving steamed baos, dumplings, and traditional Hong Kong dim sum items.",
+Ufufu Cafe,Terminal 1,cafe,Airside,L7,"Desserts, Japanese, Asian",,,,,,00:00-24:00,,,,,,"A Japanese soufflé pancake cafe from Japan serving fluffy, jiggly Japanese-style pancakes with various toppings and cream.",
+Urban Coffee Roaster,Terminal 1,cafe,Airside,L6,Café,,,,,,06:00-23:00,,,,,,"A specialty coffee roaster and cafe serving carefully roasted single-origin beans as espresso, cold brew, and filter coffee.",
+Yukimura,Terminal 1,restaurant,Airside,L7,"Japanese, Asian",,,,,,00:00-24:00,,,,,,"A Japanese restaurant serving sushi, sashimi, and Japanese set meals in a clean, minimalist setting.",
+Yung Kee,Terminal 1,restaurant,Airside,L6,"Chinese, Asian",,,,,,12:00-22:00,,,,,,"A legendary Hong Kong Cantonese institution famous for its roast goose, wonton noodles, and preserved eggs.",https://img.logo.dev/yungkee.com.hk?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+AJISEN RAMEN,Midfield Concourse,restaurant,Airside,L6,"Japanese, Asian",,,,,,07:00-23:00,,,Ajisen Ramen,,,"Ajisen Ramen is a Japanese ramen chain popular across Asia, known for its tonkotsu-based broth and Japanese noodle dishes served at accessible prices.",https://img.logo.dev/ajisen.com.sg?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png

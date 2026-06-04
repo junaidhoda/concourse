@@ -1,10 +1,10 @@
-name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
-Chicken Republic,Main Terminal,fast_food,,,chicken,,,,,,,,,Chicken Republic,,
-KFC,Main Terminal,fast_food,,,chicken,,,,,,,,,KFC,,
-Burger King,Main Terminal,fast_food,,,burger,,,,,,,,,Burger King,,
-Scoop'd,Main Terminal,cafe,,,ice_cream,,,,,,,,,,,
-Indomie Cafe,Main Terminal,cafe,,,,,,,,,,,,,,
-Eric Kayser,Main Terminal,bakery,,,,,,,,,,,,Eric Kayser,,
-Dodo Pizza,Main Terminal,restaurant,,,pizza,,,,,,,,,,,
-So Fresh,Main Terminal,restaurant,,,salad,,,,,,,,,,,
-Toasties,Main Terminal,cafe,,,,,,,,,,,,,,
+name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type,description,logo_url
+Chicken Republic,Main Terminal,fast_food,,,"Fast Food, Steak, Grill Chicken & BBQ",,,,,,,,,Chicken Republic,,,"Chicken Republic is a West African fast food chain headquartered in Nigeria, serving fried chicken, burgers, and rice dishes tailored to local West African tastes.",https://img.logo.dev/chickenrepublic.ng?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+KFC,Main Terminal,fast_food,,,"Fast Food, Steak, Grill Chicken & BBQ",,,,,,,,,KFC,,,"KFC (Kentucky Fried Chicken) is a global fast food chain founded by Colonel Harland Sanders, famous for its original recipe fried chicken seasoned with 11 herbs and spices.",https://img.logo.dev/kfc.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Burger King,Main Terminal,fast_food,,,Fast Food,,,,,,,,,Burger King,,,Burger King is a global American fast food chain best known for the flame-grilled Whopper burger and its 'Have It Your Way' customisation philosophy.,https://img.logo.dev/bk.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Scoop'd,Main Terminal,cafe,,,Desserts,,,,,,,,,,,,An artisan ice cream shop serving handcrafted ice cream in various classic and tropical Nigerian-inspired flavors.,
+Indomie Café,Main Terminal,cafe,,,"Asian, Pan-Asian",,,,,,,,,,,,"Indomie Café is a restaurant concept from the iconic Indonesian instant noodle brand, serving creative noodle dishes and sides inspired by the beloved Indomie range.",https://img.logo.dev/indomie.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Eric Kayser,Main Terminal,bakery,,,"Bakery, French, European",,,,,,,,,Eric Kayser,,,"Maison Eric Kayser is a French artisan bakery by master baker Éric Kayser, renowned for its organic sourdough breads, croissants, and French pastries worldwide.",https://img.logo.dev/maison-kayser.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Dodo Pizza,Main Terminal,restaurant,,,Pizza,,,,,,,,,,,,A Nigerian-Russian pizza chain serving classic and creative pizzas with quality toppings.,https://img.logo.dev/dodopizza.ru?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+So Fresh,Main Terminal,restaurant,,,Healthy,,,,,,,,,,,,"A Nigerian healthy food chain serving fresh salads, smoothies, and wholesome Nigerian and international light meals.",
+Toasties,Main Terminal,cafe,,,"Sandwiches & Deli, Grab & Go",,,,,,,,,,,,"A quick-service snack bar serving toasted sandwiches, light Nigerian snacks, and beverages.",

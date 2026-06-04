@@ -1,77 +1,77 @@
-name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
-1915 Lanzhou Beef Noodles,T1 International,restaurant,Landside,Before Security,chinese,,,,,,,,,,,
-Atrium Dine,T1 International,restaurant,Airside,After Security,,,,,,,,,,,,
-BARista,T1 International,cafe,Airside,Near Gate 31,,,,,,,,,,,,
-Betty's Burgers,T1 International,fast_food,Landside,Food Court,burger,,,,,,,,,,,
-Caffettino Espresso,T1 International,cafe,Landside,Near Check In Gate H,,,,,,,,,,,,
-Campos Coffee,T1 International,cafe,Airside,Near Gate 24,coffee_shop,,,,,,,,,,,
-EARL Dine,T1 International,cafe,Landside,Before Security,,,,,,,,,,,,
-East x West Dine,T1 International,restaurant,Landside,Near Check In Counter H,,,,,,,,,,,,
-Grand Cru,T1 International,cafe,Landside,Food Court,,,,,,,,,,,,
-Gusto Pasta Bar,T1 International,restaurant,Landside,Food Court,pasta,,,,,,,,,,,
-Heineken House,T1 International,cafe,Airside,Near Gate 10,,,,,,,,,,,,
-Hikari Ramen & Donburi,T1 International,restaurant,Airside,Near Gate 10,japanese,,,,,,,,,,,
-Hungry Jack's,T1 International,fast_food,Landside,Food Court,burger,,,,,,,,,Hungry Jack's,,
-KFC,T1 International,fast_food,Airside,Near Gate 24,burger,,,,,,,,,KFC,,
-Kitchen by Mike,T1 International,restaurant,Airside,Near Gate 30,,,,,,,,,,,,
-Lilong by Taste of Shanghai,T1 International,restaurant,Airside,Near Gate 56,chinese,,,,,,,,,,,
-Lumos Cafe,T1 International,cafe,Landside,Food Court,,,,,,,,,,,,
-Mad Mex,T1 International,fast_food,Landside,Food Court,mexican,,,,,,,,,Mad Mex,,
-McDonald's,T1 International,fast_food,Landside,Arrivals Exit A,burger,,,,,,,,,McDonald's,,
-McDonald's,T1 International,fast_food,Airside,Near Gate 50,burger,,,,,,,,,McDonald's,,
-McDonald's,T1 International,fast_food,Airside,Near Gate 24,burger,,,,,,,,,McDonald's,,
-Ooosh Oregano Bakery,T1 International,fast_food,Landside,Arrivals Exit A,,,,,,,,,,,,
-Oporto,T1 International,fast_food,Landside,Food Court,,,,,,,,,,Oporto,,
-PappaRich,T1 International,restaurant,Airside,,asian,,,,,,,,,,,
-Peroni Bar,T1 International,cafe,Airside,Near Gate 56,,,,,,,,,,,,
-Sahara Grill,T1 International,fast_food,Airside,Near Gate 10,,,,,,,,,,,,
-Sushia,T1 International,restaurant,Landside,Before Security,japanese,,,,,,,,,,,
-Sushia,T1 International,restaurant,Airside,Near Gate 30,japanese,,,,,,,,,,,
-Sydney Coffee Trader,T1 International,cafe,Landside,Near Gate B,,,,,,,,,,,,
-Taste of Thai,T1 International,restaurant,Landside,Food Court,thai,,,,,,,,,,,
-The Bistro by Wolfgang Puck,T1 International,restaurant,Airside,Near Gate 10,,,,,,,,,,,,
-Toby's Estate,T1 International,cafe,Landside,Food Court,,,,,,,,,,Toby's Estate,,
-Toby's Estate,T1 International,cafe,Airside,Towards Gates 50-63,,,,,,,,,,Toby's Estate,,
-Top Juice,T1 International,fast_food,Landside,Before Security,juice,,,,,,,,,,,
-Veloce Espresso,T1 International,cafe,Landside,Arrivals Exit A,,,,,,,,,,,,
-Subway,T1 International,fast_food,Landside,Food Court,sandwich,,,,,,,,,Subway,,
-SumoSalad Green on Green,T1 International,restaurant,Airside,Near Gate 24,,,,,,,,,,,,
-1915 Lanzhou Beef Noodles,T2 Domestic,restaurant,Airside,After Security,chinese,,,,,,,,,,,
-Allpress Espresso,T2 Domestic,cafe,Airside,Near Gate 40,,,,,,,,,,,,
-Bistro 2020,T2 Domestic,cafe,Airside,Food Court,,,,,,,,,,,,
-Brasserie Bread,T2 Domestic,fast_food,Airside,Food Court,,,,,,,,,,,,
-Fat Yak Bar,T2 Domestic,cafe,Airside,After Security,,,,,,,,,,,,
-Great Northern Dine,T2 Domestic,cafe,Airside,Near Gate 40,,,,,,,,,,,,
-Inbound Café,T2 Domestic,cafe,Landside,Near Baggage Claim,,,,,,,,,,,,
-KFC,T2 Domestic,fast_food,Airside,Food Court,burger,,,,,,,,,KFC,,
-Krispy Kreme,T2 Domestic,fast_food,Airside,Food Court,donut,,,,,,,,,Krispy Kreme,,
-Liv Eat,T2 Domestic,fast_food,Airside,Food Court,,,,,,,,,,,,
-Loop Bagels,T2 Domestic,fast_food,Airside,After Security,,,,,,,,,,,,
-Mad Mex,T2 Domestic,fast_food,Airside,Food Court,mexican,,,,,,,,,Mad Mex,,
-McDonald's,T2 Domestic,fast_food,Airside,Food Court,burger,,,,,,,,,McDonald's,,
-Mrs Fields Bakery Cafe,T2 Domestic,cafe,Airside,Food Court,,,,,,,,,,Mrs. Fields,,
-Oporto,T2 Domestic,fast_food,Airside,Food Court,,,,,,,,,,Oporto,,
-Pete's Pies,T2 Domestic,fast_food,Airside,Food Court,,,,,,,,,,,,
-Pulp + Grind,T2 Domestic,cafe,Airside,Food Court,,,,,,,,,,,,
-Roll'd,T2 Domestic,fast_food,Airside,Food Court,vietnamese,,,,,,,,,,,
-Sahara Grill,T2 Domestic,fast_food,Airside,Food Court,,,,,,,,,,,,
-Sol Bowl,T2 Domestic,restaurant,Airside,Near Gate 39,,,,,,,,,,,,
-Soul Origin,T2 Domestic,cafe,Airside,Food Court,,,,,,,,,,,,
-Sushi Sushi,T2 Domestic,fast_food,Airside,Near Gate 35,japanese,,,,,,,,,,,
-Taste of Thai,T2 Domestic,restaurant,Airside,After Security,thai,,,,,,,,,,,
-Toby's Estate,T2 Domestic,cafe,Airside,Food Court,,,,,,,,,,Toby's Estate,,
-Veloce Espresso,T2 Domestic,cafe,Airside,Near Gate 49,,,,,,,,,,,,
-Yo! Sushi,T2 Domestic,restaurant,Airside,Food Court,japanese,,,,,,,,,Yo! Sushi,,
-Icebergs,T3 Domestic,restaurant,Airside,After Security,,,,,,,,,,,,
-Lotus Dumpling Bar,T3 Domestic,restaurant,Airside,After Security,chinese,,,,,,,,,,,
-Loulou,T3 Domestic,cafe,Airside,After Security,,,,,,,,,,,,
-Luke's Bistro & Bar,T3 Domestic,cafe,Airside,Near Gate 3,,,,,,,,,,,,
-Maggio's,T3 Domestic,restaurant,Airside,After Security,,,,,,,,,,,,
-Slim's Quality Burger,T3 Domestic,fast_food,Airside,After Security,burger,,,,,,,,,,,
-Stitch Coffee,T3 Domestic,cafe,Airside,After Security,,,,,,,,,,,,
-Stone & Wood Dine,T3 Domestic,cafe,Airside,Near Gate 8,,,,,,,,,,,,
-Taste of Thai,T3 Domestic,restaurant,Airside,After Security,thai,,,,,,,,,,,
-The Sushi Platter,T3 Domestic,fast_food,Airside,Near Gate 6,japanese,,,,,,,,,,,
-Top Juice,T3 Domestic,fast_food,Airside,After Security,juice,,,,,,,,,,,
-Tres Tacos,T3 Domestic,fast_food,Airside,After Security,mexican,,,,,,,,,,,
-Viaggio Espresso + Bar,T3 Domestic,cafe,Landside,Near Baggage Claim,,,,,,,,,,,,
+name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type,description,logo_url
+1915 Lanzhou Beef Noodles,T1 International,restaurant,Landside,Before Security,"Chinese, Asian",,,,,,,,,,,,"A restaurant chain serving the iconic hand-pulled Lanzhou-style beef noodles in a rich bone broth, a staple of north-western Chinese cuisine.",
+Atrium Dine,T1 International,restaurant,Airside,After Security,American,,,,,,,,,,,,A casual dining restaurant in the terminal atrium serving a broad menu of Australian and international dishes.,
+BARista,T1 International,cafe,Airside,Near Gate 31,Café,,,,,,,,,,,,"BARista is a coffee bar concept with a bar-style setting, serving espresso drinks, specialty coffees, and light bites in airports and urban locations.",https://img.logo.dev/barista.co.in?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Betty's Burgers,T1 International,fast_food,Landside,Food Court,Burgers,,,,,,,,,,,,"An Australian burger chain inspired by the American South, serving classic beef burgers, crinkle-cut fries, and milkshakes.",https://img.logo.dev/bettysburgers.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Caffettino Espresso,T1 International,cafe,Landside,Near Check In Gate H,Café,,,,,,,,,,,,"An espresso kiosk serving Italian-style coffee drinks, short blacks, and flat whites to go.",
+Campos Coffee,T1 International,cafe,Airside,Near Gate 24,Café,,,,,,,,,,,,"A Sydney specialty coffee roaster serving consistently excellent espresso, filter coffee, and light café snacks.",https://img.logo.dev/camposcoffee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+EARL Dine,T1 International,cafe,Landside,Before Security,Café,,,,,,,,,,,,"A dining concept serving modern Australian café food including grain bowls, sandwiches, and all-day brunch dishes.",
+East x West Dine,T1 International,restaurant,Landside,Near Check In Counter H,Asian,,,,,,,,,,,,"A fusion dining restaurant combining Eastern and Western cooking techniques, serving Asian-influenced dishes alongside Australian staples.",
+Grand Cru,T1 International,cafe,Landside,Food Court,Bar,,,,,,,,,,,,"Grand Cru is an upscale airport wine bar and restaurant offering a curated selection of fine wines alongside cheese, charcuterie, and small plates.",
+Gusto Pasta Bar,T1 International,restaurant,Landside,Food Court,Italian,,,,,,,,,,,,Gusto Pasta Bar is a fast-casual pasta bar concept offering freshly made pasta dishes with a range of sauces and toppings.,
+Heineken House,T1 International,cafe,Airside,Near Gate 10,Bar,,,,,,,,,,,,A Heineken-branded bar serving cold Heineken beers and basic bar snacks in a relaxed lounge atmosphere.,
+Hikari Ramen & Donburi,T1 International,restaurant,Airside,Near Gate 10,"Japanese, Asian",,,,,,,,,,,,"A Japanese restaurant serving tonkotsu ramen, chicken karaage, and rice bowls in a casual setting.",
+Hungry Jack's,T1 International,fast_food,Landside,Food Court,Fast Food,,,,,,,,,Hungry Jack's,,,"Hungry Jack's is an Australian fast food chain and the local Burger King franchise, known for its flame-grilled Whopper and Australian-exclusive menu items.",https://img.logo.dev/hungryjacks.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+KFC,T1 International,fast_food,Airside,Near Gate 24,"Fast Food, Steak, Grill Chicken & BBQ",,,,,,,,,KFC,,,"KFC (Kentucky Fried Chicken) is a global fast food chain founded by Colonel Harland Sanders, famous for its original recipe fried chicken seasoned with 11 herbs and spices.",https://img.logo.dev/kfc.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Kitchen by Mike,T1 International,restaurant,Airside,Near Gate 30,Café,,,,,,,,,,,,"A Sydney chef's canteen concept serving seasonal, market-driven Australian dishes in a communal café style.",https://img.logo.dev/kitchenbymike.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Lilong by Taste of Shanghai,T1 International,restaurant,Airside,Near Gate 56,"Chinese, Asian",,,,,,,,,,,,"A Shanghainese restaurant serving xiao long bao (soup dumplings), scallion noodles, and Shanghai street-food classics.",https://img.logo.dev/lilongcbr.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Lumos Cafe,T1 International,cafe,Landside,Food Court,Café,,,,,,,,,,,,"A bright café serving specialty coffee, healthy breakfast dishes, and light meals throughout the day.",
+Mad Mex,T1 International,fast_food,Landside,Food Court,"Mexican, Latin American",,,,,,,,,Mad Mex,,,"Mad Mex is an Australian fast-casual Mexican chain serving fresh burritos, tacos, and bowls inspired by Californian Mexican cuisine with quality ingredients.",https://img.logo.dev/madmex.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+McDonald's,T1 International,fast_food,Landside,Arrivals Exit A,Fast Food,,,,,,,,,McDonald's,,,"McDonald's is the world's largest fast food chain, serving billions of customers daily with iconic menu items including the Big Mac, McChicken, and golden french fries.",https://img.logo.dev/mcdonalds.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+McDonald's,T1 International,fast_food,Airside,Near Gate 50,Fast Food,,,,,,,,,McDonald's,,,"McDonald's is the world's largest fast food chain, serving billions of customers daily with iconic menu items including the Big Mac, McChicken, and golden french fries.",https://img.logo.dev/mcdonalds.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+McDonald's,T1 International,fast_food,Airside,Near Gate 24,Fast Food,,,,,,,,,McDonald's,,,"McDonald's is the world's largest fast food chain, serving billions of customers daily with iconic menu items including the Big Mac, McChicken, and golden french fries.",https://img.logo.dev/mcdonalds.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Ooosh Oregano Bakery,T1 International,fast_food,Landside,Arrivals Exit A,Bakery,,,,,,,,,,,,"An Australian artisan bakery serving freshly baked breads, savoury pastries, and herb-infused rolls.",
+Oporto,T1 International,fast_food,Landside,Food Court,"Steak, Grill Chicken & BBQ",,,,,,,,,Oporto,,,"Oporto is an Australian fast food chain specialising in charcoal-grilled Portuguese-style chicken, burgers, and wraps with signature Bondi and chilli sauces.",https://img.logo.dev/oporto.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+PappaRich,T1 International,restaurant,Airside,,"Malaysian, Asian, Pan-Asian",,,,,,,,,,,,"PappaRich is a Malaysian fast-casual restaurant chain bringing authentic Malaysian flavours — including nasi lemak, roti canai, and curry laksa — to global markets.",https://img.logo.dev/papparich.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Peroni Bar,T1 International,cafe,Airside,Near Gate 56,"Italian, Bar",,,,,,,,,,,,An Italian beer-branded bar serving Peroni on tap alongside light Italian snacks and antipasti.,
+Sahara Grill,T1 International,fast_food,Airside,Near Gate 10,"Mediterranean, Middle Eastern",,,,,,,,,,,,"Sahara Grill is a Mediterranean grill concept serving shawarma, kebabs, hummus, and Middle Eastern grilled meats in a fast-casual format.",
+Sushia,T1 International,restaurant,Landside,Before Security,"Japanese, Asian",,,,,,,,,,,,"Sushia is a sushi restaurant concept found in European airports and food courts, offering sushi rolls and Japanese dishes.",
+Sushia,T1 International,restaurant,Airside,Near Gate 30,"Japanese, Asian",,,,,,,,,,,,"Sushia is a sushi restaurant concept found in European airports and food courts, offering sushi rolls and Japanese dishes.",
+Sydney Coffee Trader,T1 International,cafe,Landside,Near Gate B,Café,,,,,,,,,,,,A local coffee kiosk serving house-roasted espresso drinks and light snacks for Sydney travellers.,
+Taste of Thai,T1 International,restaurant,Landside,Food Court,"Thai, Asian, Pan-Asian",,,,,,,,,,,,"Taste of Thai is a Thai food fast-casual concept serving pad thai, curries, and classic Thai dishes in airport and food court settings.",
+The Bistro by Wolfgang Puck,T1 International,restaurant,Airside,Near Gate 10,American,,,,,,,,,,,,"A casual bistro from celebrity chef Wolfgang Puck serving upscale American comfort food, salads, and cocktails.",
+Toby's Estate,T1 International,cafe,Landside,Food Court,Café,,,,,,,,,Toby's Estate,,,"Toby's Estate is an Australian specialty coffee roaster and café brand known for its meticulous sourcing, roasting, and brewing of premium single-origin coffees.",https://img.logo.dev/tobysestate.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Toby's Estate,T1 International,cafe,Airside,Towards Gates 50-63,Café,,,,,,,,,Toby's Estate,,,"Toby's Estate is an Australian specialty coffee roaster and café brand known for its meticulous sourcing, roasting, and brewing of premium single-origin coffees.",https://img.logo.dev/tobysestate.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Top Juice,T1 International,fast_food,Landside,Before Security,Healthy,,,,,,,,,,,,Top Juice is an Australian juice and smoothie bar chain offering freshly pressed juices and blended smoothies in airports and shopping centres.,https://img.logo.dev/topjuice.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Veloce Espresso,T1 International,cafe,Landside,Arrivals Exit A,"Café, Italian",,,,,,,,,,,,"Veloce Espresso is an Italian espresso concept serving fast, authentic Italian-style espresso drinks and light bites.",
+Subway,T1 International,fast_food,Landside,Food Court,Sandwiches & Deli,,,,,,,,,Subway,,,"Subway is the world's largest submarine sandwich chain, offering customisable subs, wraps, and salads made to order on freshly baked bread with a wide choice of toppings.",https://img.logo.dev/subway.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+SumoSalad Green on Green,T1 International,restaurant,Airside,Near Gate 24,Healthy,,,,,,,,,,,,"An Australian salad chain serving large, customisable salads, wraps, and wholefood bowls made to order.",
+1915 Lanzhou Beef Noodles,T2 Domestic,restaurant,Airside,After Security,"Chinese, Asian",,,,,,,,,,,,"A restaurant chain serving the iconic hand-pulled Lanzhou-style beef noodles in a rich bone broth, a staple of north-western Chinese cuisine.",
+Allpress Espresso,T2 Domestic,cafe,Airside,Near Gate 40,Café,,,,,,,,,,,,A New Zealand specialty coffee roaster serving precisely brewed espresso and filter coffees alongside light pastries.,https://img.logo.dev/allpressespresso.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Bistro 2020,T2 Domestic,cafe,Airside,Food Court,American,,,,,,,,,,,,"A bistro-style restaurant serving Australian and international dishes in a relaxed, full-service setting.",
+Brasserie Bread,T2 Domestic,fast_food,Airside,Food Court,Bakery,,,,,,,,,,,,"An acclaimed Sydney artisan bakery serving freshly baked sourdough, pastries, sandwiches, and specialty coffee.",https://img.logo.dev/brasseriebread.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Fat Yak Bar,T2 Domestic,cafe,Airside,After Security,Bar,,,,,,,,,,,,A bar serving Fat Yak Pale Ale and a selection of Australian craft beers alongside bar snacks and light bites.,
+Great Northern Dine,T2 Domestic,cafe,Airside,Near Gate 40,American,,,,,,,,,,,,"A dining concept inspired by Northern Australia, serving light Australian dishes and cold beers in a relaxed setting.",
+Inbound Café,T2 Domestic,cafe,Landside,Near Baggage Claim,Café,,,,,,,,,,,,"A café in the arrivals area serving coffee, breakfast items, and light snacks for newly arrived passengers.",
+KFC,T2 Domestic,fast_food,Airside,Food Court,"Fast Food, Steak, Grill Chicken & BBQ",,,,,,,,,KFC,,,"KFC (Kentucky Fried Chicken) is a global fast food chain founded by Colonel Harland Sanders, famous for its original recipe fried chicken seasoned with 11 herbs and spices.",https://img.logo.dev/kfc.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Krispy Kreme,T2 Domestic,fast_food,Airside,Food Court,"Bakery, Desserts",,,,,,,,,Krispy Kreme,,,"Krispy Kreme is an American multinational donut company and coffeehouse chain renowned for its original glazed yeast doughnuts, freshly made and served hot from the oven.",https://img.logo.dev/krispykreme.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Liv Eat,T2 Domestic,fast_food,Airside,Food Court,"Café, Healthy",,,,,,,,,,,,"A health-focused café serving nourishing salads, grain bowls, smoothies, and wholefood snacks.",
+Loop Bagels,T2 Domestic,fast_food,Airside,After Security,Sandwiches & Deli,,,,,,,,,,,,"A New York-style bagel shop serving hand-rolled bagels with cream cheese, smoked salmon, and deli fillings.",
+Mad Mex,T2 Domestic,fast_food,Airside,Food Court,"Mexican, Latin American",,,,,,,,,Mad Mex,,,"Mad Mex is an Australian fast-casual Mexican chain serving fresh burritos, tacos, and bowls inspired by Californian Mexican cuisine with quality ingredients.",https://img.logo.dev/madmex.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+McDonald's,T2 Domestic,fast_food,Airside,Food Court,Fast Food,,,,,,,,,McDonald's,,,"McDonald's is the world's largest fast food chain, serving billions of customers daily with iconic menu items including the Big Mac, McChicken, and golden french fries.",https://img.logo.dev/mcdonalds.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Mrs Fields Bakery Cafe,T2 Domestic,cafe,Airside,Food Court,"Bakery, Café",,,,,,,,,Mrs. Fields,,,"A bakery café known for its freshly baked cookies, muffins, and cakes alongside coffee drinks.",https://img.logo.dev/mrsfieldsfranchise.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Oporto,T2 Domestic,fast_food,Airside,Food Court,"Steak, Grill Chicken & BBQ",,,,,,,,,Oporto,,,"Oporto is an Australian fast food chain specialising in charcoal-grilled Portuguese-style chicken, burgers, and wraps with signature Bondi and chilli sauces.",https://img.logo.dev/oporto.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Pete's Pies,T2 Domestic,fast_food,Airside,Food Court,Bakery,,,,,,,,,,,,"A New Zealand-inspired pie shop serving hearty hand-held pies filled with beef, chicken, and seasonal fillings.",
+Pulp + Grind,T2 Domestic,cafe,Airside,Food Court,"Café, Healthy",,,,,,,,,,,,"A health-focused juice and coffee bar serving cold-pressed juices, smoothie bowls, and specialty espresso drinks.",
+Roll'd,T2 Domestic,fast_food,Airside,Food Court,"Vietnamese, Asian, Pan-Asian",,,,,,,,,,,,"An Australian Vietnamese chain serving fresh, made-to-order rice paper rolls, banh mi, and Vietnamese noodle bowls.",https://img.logo.dev/rolld.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Sahara Grill,T2 Domestic,fast_food,Airside,Food Court,"Mediterranean, Middle Eastern",,,,,,,,,,,,"Sahara Grill is a Mediterranean grill concept serving shawarma, kebabs, hummus, and Middle Eastern grilled meats in a fast-casual format.",
+Sol Bowl,T2 Domestic,restaurant,Airside,Near Gate 39,Healthy,,,,,,,,,,,,"A healthy bowl bar serving customisable grain bowls, Buddha bowls, and warm nourishing dishes with seasonal ingredients.",
+Soul Origin,T2 Domestic,cafe,Airside,Food Court,Café,,,,,,,,,,,,"Soul Origin is an Australian café franchise offering freshly made sandwiches, salads, and specialty coffees at competitive prices.",https://img.logo.dev/soulorigin.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Sushi Sushi,T2 Domestic,fast_food,Airside,Near Gate 35,"Japanese, Asian",,,,,,,,,,,,"Sushi Sushi is an Australian sushi chain offering freshly made sushi rolls, hand rolls, and Japanese snacks in a fast-casual format.",
+Taste of Thai,T2 Domestic,restaurant,Airside,After Security,"Thai, Asian, Pan-Asian",,,,,,,,,,,,"Taste of Thai is a Thai food fast-casual concept serving pad thai, curries, and classic Thai dishes in airport and food court settings.",
+Toby's Estate,T2 Domestic,cafe,Airside,Food Court,Café,,,,,,,,,Toby's Estate,,,"Toby's Estate is an Australian specialty coffee roaster and café brand known for its meticulous sourcing, roasting, and brewing of premium single-origin coffees.",https://img.logo.dev/tobysestate.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Veloce Espresso,T2 Domestic,cafe,Airside,Near Gate 49,"Café, Italian",,,,,,,,,,,,"Veloce Espresso is an Italian espresso concept serving fast, authentic Italian-style espresso drinks and light bites.",
+YO! Sushi,T2 Domestic,restaurant,Airside,Food Court,"Japanese, Asian",,,,,,,,,Yo! Sushi,,,"YO! Sushi is a British Japanese food chain that popularised the kaiten (conveyor belt) dining concept in the UK, serving fresh sushi, hot dishes, and Japanese snacks.",https://img.logo.dev/yosushi.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Icebergs,T3 Domestic,restaurant,Airside,After Security,"Italian, Mediterranean",,,,,,,,,,,,"An outpost of Sydney's iconic Icebergs Dining Room concept, serving Italian-Mediterranean dishes and cocktails.",
+Lotus Dumpling Bar,T3 Domestic,restaurant,Airside,After Security,"Chinese, Asian",,,,,,,,,,,,A Chinese dumpling bar serving steamed and pan-fried dumplings alongside noodle dishes and dim sum-style snacks.,
+Loulou,T3 Domestic,cafe,Airside,After Security,"French, European",,,,,,,,,,,,"A French-inspired bistro and wine bar serving classic brasserie dishes, oysters, and a curated wine list.",
+Luke's Bistro & Bar,T3 Domestic,cafe,Airside,Near Gate 3,Bar,,,,,,,,,,,,"A casual Australian bistro and bar serving classic pub meals, seafood, and cold beers in a relaxed airport setting.",
+Maggio's,T3 Domestic,restaurant,Airside,After Security,Italian,,,,,,,,,,,,"An Italian café and casual restaurant serving pizza, pasta, and espresso drinks in a relaxed trattoria style.",
+Slim's Quality Burger,T3 Domestic,fast_food,Airside,After Security,Burgers,,,,,,,,,,,,"An Australian craft burger brand serving smash-style beef burgers made with quality, locally sourced ingredients.",https://img.logo.dev/slimsqualityburger.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Stitch Coffee,T3 Domestic,cafe,Airside,After Security,Café,,,,,,,,,,,,A Sydney specialty coffee roaster serving meticulously brewed espresso and filter coffees with a focus on traceability.,https://img.logo.dev/stitch.coffee?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Stone & Wood Dine,T3 Domestic,cafe,Airside,Near Gate 8,Bar,,,,,,,,,,,,"A dining concept partnered with Byron Bay's Stone & Wood brewery, serving Australian food alongside craft beers.",
+Taste of Thai,T3 Domestic,restaurant,Airside,After Security,"Thai, Asian, Pan-Asian",,,,,,,,,,,,"Taste of Thai is a Thai food fast-casual concept serving pad thai, curries, and classic Thai dishes in airport and food court settings.",
+The Sushi Platter,T3 Domestic,fast_food,Airside,Near Gate 6,"Japanese, Asian",,,,,,,,,,,,"A sushi restaurant and takeaway counter serving fresh nigiri platters, rolls, and Japanese bento sets.",
+Top Juice,T3 Domestic,fast_food,Airside,After Security,Healthy,,,,,,,,,,,,Top Juice is an Australian juice and smoothie bar chain offering freshly pressed juices and blended smoothies in airports and shopping centres.,https://img.logo.dev/topjuice.com.au?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Tres Tacos,T3 Domestic,fast_food,Airside,After Security,"Mexican, Latin American",,,,,,,,,,,,"A Mexican taco bar serving authentic street-style tacos with a range of fillings including pork, chicken, and fish.",
+Viaggio Espresso + Bar,T3 Domestic,cafe,Landside,Near Baggage Claim,"Café, Italian, Bar",,,,,,,,,,,,"An Italian-inspired café and bar serving espresso drinks, Aperol spritzes, and light Italian snacks.",

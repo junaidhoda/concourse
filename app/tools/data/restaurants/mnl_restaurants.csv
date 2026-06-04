@@ -1,105 +1,105 @@
-name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
-Kenny Rogers Roasters,Terminal 1,restaurant,Landside,Level 1,,,,"Level 1, Arrival Curbside C",,,7:00 AM TO 1:00 AM,,,,,
-Chowking,Terminal 1,restaurant,Landside,Level 1,,,,"Level 1, Arrival Curbside C",,,24 HOURS,,,,,
-Jollibee,Terminal 1,restaurant,Airside,Level 3,,,,"Level 3, East Side Departure Lobby",,,24 HOURS,,,,,
-Ka Tunying,Terminal 1,restaurant,Airside,Level 3,,,,"Level 3, Pre-Departure Area",,,24 HOURS,,,,,
-Nono'S Comfort Kitchen & Bakery,Terminal 1,restaurant,Airside,Level 2,,,,"Level 2, West Side Pre-Departure Area",,,7:00 AM TO 10:00 PM,,,,,
-Little Flour,Terminal 1,restaurant,Airside,Level 2,,,,"Level 2, West Concourse - Departure Area",,,3:00 AM TO 12:00 AM,,,,,
-Air Cargo Food Kiosk,Terminal 1,restaurant,Landside,,,,,Parking B,,,24 HOURS,,,,,
-Anika,Terminal 1,restaurant,Landside,,,,,Basement Area,,,24 HOURS,,,,,
-Master Siomai,Terminal 1,restaurant,Airside,Level 3,,,,"Level 3, East Side Departure Lobby",,,24 HOURS,,,,,
-Illy Café Express/Subway,Terminal 1,restaurant,Airside,Level 3,,,,"Level 3, Pre-Departure Area",,,24 HOURS,,,,,
-Casa Daza,Terminal 1,restaurant,Airside,Level 3,,,,"Level 3, Pre-Departure Area",,,6:00 AM TO 6:00 PM,,,,,
-Le Amoretto,Terminal 1,restaurant,Airside,Level 2,,,,"Level 2, East Side Pre-Departure Area",,,24 HOURS,,,,,
-Starbucks,Terminal 1,restaurant,Airside,Level 3,,,,"Level 3, Pre-Departure Area",,,24 HOURS,,,,,
-Piazza Café & Bar Tnp,Terminal 1,restaurant,Airside,Level 3,,,,"Level 3, Pre-Departure Area",,,24 HOURS,,,,,
-Ka Tunying'S Café,Terminal 2,restaurant,Airside,,,,,"Southwest Wing, Pre-Departure",,,24 HOURS,,,,,
-Henlin,Terminal 2,restaurant,Airside,,,,,"Northwest Wing, Pre-Departure",,,4:00 AM TO 10:00 PM,,,,,
-Mcdonalds,Terminal 2,restaurant,Landside,,,,,"Southwest Wing, Departure Public Lobby",,,24 HOURS,,,,,
-Tropical Hut,Terminal 2,restaurant,Airside,,,,,"Northwest Wing, Pre-Departure",,,24 HOURS,,,,,
-Kape Manila,Terminal 2,restaurant,Airside,,,,,"Northwest Wing, Pre-Departure",,,,,,,,
-Burger King,Terminal 2,restaurant,Landside,,,,,"Northwest Wing, Departure Public Lobby",,,24 HOURS,,,,,
-Starbucks,Terminal 2,restaurant,Airside,,,,,"Northwest Wing, Pre-Departure",,,24 HOURS,,,,,
-Cozy Kitchen,Terminal 2,restaurant,Airside,,,,,"Northwest Wing, Pre-Departure",,,24 HOURS,,,,,
-Cozy Kitchen,Terminal 2,restaurant,Airside,,,,,"Southwest Wing, Pre-Departure",,,24 HOURS,,,,,
-Ella Robot Coffee,Terminal 2,restaurant,Airside,,,,,"Southwest Wing, Pre-Departure",,,24 HOURS,,,,,
-Jollibee,Terminal 2,restaurant,Landside,,,,,"Southwest Wing, Departure Public Lobby",,,24 HOURS,,,,,
-Siomai King,Terminal 2,restaurant,Airside,,,,,"Southwest Wing, Pre-Departure",,,1:15 AM TO 10:00 PM,,,,,
-Drip Tea,Terminal 2,restaurant,Airside,,,,,"Southwest Wing, Pre-Departure",,,12:00 AM TO 10:00 PM,,,,,
-Mempci Coop,Terminal 2,restaurant,Landside,,,,,Parking B,,,7:00 AM TO 3:00 AM,,,,,
-Dunkin Donut,Terminal 2,restaurant,Landside,,,,,"Northwest Wing, Arrival Public",,,24 HOURS,,,,,
-Serenitea,Terminal 2,restaurant,Airside,,,,,"Northwest Wing, Pre-Departure",,,4:00 AM TO 9:00 PM,,,,,
-Highlands Coffee,Terminal 2,restaurant,Landside,,,,,"Northwest Wing, Check-In Area",,,24 HOURS,,,,,
-Krispy Kreme,Terminal 2,restaurant,Airside,,,,,"Southwest Wing, Pre-Departure",,,3:00 AM TO 9:00 PM,,,,,
-Denny'S Diner,Terminal 2,restaurant,Landside,,,,,"Southwest Wing, Arrival Level",,,24 HOURS,,,,,
-Mister Donut,Terminal 2,restaurant,Airside,,,,,"Southwest Wing, Pre-Departure",,,12:00 AM TO 7:00 PM,,,,,
-Wendys,Terminal 3,restaurant,Landside,,,,,Arrival Lobby,,,24 HOURS,,,,,
-Burger King,Terminal 3,restaurant,Landside,,,,,Arrival Lobby,,,24 HOURS,,,,,
-But First Coffee,Terminal 3,restaurant,Landside,,,,,Arrival Lobby,,,,,,,,
-Tsim Sha Tsui,Terminal 3,restaurant,Landside,,,,,Arrival Lobby,,,24 HOURS,,,,,
-Purefoods Street Sarap,Terminal 3,restaurant,Landside,,,,,"Tambayan, Arrival Level",,,2:00 AM TO 10:00 PM,,,,,
-Fruitas,Terminal 3,restaurant,Landside,,,,,"Tambayan, Arrival Level",,,,,,,,
-Pan De Coco Diner,Terminal 3,restaurant,Landside,,,,,"Tambayan, Arrival Level",,,,,,,,
-Bo'S Coffee,Terminal 3,restaurant,Landside,,,,,"Tambayan, Arrival Level",,,,,,,,
-Treats - Tinapay Ni Nanay,Terminal 3,restaurant,Landside,,,,,"Tambayan, Arrival Level",,,,,,,,
-Palm Grill,Terminal 3,restaurant,Landside,,,,,"Tambayan, Arrival Level",,,,,,,,
-Ginebra San Miguel Spirits,Terminal 3,restaurant,Landside,,,,,"Tambayan, Arrival Level",,,,,,,,
-Marugame Udon,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Jco Reserve,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Mary Grace Café,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Mama Lou'S,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Kenny Rogers,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,6:00 AM TO 10:00 PM,,,,,
-Paris Baguette,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Chilis,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Nanyang,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Popeyes,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Ucc Mentore,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,7:00 AM TO 12:00 PM,,,,,
-Kfc,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Seattles Best Coffee,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Banapple,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Chowking,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,24 HOURS,,,,,
-L.A Chicks,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,24 HOURS,,,,,
-Breadtalk,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Watami,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Angels Pizza,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Pancake House,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Estrels,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Sans Rival,Terminal 3,restaurant,Airside,Level 2,,,,"Level 2, Mezzanine Foodhall",,,,,,,,
-Conti'S,Terminal 3,restaurant,Landside,Level 3,,,,"Level 3, Landside",,,,,,,,
-Mcdonalds,Terminal 3,restaurant,Landside,Level 4,,,,"Level 4, Landside",,,,,,,,
-Racks / Tenya,Terminal 3,restaurant,Landside,Level 4,,,,"Level 4, Landside",,,,,,,,
-Divalicious By The Lechon Diva,Terminal 3,restaurant,Airside,,,,,"Domestic Food Village, Pre-Departure Area",,,2:00 AM TO 8:00 PM,,,,,
-Bo'S Coffee,Terminal 3,restaurant,Airside,,,,,"Domestic Food Village, Pre-Departure Area",,,,,,,,
-Pho Hoa,Terminal 3,restaurant,Airside,,,,,"Domestic Food Village, Pre-Departure Area",,,,,,,,
-Ka Tunying'S,Terminal 3,restaurant,Airside,,,,,"Domestic Food Village, Pre-Departure Area",,,,,,,,
-Cinnabon,Terminal 3,restaurant,Airside,,,,,"Domestic Food Village, Pre-Departure Area",,,,,,,,
-Bebang,Terminal 3,restaurant,Airside,,,,,"Domestic Food Village, Pre-Departure Area",,,,,,,,
-Llao-Llao,Terminal 3,restaurant,Airside,,,,,"Domestic Food Village, Pre-Departure Area",,,5:00 AM TO 8:00 PM,,,,,
-Muhlach Ensaymada,Terminal 3,restaurant,Airside,,,,,"Domestic Food Village, Pre-Departure Area",,,24 HOURS,,,,,
-Potato Corner,Terminal 3,restaurant,Airside,,,,,"Domestic Food Village, Pre-Departure Area",,,,,,,,
-Dunkin Donut,Terminal 3,restaurant,Airside,,,,,"Domestic Food Village, Pre-Departure Area",,,24 HOURS,,,,,
-Aristocrat,Terminal 3,restaurant,Airside,,,,,"Domestic Food Village, Pre-Departure Area",,,5:00 AM TO 8:00 PM,,,,,
-Mamak,Terminal 3,restaurant,Airside,,,,,"Domestic Food Village, Pre-Departure Area",,,,,,,,
-Tapa King,Terminal 3,restaurant,Airside,,,,,"Domestic Food Village, Pre-Departure Area",,,1:00 AM TO 12:00 PM,,,,,
-Bo'S Coffee,Terminal 3,restaurant,Airside,,,,,International Pre-Departure,,,24 HOURS,,,,,
-Blue Smith,Terminal 3,restaurant,Airside,,,,,International Pre-Departure,,,1:00 AM TO 11:30 PM,,,,,
-Great Mann Hann,Terminal 3,restaurant,Airside,,,,,International Pre-Departure,,,24 HOURS,,,,,
-Seattles Best Coffee,Terminal 3,restaurant,Airside,,,,,International Pre-Departure,,,,,,,,
-Chatime,Terminal 3,restaurant,Airside,,,,,International Pre-Departure,,,24 HOURS,,,,,
-Shake Shack,Terminal 3,restaurant,Airside,,,,,International Pre-Departure,,,12:30 AM TO 11:30 PM,,,,,
-Kaishu Rice & Noodles Express,Terminal 3,restaurant,Airside,,,,,International Pre-Departure,,,2:00 AM TO 12:00 PM,,,,,
-Sweet Ideas,Terminal 3,restaurant,Airside,,,,,International Pre-Departure,,,,,,,,
-Café Tee Ree Ya,Terminal 3,restaurant,Airside,,,,,International Pre-Departure,,,,,,,,
-Café Park & Stop,Terminal 3,restaurant,Landside,,,,,Parking Area,,,24 HOURS,,,,,
-Acacia Tree Café,Terminal 3,restaurant,Landside,,,,,Parking Area,,,24 HOURS,,,,,
-Henlin,Terminal 3,restaurant,Airside,,,,,Domestic Pre-Departure,,,1:00 AM TO 10:00 PM,,,,,
-Kape Manila,Terminal 3,restaurant,Airside,,,,,Domestic Pre-Departure,,,4:00 AM TO 8:00 PM,,,,,
-Tsim Sha Tsui,Terminal 3,restaurant,Airside,,,,,Domestic Pre-Departure,,,24 HOURS,,,,,
-Busgate Goodies,Terminal 3,restaurant,Airside,,,,,"Domestic Busgate, Pre-Departure",,,24 HOURS,,,,,
-Goto King,Terminal 3,restaurant,Airside,,,,,"Domestic Busgate, Pre-Departure",,,24 HOURS,,,,,
-Global Topps & Noodles,Terminal 3,restaurant,Airside,,,,,International Pre-Departure,,,24 HOURS,,,,,
-Chatime,Terminal 3,restaurant,Airside,,,,,"Domestic Busgate, Pre-Departure",,,24 HOURS,,,,,
-Army Navy,Terminal 3,restaurant,Airside,,,,,"Domestic Busgate, Pre-Departure",,,12:00 AM TO 10:00 PM,,,,,
-Airport Café,Terminal 3,restaurant,Airside,,,,,Domestic Pre-Departure,,,2:00 AM TO 7:00 PM,,,,,
-Caffexpress,Terminal 3,restaurant,Airside,,,,,"Domestic Busgate, Pre-Departure",,,7:00 AM TO 1:00 AM,,,,,
-Krispy Kreme,Terminal 3,restaurant,Airside,,,,,Domestic Pre-Departure,,,24 HOURS,,,,,
+name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type,description,logo_url
+Kenny Rogers Roasters,Terminal 1,restaurant,Landside,Level 1,"Fast Food, Steak, Grill Chicken & BBQ",,,"Level 1, Arrival Curbside C",,,7:00 AM TO 1:00 AM,,,,,,A classic Filipino-American chain serving slow-roasted whole and half chickens with a choice of sides including garlic rice and coleslaw.,https://img.logo.dev/kennyrogersroasters.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Chowking,Terminal 1,restaurant,Landside,Level 1,"Filipino, Asian, Fast Food",,,"Level 1, Arrival Curbside C",,,24 HOURS,,,,,,"Chowking is a Filipino fast food chain with Chinese-Filipino influences, known for its fried chicken, congee, lauriat meals, and noodle dishes.",https://img.logo.dev/chowking.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Jollibee,Terminal 1,restaurant,Airside,Level 3,"Filipino, Asian, Fast Food",,,"Level 3, East Side Departure Lobby",,,24 HOURS,,,,,,"Jollibee is the Philippines' most beloved fast food chain, famous for its Chickenjoy fried chicken, Jolly Spaghetti, and Yumburger, with a passionate global fanbase.",https://img.logo.dev/jollibee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Ka Tunying,Terminal 1,restaurant,Airside,Level 3,"Filipino, Asian, Grab & Go",,,"Level 3, Pre-Departure Area",,,24 HOURS,,,,,,A Filipino snack bar serving traditional Filipino street food and quick bites around the clock.,
+Nono'S Comfort Kitchen & Bakery,Terminal 1,restaurant,Airside,Level 2,"Bakery, Filipino, Asian",,,"Level 2, West Side Pre-Departure Area",,,7:00 AM TO 10:00 PM,,,,,,"A Filipino artisan bakery and café serving freshly baked breads, pastries, sandwiches, and comfort Filipino dishes.",
+Little Flour,Terminal 1,restaurant,Airside,Level 2,"Bakery, Café",,,"Level 2, West Concourse - Departure Area",,,3:00 AM TO 12:00 AM,,,,,,"A bakery and café serving artisan breads, pastries, sandwiches, and specialty coffee in the departure area.",https://img.logo.dev/littleflour.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Air Cargo Food Kiosk,Terminal 1,restaurant,Landside,,"Filipino, Asian",,,Parking B,,,24 HOURS,,,,,,A basic canteen-style kiosk serving Filipino comfort food and rice meals for airport workers and travellers.,
+Anika,Terminal 1,restaurant,Landside,,"Filipino, Asian",,,Basement Area,,,24 HOURS,,,,,,A canteen in the basement area serving affordable Filipino home-style meals for airport staff and travellers.,
+Master Siomai,Terminal 1,restaurant,Airside,Level 3,"Filipino, Asian",,,"Level 3, East Side Departure Lobby",,,24 HOURS,,,,,,A Filipino fast-food kiosk specialising in steamed pork siomai (dumplings) with soy-calamansi dipping sauce and fried rice.,https://img.logo.dev/mastersiomai.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Subway,Terminal 1,restaurant,Airside,Level 3,Sandwiches & Deli,,,"Level 3, Pre-Departure Area",,,24 HOURS,,,,,,"Subway is the world's largest submarine sandwich chain, offering customisable subs, wraps, and salads made to order on freshly baked bread with a wide choice of toppings.",https://img.logo.dev/subway.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Casa Daza,Terminal 1,restaurant,Airside,Level 3,"Filipino, Asian",,,"Level 3, Pre-Departure Area",,,6:00 AM TO 6:00 PM,,,,,,"A branch of the classic Philippine restaurant serving traditional Filipino dishes including adobo, sinigang, and grilled seafood.",
+Le Amoretto,Terminal 1,restaurant,Airside,Level 2,"Café, Filipino, Asian",,,"Level 2, East Side Pre-Departure Area",,,24 HOURS,,,,,,"A Filipino café and restaurant serving a mix of Filipino comfort food, pastries, and coffee drinks.",
+Starbucks,Terminal 1,restaurant,Airside,Level 3,Café,,,"Level 3, Pre-Departure Area",,,24 HOURS,,,,,,"Starbucks is the world's largest coffeehouse chain, offering handcrafted espresso beverages, Frappuccinos, teas, and seasonal drinks alongside food items and merchandise.",https://img.logo.dev/starbucks.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Piazza Café & Bar Tnp,Terminal 1,restaurant,Airside,Level 3,"Café, Bar",,,"Level 3, Pre-Departure Area",,,24 HOURS,,,,,,"A café-bar in the pre-departure area serving coffee, alcoholic drinks, and light Filipino and international snacks.",
+Ka Tunying'S Café,Terminal 2,restaurant,Airside,,"Café, Filipino, Asian",,,"Southwest Wing, Pre-Departure",,,24 HOURS,,,,,,"A café offshoot of the Ka Tunying brand serving coffee, Filipino pastries, and light snacks for pre-departure travellers.",
+Henlin,Terminal 2,restaurant,Airside,,"Filipino, Asian, Fast Food",,,"Northwest Wing, Pre-Departure",,,4:00 AM TO 10:00 PM,,,,,,"Henlin is a Filipino fast food chain known for its fried chicken, snacks, and local Filipino fast food offerings at affordable prices.",
+McDonald's,Terminal 2,restaurant,Landside,,Fast Food,,,"Southwest Wing, Departure Public Lobby",,,24 HOURS,,,,,,"McDonald's is the world's largest fast food chain, serving billions of customers daily with iconic menu items including the Big Mac, McChicken, and golden french fries.",https://img.logo.dev/mcdonalds.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Tropical Hut,Terminal 2,restaurant,Airside,,"Filipino, Asian, Fast Food",,,"Northwest Wing, Pre-Departure",,,24 HOURS,,,,,,"Tropical Hut is one of the Philippines' oldest fast food chains, serving classic burgers, fried chicken, spaghetti, and Filipino comfort food since its founding in 1962.",
+Kape Manila,Terminal 2,restaurant,Airside,,"Café, Filipino, Asian",,,"Northwest Wing, Pre-Departure",,,,,,,,,"Kape Manila is a Philippine coffee concept celebrating local coffee culture and Filipino-origin coffee beans from regions like Benguet, Sagada, and Mt. Apo.",
+Burger King,Terminal 2,restaurant,Landside,,Fast Food,,,"Northwest Wing, Departure Public Lobby",,,24 HOURS,,,,,,Burger King is a global American fast food chain best known for the flame-grilled Whopper burger and its 'Have It Your Way' customisation philosophy.,https://img.logo.dev/bk.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Starbucks,Terminal 2,restaurant,Airside,,Café,,,"Northwest Wing, Pre-Departure",,,24 HOURS,,,,,,"Starbucks is the world's largest coffeehouse chain, offering handcrafted espresso beverages, Frappuccinos, teas, and seasonal drinks alongside food items and merchandise.",https://img.logo.dev/starbucks.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Cozy Kitchen,Terminal 2,restaurant,Airside,,American,,,"Northwest Wing, Pre-Departure",,,24 HOURS,,,,,,Cozy Kitchen is a casual dining concept offering comfort food and home-style meals in an airport or hotel setting.,
+Cozy Kitchen,Terminal 2,restaurant,Airside,,American,,,"Southwest Wing, Pre-Departure",,,24 HOURS,,,,,,Cozy Kitchen is a casual dining concept offering comfort food and home-style meals in an airport or hotel setting.,
+Ella Robot Coffee,Terminal 2,restaurant,Airside,,Café,,,"Southwest Wing, Pre-Departure",,,24 HOURS,,,,,,A robot-operated coffee kiosk serving freshly brewed espresso drinks with automated brewing for consistent quality.,
+Jollibee,Terminal 2,restaurant,Landside,,"Filipino, Asian, Fast Food",,,"Southwest Wing, Departure Public Lobby",,,24 HOURS,,,,,,"Jollibee is the Philippines' most beloved fast food chain, famous for its Chickenjoy fried chicken, Jolly Spaghetti, and Yumburger, with a passionate global fanbase.",https://img.logo.dev/jollibee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Siomai King,Terminal 2,restaurant,Airside,,"Filipino, Asian",,,"Southwest Wing, Pre-Departure",,,1:15 AM TO 10:00 PM,,,,,,A Filipino fast-food kiosk specialising in steamed pork and shrimp siomai served with garlic rice and soy-calamansi sauce.,https://img.logo.dev/siomaiking.ph?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Drip Tea,Terminal 2,restaurant,Airside,,Café,,,"Southwest Wing, Pre-Departure",,,12:00 AM TO 10:00 PM,,,,,,"A tea kiosk serving milk teas, fruit teas, and flavoured drink series popular in Philippine café culture.",https://img.logo.dev/thedriptea.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Mempci Coop,Terminal 2,restaurant,Landside,,"Filipino, Asian",,,Parking B,,,7:00 AM TO 3:00 AM,,,,,,A cooperative canteen in the parking area serving affordable Filipino meals and snacks for staff and travellers.,
+Dunkin',Terminal 2,restaurant,Landside,,"Café, Bakery",,,"Northwest Wing, Arrival Public",,,24 HOURS,,,,,,"Dunkin' is one of the world's largest coffee and baked goods chains, serving freshly brewed coffee, espresso drinks, and a wide variety of donuts and sandwiches.",https://img.logo.dev/dunkindonuts.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Serenitea,Terminal 2,restaurant,Airside,,Café,,,"Northwest Wing, Pre-Departure",,,4:00 AM TO 9:00 PM,,,,,,"A popular Philippine milk tea brand serving freshly brewed teas, fruit teas, and signature milk tea drinks with toppings.",
+Highlands Coffee,Terminal 2,restaurant,Landside,,Café,,,"Northwest Wing, Check-In Area",,,24 HOURS,,,,,,"Highlands Coffee is Vietnam's leading homegrown coffee chain, serving Vietnamese-style iced coffees, milk teas, and light meals in a modern, comfortable café setting.",https://img.logo.dev/highlandscoffee.com.vn?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Krispy Kreme,Terminal 2,restaurant,Airside,,"Bakery, Desserts",,,"Southwest Wing, Pre-Departure",,,3:00 AM TO 9:00 PM,,,,,,"Krispy Kreme is an American multinational donut company and coffeehouse chain renowned for its original glazed yeast doughnuts, freshly made and served hot from the oven.",https://img.logo.dev/krispykreme.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Denny's,Terminal 2,restaurant,Landside,,American,,,"Southwest Wing, Arrival Level",,,24 HOURS,,,,,,"Denny's is a classic American diner chain open around the clock, renowned for its all-day breakfast, Grand Slam platters, and hearty comfort food at accessible prices.",https://img.logo.dev/dennys.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Mister Donut,Terminal 2,restaurant,Airside,,"Bakery, Café",,,"Southwest Wing, Pre-Departure",,,12:00 AM TO 7:00 PM,,,,,,"Mister Donut is a beloved donut and coffee chain with a massive following in Japan and Southeast Asia, known for its pon de ring chewy donuts and classic varieties.",https://img.logo.dev/misterdonut.jp?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Wendy's,Terminal 3,restaurant,Landside,,"Fast Food, Burgers",,,Arrival Lobby,,,24 HOURS,,,,,,"Wendy's is an American international fast food chain known for its square, fresh, never-frozen beef burgers, the iconic Frosty dessert, and made-to-order menu served since 1969.",https://img.logo.dev/wendys.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Burger King,Terminal 3,restaurant,Landside,,Fast Food,,,Arrival Lobby,,,24 HOURS,,,,,,Burger King is a global American fast food chain best known for the flame-grilled Whopper burger and its 'Have It Your Way' customisation philosophy.,https://img.logo.dev/bk.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+But First Coffee,Terminal 3,restaurant,Landside,,Café,,,Arrival Lobby,,,,,,,,,"A coffee kiosk in the arrival lobby serving espresso drinks, frappes, and light snacks.",https://img.logo.dev/butfirstcoffee.ph?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Tsim Sha Tsui,Terminal 3,restaurant,Landside,,"Chinese, Asian",,,Arrival Lobby,,,24 HOURS,,,,,,"Tsim Sha Tsui is a restaurant concept named after Hong Kong's famous Tsim Sha Tsui district, serving Hong Kong-style cuisine and Cantonese dishes.",
+Purefoods Street Sarap,Terminal 3,restaurant,Landside,,"Filipino, Asian, Fast Food",,,"Tambayan, Arrival Level",,,2:00 AM TO 10:00 PM,,,,,,"A Filipino snack kiosk from the Purefoods brand serving Filipino street food favourites including isaw, fishball, and grilled skewers.",
+Fruitas,Terminal 3,restaurant,Landside,,"Filipino, Asian, Healthy",,,"Tambayan, Arrival Level",,,,,,,,,"A Filipino kiosk chain serving fresh fruit shakes, fruit salads, and tropical juice blends made to order.",https://img.logo.dev/fruitasholdings.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Pan De Coco Diner,Terminal 3,restaurant,Landside,,"Bakery, Filipino, Asian",,,"Tambayan, Arrival Level",,,,,,,,,A Filipino snack kiosk serving pan de coco — sweet coconut-filled rolls — alongside other Filipino bread and snack items.,
+Bo'S Coffee,Terminal 3,restaurant,Landside,,"Café, Filipino, Asian",,,"Tambayan, Arrival Level",,,,,,,,,"Bo's Coffee is a Philippine coffee chain serving espresso drinks crafted from locally sourced Sagada beans, celebrating Filipino coffee culture and heritage.",https://img.logo.dev/boscoffee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Treats - Tinapay Ni Nanay,Terminal 3,restaurant,Landside,,"Bakery, Filipino, Asian",,,"Tambayan, Arrival Level",,,,,,,,,A Filipino bakery kiosk serving tinapay (traditional Filipino bread) and baked snacks made using home-style recipes.,
+Palm Grill,Terminal 3,restaurant,Landside,,"Filipino, Asian, Steak, Grill Chicken & BBQ",,,"Tambayan, Arrival Level",,,,,,,,,"A Filipino grill snack counter serving grilled meats, skewers, and Filipino rice snacks in the arrival level.",
+Ginebra San Miguel Spirits,Terminal 3,restaurant,Landside,,Bar,,,"Tambayan, Arrival Level",,,,,,,,,"A bar kiosk for the iconic Philippine gin brand, serving Ginebra San Miguel-based cocktails and spirits in the arrival area.",
+Marugame Udon,Terminal 3,restaurant,Airside,Level 2,"Japanese, Asian",,,"Level 2, Mezzanine Foodhall",,,,,,,,,"Marugame Udon is a Japanese fast-casual chain where fresh udon noodles are hand-stretched and cut in-store daily, served cafeteria-style with tempura and toppings.",https://img.logo.dev/marugame-udon.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Jco,Terminal 3,restaurant,Airside,Level 2,"Bakery, Café",,,"Level 2, Mezzanine Foodhall",,,,,,,,,"J.CO Donuts & Coffee is an Indonesian chain celebrated for its light, airy yeast donuts with creative glazes and fillings, paired with specialty coffees and yogurt drinks.",https://img.logo.dev/jcodonuts.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Mary Grace Café,Terminal 3,restaurant,Airside,Level 2,"Café, Filipino, Asian",,,"Level 2, Mezzanine Foodhall",,,,,,,,,"A well-loved Filipino café chain known for its ensaymada, cheese rolls, and brewed coffee in a cosy setting.",
+Mama Lou'S,Terminal 3,restaurant,Airside,Level 2,"Filipino, Asian, Italian",,,"Level 2, Mezzanine Foodhall",,,,,,,,,"A Filipino-Italian restaurant serving pasta, pizza, and Filipino comfort dishes in a family-friendly setting.",
+Kenny Rogers,Terminal 3,restaurant,Airside,Level 2,"Fast Food, Steak, Grill Chicken & BBQ",,,"Level 2, Mezzanine Foodhall",,,6:00 AM TO 10:00 PM,,,,,,"The Filipino outpost of Kenny Rogers Roasters serving rotisserie chicken, rice sides, corn muffins, and Filipino-adapted combo meals.",https://img.logo.dev/krr.com.my?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Paris Baguette,Terminal 3,restaurant,Airside,Level 2,"Bakery, Café, Korean",,,"Level 2, Mezzanine Foodhall",,,,,,,,,"Paris Baguette is a South Korean bakery café chain offering French-inspired breads, pastries, cakes, and beverages with a premium artisan approach.",https://img.logo.dev/parisbaguette.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Chili's,Terminal 3,restaurant,Airside,Level 2,American,,,"Level 2, Mezzanine Foodhall",,,,,,,,,"Chili's Grill & Bar is an American casual dining chain known for its Tex-Mex-inspired dishes, baby back ribs, sizzling fajitas, and signature margaritas.",https://img.logo.dev/chilis.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Nanyang,Terminal 3,restaurant,Airside,Level 2,Asian,,,"Level 2, Mezzanine Foodhall",,,,,,,,,"A restaurant serving Southeast Asian-style noodle and rice dishes, including Filipino-Chinese comfort food staples.",
+Popeyes,Terminal 3,restaurant,Airside,Level 2,"Fast Food, Steak, Grill Chicken & BBQ",,,"Level 2, Mezzanine Foodhall",,,,,,,,,"Popeyes is an American fast food chain founded in New Orleans, famous for its Louisiana-style Cajun-spiced fried chicken, buttermilk biscuits, and bold Cajun flavours.",https://img.logo.dev/popeyes.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Ucc Mentore,Terminal 3,restaurant,Airside,Level 2,"Café, Japanese",,,"Level 2, Mezzanine Foodhall",,,7:00 AM TO 12:00 PM,,,,,,"A Japanese coffee brand serving premium drip coffee, cold brew, and espresso drinks with a focus on quality beans.",
+KFC,Terminal 3,restaurant,Airside,Level 2,"Fast Food, Steak, Grill Chicken & BBQ",,,"Level 2, Mezzanine Foodhall",,,,,,,,,"KFC (Kentucky Fried Chicken) is a global fast food chain founded by Colonel Harland Sanders, famous for its original recipe fried chicken seasoned with 11 herbs and spices.",https://img.logo.dev/kfc.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Seattles Best Coffee,Terminal 3,restaurant,Airside,Level 2,Café,,,"Level 2, Mezzanine Foodhall",,,,,,,,,"A coffee chain serving espresso drinks, iced coffees, and light pastries across multiple terminal locations.",
+Banapple,Terminal 3,restaurant,Airside,Level 2,"Bakery, Filipino, Asian",,,"Level 2, Mezzanine Foodhall",,,,,,,,,"A Filipino café and bakery known for its cheesecakes, pies, and pastries alongside coffee and light meals.",https://img.logo.dev/banapple.ph?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Chowking,Terminal 3,restaurant,Airside,Level 2,"Filipino, Asian, Fast Food",,,"Level 2, Mezzanine Foodhall",,,24 HOURS,,,,,,"Chowking is a Filipino fast food chain with Chinese-Filipino influences, known for its fried chicken, congee, lauriat meals, and noodle dishes.",https://img.logo.dev/chowking.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+L.A Chicks,Terminal 3,restaurant,Airside,Level 2,"Fast Food, Steak, Grill Chicken & BBQ",,,"Level 2, Mezzanine Foodhall",,,24 HOURS,,,,,,"A 24-hour chicken restaurant serving fried chicken, rice meals, and Filipino-style chicken dishes in the Mezzanine Foodhall.",https://img.logo.dev/lachicks.com.ph?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Breadtalk,Terminal 3,restaurant,Airside,Level 2,Bakery,,,"Level 2, Mezzanine Foodhall",,,,,,,,,"BreadTalk is a Singaporean bakery chain celebrated for its innovative and creative bread creations, pastries, and cakes across Asia and beyond.",https://img.logo.dev/breadtalk.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Watami,Terminal 3,restaurant,Airside,Level 2,"Japanese, Asian, Bar",,,"Level 2, Mezzanine Foodhall",,,,,,,,,"A Japanese casual dining chain serving izakaya-style dishes including sushi, grilled skewers, and donburi rice bowls.",https://img.logo.dev/watami.co.jp?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Angels Pizza,Terminal 3,restaurant,Airside,Level 2,Pizza,,,"Level 2, Mezzanine Foodhall",,,,,,,,,"Angels Pizza is a Filipino pizza chain known for its thin-crust pizzas with creative local and international toppings, served in a family-friendly restaurant setting.",https://img.logo.dev/angelspizza.com.ph?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Pancake House,Terminal 3,restaurant,Airside,Level 2,"Filipino, Asian, American",,,"Level 2, Mezzanine Foodhall",,,,,,,,,"Pancake House is a beloved Filipino restaurant chain serving classic American-style pancakes, waffles, and comfort food alongside Filipino breakfast favourites since 1974.",https://img.logo.dev/pancakehouse.com.ph?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Estrels,Terminal 3,restaurant,Airside,Level 2,"Bakery, Filipino, Asian",,,"Level 2, Mezzanine Foodhall",,,,,,,,,A snack counter serving traditional Filipino pastries and baked goods including ensaymada and other regional sweets.,
+Sans Rival,Terminal 3,restaurant,Airside,Level 2,"Bakery, Filipino, Asian",,,"Level 2, Mezzanine Foodhall",,,,,,,,,A Dumaguete-founded Filipino patisserie famous for its sans rival cake — layers of cashew meringue and buttercream — alongside other Filipino desserts.,https://img.logo.dev/sansrival.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Conti'S,Terminal 3,restaurant,Landside,Level 3,"Bakery, Filipino, Asian",,,"Level 3, Landside",,,,,,,,,"A popular Filipino bakery and restaurant known for its mango bravo cake, pastries, and Filipino-Western comfort dishes.",
+McDonald's,Terminal 3,restaurant,Landside,Level 4,Fast Food,,,"Level 4, Landside",,,,,,,,,"McDonald's is the world's largest fast food chain, serving billions of customers daily with iconic menu items including the Big Mac, McChicken, and golden french fries.",https://img.logo.dev/mcdonalds.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Racks / Tenya,Terminal 3,restaurant,Landside,Level 4,"Japanese, Asian, Steak, Grill Chicken & BBQ",,,"Level 4, Landside",,,,,,,,,A dual concept combining Racks' American BBQ ribs with Tenya's Japanese tempura donburi in a shared restaurant space.,
+Divalicious By The Lechon Diva,Terminal 3,restaurant,Airside,,"Filipino, Asian, Steak, Grill Chicken & BBQ",,,"Domestic Food Village, Pre-Departure Area",,,2:00 AM TO 8:00 PM,,,,,,"A kiosk by the Lechon Diva brand, known for crispy, herb-roasted whole pig (lechon) served by the portion.",
+Bo'S Coffee,Terminal 3,restaurant,Airside,,"Café, Filipino, Asian",,,"Domestic Food Village, Pre-Departure Area",,,,,,,,,"Bo's Coffee is a Philippine coffee chain serving espresso drinks crafted from locally sourced Sagada beans, celebrating Filipino coffee culture and heritage.",https://img.logo.dev/boscoffee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Pho Hoa,Terminal 3,restaurant,Airside,,"Vietnamese, Asian, Pan-Asian",,,"Domestic Food Village, Pre-Departure Area",,,,,,,,,"A Vietnamese pho restaurant chain serving beef and chicken noodle soups, spring rolls, and Vietnamese staples.",https://img.logo.dev/phohoa.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Ka Tunying'S,Terminal 3,restaurant,Airside,,"Filipino, Asian",,,"Domestic Food Village, Pre-Departure Area",,,,,,,,,"A Filipino snack concept serving home-style Filipino comfort food, rice meals, and traditional snacks.",https://img.logo.dev/katunyings.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Cinnabon,Terminal 3,restaurant,Airside,,Bakery,,,"Domestic Food Village, Pre-Departure Area",,,,,,,,,"Cinnabon is an American bakery chain world-famous for its freshly baked, gooey cinnamon rolls made with signature Makara cinnamon and cream cheese frosting.",https://img.logo.dev/cinnabon.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Bebang,Terminal 3,restaurant,Airside,,"Filipino, Asian, Grab & Go",,,"Domestic Food Village, Pre-Departure Area",,,,,,,,,"A kiosk serving traditional Filipino snacks and light bites, popular for quick pre-departure bites.",
+Llaollao,Terminal 3,restaurant,Airside,,"Desserts, Healthy",,,"Domestic Food Village, Pre-Departure Area",,,5:00 AM TO 8:00 PM,,,,,,"Llaollao is a Spanish premium frozen yogurt chain known for its natural, probiotic-rich yogurt served with fresh toppings and granola.",https://img.logo.dev/llaollao.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Muhlach Ensaymada,Terminal 3,restaurant,Airside,,"Bakery, Filipino, Asian",,,"Domestic Food Village, Pre-Departure Area",,,24 HOURS,,,,,,"A Filipino bakery kiosk serving ensaymada — a soft, butter-topped coiled bun dusted with sugar and cheese — available 24 hours.",
+Potato Corner,Terminal 3,restaurant,Airside,,"Filipino, Asian, Fast Food",,,"Domestic Food Village, Pre-Departure Area",,,,,,,,,"Potato Corner is a Filipino franchise renowned for its flavoured fries dusted in bold seasonings like BBQ, cheese, and sour cream, popular throughout Asia.",https://img.logo.dev/potatocorner.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Dunkin',Terminal 3,restaurant,Airside,,"Café, Bakery",,,"Domestic Food Village, Pre-Departure Area",,,24 HOURS,,,,,,"Dunkin' is one of the world's largest coffee and baked goods chains, serving freshly brewed coffee, espresso drinks, and a wide variety of donuts and sandwiches.",https://img.logo.dev/dunkindonuts.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Aristocrat,Terminal 3,restaurant,Airside,,"Filipino, Asian",,,"Domestic Food Village, Pre-Departure Area",,,5:00 AM TO 8:00 PM,,,,,,"A legendary Manila restaurant with decades of history, serving classic Filipino dishes including chicken barbecue, kare-kare, and pancit.",https://img.logo.dev/aristocrat.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Mamak,Terminal 3,restaurant,Airside,,"Grab & Go, Asian",,,"Domestic Food Village, Pre-Departure Area",,,,,,,,,A snack kiosk serving Malaysian-Filipino influenced dishes and light bites for pre-departure passengers.,https://img.logo.dev/mamakabowls.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Tapa King,Terminal 3,restaurant,Airside,,"Filipino, Asian",,,"Domestic Food Village, Pre-Departure Area",,,1:00 AM TO 12:00 PM,,,,,,A Filipino fast-food chain specialising in tapsilog — cured beef (tapa) served with garlic fried rice and egg — and other Filipino breakfast sets.,https://img.logo.dev/tapaking.com.ph?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Bo'S Coffee,Terminal 3,restaurant,Airside,,"Café, Filipino, Asian",,,International Pre-Departure,,,24 HOURS,,,,,,"Bo's Coffee is a Philippine coffee chain serving espresso drinks crafted from locally sourced Sagada beans, celebrating Filipino coffee culture and heritage.",https://img.logo.dev/boscoffee.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Blue Smith,Terminal 3,restaurant,Airside,,"Filipino, Asian",,,International Pre-Departure,,,1:00 AM TO 11:30 PM,,,,,,A casual restaurant in the international pre-departure area serving Filipino and Western dishes including grilled meats and pasta.,
+Great Mann Hann,Terminal 3,restaurant,Airside,,"Chinese, Asian, Filipino",,,International Pre-Departure,,,24 HOURS,,,,,,"A 24-hour Filipino-Chinese restaurant serving a broad menu of Chinese-Filipino dishes including dimsum, noodles, and rice meals.",
+Seattles Best Coffee,Terminal 3,restaurant,Airside,,Café,,,International Pre-Departure,,,,,,,,,"A coffee chain serving espresso drinks, iced coffees, and light pastries across multiple terminal locations.",
+Chatime,Terminal 3,restaurant,Airside,,"Asian, Café",,,International Pre-Departure,,,24 HOURS,,,,,,"Chatime is a Taiwanese bubble tea chain offering a vast range of freshly brewed teas, milk teas, and bubble drink creations with customisable sweetness and ice levels.",https://img.logo.dev/chatime.ca?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Shake Shack,Terminal 3,restaurant,Airside,,Burgers,,,International Pre-Departure,,,12:30 AM TO 11:30 PM,,,,,,"Shake Shack is an American fast-casual chain that began as a hot dog cart in NYC's Madison Square Park, now globally renowned for its ShackBurger, crinkle-cut fries, and hand-spun shakes.",https://img.logo.dev/shakeshack.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Kaishu Rice & Noodles Express,Terminal 3,restaurant,Airside,,"Chinese, Asian, Filipino",,,International Pre-Departure,,,2:00 AM TO 12:00 PM,,,,,,An express restaurant serving Filipino-Chinese rice meals and noodle dishes for quick pre-departure meals.,
+Sweet Ideas,Terminal 3,restaurant,Airside,,Desserts,,,International Pre-Departure,,,,,,,,,"A dessert shop in the international pre-departure area serving cakes, pastries, and sweet Filipino and Western desserts.",
+Café Tee Ree Ya,Terminal 3,restaurant,Airside,,Café,,,International Pre-Departure,,,,,,,,,"A café in the international pre-departure area serving brewed teas, coffee drinks, and light Filipino snacks.",
+Café Park & Stop,Terminal 3,restaurant,Landside,,"Café, Filipino, Asian",,,Parking Area,,,24 HOURS,,,,,,"A 24-hour café in the parking area serving Filipino comfort food, coffee, and snacks for drivers and travellers.",
+Acacia Tree Café,Terminal 3,restaurant,Landside,,Café,,,Parking Area,,,24 HOURS,,,,,,"A café serving coffee, light snacks, and pastries in the parking area of the terminal complex.",
+Henlin,Terminal 3,restaurant,Airside,,"Filipino, Asian, Fast Food",,,Domestic Pre-Departure,,,1:00 AM TO 10:00 PM,,,,,,"Henlin is a Filipino fast food chain known for its fried chicken, snacks, and local Filipino fast food offerings at affordable prices.",
+Kape Manila,Terminal 3,restaurant,Airside,,"Café, Filipino, Asian",,,Domestic Pre-Departure,,,4:00 AM TO 8:00 PM,,,,,,"Kape Manila is a Philippine coffee concept celebrating local coffee culture and Filipino-origin coffee beans from regions like Benguet, Sagada, and Mt. Apo.",
+Tsim Sha Tsui,Terminal 3,restaurant,Airside,,"Chinese, Asian",,,Domestic Pre-Departure,,,24 HOURS,,,,,,"Tsim Sha Tsui is a restaurant concept named after Hong Kong's famous Tsim Sha Tsui district, serving Hong Kong-style cuisine and Cantonese dishes.",
+Busgate Goodies,Terminal 3,restaurant,Airside,,"Filipino, Asian, Grab & Go",,,"Domestic Busgate, Pre-Departure",,,24 HOURS,,,,,,"A snack kiosk at the domestic bus gate serving Filipino pastries, sandwiches, and beverages for departing passengers.",
+Goto King,Terminal 3,restaurant,Airside,,"Filipino, Asian",,,"Domestic Busgate, Pre-Departure",,,24 HOURS,,,,,,A Filipino restaurant specialising in goto — a rice porridge cooked with tripe and ginger — and other arroz caldo variants.,
+Global Topps & Noodles,Terminal 3,restaurant,Airside,,Asian,,,International Pre-Departure,,,24 HOURS,,,,,,A noodle bar serving Filipino-style noodle soups and stir-fried noodle dishes at the international pre-departure area.,
+Chatime,Terminal 3,restaurant,Airside,,"Asian, Café",,,"Domestic Busgate, Pre-Departure",,,24 HOURS,,,,,,"Chatime is a Taiwanese bubble tea chain offering a vast range of freshly brewed teas, milk teas, and bubble drink creations with customisable sweetness and ice levels.",https://img.logo.dev/chatime.ca?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Army Navy,Terminal 3,restaurant,Airside,,"Burgers, Latin American, Mexican",,,"Domestic Busgate, Pre-Departure",,,12:00 AM TO 10:00 PM,,,,,,"A Filipino fast-casual chain serving American-style burritos, burgers, and loaded fries with a Philippine twist.",
+Airport Café,Terminal 3,restaurant,Airside,,"Café, Filipino, Asian",,,Domestic Pre-Departure,,,2:00 AM TO 7:00 PM,,,,,,"A simple café serving Filipino rice meals, snacks, and hot and cold drinks around the clock.",
+Caffexpress,Terminal 3,restaurant,Airside,,Café,,,"Domestic Busgate, Pre-Departure",,,7:00 AM TO 1:00 AM,,,,,,"An express coffee counter serving espresso drinks, iced coffees, and quick snacks for passengers in transit.",
+Krispy Kreme,Terminal 3,restaurant,Airside,,"Bakery, Desserts",,,Domestic Pre-Departure,,,24 HOURS,,,,,,"Krispy Kreme is an American multinational donut company and coffeehouse chain renowned for its original glazed yeast doughnuts, freshly made and served hot from the oven.",https://img.logo.dev/krispykreme.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png

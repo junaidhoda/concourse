@@ -1,90 +1,90 @@
-name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type
-@café,Terminal 3,restaurant,Landside,,,,,T3 Arrivals,,,,,,,,
-@café,Terminal 3,restaurant,Airside,,,,,T3 Departures,,,,,,,,
-Costa Coffee,Terminal 2,restaurant,Airside,,,,,T2 Domestic Departure,,,,,,,,
-Costa Coffee,Terminal 3,restaurant,Airside,,,,,T3 Departures,,,,,,,,
-Costa Coffee,Terminal 3,restaurant,Landside,,,,,T3 International Arrivals,,,,,,,,
-Curry Kitchen,Terminal 3,restaurant,Airside,,,,,T3 International Departures,,,,,,,,
-Curry Kitchen,Terminal 3,restaurant,Landside,,,,,T3 Domestic Arrivals,,,,,,,,
-Dilli Streat,Terminal 3,restaurant,Landside,,,,,T3 Arrivals,,,,,,,,
-Dilli Streat,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-Dominos,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-Dominos,Terminal 3,restaurant,Landside,,,,,T3 International Arrivals,,,,,,,,
-Dominos,Terminal 1,restaurant,Airside,,,,,T1 Departure Food court,,,,,,,,
-Idli.com,Terminal 3,restaurant,Airside,,,,,T3 International Departures,,,,,,,,
-KFC,Terminal 1,restaurant,Airside,,,,,T1 Departure Food court,,,,,,,,
-KFC,Terminal 2,restaurant,Airside,,,,,T2 Domestic Departure,,,,,,,,
-KFC,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-KFC,Terminal 3,restaurant,Landside,,,,,T3 International Arrivals,,,,,,,,
-Masala Twist,Terminal 3,restaurant,Airside,,,,,T3 Departures,,,,,,,,
-McDonalds,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-McDonalds,Terminal 1,restaurant,Airside,,,,,T1 Departure Food court,,,,,,,,
-Pizza Hut Express,Terminal 2,restaurant,Airside,,,,,T2 Departures,,,,,,,,
-Starbucks,Terminal 3,restaurant,Landside,,,,,T3 Domestic Arrivals,,,,,,,,
-Starbucks,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-Starbucks,Terminal 1,restaurant,Airside,,,,,T1 Departure Bus Gates,,,,,,,,
-Subway,Terminal 2,restaurant,Airside,,,,,T2 Departures,,,,,,,,
-Subway,Terminal 3,restaurant,Landside,,,,,T3 Arrivals,,,,,,,,
-Subway,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-Subway,Terminal 1,restaurant,Airside,,,,,T1 Departure Food court,,,,,,,,
-Vaango,Terminal 3,restaurant,Landside,,,,,T3 Domestic Arrivals,,,,,,,,
-Ile Bar,Terminal 3,restaurant,Landside,,,,,T3 International Arrivals,,,,,,,,
-Ile Bar,Terminal 3,restaurant,Airside,,,,,T3 International Departures,,,,,,,,
-Delhi Capitals,Terminal 3,restaurant,Airside,,,,,T3 International Departures,,,,,,,,
-Cafeccino,Terminal 1,restaurant,Landside,,,,,T1 Arrivals,,,,,,,,
-Cafeccino,Terminal 3,restaurant,Airside,,,,,T3 Departures,,,,,,,,
-Cafeccino,Terminal 1,restaurant,Airside,,,,,"T1 Domestic Departure,Gate No 17",,,,,,,,
-Punjabi Kulfi,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-Krispy Kreme Kiosk,Terminal 3,restaurant,Landside,,,,,T3 Arrivals,,,,,,,,
-Krispy Kreme Kiosk,Terminal 3,restaurant,Airside,,,,,T3 Departures,,,,,,,,
-Krispy Kreme Kiosk,Terminal 1,restaurant,Airside,,,,,"T1 Domestic Departure,Gate No 11",,,,,,,,
-The Irish House,Terminal 3,restaurant,Airside,,,,,T3 International Departures,,,,,,,,
-Bercos,Terminal 3,restaurant,Airside,,,,,T3 International Departures,,,,,,,,
-Flying Bites,Terminal 1,restaurant,Airside,,,,,T1 Domestic Departure,,,,,,,,
-Cafe Espresso,Terminal 2,restaurant,Landside,,,,,T2 Arrivals,,,,,,,,
-Cafe Espresso,Terminal 2,restaurant,Airside,,,,,T2 Departures,,,,,,,,
-Cafe Espresso,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-Gujrati Svado,Terminal 2,restaurant,Airside,,,,,T2 Departures,,,,,,,,
-Gujrati Svado,Terminal 3,restaurant,Landside,,,,,T3 Domestic Arrivals,,,,,,,,
-Grab & Fly,Terminal 2,restaurant,Airside,,,,,T2 Departures,,,,,,,,
-Urban Food Market,Terminal 2,restaurant,Landside,,,,,T2 Arrivals,,,,,,,,
-Urban Food Market,Terminal 2,restaurant,Airside,,,,,T2 Departures,,,,,,,,
-Urban Food Market,Terminal 3,restaurant,Airside,,,,,T3 International SHA,,,,,,,,
-Grab & Go,Terminal 2,restaurant,Landside,,,,,T2 Arrivals,,,,,,,,
-Fresh & Healthy,Terminal 2,restaurant,Airside,,,,,T2 Departures,,,,,,,,
-Chaayos,Terminal 2,restaurant,Airside,,,,,T2 Departures,,,,,,,,
-Chaayos,Terminal 3,restaurant,Landside,,,,,T3 Arrivals,,,,,,,,
-Mumbai Central,Terminal 3,restaurant,Landside,,,,,T3 International Arrivals,,,,,,,,
-Falafel Express,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-Hello Goodbye Bar,Terminal 2,restaurant,Airside,,,,,T2 Departures,,,,,,,,
-Caffe Tonino,Terminal 3,restaurant,Airside,,,,,T3 International Departures,,,,,,,,
-Caffe Tonino,Terminal 1,restaurant,Airside,,,,,T1 Departure Food court,,,,,,,,
-Papparoti,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-Papparoti,Terminal 1,restaurant,Airside,,,,,"T1 Domestic Departure,Food Court",,,,,,,,
-Nourish,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-Ultra Bar,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-Noodle Wok,Terminal 3,restaurant,Landside,,,,,T3 Arrivals,,,,,,,,
-Wrapafella,Terminal 3,restaurant,Airside,,,,,T3 International Departures,,,,,,,,
-Nescafe,Terminal 1,restaurant,Landside,,,,,T1 Arrivals,,,,,,,,
-Nescafe,Terminal 3,restaurant,Landside,,,,,T3 Arrivals,,,,,,,,
-Nescafe,Terminal 3,restaurant,Airside,,,,,T3 Departures,,,,,,,,
-Dosa factory & Noodle,Terminal 2,restaurant,Airside,,,,,T2 Domestic Departure,,,,,,,,
-Dosa factory & Noodle,Terminal 3,restaurant,Landside,,,,,T3 International Arrivals,,,,,,,,
-Hatti Kappi,Terminal 2,restaurant,Airside,,,,,T2 Departures,,,,,,,,
-Network 18 Café,Terminal 3,restaurant,Airside,,,,,T3 International Departures,,,,,,,,
-Burger King,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-Heineken Bar,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-Chai Point,Terminal 3,restaurant,Airside,,,,,T3 International Departures,,,,,,,,
-Carnatic Café,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-Carnatic Café,Terminal 1,restaurant,Airside,,,,,T1 Departure Food court,,,,,,,,
-Airr Toast,Terminal 3,restaurant,Airside,,,,,T3 International Departures,,,,,,,,
-Dhaba,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-Franks,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-Biryani Blues,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departures,,,,,,,,
-Moti Mahal Deluxe,Terminal 3,restaurant,Landside,,,,,T3 International Arrivals,,,,,,,,
-Tim Hortons,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departure Piers,,,,,,,,
-Tim Hortons,Terminal 1,restaurant,Airside,,,,,T1 Departure SHA,,,,,,,,
-Theobroma,Terminal 1,restaurant,Airside,,,,,T1 Departure Food court,,,,,,,,
-Theobroma,Terminal 3,restaurant,Landside,,,,,T3 Arrivals,,,,,,,,
-Theobroma,Terminal 3,restaurant,Airside,,,,,T3 Domestic Departure Piers,,,,,,,,
-Round D Clock,Main Terminal,restaurant,,,,,,,,,,,,,,
+name,terminal,amenity_type,airside,floor_level,cuisine,lat,lon,address,phone,website,opening_hours,wheelchair,takeaway,brand,osm_id,osm_type,description,logo_url
+@café,Terminal 3,restaurant,Landside,,Café,,,T3 Arrivals,,,,,,,,,An airport and transit hub café concept serving espresso drinks and light snacks for travellers on the go.,https://img.logo.dev/at.cafe?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+@café,Terminal 3,restaurant,Airside,,Café,,,T3 Departures,,,,,,,,,An airport and transit hub café concept serving espresso drinks and light snacks for travellers on the go.,https://img.logo.dev/at.cafe?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Costa Coffee,Terminal 2,restaurant,Airside,,Café,,,T2 Domestic Departure,,,,,,,,,"Costa Coffee is a British multinational coffeehouse chain, the UK's largest, serving handcrafted coffees, teas, and food in a warm and welcoming atmosphere.",https://img.logo.dev/costa.co.uk?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Costa Coffee,Terminal 3,restaurant,Airside,,Café,,,T3 Departures,,,,,,,,,"Costa Coffee is a British multinational coffeehouse chain, the UK's largest, serving handcrafted coffees, teas, and food in a warm and welcoming atmosphere.",https://img.logo.dev/costa.co.uk?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Costa Coffee,Terminal 3,restaurant,Landside,,Café,,,T3 International Arrivals,,,,,,,,,"Costa Coffee is a British multinational coffeehouse chain, the UK's largest, serving handcrafted coffees, teas, and food in a warm and welcoming atmosphere.",https://img.logo.dev/costa.co.uk?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Curry Kitchen,Terminal 3,restaurant,Airside,,Indian & South Asian,,,T3 International Departures,,,,,,,,,"Curry Kitchen is a fast-casual Indian restaurant concept serving curry dishes, rice, and naan in airport and food court settings.",
+Curry Kitchen,Terminal 3,restaurant,Landside,,Indian & South Asian,,,T3 Domestic Arrivals,,,,,,,,,"Curry Kitchen is a fast-casual Indian restaurant concept serving curry dishes, rice, and naan in airport and food court settings.",
+Dilli Streat,Terminal 3,restaurant,Landside,,"Indian & South Asian, Fast Food",,,T3 Arrivals,,,,,,,,,"Dilli Streat is an Indian street food restaurant concept serving Delhi-style chaat, rolls, and iconic street food snacks.",
+Dilli Streat,Terminal 3,restaurant,Airside,,"Indian & South Asian, Fast Food",,,T3 Domestic Departures,,,,,,,,,"Dilli Streat is an Indian street food restaurant concept serving Delhi-style chaat, rolls, and iconic street food snacks.",
+Domino's,Terminal 3,restaurant,Airside,,Pizza,,,T3 Domestic Departures,,,,,,,,,"Domino's is an American multinational pizza delivery chain known for its fast delivery, online ordering, and wide range of pizza, sides, and desserts.",https://img.logo.dev/dominos.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Domino's,Terminal 3,restaurant,Landside,,Pizza,,,T3 International Arrivals,,,,,,,,,"Domino's is an American multinational pizza delivery chain known for its fast delivery, online ordering, and wide range of pizza, sides, and desserts.",https://img.logo.dev/dominos.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Domino's,Terminal 1,restaurant,Airside,,Pizza,,,T1 Departure Food court,,,,,,,,,"Domino's is an American multinational pizza delivery chain known for its fast delivery, online ordering, and wide range of pizza, sides, and desserts.",https://img.logo.dev/dominos.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Idli.com,Terminal 3,restaurant,Airside,,Indian & South Asian,,,T3 International Departures,,,,,,,,,"Idli.com is an Indian restaurant concept specialising in idli, vada, and South Indian breakfast items made from traditional fermented rice and lentil batter.",
+KFC,Terminal 1,restaurant,Airside,,"Fast Food, Steak, Grill Chicken & BBQ",,,T1 Departure Food court,,,,,,,,,"KFC (Kentucky Fried Chicken) is a global fast food chain founded by Colonel Harland Sanders, famous for its original recipe fried chicken seasoned with 11 herbs and spices.",https://img.logo.dev/kfc.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+KFC,Terminal 2,restaurant,Airside,,"Fast Food, Steak, Grill Chicken & BBQ",,,T2 Domestic Departure,,,,,,,,,"KFC (Kentucky Fried Chicken) is a global fast food chain founded by Colonel Harland Sanders, famous for its original recipe fried chicken seasoned with 11 herbs and spices.",https://img.logo.dev/kfc.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+KFC,Terminal 3,restaurant,Airside,,"Fast Food, Steak, Grill Chicken & BBQ",,,T3 Domestic Departures,,,,,,,,,"KFC (Kentucky Fried Chicken) is a global fast food chain founded by Colonel Harland Sanders, famous for its original recipe fried chicken seasoned with 11 herbs and spices.",https://img.logo.dev/kfc.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+KFC,Terminal 3,restaurant,Landside,,"Fast Food, Steak, Grill Chicken & BBQ",,,T3 International Arrivals,,,,,,,,,"KFC (Kentucky Fried Chicken) is a global fast food chain founded by Colonel Harland Sanders, famous for its original recipe fried chicken seasoned with 11 herbs and spices.",https://img.logo.dev/kfc.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Masala Twist,Terminal 3,restaurant,Airside,,Indian & South Asian,,,T3 Departures,,,,,,,,,"Masala Twist is an Indian fast-casual restaurant offering a modern, contemporary twist on classic Indian masala dishes and street food.",
+McDonald's,Terminal 3,restaurant,Airside,,Fast Food,,,T3 Domestic Departures,,,,,,,,,"McDonald's is the world's largest fast food chain, serving billions of customers daily with iconic menu items including the Big Mac, McChicken, and golden french fries.",https://img.logo.dev/mcdonalds.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+McDonald's,Terminal 1,restaurant,Airside,,Fast Food,,,T1 Departure Food court,,,,,,,,,"McDonald's is the world's largest fast food chain, serving billions of customers daily with iconic menu items including the Big Mac, McChicken, and golden french fries.",https://img.logo.dev/mcdonalds.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Pizza Hut,Terminal 2,restaurant,Airside,,Pizza,,,T2 Departures,,,,,,,,,"Pizza Hut is one of the world's largest pizza restaurant chains, serving pan pizzas, stuffed crusts, pasta, and sides across dine-in, delivery, and carry-out formats.",https://img.logo.dev/pizzahut.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Starbucks,Terminal 3,restaurant,Landside,,Café,,,T3 Domestic Arrivals,,,,,,,,,"Starbucks is the world's largest coffeehouse chain, offering handcrafted espresso beverages, Frappuccinos, teas, and seasonal drinks alongside food items and merchandise.",https://img.logo.dev/starbucks.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Starbucks,Terminal 3,restaurant,Airside,,Café,,,T3 Domestic Departures,,,,,,,,,"Starbucks is the world's largest coffeehouse chain, offering handcrafted espresso beverages, Frappuccinos, teas, and seasonal drinks alongside food items and merchandise.",https://img.logo.dev/starbucks.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Starbucks,Terminal 1,restaurant,Airside,,Café,,,T1 Departure Bus Gates,,,,,,,,,"Starbucks is the world's largest coffeehouse chain, offering handcrafted espresso beverages, Frappuccinos, teas, and seasonal drinks alongside food items and merchandise.",https://img.logo.dev/starbucks.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Subway,Terminal 2,restaurant,Airside,,Sandwiches & Deli,,,T2 Departures,,,,,,,,,"Subway is the world's largest submarine sandwich chain, offering customisable subs, wraps, and salads made to order on freshly baked bread with a wide choice of toppings.",https://img.logo.dev/subway.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Subway,Terminal 3,restaurant,Landside,,Sandwiches & Deli,,,T3 Arrivals,,,,,,,,,"Subway is the world's largest submarine sandwich chain, offering customisable subs, wraps, and salads made to order on freshly baked bread with a wide choice of toppings.",https://img.logo.dev/subway.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Subway,Terminal 3,restaurant,Airside,,Sandwiches & Deli,,,T3 Domestic Departures,,,,,,,,,"Subway is the world's largest submarine sandwich chain, offering customisable subs, wraps, and salads made to order on freshly baked bread with a wide choice of toppings.",https://img.logo.dev/subway.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Subway,Terminal 1,restaurant,Airside,,Sandwiches & Deli,,,T1 Departure Food court,,,,,,,,,"Subway is the world's largest submarine sandwich chain, offering customisable subs, wraps, and salads made to order on freshly baked bread with a wide choice of toppings.",https://img.logo.dev/subway.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Vaango,Terminal 3,restaurant,Landside,,Indian & South Asian,,,T3 Domestic Arrivals,,,,,,,,,"Vaango is an Indian fast-casual chain specialising in South Indian cuisine including thalis, dosas, and appam in a contemporary, welcoming setting.",https://img.logo.dev/vaango.in?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Ile Bar,Terminal 3,restaurant,Landside,,"Bar, French, European",,,T3 International Arrivals,,,,,,,,,"Ile Bar is a French-themed bar concept serving cocktails, wines, and aperitifs in an airport or urban setting.",
+Ile Bar,Terminal 3,restaurant,Airside,,"Bar, French, European",,,T3 International Departures,,,,,,,,,"Ile Bar is a French-themed bar concept serving cocktails, wines, and aperitifs in an airport or urban setting.",
+Delhi Capitals,Terminal 3,restaurant,Airside,,"Bar, Indian & South Asian",,,T3 International Departures,,,,,,,,,"An IPL cricket-team-themed sports bar and cafe serving snacks, beverages, and Indian street food in a cricket-themed setting.",https://img.logo.dev/delhicapitals.in?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Cafeccino,Terminal 1,restaurant,Landside,,Café,,,T1 Arrivals,,,,,,,,,Cafeccino is an airport and travel hub café concept serving classic espresso drinks and light snacks for on-the-go travellers.,
+Cafeccino,Terminal 3,restaurant,Airside,,Café,,,T3 Departures,,,,,,,,,Cafeccino is an airport and travel hub café concept serving classic espresso drinks and light snacks for on-the-go travellers.,
+Cafeccino,Terminal 1,restaurant,Airside,,Café,,,"T1 Domestic Departure,Gate No 17",,,,,,,,,Cafeccino is an airport and travel hub café concept serving classic espresso drinks and light snacks for on-the-go travellers.,
+Punjabi Kulfi,Terminal 3,restaurant,Airside,,"Indian & South Asian, Desserts",,,T3 Domestic Departures,,,,,,,,,"A traditional Indian frozen dessert counter serving kulfi — a dense, creamy Indian ice cream — in classic Punjabi flavors.",
+Krispy Kreme Kiosk,Terminal 3,restaurant,Landside,,"Café, Bakery",,,T3 Arrivals,,,,,,,,,A Krispy Kreme doughnut kiosk serving the brand's signature glazed and filled doughnuts alongside coffee.,
+Krispy Kreme Kiosk,Terminal 3,restaurant,Airside,,"Café, Bakery",,,T3 Departures,,,,,,,,,A Krispy Kreme doughnut kiosk serving the brand's signature glazed and filled doughnuts alongside coffee.,
+Krispy Kreme Kiosk,Terminal 1,restaurant,Airside,,"Café, Bakery",,,"T1 Domestic Departure,Gate No 11",,,,,,,,,A Krispy Kreme doughnut kiosk serving the brand's signature glazed and filled doughnuts alongside coffee.,
+The Irish House,Terminal 3,restaurant,Airside,,Bar,,,T3 International Departures,,,,,,,,,"An Irish-styled pub chain serving pub food, burgers, fish and chips, and a wide selection of beers and cocktails.",https://img.logo.dev/theirishhouseparty.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Bercos,Terminal 3,restaurant,Airside,,"Indian & South Asian, Chinese, Asian",,,T3 International Departures,,,,,,,,,"A popular Delhi Chinese restaurant chain serving Indo-Chinese dishes including Manchurian, noodles, fried rice, and crispy preparations.",https://img.logo.dev/bercospopcorn.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Flying Bites,Terminal 1,restaurant,Airside,,Grab & Go,,,T1 Domestic Departure,,,,,,,,,A quick-service snack counter offering light Indian and continental bites for busy travelers.,
+Cafe Espresso,Terminal 2,restaurant,Landside,,Café,,,T2 Arrivals,,,,,,,,,Cafe Espresso is a travel hub coffee bar concept serving classic espresso drinks and light snacks.,
+Cafe Espresso,Terminal 2,restaurant,Airside,,Café,,,T2 Departures,,,,,,,,,Cafe Espresso is a travel hub coffee bar concept serving classic espresso drinks and light snacks.,
+Cafe Espresso,Terminal 3,restaurant,Airside,,Café,,,T3 Domestic Departures,,,,,,,,,Cafe Espresso is a travel hub coffee bar concept serving classic espresso drinks and light snacks.,
+Gujrati Svado,Terminal 2,restaurant,Airside,,Indian & South Asian,,,T2 Departures,,,,,,,,,"Gujrati Svado is an Indian restaurant specialising in Gujarati cuisine, known for its vegetarian thali and authentic traditional flavours from the Gujarat region.",
+Gujrati Svado,Terminal 3,restaurant,Landside,,Indian & South Asian,,,T3 Domestic Arrivals,,,,,,,,,"Gujrati Svado is an Indian restaurant specialising in Gujarati cuisine, known for its vegetarian thali and authentic traditional flavours from the Gujarat region.",
+Grab & Fly,Terminal 2,restaurant,Airside,,"Café, Grab & Go",,,T2 Departures,,,,,,,,,"Grab & Fly is an airport food and beverage concept offering ready-to-go meals, snacks, and drinks for passengers on the move.",
+Urban Food Market,Terminal 2,restaurant,Landside,,"Café, Grab & Go",,,T2 Arrivals,,,,,,,,,"Urban Food Market is an airport food market concept offering a variety of fresh grab-and-go meals, artisan snacks, and beverages.",
+Urban Food Market,Terminal 2,restaurant,Airside,,"Café, Grab & Go",,,T2 Departures,,,,,,,,,"Urban Food Market is an airport food market concept offering a variety of fresh grab-and-go meals, artisan snacks, and beverages.",
+Urban Food Market,Terminal 3,restaurant,Airside,,"Café, Grab & Go",,,T3 International SHA,,,,,,,,,"Urban Food Market is an airport food market concept offering a variety of fresh grab-and-go meals, artisan snacks, and beverages.",
+Grab & Go,Terminal 2,restaurant,Landside,,Grab & Go,,,T2 Arrivals,,,,,,,,,"A convenience counter stocking pre-packaged sandwiches, snacks, and beverages for quick pickup.",
+Fresh & Healthy,Terminal 2,restaurant,Airside,,Healthy,,,T2 Departures,,,,,,,,,"A health food counter serving fresh salads, fruit bowls, smoothies, and light healthy snacks.",
+Chaayos,Terminal 2,restaurant,Airside,,"Indian & South Asian, Café",,,T2 Departures,,,,,,,,,"Chaayos is an Indian chai café chain known for its customisable masala chai, snacks, and Indian street food bites served in a cosy, contemporary setting.",https://img.logo.dev/chaayos.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Chaayos,Terminal 3,restaurant,Landside,,"Indian & South Asian, Café",,,T3 Arrivals,,,,,,,,,"Chaayos is an Indian chai café chain known for its customisable masala chai, snacks, and Indian street food bites served in a cosy, contemporary setting.",https://img.logo.dev/chaayos.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Mumbai Central,Terminal 3,restaurant,Landside,,"Indian & South Asian, Fast Food",,,T3 International Arrivals,,,,,,,,,"A Mumbai-style snack and restaurant concept serving vada pav, pav bhaji, bhel puri, and other Mumbai street food classics.",
+Falafel Express,Terminal 3,restaurant,Airside,,Middle Eastern,,,T3 Domestic Departures,,,,,,,,,"Falafel Express is a fast-casual Middle Eastern restaurant concept serving falafel wraps, pita sandwiches, and mezze dishes.",
+Hello Goodbye Bar,Terminal 2,restaurant,Airside,,Bar,,,T2 Departures,,,,,,,,,"A themed bar serving cocktails, beers, and bar snacks for departing and arriving passengers.",https://img.logo.dev/hellogoodbyebar.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Caffe Tonino,Terminal 3,restaurant,Airside,,"Café, Italian",,,T3 International Departures,,,,,,,,,Caffe Tonino is an Italian coffee bar concept serving classic espresso drinks and light pastries in airports and transit locations.,
+Caffe Tonino,Terminal 1,restaurant,Airside,,"Café, Italian",,,T1 Departure Food court,,,,,,,,,Caffe Tonino is an Italian coffee bar concept serving classic espresso drinks and light pastries in airports and transit locations.,
+Papparoti,Terminal 3,restaurant,Airside,,"Bakery, Malaysian, Asian, Pan-Asian",,,T3 Domestic Departures,,,,,,,,,"Papparoti is a Malaysian bakery chain known for its warm, soft buns topped with a caramelised coffee-butter glaze, enjoyed across Asia and the Middle East.",https://img.logo.dev/papparoti.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Papparoti,Terminal 1,restaurant,Airside,,"Bakery, Malaysian, Asian, Pan-Asian",,,"T1 Domestic Departure,Food Court",,,,,,,,,"Papparoti is a Malaysian bakery chain known for its warm, soft buns topped with a caramelised coffee-butter glaze, enjoyed across Asia and the Middle East.",https://img.logo.dev/papparoti.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Nourish,Terminal 3,restaurant,Airside,,Healthy,,,T3 Domestic Departures,,,,,,,,,"Nourish is a health-focused restaurant or café concept offering nutritious, plant-forward meals and wholesome snacks.",
+Ultra Bar,Terminal 3,restaurant,Airside,,Bar,,,T3 Domestic Departures,,,,,,,,,"Ultra Bar is an airport or entertainment bar serving premium spirits, cocktails, and drinks in a vibrant atmosphere.",
+Noodle Wok,Terminal 3,restaurant,Landside,,Asian,,,T3 Arrivals,,,,,,,,,"An Asian noodle restaurant serving stir-fried noodles, soups, and rice dishes in pan-Asian style.",https://img.logo.dev/noodlewok.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Wrapafella,Terminal 3,restaurant,Airside,,"Fast Food, Sandwiches & Deli",,,T3 International Departures,,,,,,,,,Wrapafella is a fast-casual wrap restaurant concept serving customisable wraps and sandwiches with a range of fillings and flavour combinations.,
+Nescafe,Terminal 1,restaurant,Landside,,Café,,,T1 Arrivals,,,,,,,,,A Nescafe coffee kiosk serving instant and machine-brewed coffee drinks and packaged snacks.,https://img.logo.dev/nescafe.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Nescafe,Terminal 3,restaurant,Landside,,Café,,,T3 Arrivals,,,,,,,,,A Nescafe coffee kiosk serving instant and machine-brewed coffee drinks and packaged snacks.,https://img.logo.dev/nescafe.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Nescafe,Terminal 3,restaurant,Airside,,Café,,,T3 Departures,,,,,,,,,A Nescafe coffee kiosk serving instant and machine-brewed coffee drinks and packaged snacks.,https://img.logo.dev/nescafe.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Dosa factory & Noodle,Terminal 2,restaurant,Airside,,"Indian & South Asian, Asian",,,T2 Domestic Departure,,,,,,,,,A restaurant concept combining South Indian dosa specialities with Asian noodle dishes for a unique fusion dining experience.,
+Dosa factory & Noodle,Terminal 3,restaurant,Landside,,"Indian & South Asian, Asian",,,T3 International Arrivals,,,,,,,,,A restaurant concept combining South Indian dosa specialities with Asian noodle dishes for a unique fusion dining experience.,
+Hatti Kappi,Terminal 2,restaurant,Airside,,"Café, Indian & South Asian",,,T2 Departures,,,,,,,,,A Karnataka-based specialty filter coffee chain serving authentic South Indian filter coffee and light snacks.,
+Network 18 Café,Terminal 3,restaurant,Airside,,Café,,,T3 International Departures,,,,,,,,,"A media-branded cafe offering coffee, snacks, and light meals in a news and media-themed setting.",
+Burger King,Terminal 3,restaurant,Airside,,Fast Food,,,T3 Domestic Departures,,,,,,,,,Burger King is a global American fast food chain best known for the flame-grilled Whopper burger and its 'Have It Your Way' customisation philosophy.,https://img.logo.dev/bk.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Heineken,Terminal 3,restaurant,Airside,,Bar,,,T3 Domestic Departures,,,,,,,,,"Heineken operates branded beer bars and kiosks in international airports, serving its iconic lager alongside premium draught beers in a relaxed setting.",https://img.logo.dev/heineken.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Chai Point,Terminal 3,restaurant,Airside,,"Indian & South Asian, Café",,,T3 International Departures,,,,,,,,,"Chai Point is an Indian chai and snacks chain bringing quality masala chai, sandwiches, and quick bites to offices, airports, and travel hubs.",https://img.logo.dev/chaipoint.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Carnatic Café,Terminal 3,restaurant,Airside,,Indian & South Asian,,,T3 Domestic Departures,,,,,,,,,"Carnatic Café is a South Indian restaurant concept serving traditional Carnatic cuisine including dosas, idlis, vadas, and authentic filter coffee.",
+Carnatic Café,Terminal 1,restaurant,Airside,,Indian & South Asian,,,T1 Departure Food court,,,,,,,,,"Carnatic Café is a South Indian restaurant concept serving traditional Carnatic cuisine including dosas, idlis, vadas, and authentic filter coffee.",
+Airr Toast,Terminal 3,restaurant,Airside,,"Bakery, Café",,,T3 International Departures,,,,,,,,,"A quick-service toast and breakfast bar serving grilled sandwiches, toast varieties, and hot beverages.",
+Dhaba,Terminal 3,restaurant,Airside,,Indian & South Asian,,,T3 Domestic Departures,,,,,,,,,"Dhaba is an Indian restaurant concept serving hearty North Indian dhaba-style cuisine including dal, curries, and tandoor-baked breads.",
+Franks,Terminal 3,restaurant,Airside,,American,,,T3 Domestic Departures,,,,,,,,,"A casual American-style diner and bar serving burgers, hot dogs, sandwiches, and comfort food.",
+Biryani Blues,Terminal 3,restaurant,Airside,,Indian & South Asian,,,T3 Domestic Departures,,,,,,,,,"A biryani specialist restaurant chain serving dum-cooked Hyderabadi-style biryanis with chicken, mutton, and vegetable options.",https://img.logo.dev/biryaniblues.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Moti Mahal Deluxe,Terminal 3,restaurant,Landside,,Indian & South Asian,,,T3 International Arrivals,,,,,,,,,"A heritage Indian restaurant known for North Indian dishes including butter chicken, dal makhani, and tandoori preparations.",https://img.logo.dev/motimahal-uk.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Tim Hortons,Terminal 3,restaurant,Airside,,Café,,,T3 Domestic Departure Piers,,,,,,,,,"Tim Hortons is Canada's most iconic coffee and baked goods chain, beloved for its double-double coffee, Timbits donut holes, and classic breakfast sandwiches.",https://img.logo.dev/timhortons.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Tim Hortons,Terminal 1,restaurant,Airside,,Café,,,T1 Departure SHA,,,,,,,,,"Tim Hortons is Canada's most iconic coffee and baked goods chain, beloved for its double-double coffee, Timbits donut holes, and classic breakfast sandwiches.",https://img.logo.dev/timhortons.com?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Theobroma,Terminal 1,restaurant,Airside,,"Indian & South Asian, Bakery, Desserts",,,T1 Departure Food court,,,,,,,,,"Theobroma is an Indian patisserie and café brand from Mumbai known for its exquisite European-style cakes, pastries, brownies, and chocolate desserts.",https://img.logo.dev/theobroma.in?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Theobroma,Terminal 3,restaurant,Landside,,"Indian & South Asian, Bakery, Desserts",,,T3 Arrivals,,,,,,,,,"Theobroma is an Indian patisserie and café brand from Mumbai known for its exquisite European-style cakes, pastries, brownies, and chocolate desserts.",https://img.logo.dev/theobroma.in?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Theobroma,Terminal 3,restaurant,Airside,,"Indian & South Asian, Bakery, Desserts",,,T3 Domestic Departure Piers,,,,,,,,,"Theobroma is an Indian patisserie and café brand from Mumbai known for its exquisite European-style cakes, pastries, brownies, and chocolate desserts.",https://img.logo.dev/theobroma.in?token=pk_ESVPZKxARPS4xn3hrJIFiA&size=200&format=png
+Round D Clock,Main Terminal,restaurant,,,"Indian & South Asian, International",,,,,,,,,,,,"A 24-hour dining counter serving Indian meals, sandwiches, and snacks around the clock.",
