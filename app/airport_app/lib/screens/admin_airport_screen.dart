@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
 import '../services/admin_service.dart';
+import '../services/chain_restaurant_service.dart';
 import '../services/firebase_service.dart';
 
 class AdminAirportScreen extends StatefulWidget {
@@ -408,6 +409,9 @@ class _TerminalSection extends StatelessWidget {
             final amenity = r['amenity'] as String? ?? 'restaurant';
             final cuisine = r['cuisine'] as String? ?? '';
             final outletCount = (r['outlets'] as List?)?.length ?? 0;
+            final logoUrl = (r['logo_url'] as String? ?? '').isNotEmpty
+                ? r['logo_url'] as String
+                : ChainRestaurantService.findLogoUrl(name);
             return GestureDetector(
               onTap: () => onEdit(r),
               child: Container(
@@ -424,10 +428,16 @@ class _TerminalSection extends StatelessWidget {
                     Container(
                       width: 36, height: 36,
                       decoration: BoxDecoration(
-                        color: kTeal.withValues(alpha: 0.08),
+                        color: logoUrl.isNotEmpty ? Colors.white : kTeal.withValues(alpha: 0.08),
                         borderRadius: BorderRadius.circular(3),
+                        border: Border.all(color: kTeal.withValues(alpha: 0.18)),
                       ),
-                      child: Icon(_icon(amenity), color: kTeal, size: 17),
+                      clipBehavior: Clip.antiAlias,
+                      child: logoUrl.isNotEmpty
+                          ? Image.network(logoUrl, fit: BoxFit.contain,
+                              errorBuilder: (_, __, ___) =>
+                                  Icon(_icon(amenity), color: kTeal, size: 17))
+                          : Icon(_icon(amenity), color: kTeal, size: 17),
                     ),
                     const SizedBox(width: 12),
                     Expanded(

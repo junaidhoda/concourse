@@ -35,6 +35,7 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
           slug: slug,
           name: d['name'] as String? ?? FirebaseService.getAirportName(slug.toUpperCase()),
           continent: d['continent'] as String? ?? 'Other',
+          country: d['country'] as String? ?? '',
           terminalCount: counts['terminals'] ?? 0,
           restaurantCount: counts['restaurants'] ?? 0,
         );
@@ -170,9 +171,37 @@ class _AirportRow {
   final String slug;
   final String name;
   final String continent;
+  final String country;
   final int terminalCount;
   final int restaurantCount;
-  const _AirportRow({required this.slug, required this.name, required this.continent, required this.terminalCount, required this.restaurantCount});
+  const _AirportRow({required this.slug, required this.name, required this.continent, required this.country, required this.terminalCount, required this.restaurantCount});
+}
+
+// ── Country flag helper (mirrors airport_search_screen.dart) ──
+const _kCountryIso = {
+  'United Kingdom': 'GB', 'UK': 'GB', 'France': 'FR', 'Germany': 'DE',
+  'Turkey': 'TR', 'USA': 'US', 'United States': 'US', 'Singapore': 'SG',
+  'UAE': 'AE', 'United Arab Emirates': 'AE', 'Qatar': 'QA', 'Japan': 'JP',
+  'Thailand': 'TH', 'China': 'CN', 'Hong Kong': 'HK', 'Taiwan': 'TW',
+  'South Korea': 'KR', 'Australia': 'AU', 'New Zealand': 'NZ',
+  'Philippines': 'PH', 'India': 'IN', 'Sri Lanka': 'LK', 'Vietnam': 'VN',
+  'Netherlands': 'NL', 'Greece': 'GR', 'Brazil': 'BR', 'Peru': 'PE',
+  'Nigeria': 'NG', 'South Africa': 'ZA', 'Malaysia': 'MY', 'Portugal': 'PT',
+  'Ireland': 'IE', 'Spain': 'ES', 'Austria': 'AT', 'Belgium': 'BE',
+  'Italy': 'IT', 'Switzerland': 'CH', 'Canada': 'CA', 'Mexico': 'MX',
+  'Colombia': 'CO', 'Indonesia': 'ID', 'Saudi Arabia': 'SA', 'Jordan': 'JO',
+  'Kenya': 'KE', 'Ethiopia': 'ET', 'Egypt': 'EG', 'Morocco': 'MA',
+  'Pakistan': 'PK', 'Bangladesh': 'BD', 'Nepal': 'NP', 'Myanmar': 'MM',
+  'Cambodia': 'KH', 'Laos': 'LA', 'Israel': 'IL', 'Kuwait': 'KW',
+  'Bahrain': 'BH', 'Oman': 'OM', 'Chile': 'CL', 'Argentina': 'AR',
+};
+
+String _flagEmoji(String countryName) {
+  final iso = _kCountryIso[countryName] ?? '';
+  if (iso.length != 2) return '✈';
+  const base = 0x1F1E6 - 65;
+  return String.fromCharCode(iso.codeUnitAt(0) + base) +
+         String.fromCharCode(iso.codeUnitAt(1) + base);
 }
 
 class _AirportCard extends StatelessWidget {
@@ -201,7 +230,12 @@ class _AirportCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(3),
                 border: Border.all(color: kTeal.withValues(alpha: 0.18)),
               ),
-              child: const Icon(Icons.flight_rounded, color: kTeal, size: 20),
+              child: Center(
+                child: Text(
+                  _flagEmoji(row.country),
+                  style: const TextStyle(fontSize: 22),
+                ),
+              ),
             ),
             const SizedBox(width: 14),
             Expanded(
