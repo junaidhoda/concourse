@@ -81,11 +81,11 @@ const _kCountryFlags = {
 };
 
 const _kFeatured = [
-  _Airport(id: 'heathrow', iata: 'LHR', name: 'London Heathrow',  city: 'London',    country: 'United Kingdom', flag: '🇬🇧', venueCount: 0),
-  _Airport(id: 'dubai',    iata: 'DXB', name: 'Dubai Intl',       city: 'Dubai',     country: 'UAE',            flag: '🇦🇪', venueCount: 0),
-  _Airport(id: 'changi',   iata: 'SIN', name: 'Singapore Changi', city: 'Singapore', country: 'Singapore',      flag: '🇸🇬', venueCount: 0),
-  _Airport(id: 'cdg',      iata: 'CDG', name: 'Paris CDG',        city: 'Paris',     country: 'France',         flag: '🇫🇷', venueCount: 0),
-  _Airport(id: 'jfk',      iata: 'JFK', name: 'New York JFK',     city: 'New York',  country: 'USA',            flag: '🇺🇸', venueCount: 0),
+  _Airport(id: 'lhr', iata: 'LHR', name: 'London Heathrow',  city: 'London',    country: 'United Kingdom', flag: '🇬🇧', venueCount: 0),
+  _Airport(id: 'dxb', iata: 'DXB', name: 'Dubai Intl',       city: 'Dubai',     country: 'UAE',            flag: '🇦🇪', venueCount: 0),
+  _Airport(id: 'sin', iata: 'SIN', name: 'Singapore Changi', city: 'Singapore', country: 'Singapore',      flag: '🇸🇬', venueCount: 0),
+  _Airport(id: 'cdg', iata: 'CDG', name: 'Paris CDG',        city: 'Paris',     country: 'France',         flag: '🇫🇷', venueCount: 0),
+  _Airport(id: 'jfk', iata: 'JFK', name: 'New York JFK',     city: 'New York',  country: 'USA',            flag: '🇺🇸', venueCount: 0),
 ];
 
 const _kRecentSearchesKey = 'recent_airport_searches';
@@ -395,38 +395,50 @@ class _ExploreScreenState extends State<ExploreScreen>
       value: appSystemUiOverlayStyle(context),
       child: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        resizeToAvoidBottomInset: false,
         body: Stack(
           children: [
             const _Background(),
             SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+              child: Stack(
                 children: [
-                  // Header (wordmark + search)
-                  _fadeUp(
-                    _Header(
-                      searchCtrl:     _searchCtrl,
-                      searchFocus:    _searchFocus,
-                      hasQuery:       _hasQuery,
-                      searchFocused:  _searchFocused,
-                      recentSearches: _recentSearches,
-                      onChanged:      _onSearchChanged,
-                      onClear: () {
-                        _searchCtrl.clear();
-                        _onSearchChanged('');
-                        _searchFocus.requestFocus();
-                      },
-                      onSelectRecent: _selectRecentSearch,
-                      ruleCtrl:       _ruleCtrl,
+                  // ── Main layout (never moves) ────────────────
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      _fadeUp(
+                        _Header(
+                          searchCtrl:  _searchCtrl,
+                          searchFocus: _searchFocus,
+                          hasQuery:    _hasQuery,
+                          onChanged:   _onSearchChanged,
+                          onClear: () {
+                            _searchCtrl.clear();
+                            _onSearchChanged('');
+                            _searchFocus.requestFocus();
+                          },
+                          ruleCtrl: _ruleCtrl,
+                        ),
+                        _headerCtrl,
+                      ),
+                      Expanded(
+                        child: _hasQuery
+                            ? _buildSearchResults()
+                            : _buildDefaultLayout(),
+                      ),
+                    ],
+                  ),
+                  // ── Floating recent-searches dropdown ────────
+                  if (_searchFocused && !_hasQuery && _recentSearches.isNotEmpty)
+                    Positioned(
+                      top:   186,
+                      left:  24,
+                      right: 24,
+                      child: _RecentSuggestions(
+                        searches: _recentSearches,
+                        onSelect:  _selectRecentSearch,
+                      ),
                     ),
-                    _headerCtrl,
-                  ),
-                  // Body — search results OR default layout
-                  Expanded(
-                    child: _hasQuery
-                        ? _buildSearchResults()
-                        : _buildDefaultLayout(),
-                  ),
                 ],
               ),
             ),
@@ -497,7 +509,6 @@ class _ExploreScreenState extends State<ExploreScreen>
                             icon:      Icons.flight_rounded,
                             iconColor: kTeal,
                             title:     'Popular Airports',
-                            subtitle:  'Busiest hubs worldwide',
                             onTap:     () => context.go('/airport-search'),
                           ),
                         ),
@@ -787,22 +798,16 @@ class _Header extends StatelessWidget {
   final TextEditingController searchCtrl;
   final FocusNode             searchFocus;
   final bool                  hasQuery;
-  final bool                  searchFocused;
-  final List<String>          recentSearches;
   final ValueChanged<String>  onChanged;
   final VoidCallback          onClear;
-  final ValueChanged<String>  onSelectRecent;
   final AnimationController   ruleCtrl;
 
   const _Header({
     required this.searchCtrl,
     required this.searchFocus,
     required this.hasQuery,
-    required this.searchFocused,
-    required this.recentSearches,
     required this.onChanged,
     required this.onClear,
-    required this.onSelectRecent,
     required this.ruleCtrl,
   });
 
@@ -861,8 +866,6 @@ class _Header extends StatelessWidget {
             onChanged:  onChanged,
             onClear:    onClear,
           ),
-          if (searchFocused && recentSearches.isNotEmpty)
-            _RecentSuggestions(searches: recentSearches, onSelect: onSelectRecent),
           const SizedBox(height: 4),
         ],
       ),
@@ -1035,12 +1038,11 @@ class _QuickBox extends StatefulWidget {
   final IconData     icon;
   final Color        iconColor;
   final String       title;
-  final String       subtitle;
   final VoidCallback onTap;
 
   const _QuickBox({
     required this.icon, required this.iconColor,
-    required this.title, required this.subtitle, required this.onTap,
+    required this.title, required this.onTap,
   });
 
   @override
@@ -1061,9 +1063,8 @@ class _QuickBoxState extends State<_QuickBox> {
         scale: _pressed ? 0.98 : 1.0,
         duration: const Duration(milliseconds: 100),
         child: Container(
-          // Fill all available height from the Row
           constraints: const BoxConstraints(minHeight: 120),
-          padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
           decoration: BoxDecoration(
             color:        appCardSurface(context),
             borderRadius: BorderRadius.circular(6),
@@ -1072,25 +1073,18 @@ class _QuickBoxState extends State<_QuickBox> {
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment:  MainAxisAlignment.center,
             children: [
-              Container(
-                width: 44, height: 44,
-                decoration: BoxDecoration(
-                  color: widget.iconColor.withValues(alpha: 0.10),
-                  borderRadius: BorderRadius.circular(4),
+              Expanded(
+                child: Center(
+                  child: Icon(widget.icon, color: widget.iconColor, size: 100),
                 ),
-                child: Icon(widget.icon, color: widget.iconColor, size: 22),
               ),
-              const SizedBox(height: 16),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(widget.title, textAlign: TextAlign.center, style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w500, color: context.appOnSurface)),
-                  const SizedBox(height: 4),
-                  Text(widget.subtitle, textAlign: TextAlign.center, style: GoogleFonts.jost(fontSize: 12, color: context.appMutedFg(0.40))),
-                ],
+              Text(
+                widget.title,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: GoogleFonts.jost(fontSize: 25, fontWeight: FontWeight.w500, color: context.appOnSurface),
               ),
             ],
           ),
@@ -1122,17 +1116,10 @@ class _NearbyBoxState extends State<_NearbyBox> {
     final found = widget.nearbyStatus == _NearbyStatus.found && widget.nearbyAirport != null;
 
     final Widget iconArea = found
-        ? Text(widget.nearbyAirport!.flag, style: const TextStyle(fontSize: 32))
-        : Container(
-            width: 44, height: 44,
-            decoration: BoxDecoration(color: kTeal.withValues(alpha: 0.10), borderRadius: BorderRadius.circular(4)),
-            child: Icon(Icons.location_on_rounded, color: kTeal, size: 22),
-          );
+        ? Text(widget.nearbyAirport!.flag, style: const TextStyle(fontSize: 80))
+        : Icon(Icons.location_on_rounded, color: kTeal, size: 100);
 
-    final String title    = found ? 'Near ${widget.nearbyAirport!.iata}' : 'Nearby Airports';
-    final String subtitle = found
-        ? 'Explore ${widget.nearbyAirport!.city}'
-        : (widget.nearbyStatus == _NearbyStatus.loading ? 'Locating...' : 'Airports near you');
+    final String title = found ? 'Near ${widget.nearbyAirport!.iata}' : 'Nearby Airports';
 
     return GestureDetector(
       onTap:       widget.onTap,
@@ -1144,7 +1131,7 @@ class _NearbyBoxState extends State<_NearbyBox> {
         duration: const Duration(milliseconds: 100),
         child: Container(
           constraints: const BoxConstraints(minHeight: 120),
-          padding: const EdgeInsets.fromLTRB(16, 20, 16, 20),
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
           decoration: BoxDecoration(
             color:        appCardSurface(context),
             borderRadius: BorderRadius.circular(6),
@@ -1153,18 +1140,16 @@ class _NearbyBoxState extends State<_NearbyBox> {
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment:  MainAxisAlignment.center,
             children: [
-              iconArea,
-              const SizedBox(height: 16),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(title, textAlign: TextAlign.center, style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w500, color: context.appOnSurface), maxLines: 1, overflow: TextOverflow.ellipsis),
-                  const SizedBox(height: 4),
-                  Text(subtitle, textAlign: TextAlign.center, style: GoogleFonts.jost(fontSize: 12, color: context.appMutedFg(0.40))),
-                ],
+              Expanded(
+                child: Center(child: iconArea),
+              ),
+              Text(
+                title,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: GoogleFonts.jost(fontSize: 25, fontWeight: FontWeight.w500, color: context.appOnSurface),
               ),
             ],
           ),

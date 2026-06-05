@@ -724,7 +724,10 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
     return ListView.builder(
       padding: const EdgeInsets.fromLTRB(24, 16, 24, 40),
       itemCount: _results.length,
-      itemBuilder: (context, i) => _AirportCard(airport: _results[i]),
+      itemBuilder: (context, i) => _AirportCard(
+        airport:    _results[i],
+        flagEmoji:  flagEmoji(_results[i].country),
+      ),
     );
   }
 }
@@ -1062,7 +1065,7 @@ class _AirportCard extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 14),
-            // Info — IATA is the hero text
+            // Info — matches _ResultCard on the Home screen
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -1070,18 +1073,27 @@ class _AirportCard extends StatelessWidget {
                   Text(
                     airport.iataCode,
                     style: GoogleFonts.cormorant(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: context.appOnSurface,
-                      letterSpacing: 0.5,
+                      fontSize: 13,
+                      color: kTeal,
+                      letterSpacing: 0.6,
                     ),
                   ),
+                  const SizedBox(height: 1),
                   Text(
                     airport.name,
                     style: GoogleFonts.jost(
+                      fontSize: 14,
+                      color: context.appOnSurface,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const SizedBox(height: 1),
+                  Text(
+                    '${airport.city}, ${airport.country}',
+                    style: GoogleFonts.jost(
                       fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: context.appMutedFg(0.55),
+                      color: context.appMutedFg(0.40),
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
