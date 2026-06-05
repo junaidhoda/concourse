@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:latlong2/latlong.dart';
 import '../theme/app_theme.dart';
 import '../services/firebase_service.dart';
+import '../widgets/airport_map_widget.dart';
 
 // ─────────────────────────────────────────────────────────────
 //  AIRPORT MODEL
@@ -16,6 +18,8 @@ class Airport {
   final String city;
   final String country;
   final String countryCode;
+  final double? lat;
+  final double? lon;
 
   const Airport({
     required this.id,
@@ -24,6 +28,8 @@ class Airport {
     required this.city,
     required this.country,
     required this.countryCode,
+    this.lat,
+    this.lon,
   });
 
   String get flagAsset => 'assets/images/flag_${countryCode.toLowerCase()}.png';
@@ -116,6 +122,8 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
         city: a['city'] as String? ?? '',
         country: a['country'] as String? ?? '',
         countryCode: '',
+        lat: (a['lat'] as num?)?.toDouble(),
+        lon: (a['lon'] as num?)?.toDouble(),
       ));
     }
     for (final list in grouped.values) {
@@ -442,11 +450,12 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
 
   // ─── Airport list (level 2) ───────────────────────────────
   Widget _buildAirportList() {
-    final country = _selectedCountry!;
-    final flag = flagEmoji(country);
+    final country  = _selectedCountry!;
+    final flag     = flagEmoji(country);
     final airports = (_airportsByContinent[_selectedContinent] ?? [])
         .where((a) => a.country == country)
         .toList();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -460,12 +469,27 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
             ],
           ),
         ),
-        const SizedBox(height: 14),
+        const SizedBox(height: 12),
+
+        // ── Map ──────────────────────────────────────────────
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: AirportMapWidget(
+            airports:     airports,
+            userLocation: null,
+            onAirportTapped: (airport) =>
+                context.push('/airport-detail/${airport.id}'),
+          ),
+        ),
+        const SizedBox(height: 16),
+
+        // ── Airport list ─────────────────────────────────────
         Expanded(
           child: ListView.builder(
             padding: const EdgeInsets.fromLTRB(24, 0, 24, 40),
             itemCount: airports.length,
-            itemBuilder: (context, i) => _AirportCard(airport: airports[i], flagEmoji: flag),
+            itemBuilder: (context, i) =>
+                _AirportCard(airport: airports[i], flagEmoji: flag),
           ),
         ),
       ],
