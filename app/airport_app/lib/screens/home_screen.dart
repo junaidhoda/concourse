@@ -5,12 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../theme/app_theme.dart';
 import '../services/firebase_service.dart';
-import '../widgets/airport_map_widget.dart';
 
 // ─────────────────────────────────────────────────────────────
 //  DATA MODEL
@@ -92,19 +90,17 @@ const _kRecentSearchesKey = 'recent_airport_searches';
 
 // 5 miles in km — threshold to show "You are near X"
 const _kNearbyThresholdKm = 8.05;
-// 100 miles in km — radius for "show nearby airports" list
-const _kNearbyListRadiusKm = 160.9;
 
 // ─────────────────────────────────────────────────────────────
 //  HOME SCREEN
 // ─────────────────────────────────────────────────────────────
-class ExploreScreen extends StatefulWidget {
-  const ExploreScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
   @override
-  State<ExploreScreen> createState() => _ExploreScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _ExploreScreenState extends State<ExploreScreen>
+class _HomeScreenState extends State<HomeScreen>
     with TickerProviderStateMixin {
   final TextEditingController _searchCtrl   = TextEditingController();
   final FocusNode             _searchFocus  = FocusNode();
@@ -122,7 +118,6 @@ class _ExploreScreenState extends State<ExploreScreen>
   _NearbyStatus  _nearbyStatus   = _NearbyStatus.loading;
   _Airport?      _nearbyAirport;
   // Last known position for building the nearby list on demand
-  Position?      _lastPosition;
 
   late final AnimationController _headerCtrl;
   late final AnimationController _actionsCtrl;
@@ -152,7 +147,6 @@ class _ExploreScreenState extends State<ExploreScreen>
       if (mounted) setState(() => _searchFocused = _searchFocus.hasFocus);
     });
 
-    _loadLiveCounts();
     _loadAirports();
     _loadRecentSearches();
     _findNearbyAirport();
@@ -181,17 +175,19 @@ class _ExploreScreenState extends State<ExploreScreen>
       ..sort((a, b) => a.name.compareTo(b.name));
     setState(() => _allAirports = airports);
     if (_nearbyStatus == _NearbyStatus.loading) _findNearbyAirport();
+    _loadLiveCounts(airports);
   }
 
-  Future<void> _loadLiveCounts() async {
-    final ids    = _kFeatured.map((a) => a.id).toList();
+  Future<void> _loadLiveCounts(List<_Airport> allAirports) async {
+    final featuredIatas = {for (final a in _kFeatured) a.iata};
+    final matched = allAirports.where((a) => featuredIatas.contains(a.iata)).toList();
     final counts = await Future.wait(
-      ids.map((id) => FirebaseService.getRestaurantCount(id)),
+      matched.map((a) => FirebaseService.getRestaurantCount(a.id)),
     );
     if (!mounted) return;
     setState(() {
-      for (var i = 0; i < ids.length; i++) {
-        _liveCounts[ids[i]] = counts[i];
+      for (var i = 0; i < matched.length; i++) {
+        _liveCounts[matched[i].iata] = counts[i];
       }
     });
   }
@@ -257,7 +253,6 @@ class _ExploreScreenState extends State<ExploreScreen>
         locationSettings: const LocationSettings(accuracy: LocationAccuracy.low),
       );
       if (!mounted) return;
-      _lastPosition = pos;
 
       if (_allAirports.isEmpty) {
         setState(() => _nearbyStatus = _NearbyStatus.loading);
@@ -300,22 +295,6 @@ class _ExploreScreenState extends State<ExploreScreen>
   }
 
   /// Returns airports within 100 miles (160.9 km) of last known position.
-  List<_Airport> _airportsWithin100Miles() {
-    if (_lastPosition == null) return [];
-    return _allAirports.where((a) {
-      if (a.lat == null || a.lon == null) return false;
-      return _haversineKm(
-        _lastPosition!.latitude, _lastPosition!.longitude,
-        a.lat!, a.lon!,
-      ) <= _kNearbyListRadiusKm;
-    }).toList()
-      ..sort((a, b) {
-        final dA = _haversineKm(_lastPosition!.latitude, _lastPosition!.longitude, a.lat!, a.lon!);
-        final dB = _haversineKm(_lastPosition!.latitude, _lastPosition!.longitude, b.lat!, b.lon!);
-        return dA.compareTo(dB);
-      });
-  }
-
   // ── Search ────────────────────────────────────────────────
 
   void _onSearchChanged(String value) {
@@ -336,34 +315,32 @@ class _ExploreScreenState extends State<ExploreScreen>
   }
 
   void _selectResult(_Airport airport) {
-    _saveSearch(_searchCtrl.text.trim());
+    _saveSearch('${airport.iata} – ${airport.name}');
     context.push('/airport-detail/${airport.id}');
   }
 
   void _selectRecentSearch(String query) {
-    _searchCtrl.text = query;
-    _onSearchChanged(query);
+    final iata = query.split(' – ').first.trim();
+    final airport = _allAirports.firstWhere(
+      (a) => a.iata == iata,
+      orElse: () => const _Airport(id: '', iata: '', name: '', city: '', country: '', flag: '🌍', venueCount: 0),
+    );
+    if (airport.id.isNotEmpty) {
+      _searchFocus.unfocus();
+      context.push('/airport-detail/${airport.id}');
+    }
+  }
+
+  Future<void> _removeSearch(String query) async {
+    final prefs = await SharedPreferences.getInstance();
+    final recent = List<String>.from(prefs.getStringList(_kRecentSearchesKey) ?? []);
+    recent.remove(query);
+    await prefs.setStringList(_kRecentSearchesKey, recent);
+    if (mounted) setState(() => _recentSearches = recent);
   }
 
   void _handleNearbyTap() => context.push('/nearby-airports');
 
-  void _showNearbySheet() {
-    final nearbyList = _airportsWithin100Miles();
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (_) => _NearbySheet(
-        airports:  nearbyList,
-        position:  _lastPosition!,
-        haversine: _haversineKm,
-        onTap: (airport) {
-          Navigator.pop(context);
-          context.push('/airport-detail/${airport.id}');
-        },
-      ),
-    );
-  }
 
   // ── Animation helper ──────────────────────────────────────
 
@@ -395,6 +372,7 @@ class _ExploreScreenState extends State<ExploreScreen>
       value: appSystemUiOverlayStyle(context),
       child: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        resizeToAvoidBottomInset: false,
         body: Stack(
           children: [
             const _Background(),
@@ -405,27 +383,36 @@ class _ExploreScreenState extends State<ExploreScreen>
                   // Header (wordmark + search)
                   _fadeUp(
                     _Header(
-                      searchCtrl:     _searchCtrl,
-                      searchFocus:    _searchFocus,
-                      hasQuery:       _hasQuery,
-                      searchFocused:  _searchFocused,
-                      recentSearches: _recentSearches,
-                      onChanged:      _onSearchChanged,
+                      searchCtrl: _searchCtrl,
+                      searchFocus: _searchFocus,
+                      hasQuery:   _hasQuery,
+                      onChanged:  _onSearchChanged,
                       onClear: () {
                         _searchCtrl.clear();
                         _onSearchChanged('');
                         _searchFocus.requestFocus();
                       },
-                      onSelectRecent: _selectRecentSearch,
-                      ruleCtrl:       _ruleCtrl,
+                      ruleCtrl: _ruleCtrl,
                     ),
                     _headerCtrl,
                   ),
-                  // Body — search results OR default layout
+                  // Body — default layout always visible; dropdowns overlay it
                   Expanded(
-                    child: _hasQuery
-                        ? _buildSearchResults()
-                        : _buildDefaultLayout(),
+                    child: Stack(
+                      children: [
+                        _buildDefaultLayout(),
+                        if (_hasQuery)
+                          Positioned(
+                            top: 4, left: 24, right: 24,
+                            child: _buildSearchDropdown(),
+                          ),
+                        if (!_hasQuery && _searchFocused && _recentSearches.isNotEmpty)
+                          Positioned(
+                            top: 4, left: 24, right: 24,
+                            child: _buildRecentSearchesDropdown(),
+                          ),
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -436,41 +423,156 @@ class _ExploreScreenState extends State<ExploreScreen>
     );
   }
 
-  // ─── Search results ─────────────────────────────────────────
-  Widget _buildSearchResults() {
-    if (_results.isEmpty) {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 52, height: 52,
-              decoration: BoxDecoration(
-                color:  kGold.withValues(alpha: 0.07),
-                shape:  BoxShape.circle,
-                border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-              ),
-              child: const Icon(Icons.search_off_rounded, color: kGold, size: 22),
-            ),
-            const SizedBox(height: 16),
-            Text('No airports found',
-                style: GoogleFonts.cormorant(fontSize: 20, fontWeight: FontWeight.w400, color: context.appMutedFg(0.44))),
-            const SizedBox(height: 4),
-            Text('Try a different search term',
-                style: GoogleFonts.jost(fontSize: 12, letterSpacing: 0.6, color: context.appMutedFg(0.40))),
-          ],
+  // ─── Recent searches dropdown overlay ───────────────────────
+  String _flagForRecent(String recent) {
+    final iata = recent.split(' – ').first.trim();
+    return _allAirports.firstWhere(
+      (a) => a.iata == iata,
+      orElse: () => const _Airport(id: '', iata: '', name: '', city: '', country: '', flag: '🌍', venueCount: 0),
+    ).flag;
+  }
+
+  Widget _buildRecentSearchesDropdown() {
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxHeight: 320),
+      child: Container(
+        decoration: BoxDecoration(
+          color:        appCardSurface(context),
+          borderRadius: BorderRadius.circular(3),
+          border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+          boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.10), blurRadius: 12, offset: const Offset(0, 4))],
         ),
-      );
-    }
-    return ListView.builder(
-      padding: const EdgeInsets.fromLTRB(24, 16, 24, 40),
-      itemCount: _results.length,
-      itemBuilder: (context, i) => _ResultCard(
-        airport:    _results[i],
-        venueCount: _resultCounts[_results[i].id],
-        onTap:      () => _selectResult(_results[i]),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(3),
+          child: ListView.builder(
+            padding: EdgeInsets.zero,
+            shrinkWrap: true,
+            itemCount: _recentSearches.length,
+            itemBuilder: (context, i) {
+              final query  = _recentSearches[i];
+              final flag   = _flagForRecent(query);
+              final isLast = i == _recentSearches.length - 1;
+              return Container(
+                decoration: BoxDecoration(
+                  border: isLast ? null : Border(
+                    bottom: BorderSide(color: kGoldLight.withValues(alpha: 0.14)),
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: InkWell(
+                        onTap: () => _selectRecentSearch(query),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
+                          child: Row(
+                            children: [
+                              Text(flag, style: const TextStyle(fontSize: 16)),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: Text(
+                                  query,
+                                  style: GoogleFonts.jost(fontSize: 13, color: context.appOnSurface.withValues(alpha: 0.75)),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              Icon(Icons.north_west_rounded, size: 12, color: context.appMutedFg(0.30)),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () => _removeSearch(query),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+                        child: Icon(Icons.close_rounded, size: 14, color: context.appMutedFg(0.35)),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
+  }
+
+  // ─── Search dropdown overlay ────────────────────────────────
+  Widget _buildSearchDropdown() {
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxHeight: 320),
+      child: Container(
+      decoration: BoxDecoration(
+        color:        appCardSurface(context),
+        borderRadius: BorderRadius.circular(3),
+        border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+        boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.10), blurRadius: 12, offset: const Offset(0, 4))],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(3),
+        child: _results.isEmpty
+            ? Container(
+                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                decoration: BoxDecoration(
+                  border: Border(bottom: BorderSide(color: kGoldLight.withValues(alpha: 0.14))),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.search_off_rounded, size: 14, color: context.appMutedFg(0.35)),
+                    const SizedBox(width: 10),
+                    Text('No airports found',
+                        style: GoogleFonts.jost(fontSize: 13, color: context.appMutedFg(0.44))),
+                  ],
+                ),
+              )
+            : ListView.builder(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                itemCount: _results.length,
+                itemBuilder: (context, i) {
+                  final airport  = _results[i];
+                  final count    = _resultCounts[airport.id];
+                  final isLast   = i == _results.length - 1;
+                  return InkWell(
+                    onTap: () => _selectResult(airport),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 16),
+                      decoration: BoxDecoration(
+                        border: isLast ? null : Border(
+                          bottom: BorderSide(color: kGoldLight.withValues(alpha: 0.14)),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Text(airport.flag, style: const TextStyle(fontSize: 16)),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Text(
+                              '${airport.iata}  ·  ${airport.name}',
+                              style: GoogleFonts.jost(fontSize: 13, color: context.appOnSurface.withValues(alpha: 0.75)),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          if (count != null) ...[
+                            const SizedBox(width: 8),
+                            Text('$count venues',
+                                style: GoogleFonts.jost(fontSize: 11, color: context.appMutedFg(0.38), letterSpacing: 0.2)),
+                          ] else
+                            SizedBox(width: 10, height: 10,
+                                child: CircularProgressIndicator(strokeWidth: 1, color: kTeal.withValues(alpha: 0.5))),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
+      ),
+    ),   // Container
+    );   // ConstrainedBox
   }
 
   // ─── Default layout — big boxes + featured at bottom ────────
@@ -536,8 +638,15 @@ class _ExploreScreenState extends State<ExploreScreen>
                   separatorBuilder: (_, __) => const SizedBox(width: 10),
                   itemBuilder: (context, i) => _FeaturedCard(
                     airport:    _kFeatured[i],
-                    venueCount: _liveCounts[_kFeatured[i].id] ?? 0,
-                    onTap:      () => context.push('/airport-detail/${_kFeatured[i].id}'),
+                    venueCount: _liveCounts[_kFeatured[i].iata] ?? 0,
+                    onTap: () {
+                      final iata = _kFeatured[i].iata;
+                      final match = _allAirports.firstWhere(
+                        (a) => a.iata == iata,
+                        orElse: () => _kFeatured[i],
+                      );
+                      context.push('/airport-detail/${match.id}');
+                    },
                   ),
                 ),
               ),
@@ -547,217 +656,6 @@ class _ExploreScreenState extends State<ExploreScreen>
           _featuredCtrl,
         ),
       ],
-    );
-  }
-}
-
-// ─────────────────────────────────────────────────────────────
-//  NEARBY AIRPORTS BOTTOM SHEET
-// ─────────────────────────────────────────────────────────────
-class _NearbySheet extends StatelessWidget {
-  final List<_Airport>  airports;
-  final Position        position;
-  final double Function(double, double, double, double) haversine;
-  final void Function(_Airport) onTap;
-
-  const _NearbySheet({
-    required this.airports,
-    required this.position,
-    required this.haversine,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
-    // Convert _Airport → MapAirportEntry for the map widget
-    final mapAirports = airports
-        .where((a) => a.lat != null && a.lon != null)
-        .map((a) => MapAirportEntry(
-              id:       a.id,
-              iataCode: a.iata,
-              city:     a.city,
-              lat:      a.lat!,
-              lon:      a.lon!,
-            ))
-        .toList();
-
-    final userLatLng = LatLng(position.latitude, position.longitude);
-
-    return DraggableScrollableSheet(
-      initialChildSize: 0.6,
-      minChildSize:     0.4,
-      maxChildSize:     0.92,
-      builder: (_, scrollCtrl) => Container(
-        decoration: BoxDecoration(
-          color:        isDark ? const Color(0xFF1C2226) : Colors.white,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-          border: Border(top: BorderSide(color: kGoldLight.withValues(alpha: 0.28))),
-        ),
-        child: Column(
-          children: [
-            // Handle
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 12),
-              width: 36, height: 4,
-              decoration: BoxDecoration(
-                color:        context.appMutedFg(0.20),
-                borderRadius: BorderRadius.circular(2),
-              ),
-            ),
-
-            // Title
-            Padding(
-              padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
-              child: Row(
-                children: [
-                  Text(
-                    'Airports Nearby',
-                    style: GoogleFonts.cormorant(
-                      fontSize: 22, fontWeight: FontWeight.w400,
-                      color: context.appOnSurface,
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Text(
-                    'within 100 miles',
-                    style: GoogleFonts.jost(
-                      fontSize: 12, color: context.appMutedFg(0.40),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            // ── Map ─────────────────────────────────────────
-            if (mapAirports.isNotEmpty)
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                child: AirportMapWidget(
-                  airports:     mapAirports,
-                  userLocation: userLatLng,
-                  onAirportTapped: (entry) {
-                    final orig = airports.firstWhere(
-                      (a) => a.id == entry.id,
-                      orElse: () => airports.first,
-                    );
-                    onTap(orig);
-                  },
-                ),
-              ),
-
-            // ── Section header ───────────────────────────────
-            Padding(
-              padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
-              child: Row(
-                children: [
-                  Text(
-                    'Airports near you',
-                    style: GoogleFonts.cormorant(
-                      fontSize: 22, fontWeight: FontWeight.w400,
-                      color: context.appOnSurface, letterSpacing: 0.2,
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Container(
-                      height: 1,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [kGoldLight.withValues(alpha: 0.28), Colors.transparent],
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 6),
-                  Transform.rotate(
-                    angle: math.pi / 4,
-                    child: Container(width: 4, height: 4, color: kGoldLight.withValues(alpha: 0.6)),
-                  ),
-                ],
-              ),
-            ),
-
-            // ── Airport list ─────────────────────────────────
-            Expanded(
-              child: airports.isEmpty
-                  ? Center(
-                      child: Text(
-                        'No airports within 100 miles',
-                        style: GoogleFonts.jost(
-                          fontSize: 14, color: context.appMutedFg(0.44),
-                        ),
-                      ),
-                    )
-                  : ListView.builder(
-                      controller: scrollCtrl,
-                      padding: const EdgeInsets.fromLTRB(24, 0, 24, 32),
-                      itemCount: airports.length,
-                      itemBuilder: (_, i) {
-                        final airport = airports[i];
-                        final dist = haversine(
-                          position.latitude, position.longitude,
-                          airport.lat!, airport.lon!,
-                        );
-                        final miles = (dist / 1.60934).round();
-                        return GestureDetector(
-                          onTap: () => onTap(airport),
-                          child: Container(
-                            margin:  const EdgeInsets.only(bottom: 10),
-                            padding: const EdgeInsets.all(14),
-                            decoration: BoxDecoration(
-                              color:        appCardSurface(context),
-                              borderRadius: BorderRadius.circular(3),
-                              border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-                            ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 40, height: 40,
-                                  decoration: BoxDecoration(
-                                    color:  kGold.withValues(alpha: 0.07),
-                                    shape:  BoxShape.circle,
-                                    border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-                                  ),
-                                  child: Center(
-                                    child: Text(airport.flag, style: const TextStyle(fontSize: 20)),
-                                  ),
-                                ),
-                                const SizedBox(width: 14),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(airport.iata,
-                                          style: GoogleFonts.cormorant(
-                                            fontSize: 13, color: kTeal, letterSpacing: 0.6,
-                                          )),
-                                      Text(airport.name,
-                                          style: GoogleFonts.jost(
-                                            fontSize: 14, color: context.appOnSurface,
-                                          )),
-                                    ],
-                                  ),
-                                ),
-                                Text(
-                                  '$miles mi',
-                                  style: GoogleFonts.jost(
-                                    fontSize: 12, color: context.appMutedFg(0.45),
-                                  ),
-                                ),
-                                const SizedBox(width: 6),
-                                Icon(Icons.chevron_right_rounded, size: 16, color: context.appMutedFg(0.35)),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
@@ -787,22 +685,16 @@ class _Header extends StatelessWidget {
   final TextEditingController searchCtrl;
   final FocusNode             searchFocus;
   final bool                  hasQuery;
-  final bool                  searchFocused;
-  final List<String>          recentSearches;
   final ValueChanged<String>  onChanged;
   final VoidCallback          onClear;
-  final ValueChanged<String>  onSelectRecent;
   final AnimationController   ruleCtrl;
 
   const _Header({
     required this.searchCtrl,
     required this.searchFocus,
     required this.hasQuery,
-    required this.searchFocused,
-    required this.recentSearches,
     required this.onChanged,
     required this.onClear,
-    required this.onSelectRecent,
     required this.ruleCtrl,
   });
 
@@ -861,8 +753,6 @@ class _Header extends StatelessWidget {
             onChanged:  onChanged,
             onClear:    onClear,
           ),
-          if (searchFocused && recentSearches.isNotEmpty)
-            _RecentSuggestions(searches: recentSearches, onSelect: onSelectRecent),
           const SizedBox(height: 4),
         ],
       ),
@@ -958,54 +848,6 @@ class _SearchBarState extends State<_SearchBar> {
   }
 }
 
-// ─────────────────────────────────────────────────────────────
-//  RECENT SEARCHES DROPDOWN
-// ─────────────────────────────────────────────────────────────
-class _RecentSuggestions extends StatelessWidget {
-  final List<String>         searches;
-  final ValueChanged<String> onSelect;
-
-  const _RecentSuggestions({required this.searches, required this.onSelect});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 2),
-      decoration: BoxDecoration(
-        color:        appCardSurface(context),
-        borderRadius: BorderRadius.circular(3),
-        border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-        boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.10), blurRadius: 12, offset: const Offset(0, 4))],
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: searches.asMap().entries.map((entry) {
-          final i = entry.key; final query = entry.value;
-          return InkWell(
-            onTap: () => onSelect(query),
-            borderRadius: BorderRadius.circular(3),
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-              decoration: BoxDecoration(
-                border: i < searches.length - 1
-                    ? Border(bottom: BorderSide(color: kGoldLight.withValues(alpha: 0.14)))
-                    : null,
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.history_rounded, size: 14, color: context.appMutedFg(0.35)),
-                  const SizedBox(width: 10),
-                  Expanded(child: Text(query, style: GoogleFonts.jost(fontSize: 13, color: context.appOnSurface.withValues(alpha: 0.75)))),
-                  Icon(Icons.north_west_rounded, size: 12, color: context.appMutedFg(0.30)),
-                ],
-              ),
-            ),
-          );
-        }).toList(),
-      ),
-    );
-  }
-}
 
 // ─────────────────────────────────────────────────────────────
 //  SECTION HEADER
@@ -1230,55 +1072,3 @@ class _FeaturedCard extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────────────────────
-//  RESULT CARD
-// ─────────────────────────────────────────────────────────────
-class _ResultCard extends StatelessWidget {
-  final _Airport airport;
-  final int?     venueCount;
-  final VoidCallback onTap;
-  const _ResultCard({required this.airport, required this.venueCount, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        margin:  const EdgeInsets.only(bottom: 10),
-        padding: const EdgeInsets.all(14),
-        decoration: BoxDecoration(
-          color: appCardSurface(context),
-          borderRadius: BorderRadius.circular(3),
-          border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-          boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 44, height: 44,
-              decoration: BoxDecoration(color: kGold.withValues(alpha: 0.07), shape: BoxShape.circle, border: Border.all(color: kGoldLight.withValues(alpha: 0.28))),
-              child: Center(child: Text(airport.flag, style: const TextStyle(fontSize: 22))),
-            ),
-            const SizedBox(width: 14),
-            Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(airport.iata, style: GoogleFonts.cormorant(fontSize: 13, color: kTeal, letterSpacing: 0.6)),
-              const SizedBox(height: 1),
-              Text(airport.name, style: GoogleFonts.jost(fontSize: 14, color: context.appOnSurface)),
-              const SizedBox(height: 1),
-              Text('${airport.city}, ${airport.country}', style: GoogleFonts.jost(fontSize: 12, color: context.appMutedFg(0.40))),
-            ])),
-            if (venueCount != null)
-              Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-                Text('$venueCount', style: GoogleFonts.cormorant(fontSize: 17, fontWeight: FontWeight.bold, color: kTeal)),
-                Text('venues', style: GoogleFonts.jost(fontSize: 10, color: context.appMutedFg(0.40), letterSpacing: 1.2)),
-              ])
-            else
-              SizedBox(width: 16, height: 16, child: CircularProgressIndicator(strokeWidth: 1.5, color: kTeal.withValues(alpha: 0.5))),
-            const SizedBox(width: 10),
-            Icon(Icons.chevron_right_rounded, size: 16, color: context.appMutedFg(0.35)),
-          ],
-        ),
-      ),
-    );
-  }
-}

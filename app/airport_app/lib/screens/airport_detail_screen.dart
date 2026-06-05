@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -264,32 +265,158 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
   // ─── LOADING ─────────────────────────────────────────────
 
   Widget _buildLoadingScreen(BuildContext context) {
+    final bg = Theme.of(context).scaffoldBackgroundColor;
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: bg,
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           _Background(),
-          SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildBackHeader(
-                  context,
-                  title: FirebaseService.getAirportName(widget.airportId),
-                  subtitle: widget.airportId,
-                ),
-                const Expanded(
-                  child: Center(
-                    child: CircularProgressIndicator(color: kTeal, strokeWidth: 1.5),
+          CustomScrollView(
+            physics: const NeverScrollableScrollPhysics(),
+
+            slivers: [
+              // ── Hero skeleton ─────────────────────────────
+              SliverAppBar(
+                expandedHeight: 280,
+                pinned: true,
+                backgroundColor: bg,
+                surfaceTintColor: Colors.transparent,
+                elevation: 0,
+                shadowColor: Colors.transparent,
+                automaticallyImplyLeading: false,
+                leading: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 16),
+                    child: _backButton(context),
                   ),
                 ),
-              ],
-            ),
+                flexibleSpace: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Container(color: const Color(0xFF0B2D3A)),
+                    Positioned(
+                      bottom: 0, left: 0, right: 0,
+                      child: Container(
+                        height: 100,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [Colors.transparent, bg],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 20, left: 16, right: 80,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          _SkeletonBox(height: 22, width: 200),
+                          const SizedBox(height: 6),
+                          _SkeletonBox(height: 11, width: 110),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // ── Stats strip skeleton ──────────────────────
+              SliverToBoxAdapter(
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(24, 12, 24, 0),
+                      child: _SkeletonBox(height: 1),
+                    ),
+                    const SizedBox(height: 12),
+                    IntrinsicHeight(
+                      child: Row(
+                        children: [
+                          Expanded(child: _buildStatSkeleton()),
+                          Container(width: 1, margin: const EdgeInsets.symmetric(vertical: 6), color: kGoldLight.withValues(alpha: 0.14)),
+                          Expanded(child: _buildStatSkeleton()),
+                          Container(width: 1, margin: const EdgeInsets.symmetric(vertical: 6), color: kGoldLight.withValues(alpha: 0.14)),
+                          Expanded(child: _buildStatSkeleton()),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                  ],
+                ),
+              ),
+
+              // ── Tab bar skeleton ──────────────────────────
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 12, 24, 12),
+                  child: Row(
+                    children: [
+                      Expanded(child: _SkeletonBox(height: 38)),
+                      const SizedBox(width: 10),
+                      Expanded(child: _SkeletonBox(height: 38)),
+                    ],
+                  ),
+                ),
+              ),
+
+              // ── Filter + grid skeleton ────────────────────
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 8, 24, 40),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _SkeletonBox(height: 11, width: 72),
+                      const SizedBox(height: 5),
+                      _SkeletonBox(height: 48),
+                      const SizedBox(height: 8),
+                      _SkeletonBox(height: 11, width: 52),
+                      const SizedBox(height: 5),
+                      _SkeletonBox(height: 40),
+                      const SizedBox(height: 20),
+                      GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        padding: EdgeInsets.zero,
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          mainAxisExtent: 190,
+                        ),
+                        itemCount: 6,
+                        itemBuilder: (_, __) => _SkeletonBox(height: 190),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Positioned(
+            top: MediaQuery.of(context).padding.top + kToolbarHeight + 16,
+            left: 24,
+            right: 24,
+            child: const _AirplaneLoadingBar(),
           ),
         ],
       ),
     );
   }
+
+  Widget _buildStatSkeleton() => Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      _SkeletonBox(height: 11, width: 52),
+      const SizedBox(height: 4),
+      _SkeletonBox(height: 26, width: 36),
+    ],
+  );
 
   // ─── FIREBASE AIRPORT SCREEN ─────────────────────────────
   Widget _buildFirebaseAirportScreen(BuildContext context) {
@@ -300,11 +427,18 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
     final location = locationParts.isNotEmpty
         ? locationParts.join(', ')
         : FirebaseService.getAirportLocation(widget.airportId);
-    final code = _airportData?['code'] as String? ?? widget.airportId.toUpperCase();
+    final code = (_airportData?['code'] as String? ?? widget.airportId).toUpperCase();
     final hasTerminals = _firebaseTerminalEntries.isNotEmpty;
 
-    final imageUrl  = _airportData?['image_url'] as String?;
-    final assetPath = _assetImages[widget.airportId];
+    final rawImageUrl = _airportData?['image_url'] as String? ?? '';
+    final imageUrl = rawImageUrl.isNotEmpty ? rawImageUrl : null;
+    // Try IATA code, then uppercased airportId, then any partial match
+    final assetPath = _assetImages[code]
+        ?? _assetImages[widget.airportId.toUpperCase()]
+        ?? _assetImages.entries
+            .where((e) => widget.airportId.toLowerCase().contains(e.key.toLowerCase()))
+            .map((e) => e.value)
+            .firstOrNull;
 
     final terminalCount   = _firebaseTerminalEntries
         .where((t) => !t.name.toLowerCase().contains('lounge') && !t.id.toLowerCase().contains('lounge'))
@@ -316,6 +450,7 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
 
     return Scaffold(
       backgroundColor: bg,
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           _Background(),
@@ -608,9 +743,8 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
         imageUrl,
         fit: BoxFit.cover,
         headers: const {'User-Agent': 'ConcourseApp/1.0 (airport-dining-guide)'},
-        loadingBuilder: (_, child, progress) => progress == null
-            ? child
-            : Container(color: const Color(0xFF0B2D3A)),
+        loadingBuilder: (_, child, progress) =>
+            progress == null ? child : Container(color: const Color(0xFF0B2D3A)),
         errorBuilder: (_, __, ___) => assetPath != null
             ? Image.asset(assetPath, fit: BoxFit.cover)
             : Container(color: const Color(0xFF0B2D3A)),
@@ -724,6 +858,7 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
   Widget _buildPlaceholderScreen(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           _Background(),
@@ -765,7 +900,7 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
                               SizedBox(
                                 width: double.infinity,
                                 child: ElevatedButton(
-                                  onPressed: () => context.go('/airport-search'),
+                                  onPressed: () => context.pop(),
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: kTeal,
                                     foregroundColor: Colors.white,
@@ -822,7 +957,7 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
 
   Widget _backButton(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.go('/airport-search'),
+      onTap: () => context.pop(),
       child: Container(
         padding: const EdgeInsets.all(9),
         decoration: BoxDecoration(
@@ -1000,10 +1135,10 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
               ),
               clipBehavior: Clip.antiAlias,
               child: restaurant.logoUrl.isNotEmpty
-                  ? Image.network(
-                      restaurant.logoUrl,
+                  ? CachedNetworkImage(
+                      imageUrl: restaurant.logoUrl,
                       fit: BoxFit.contain,
-                      errorBuilder: (_, __, ___) =>
+                      errorWidget: (_, __, ___) =>
                           Icon(_getRestaurantIcon(restaurant.cuisine),
                               color: restaurant.isLounge ? kGold : kTeal, size: 24),
                     )
@@ -1174,6 +1309,146 @@ class _Background extends StatelessWidget {
   }
 }
 
+
+// ─────────────────────────────────────────────────────────────
+//  AIRPLANE LOADING BAR
+// ─────────────────────────────────────────────────────────────
+class _AirplaneLoadingBar extends StatefulWidget {
+  const _AirplaneLoadingBar();
+
+  @override
+  State<_AirplaneLoadingBar> createState() => _AirplaneLoadingBarState();
+}
+
+class _AirplaneLoadingBarState extends State<_AirplaneLoadingBar>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _ctrl;
+  late final Animation<double> _progress;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2800),
+    )..forward();
+    _progress = Tween<double>(begin: 0.0, end: 0.85)
+        .animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOut));
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _progress,
+      builder: (_, __) {
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            final totalWidth = constraints.maxWidth;
+            final fillWidth  = (totalWidth * _progress.value).clamp(0.0, totalWidth);
+            return SizedBox(
+              height: 28,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  // Track
+                  Positioned(
+                    bottom: 0, left: 0, right: 0,
+                    child: Container(
+                      height: 2,
+                      decoration: BoxDecoration(
+                        color: kTeal.withValues(alpha: 0.18),
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                    ),
+                  ),
+                  // Fill
+                  Positioned(
+                    bottom: 0, left: 0,
+                    child: Container(
+                      width: fillWidth,
+                      height: 2,
+                      decoration: BoxDecoration(
+                        color: kTeal,
+                        borderRadius: BorderRadius.circular(2),
+                        boxShadow: [BoxShadow(color: kTeal.withValues(alpha: 0.5), blurRadius: 6)],
+                      ),
+                    ),
+                  ),
+                  // Airplane at the tip of the fill
+                  if (fillWidth > 8)
+                    Positioned(
+                      bottom: 1,
+                      left: fillWidth - 10,
+                      child: Transform.rotate(
+                        angle: -math.pi / 4,
+                        child: Icon(Icons.flight, size: 20, color: kTeal),
+                      ),
+                    ),
+                ],
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  SKELETON BOX
+// ─────────────────────────────────────────────────────────────
+class _SkeletonBox extends StatefulWidget {
+  final double height;
+  final double? width;
+  const _SkeletonBox({required this.height, this.width});
+
+  @override
+  State<_SkeletonBox> createState() => _SkeletonBoxState();
+}
+
+class _SkeletonBoxState extends State<_SkeletonBox>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _ctrl;
+  late final Animation<double> _anim;
+
+  @override
+  void initState() {
+    super.initState();
+    _ctrl = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1100),
+    )..repeat(reverse: true);
+    _anim = Tween<double>(begin: 0.04, end: 0.12)
+        .animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeInOut));
+  }
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _anim,
+      builder: (_, __) => Container(
+        width: widget.width,
+        height: widget.height,
+        decoration: BoxDecoration(
+          color: context.appOnSurface.withValues(alpha: _anim.value),
+          borderRadius: BorderRadius.circular(3),
+        ),
+      ),
+    );
+  }
+}
 
 // ─────────────────────────────────────────────────────────────
 //  MODELS
