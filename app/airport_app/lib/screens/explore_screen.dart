@@ -11,7 +11,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../theme/app_theme.dart';
 import '../services/firebase_service.dart';
 import '../widgets/airport_map_widget.dart';
-import 'airport_search_screen.dart' show Airport;
 
 // ─────────────────────────────────────────────────────────────
 //  DATA MODEL
@@ -346,18 +345,7 @@ class _ExploreScreenState extends State<ExploreScreen>
     _onSearchChanged(query);
   }
 
-  void _handleNearbyTap() {
-    if (_nearbyStatus == _NearbyStatus.found && _nearbyAirport != null) {
-      // Within 5 miles — go directly to that airport
-      context.push('/airport-detail/${_nearbyAirport!.id}');
-    } else if (_nearbyStatus == _NearbyStatus.noNearby && _lastPosition != null) {
-      // Have location but no airport within 5 miles — show list within 100 miles
-      _showNearbySheet();
-    } else {
-      // Denied or loading — re-request
-      _findNearbyAirport();
-    }
-  }
+  void _handleNearbyTap() => context.push('/nearby-airports');
 
   void _showNearbySheet() {
     final nearbyList = _airportsWithin100Miles();
@@ -583,18 +571,15 @@ class _NearbySheet extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
-    // Convert _Airport → Airport for the map widget
+    // Convert _Airport → MapAirportEntry for the map widget
     final mapAirports = airports
         .where((a) => a.lat != null && a.lon != null)
-        .map((a) => Airport(
-              id:          a.id,
-              name:        a.name,
-              iataCode:    a.iata,
-              city:        a.city,
-              country:     a.country,
-              countryCode: '',
-              lat:         a.lat,
-              lon:         a.lon,
+        .map((a) => MapAirportEntry(
+              id:       a.id,
+              iataCode: a.iata,
+              city:     a.city,
+              lat:      a.lat!,
+              lon:      a.lon!,
             ))
         .toList();
 
@@ -652,11 +637,9 @@ class _NearbySheet extends StatelessWidget {
                 child: AirportMapWidget(
                   airports:     mapAirports,
                   userLocation: userLatLng,
-                  onAirportTapped: (mapAirport) {
-                    // Find the original _Airport to reuse the sheet's onTap closure
-                    // (which handles Navigator.pop + context.push correctly)
+                  onAirportTapped: (entry) {
                     final orig = airports.firstWhere(
-                      (a) => a.id == mapAirport.id,
+                      (a) => a.id == entry.id,
                       orElse: () => airports.first,
                     );
                     onTap(orig);
