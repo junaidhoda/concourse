@@ -21,6 +21,7 @@ import 'screens/admin_login_screen.dart';
 import 'screens/admin_dashboard_screen.dart';
 import 'screens/admin_airport_screen.dart';
 import 'screens/admin_restaurant_editor_screen.dart';
+import 'screens/nearby_airports_screen.dart';
 import 'services/auth_service.dart';
 import 'services/chain_restaurant_service.dart';
 
@@ -94,6 +95,10 @@ final GoRouter _router = GoRouter(
           ),
         ),
       ],
+    ),
+    GoRoute(
+      path: '/nearby-airports',
+      builder: (context, state) => const NearbyAirportsScreen(),
     ),
     GoRoute(
       path: '/airport-detail/:id',

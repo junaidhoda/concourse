@@ -5,10 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../theme/app_theme.dart';
 import '../services/firebase_service.dart';
+import '../widgets/airport_map_widget.dart';
 
 // ─────────────────────────────────────────────────────────────
 //  DATA MODEL
@@ -343,18 +345,7 @@ class _ExploreScreenState extends State<ExploreScreen>
     _onSearchChanged(query);
   }
 
-  void _handleNearbyTap() {
-    if (_nearbyStatus == _NearbyStatus.found && _nearbyAirport != null) {
-      // Within 5 miles — go directly to that airport
-      context.push('/airport-detail/${_nearbyAirport!.id}');
-    } else if (_nearbyStatus == _NearbyStatus.noNearby && _lastPosition != null) {
-      // Have location but no airport within 5 miles — show list within 100 miles
-      _showNearbySheet();
-    } else {
-      // Denied or loading — re-request
-      _findNearbyAirport();
-    }
-  }
+  void _handleNearbyTap() => context.push('/nearby-airports');
 
   void _showNearbySheet() {
     final nearbyList = _airportsWithin100Miles();
@@ -579,14 +570,29 @@ class _NearbySheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    // Convert _Airport → MapAirportEntry for the map widget
+    final mapAirports = airports
+        .where((a) => a.lat != null && a.lon != null)
+        .map((a) => MapAirportEntry(
+              id:       a.id,
+              iataCode: a.iata,
+              city:     a.city,
+              lat:      a.lat!,
+              lon:      a.lon!,
+            ))
+        .toList();
+
+    final userLatLng = LatLng(position.latitude, position.longitude);
+
     return DraggableScrollableSheet(
       initialChildSize: 0.6,
       minChildSize:     0.4,
       maxChildSize:     0.92,
       builder: (_, scrollCtrl) => Container(
         decoration: BoxDecoration(
-          color:         isDark ? const Color(0xFF1C2226) : Colors.white,
-          borderRadius:  const BorderRadius.vertical(top: Radius.circular(16)),
+          color:        isDark ? const Color(0xFF1C2226) : Colors.white,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
           border: Border(top: BorderSide(color: kGoldLight.withValues(alpha: 0.28))),
         ),
         child: Column(
@@ -596,12 +602,14 @@ class _NearbySheet extends StatelessWidget {
               margin: const EdgeInsets.symmetric(vertical: 12),
               width: 36, height: 4,
               decoration: BoxDecoration(
-                color:         context.appMutedFg(0.20),
-                borderRadius:  BorderRadius.circular(2),
+                color:        context.appMutedFg(0.20),
+                borderRadius: BorderRadius.circular(2),
               ),
             ),
+
+            // Title
             Padding(
-              padding: const EdgeInsets.fromLTRB(24, 0, 24, 16),
+              padding: const EdgeInsets.fromLTRB(24, 0, 24, 12),
               child: Row(
                 children: [
                   Text(
@@ -621,6 +629,57 @@ class _NearbySheet extends StatelessWidget {
                 ],
               ),
             ),
+
+            // ── Map ─────────────────────────────────────────
+            if (mapAirports.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                child: AirportMapWidget(
+                  airports:     mapAirports,
+                  userLocation: userLatLng,
+                  onAirportTapped: (entry) {
+                    final orig = airports.firstWhere(
+                      (a) => a.id == entry.id,
+                      orElse: () => airports.first,
+                    );
+                    onTap(orig);
+                  },
+                ),
+              ),
+
+            // ── Section header ───────────────────────────────
+            Padding(
+              padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
+              child: Row(
+                children: [
+                  Text(
+                    'Airports near you',
+                    style: GoogleFonts.cormorant(
+                      fontSize: 22, fontWeight: FontWeight.w400,
+                      color: context.appOnSurface, letterSpacing: 0.2,
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Container(
+                      height: 1,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [kGoldLight.withValues(alpha: 0.28), Colors.transparent],
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 6),
+                  Transform.rotate(
+                    angle: math.pi / 4,
+                    child: Container(width: 4, height: 4, color: kGoldLight.withValues(alpha: 0.6)),
+                  ),
+                ],
+              ),
+            ),
+
+            // ── Airport list ─────────────────────────────────
             Expanded(
               child: airports.isEmpty
                   ? Center(
