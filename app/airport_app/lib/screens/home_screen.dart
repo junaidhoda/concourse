@@ -454,7 +454,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           children: [
             const _Background(),
             SafeArea(
-              child: Stack(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   // Header (wordmark + search)
                   _fadeUp(
@@ -476,7 +477,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   Expanded(
                     child: Stack(
                       children: [
-                        _buildDefaultLayout(),
+                        Positioned.fill(child: _buildDefaultLayout()),
                         if (_hasQuery)
                           Positioned(
                             top: 4,
@@ -775,6 +776,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             icon: Icons.flight_rounded,
                             iconColor: kTeal,
                             title: 'Popular Airports',
+                            subtitle: 'Busiest hubs worldwide',
                             onTap: () => context.go('/airport-search'),
                           ),
                         ),
@@ -1119,12 +1121,14 @@ class _QuickBox extends StatefulWidget {
   final IconData icon;
   final Color iconColor;
   final String title;
+  final String subtitle;
   final VoidCallback onTap;
 
   const _QuickBox({
     required this.icon,
     required this.iconColor,
     required this.title,
+    required this.subtitle,
     required this.onTap,
   });
 
@@ -1165,22 +1169,34 @@ class _QuickBoxState extends State<_QuickBox> {
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(
-                child: Center(
-                  child: Icon(widget.icon, color: widget.iconColor, size: 100),
+              Container(
+                width: 44,
+                height: 44,
+                decoration: BoxDecoration(
+                  color: widget.iconColor.withValues(alpha: 0.10),
+                  borderRadius: BorderRadius.circular(4),
                 ),
+                child: Icon(widget.icon, color: widget.iconColor, size: 22),
               ),
-              Text(
-                widget.title,
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: GoogleFonts.jost(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w500,
-                  color: context.appOnSurface,
-                ),
+              const SizedBox(height: 16),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    widget.title,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w500, color: context.appOnSurface),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    widget.subtitle,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.jost(fontSize: 12, color: context.appMutedFg(0.40)),
+                  ),
+                ],
               ),
             ],
           ),
@@ -1217,16 +1233,22 @@ class _NearbyBoxState extends State<_NearbyBox> {
         widget.nearbyStatus == _NearbyStatus.found &&
         widget.nearbyAirport != null;
 
-    final Widget iconArea =
-        found
-            ? Text(
-              widget.nearbyAirport!.flag,
-              style: const TextStyle(fontSize: 80),
-            )
-            : Icon(Icons.location_on_rounded, color: kTeal, size: 100);
+    final Widget iconArea = found
+        ? Text(widget.nearbyAirport!.flag, style: const TextStyle(fontSize: 32))
+        : Container(
+            width: 44,
+            height: 44,
+            decoration: BoxDecoration(
+              color: kTeal.withValues(alpha: 0.10),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Icon(Icons.location_on_rounded, color: kTeal, size: 22),
+          );
 
-    final String title =
-        found ? 'Near ${widget.nearbyAirport!.iata}' : 'Nearby Airports';
+    final String title = found ? 'Near ${widget.nearbyAirport!.iata}' : 'Nearby Airports';
+    final String subtitle = found
+        ? 'Explore ${widget.nearbyAirport!.city}'
+        : (widget.nearbyStatus == _NearbyStatus.loading ? 'Locating...' : 'Airports near you');
 
     return GestureDetector(
       onTap: widget.onTap,
@@ -1256,18 +1278,18 @@ class _NearbyBoxState extends State<_NearbyBox> {
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(child: Center(child: iconArea)),
-              Text(
-                title,
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: GoogleFonts.jost(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w500,
-                  color: context.appOnSurface,
-                ),
+              iconArea,
+              const SizedBox(height: 16),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(title, textAlign: TextAlign.center, maxLines: 1, overflow: TextOverflow.ellipsis, style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w500, color: context.appOnSurface)),
+                  const SizedBox(height: 4),
+                  Text(subtitle, textAlign: TextAlign.center, style: GoogleFonts.jost(fontSize: 12, color: context.appMutedFg(0.40))),
+                ],
               ),
             ],
           ),
