@@ -133,6 +133,7 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
         orElse: () => categories,
       );
     }
+    cuisine = _formatCuisine(cuisine);
 
     final dietary = map['dietary'] as Map<String, dynamic>? ?? {};
     final additional = map['additional'] as Map<String, dynamic>? ?? {};
@@ -1621,3 +1622,9 @@ class Restaurant {
     this.kidsMenu = '',
   });
 }
+
+String _formatCuisine(String raw) => raw
+    .split(RegExp(r'[_\s]+'))
+    .where((w) => w.isNotEmpty)
+    .map((w) => w[0].toUpperCase() + w.substring(1).toLowerCase())
+    .join(' ');
