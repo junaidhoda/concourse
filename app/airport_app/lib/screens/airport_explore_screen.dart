@@ -41,15 +41,15 @@ class Airport {
 // ─────────────────────────────────────────────────────────────
 //  AIRPORT SEARCH SCREEN
 // ─────────────────────────────────────────────────────────────
-class AirportSearchScreen extends StatefulWidget {
+class AirportExploreScreen extends StatefulWidget {
   final String initialQuery;
-  const AirportSearchScreen({super.key, this.initialQuery = ''});
+  const AirportExploreScreen({super.key, this.initialQuery = ''});
 
   @override
-  State<AirportSearchScreen> createState() => _AirportSearchScreenState();
+  State<AirportExploreScreen> createState() => _AirportExploreScreenState();
 }
 
-class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerProviderStateMixin {
+class _AirportExploreScreenState extends State<AirportExploreScreen> with TickerProviderStateMixin {
   final TextEditingController _searchCtrl = TextEditingController();
   final FocusNode _searchFocus = FocusNode();
   List<Airport> _results = [];
@@ -58,6 +58,9 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
   String? _selectedCountry;
   int _navDepth = 0;    // 0=continents, 1=countries, 2=airports
   int _prevNavDepth = 0;
+  double _swipeProgress = 0.0;
+  bool _isSwiping = false;
+  bool _dragFromEdge = false;
 
   /// Bounds fetched from Nominatim for the currently selected country.
   /// Null while the request is in-flight; set once the response arrives.
@@ -73,6 +76,7 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
 
   late final AnimationController _headerCtrl;
   late final AnimationController _contentCtrl;
+  late final AnimationController _snapCtrl;
 
   void _delayed(int ms, AnimationController c) =>
       Future.delayed(Duration(milliseconds: ms), () {
@@ -165,6 +169,9 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
     const dur = Duration(milliseconds: 900);
     _headerCtrl  = AnimationController(vsync: this, duration: dur);
     _contentCtrl = AnimationController(vsync: this, duration: dur);
+    _snapCtrl    = AnimationController(vsync: this, duration: const Duration(milliseconds: 280));
+    _snapCtrl.addListener(_onSnapTick);
+    _snapCtrl.addStatusListener(_onSnapStatus);
 
     _delayed(150, _headerCtrl);
     _delayed(300, _contentCtrl);
@@ -180,6 +187,7 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
   void dispose() {
     _headerCtrl.dispose();
     _contentCtrl.dispose();
+    _snapCtrl.dispose();
     _searchCtrl.dispose();
     _searchFocus.dispose();
     super.dispose();
@@ -408,60 +416,184 @@ class _AirportSearchScreenState extends State<AirportSearchScreen> with TickerPr
   }
 
 
+  // ── Snap animation callbacks ──────────────────────────────
+  void _onSnapTick() {
+    if (!_dragFromEdge) setState(() => _swipeProgress = _snapCtrl.value);
+  }
+
+  void _onSnapStatus(AnimationStatus status) {
+    if (status != AnimationStatus.completed) return;
+    if (_snapCtrl.value >= 0.99) {
+      // Apply navigation while swipe overlay still covers the screen
+      setState(() {
+        _prevNavDepth = _navDepth;
+        if (_navDepth == 2) {
+          _selectedCountry  = null;
+          _countryMapBounds = null;
+          _countryPolygons  = null;
+          _navDepth = 1;
+        } else {
+          _selectedContinent = null;
+          _navDepth = 0;
+        }
+      });
+      // Drop the overlay on the next frame (AnimatedSwitcher already settled)
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) setState(() { _isSwiping = false; _swipeProgress = 0.0; });
+      });
+    } else {
+      setState(() { _isSwiping = false; _swipeProgress = 0.0; });
+    }
+  }
+
+  // ── Gesture handlers ─────────────────────────────────────
+  void _onDragStart(DragStartDetails d) {
+    if (_navDepth > 0 && !_isSwiping && d.globalPosition.dx < 44) {
+      _dragFromEdge = true;
+      setState(() { _isSwiping = true; _swipeProgress = 0.0; });
+    }
+  }
+
+  void _onDragUpdate(DragUpdateDetails d, double screenWidth) {
+    if (!_dragFromEdge) return;
+    setState(() {
+      _swipeProgress = (_swipeProgress + d.delta.dx / screenWidth).clamp(0.0, 1.0);
+    });
+  }
+
+  void _onDragEnd(DragEndDetails d) {
+    if (!_dragFromEdge) return;
+    _dragFromEdge = false;
+    _snapCtrl.value = _swipeProgress;
+    final velocity = d.primaryVelocity ?? 0;
+    _snapCtrl.animateTo(
+      (_swipeProgress > 0.4 || velocity > 300) ? 1.0 : 0.0,
+      curve: Curves.easeOut,
+    );
+  }
+
+  void _onDragCancel() {
+    if (!_dragFromEdge) return;
+    _dragFromEdge = false;
+    _snapCtrl.value = _swipeProgress;
+    _snapCtrl.animateTo(0.0, curve: Curves.easeOut);
+  }
+
+  // ── Content helpers ───────────────────────────────────────
+  Widget _buildContentForDepth(int depth) => switch (depth) {
+    2 => _buildAirportList(),
+    1 => _buildCountryList(),
+    _ => _buildContinentList(),
+  };
+
+  Widget _buildNavContent(double screenWidth) {
+    final switcher = AnimatedSwitcher(
+      duration: _isSwiping ? Duration.zero : const Duration(milliseconds: 300),
+      switchInCurve: Curves.easeOut,
+      switchOutCurve: Curves.easeIn,
+      transitionBuilder: (child, animation) => SlideTransition(
+        position: Tween<Offset>(
+          begin: Offset(_navDepth > _prevNavDepth ? 1.0 : -1.0, 0.0),
+          end: Offset.zero,
+        ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut)),
+        child: FadeTransition(opacity: animation, child: child),
+      ),
+      child: switch (_navDepth) {
+        2 => KeyedSubtree(
+            key: ValueKey('airports_${_selectedContinent}_$_selectedCountry'),
+            child: _buildAirportList(),
+          ),
+        1 => KeyedSubtree(
+            key: ValueKey('countries_$_selectedContinent'),
+            child: _buildCountryList(),
+          ),
+        _ => KeyedSubtree(
+            key: const ValueKey('continents'),
+            child: _buildContinentList(),
+          ),
+      },
+    );
+
+    if (!_isSwiping) return switcher;
+
+    return ClipRect(
+      child: Stack(
+        children: [
+          Offstage(offstage: true, child: switcher),
+          // Previous screen — slides in from the left
+          Positioned.fill(
+            child: Transform.translate(
+              offset: Offset((_swipeProgress - 1.0) * screenWidth, 0),
+              child: IgnorePointer(child: _buildContentForDepth(_navDepth - 1)),
+            ),
+          ),
+          // Current screen — slides out to the right
+          Positioned.fill(
+            child: Transform.translate(
+              offset: Offset(_swipeProgress * screenWidth, 0),
+              child: _buildContentForDepth(_navDepth),
+            ),
+          ),
+          // Drop-shadow on the left edge of the current screen
+          Positioned(
+            top: 0, bottom: 0,
+            left: _swipeProgress * screenWidth - 16,
+            width: 16,
+            child: IgnorePointer(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.centerRight,
+                    end: Alignment.centerLeft,
+                    colors: [
+                      Colors.black.withValues(alpha: 0.0),
+                      Colors.black.withValues(alpha: 0.20),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   // ─── BUILD ───────────────────────────────────────────────
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: appSystemUiOverlayStyle(context),
       child: Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        body: Stack(
-          children: [
-            const _Background(),
-            SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  _fadeUp(_buildHeader(context), _headerCtrl),
-                  Expanded(
-                  child: _isLoading
-                      ? const Center(child: CircularProgressIndicator(color: kTeal, strokeWidth: 1.5))
-                      : _hasQuery
-                      ? _buildSearchResults()
-                      : _fadeUp(AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 300),
-                          switchInCurve: Curves.easeOut,
-                          switchOutCurve: Curves.easeIn,
-                          transitionBuilder: (child, animation) {
-                            final goingForward = _navDepth > _prevNavDepth;
-                            return SlideTransition(
-                              position: Tween<Offset>(
-                                begin: Offset(goingForward ? 1.0 : -1.0, 0.0),
-                                end: Offset.zero,
-                              ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut)),
-                              child: FadeTransition(opacity: animation, child: child),
-                            );
-                          },
-                          child: switch (_navDepth) {
-                              2 => KeyedSubtree(
-                                  key: ValueKey('airports_${_selectedContinent}_$_selectedCountry'),
-                                  child: _buildAirportList(),
-                                ),
-                              1 => KeyedSubtree(
-                                  key: ValueKey('countries_$_selectedContinent'),
-                                  child: _buildCountryList(),
-                                ),
-                              _ => KeyedSubtree(
-                                  key: const ValueKey('continents'),
-                                  child: _buildContinentList(),
-                                ),
-                            },
-                        ), _contentCtrl),
-                  ),
-                ],
+        resizeToAvoidBottomInset: false,
+        body: GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onHorizontalDragStart: _onDragStart,
+          onHorizontalDragUpdate: (d) => _onDragUpdate(d, screenWidth),
+          onHorizontalDragEnd: _onDragEnd,
+          onHorizontalDragCancel: _onDragCancel,
+          child: Stack(
+            children: [
+              const _Background(),
+              SafeArea(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    _fadeUp(_buildHeader(context), _headerCtrl),
+                    Expanded(
+                      child: _isLoading
+                          ? const Center(child: CircularProgressIndicator(color: kTeal, strokeWidth: 1.5))
+                          : _hasQuery
+                              ? _buildSearchResults()
+                              : _fadeUp(_buildNavContent(screenWidth), _contentCtrl),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

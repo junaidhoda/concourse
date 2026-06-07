@@ -1,10 +1,13 @@
+import 'dart:async';
 import 'dart:math' as math;
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:palette_generator/palette_generator.dart';
 import '../theme/app_theme.dart';
+import '../services/favourites_service.dart';
 import 'airport_detail_screen.dart';
 
 class RestaurantDetailScreen extends StatefulWidget {
@@ -25,6 +28,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
     with SingleTickerProviderStateMixin {
   late final TabController _tabCtrl;
   Color? _heroBgColor;
+  Set<String> _favIds = {};
+  StreamSubscription<Set<String>>? _favSub;
 
   @override
   void initState() {
@@ -32,6 +37,35 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
     _tabCtrl = TabController(length: 2, vsync: this);
     _tabCtrl.addListener(() => setState(() {}));
     if (widget.restaurant.logoUrl.isNotEmpty) _extractPaletteColor();
+    _setupFavStreams();
+  }
+
+  void _setupFavStreams() {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) return;
+    _favSub = FavouritesService.favouriteIds(uid).listen((ids) {
+      if (mounted) setState(() => _favIds = ids);
+    });
+  }
+
+  void _toggleFavourite() {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) { _signInSnack(); return; }
+    FavouritesService.toggleFavourite(uid, r.id, {
+      'name': r.name, 'cuisine': r.cuisine, 'logoUrl': r.logoUrl,
+      'isLounge': r.isLounge, 'terminalName': r.terminalName ?? '',
+      'airportCode': r.airportCode, 'airportName': widget.airportName,
+    });
+  }
+
+  void _signInSnack() {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('Sign in to save restaurants',
+          style: GoogleFonts.jost(fontSize: 13)),
+      backgroundColor: kTeal,
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+    ));
   }
 
   Future<void> _extractPaletteColor() async {
@@ -53,6 +87,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
 
   @override
   void dispose() {
+    _favSub?.cancel();
     _tabCtrl.dispose();
     super.dispose();
   }
@@ -152,6 +187,16 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                       child: _backButton(context),
                     ),
                   ),
+                  actions: [
+                    _HeroActionButton(
+                      icon: _favIds.contains(r.id)
+                          ? Icons.star_rounded
+                          : Icons.star_border_rounded,
+                      active: _favIds.contains(r.id),
+                      onTap: _toggleFavourite,
+                    ),
+                    const SizedBox(width: 8),
+                  ],
                   flexibleSpace: LayoutBuilder(
                     builder: (context, constraints) {
                       final topPadding = MediaQuery.of(context).padding.top;
@@ -868,4 +913,30 @@ class _Background extends StatelessWidget {
       ),
     ),
   );
+}
+
+// ─────────────────────────────────────────────────────────────
+//  HERO ACTION BUTTON  (save / favourite in the app bar)
+// ─────────────────────────────────────────────────────────────
+class _HeroActionButton extends StatelessWidget {
+  final IconData icon;
+  final bool active;
+  final VoidCallback onTap;
+  const _HeroActionButton({required this.icon, required this.active, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => GestureDetector(
+        onTap: onTap,
+        child: Container(
+          margin: const EdgeInsets.only(right: 4),
+          padding: const EdgeInsets.all(9),
+          decoration: BoxDecoration(
+            color: Colors.black.withValues(alpha: 0.35),
+            borderRadius: BorderRadius.circular(3),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.18)),
+          ),
+          child: Icon(icon, size: 15,
+              color: active ? kTeal : Colors.white.withValues(alpha: 0.85)),
+        ),
+      );
 }

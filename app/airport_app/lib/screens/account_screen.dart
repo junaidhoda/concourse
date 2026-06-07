@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -6,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import '../services/auth_service.dart';
+import '../services/favourites_service.dart';
 import '../theme/app_theme.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -117,6 +119,16 @@ class _SignedInScreenState extends State<_SignedInScreen>
       builder: (_) => sheet,
     );
   }
+
+  void _showSavedSheet() => _openSheet(_SavedAirportsSheet(
+        stream: FavouritesService.savedAirports(widget.user.uid),
+      ));
+
+  void _showFavouriteSheet() => _openSheet(_SavedListSheet(
+        title: 'Favourite Restaurants',
+        emptyMessage: 'No favourite restaurants yet',
+        stream: FavouritesService.favouriteRestaurants(widget.user.uid),
+      ));
 
   void _showAvatarOptions() {
     showModalBottomSheet(
@@ -409,10 +421,10 @@ class _SignedInScreenState extends State<_SignedInScreen>
                       _SectionHeader(title: 'My Account'),
                       const SizedBox(height: 14),
                       _OptionRow(icon: Icons.bookmark_outline_rounded,
-                        label: 'Saved Airports', onTap: () {}),
+                        label: 'Saved Restaurants', onTap: _showSavedSheet),
                       const SizedBox(height: 8),
                       _OptionRow(icon: Icons.star_outline_rounded,
-                        label: 'Favourite Restaurants', onTap: () {}),
+                        label: 'Favourite Restaurants', onTap: _showFavouriteSheet),
                       const SizedBox(height: 8),
                       _OptionRow(icon: Icons.notifications_none_rounded,
                         label: 'Notifications', onTap: () {}),
@@ -2023,4 +2035,311 @@ class _Background extends StatelessWidget {
           ),
         ),
       );
+}
+
+// ─────────────────────────────────────────────────────────────
+//  SAVED AIRPORTS SHEET
+// ─────────────────────────────────────────────────────────────
+class _SavedAirportsSheet extends StatelessWidget {
+  final Stream<List<SavedAirport>> stream;
+  const _SavedAirportsSheet({required this.stream});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: Container(
+        decoration: BoxDecoration(
+          color: appCardSurface(context),
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+          border: Border(top: BorderSide(color: kGoldLight.withValues(alpha: 0.18))),
+        ),
+        padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Container(
+                width: 36, height: 3,
+                decoration: BoxDecoration(
+                  color: kGoldLight.withValues(alpha: 0.35),
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Text('Saved Airports', style: GoogleFonts.cormorant(
+              fontSize: 24, fontWeight: FontWeight.w500,
+              color: context.appOnSurface, letterSpacing: 0.2,
+            )),
+            const SizedBox(height: 18),
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.height * 0.55),
+              child: StreamBuilder<List<SavedAirport>>(
+                stream: stream,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 24),
+                        child: CircularProgressIndicator(color: kTeal, strokeWidth: 1.5),
+                      ),
+                    );
+                  }
+                  final items = snapshot.data ?? [];
+                  if (items.isEmpty) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 24),
+                      child: Center(
+                        child: Text('No saved airports yet',
+                            style: GoogleFonts.jost(
+                                fontSize: 14, color: context.appMutedFg(0.45))),
+                      ),
+                    );
+                  }
+                  return ListView.separated(
+                    shrinkWrap: true,
+                    itemCount: items.length,
+                    separatorBuilder: (_, __) => const SizedBox(height: 8),
+                    itemBuilder: (_, i) => _AirportTile(item: items[i]),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _AirportTile extends StatelessWidget {
+  final SavedAirport item;
+  const _AirportTile({required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    final subtitle = [item.city, item.country]
+        .where((s) => s.isNotEmpty)
+        .join(', ');
+
+    return GestureDetector(
+      onTap: () {
+        Navigator.pop(context);
+        context.push('/airport-detail/${item.airportCode}');
+      },
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          borderRadius: BorderRadius.circular(3),
+          border: Border.all(color: kGoldLight.withValues(alpha: 0.25)),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 40, height: 40,
+              decoration: BoxDecoration(
+                color: kTeal.withValues(alpha: 0.08),
+                borderRadius: BorderRadius.circular(3),
+                border: Border.all(color: kTeal.withValues(alpha: 0.18)),
+              ),
+              child: Center(
+                child: Text(
+                  item.airportCode,
+                  style: GoogleFonts.cormorant(
+                    fontSize: 13, fontWeight: FontWeight.bold,
+                    color: kTeal, letterSpacing: 0.5,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(item.name, style: GoogleFonts.jost(
+                    fontSize: 14, fontWeight: FontWeight.w400,
+                    color: context.appOnSurface,
+                  )),
+                  if (subtitle.isNotEmpty) ...[
+                    const SizedBox(height: 1),
+                    Text(subtitle, style: GoogleFonts.jost(
+                      fontSize: 11, fontWeight: FontWeight.w400,
+                      color: context.appMutedFg(0.42), letterSpacing: 0.2,
+                    )),
+                  ],
+                ],
+              ),
+            ),
+            Icon(Icons.chevron_right_rounded,
+                size: 16, color: context.appMutedFg(0.35)),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  SAVED / FAVOURITE LIST SHEET
+// ─────────────────────────────────────────────────────────────
+class _SavedListSheet extends StatelessWidget {
+  final String title;
+  final String emptyMessage;
+  final Stream<List<SavedRestaurant>> stream;
+
+  const _SavedListSheet({
+    required this.title,
+    required this.emptyMessage,
+    required this.stream,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+      child: Container(
+        decoration: BoxDecoration(
+          color: appCardSurface(context),
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+          border: Border(top: BorderSide(color: kGoldLight.withValues(alpha: 0.18))),
+        ),
+        padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Container(
+                width: 36, height: 3,
+                decoration: BoxDecoration(
+                  color: kGoldLight.withValues(alpha: 0.35),
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Text(title, style: GoogleFonts.cormorant(
+              fontSize: 24, fontWeight: FontWeight.w500,
+              color: context.appOnSurface, letterSpacing: 0.2,
+            )),
+            const SizedBox(height: 18),
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.height * 0.55),
+              child: StreamBuilder<List<SavedRestaurant>>(
+                stream: stream,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 24),
+                        child: CircularProgressIndicator(
+                            color: kTeal, strokeWidth: 1.5),
+                      ),
+                    );
+                  }
+                  final items = snapshot.data ?? [];
+                  if (items.isEmpty) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 24),
+                      child: Center(
+                        child: Text(emptyMessage,
+                            style: GoogleFonts.jost(
+                              fontSize: 14,
+                              color: context.appMutedFg(0.45),
+                            )),
+                      ),
+                    );
+                  }
+                  return ListView.separated(
+                    shrinkWrap: true,
+                    itemCount: items.length,
+                    separatorBuilder: (_, __) => const SizedBox(height: 8),
+                    itemBuilder: (_, i) => _SavedTile(item: items[i]),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SavedTile extends StatelessWidget {
+  final SavedRestaurant item;
+  const _SavedTile({required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    final subtitle = [item.airportName, item.terminalName]
+        .where((s) => s.isNotEmpty)
+        .join(' · ');
+
+    return GestureDetector(
+      onTap: () {
+        Navigator.pop(context);
+        context.push('/airport-detail/${item.airportCode}');
+      },
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          borderRadius: BorderRadius.circular(3),
+          border: Border.all(color: kGoldLight.withValues(alpha: 0.25)),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 40, height: 40,
+              decoration: BoxDecoration(
+                color: item.logoUrl.isNotEmpty
+                    ? Colors.white
+                    : (item.isLounge ? kGold : kTeal).withValues(alpha: 0.08),
+                borderRadius: BorderRadius.circular(3),
+                border: Border.all(
+                  color: (item.isLounge ? kGold : kTeal).withValues(alpha: 0.18)),
+              ),
+              clipBehavior: Clip.antiAlias,
+              child: item.logoUrl.isNotEmpty
+                  ? CachedNetworkImage(
+                      imageUrl: item.logoUrl,
+                      fit: BoxFit.contain,
+                      errorWidget: (_, __, ___) =>
+                          Icon(Icons.restaurant, color: kTeal, size: 18),
+                    )
+                  : Icon(Icons.restaurant, color: kTeal, size: 18),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(item.name, style: GoogleFonts.jost(
+                    fontSize: 14, fontWeight: FontWeight.w400,
+                    color: context.appOnSurface,
+                  )),
+                  if (subtitle.isNotEmpty) ...[
+                    const SizedBox(height: 1),
+                    Text(subtitle, style: GoogleFonts.jost(
+                      fontSize: 11, fontWeight: FontWeight.w400,
+                      color: context.appMutedFg(0.42), letterSpacing: 0.2,
+                    )),
+                  ],
+                ],
+              ),
+            ),
+            Icon(Icons.chevron_right_rounded,
+                size: 16, color: context.appMutedFg(0.35)),
+          ],
+        ),
+      ),
+    );
+  }
 }

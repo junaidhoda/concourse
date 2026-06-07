@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'services/chain_restaurant_service.dart';
 import 'package:go_router/go_router.dart';
@@ -6,8 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'firebase_options.dart';
 import 'preferences.dart';
 import 'theme/app_theme.dart';
-import 'screens/explore_screen.dart';
-import 'screens/airport_search_screen.dart';
+import 'screens/home_screen.dart';
+import 'screens/airport_explore_screen.dart';
 import 'screens/airport_detail_screen.dart';
 import 'screens/account_screen.dart';
 import 'screens/createaccount_screen.dart';
@@ -23,7 +24,6 @@ import 'screens/admin_airport_screen.dart';
 import 'screens/admin_restaurant_editor_screen.dart';
 import 'screens/nearby_airports_screen.dart';
 import 'services/auth_service.dart';
-import 'services/chain_restaurant_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,11 +56,11 @@ final GoRouter _router = GoRouter(
     ),
     GoRoute(
       path: '/login',
-      builder: (context, state) => const LoginScreen(),
+      pageBuilder: (context, state) => const CupertinoPage(child: LoginScreen()),
     ),
     GoRoute(
       path: '/forgot-password',
-      builder: (context, state) => const ForgotPasswordScreen(),
+      pageBuilder: (context, state) => const CupertinoPage(child: ForgotPasswordScreen()),
     ),
     ShellRoute(
       builder: (context, state, child) {
@@ -70,7 +70,7 @@ final GoRouter _router = GoRouter(
         GoRoute(
           path: '/explore',
           pageBuilder: (context, state) => const NoTransitionPage(
-            child: ExploreScreen(),
+            child: HomeScreen(),
           ),
         ),
         GoRoute(
@@ -78,7 +78,7 @@ final GoRouter _router = GoRouter(
           pageBuilder: (context, state) {
             final query = state.uri.queryParameters['q'] ?? '';
             return NoTransitionPage(
-              child: AirportSearchScreen(initialQuery: query),
+              child: AirportExploreScreen(initialQuery: query),
             );
           },
         ),
@@ -98,48 +98,52 @@ final GoRouter _router = GoRouter(
     ),
     GoRoute(
       path: '/nearby-airports',
-      builder: (context, state) => const NearbyAirportsScreen(),
+      pageBuilder: (context, state) => const CupertinoPage(child: NearbyAirportsScreen()),
     ),
     GoRoute(
       path: '/airport-detail/:id',
-      builder: (context, state) => AirportDetailScreen(
-        airportId: state.pathParameters['id']!,
+      pageBuilder: (context, state) => CupertinoPage(
+        child: AirportDetailScreen(airportId: state.pathParameters['id']!),
       ),
     ),
     GoRoute(
       path: '/signup',
-      builder: (context, state) => const CreateAccountScreen(),
+      pageBuilder: (context, state) => const CupertinoPage(child: CreateAccountScreen()),
     ),
     GoRoute(
       path: '/restaurant-detail',
-      builder: (context, state) {
+      pageBuilder: (context, state) {
         final extra = state.extra as Map<String, dynamic>;
-        return RestaurantDetailScreen(
-          restaurant: extra['restaurant'] as Restaurant,
-          airportName: extra['airportName'] as String? ?? '',
+        return CupertinoPage(
+          child: RestaurantDetailScreen(
+            restaurant: extra['restaurant'] as Restaurant,
+            airportName: extra['airportName'] as String? ?? '',
+          ),
         );
       },
     ),
     GoRoute(
       path: '/admin',
-      builder: (context, state) => const AdminLoginScreen(),
+      pageBuilder: (context, state) => const CupertinoPage(child: AdminLoginScreen()),
     ),
     GoRoute(
       path: '/admin/dashboard',
-      builder: (context, state) => const AdminDashboardScreen(),
+      pageBuilder: (context, state) => const CupertinoPage(child: AdminDashboardScreen()),
     ),
     GoRoute(
       path: '/admin/airport/:airportCode',
-      builder: (context, state) => AdminAirportScreen(
-        airportCode: state.pathParameters['airportCode']!,
+      pageBuilder: (context, state) => CupertinoPage(
+        child: AdminAirportScreen(airportCode: state.pathParameters['airportCode']!),
       ),
     ),
     GoRoute(
       path: '/admin/restaurant/:airportCode/:terminalId/:restaurantId',
-      builder: (context, state) => AdminRestaurantEditorScreen(
-        airportCode: state.pathParameters['airportCode']!,
-        terminalId: state.pathParameters['terminalId']!,
-        restaurantId: state.pathParameters['restaurantId'],
+      pageBuilder: (context, state) => CupertinoPage(
+        child: AdminRestaurantEditorScreen(
+          airportCode: state.pathParameters['airportCode']!,
+          terminalId: state.pathParameters['terminalId']!,
+          restaurantId: state.pathParameters['restaurantId'],
+        ),
       ),
     ),
   ],
@@ -162,6 +166,11 @@ class MyApp extends StatelessWidget {
           themeMode: prefs.darkMode ? ThemeMode.dark : ThemeMode.light,
           themeAnimationDuration: Duration.zero,
           routerConfig: _router,
+          builder: (context, child) => GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: () => FocusScope.of(context).unfocus(),
+            child: child!,
+          ),
         );
       },
     );
@@ -210,6 +219,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
     ];
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: child,
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
