@@ -1,9 +1,12 @@
+import 'dart:async';
 import 'dart:math' as math;
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../theme/app_theme.dart';
+import '../services/favourites_service.dart';
 import '../services/firebase_service.dart';
 import '../services/chain_restaurant_service.dart';
 
@@ -35,6 +38,9 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
   final TextEditingController _restaurantSearchController = TextEditingController();
   bool _searchFocused = false;
   final FocusNode _searchFocus = FocusNode();
+  bool _isAirportSaved = false;
+  StreamSubscription<Set<String>>? _airportSavedSub;
+  StreamSubscription<User?>? _authSub;
 
   @override
   void initState() {
@@ -42,14 +48,49 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
     _loadFromFirebase();
     _restaurantSearchController.addListener(() => setState(() {}));
     _searchFocus.addListener(() => setState(() => _searchFocused = _searchFocus.hasFocus));
+    _authSub = FirebaseAuth.instance.authStateChanges().listen((_) => _setupAirportSavedStream());
+    _setupAirportSavedStream();
   }
 
   @override
   void dispose() {
+    _authSub?.cancel();
+    _airportSavedSub?.cancel();
     _restaurantSearchController.dispose();
     _searchFocus.dispose();
     _scrollController.dispose();
     super.dispose();
+  }
+
+  void _setupAirportSavedStream() {
+    _airportSavedSub?.cancel();
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) {
+      if (mounted) setState(() => _isAirportSaved = false);
+      return;
+    }
+    _airportSavedSub = FavouritesService.savedAirportIds(uid).listen((ids) {
+      if (mounted) setState(() => _isAirportSaved = ids.contains(widget.airportId));
+    });
+  }
+
+  void _toggleSavedAirport(BuildContext context) {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Sign in to save airports', style: GoogleFonts.jost(fontSize: 13)),
+        backgroundColor: kTeal,
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+      ));
+      return;
+    }
+    FavouritesService.toggleSavedAirport(uid, widget.airportId, {
+      'airportCode': widget.airportId,
+      'name': _airportData?['name'] as String? ?? widget.airportId,
+      'city': _airportData?['city'] as String? ?? '',
+      'country': _airportData?['country'] as String? ?? '',
+    });
   }
 
   List<Restaurant> _filterRestaurantsByQuery(List<Restaurant> list) {
@@ -121,6 +162,7 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
     }
 
     return Restaurant(
+      airportCode: widget.airportId,
       name: _stringFromMap(map, ['name']) ?? 'Unknown',
       cuisine: cuisine,
       amenity: amenity,
@@ -479,6 +521,33 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
                     child: _backButton(context),
                   ),
                 ),
+                actions: [
+                  GestureDetector(
+                    onTap: () => _toggleSavedAirport(context),
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 12),
+                      padding: const EdgeInsets.all(9),
+                      decoration: BoxDecoration(
+                        color: appCardSurface(context),
+                        borderRadius: BorderRadius.circular(3),
+                        border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+                        boxShadow: [BoxShadow(
+                          color: context.appOnSurface.withValues(alpha: 0.06),
+                          blurRadius: 6, offset: const Offset(0, 2),
+                        )],
+                      ),
+                      child: Icon(
+                        _isAirportSaved
+                            ? Icons.bookmark_rounded
+                            : Icons.bookmark_border_rounded,
+                        size: 13,
+                        color: _isAirportSaved
+                            ? kTeal
+                            : context.appOnSurface.withValues(alpha: 0.55),
+                      ),
+                    ),
+                  ),
+                ],
                 // Raw LayoutBuilder — no FlexibleSpaceBar so no internal ClipRect.
                 // Stack has clipBehavior: Clip.none so iOS bounce never cuts text.
                 flexibleSpace: LayoutBuilder(
@@ -1475,6 +1544,7 @@ class RestaurantOutlet {
 }
 
 class Restaurant {
+  final String airportCode;
   final String name;
   final String cuisine;
   final String amenity;
@@ -1486,6 +1556,11 @@ class Restaurant {
   final String? terminalId;
   final String? terminalShort;
   final String? terminalName;
+
+  String get id {
+    final safe = name.toLowerCase().replaceAll(RegExp(r'[^a-z0-9]'), '');
+    return '${airportCode}_${terminalId ?? ''}_$safe';
+  }
   final bool isVegan;
   final bool isVegetarian;
   final bool isHalal;
@@ -1512,6 +1587,7 @@ class Restaurant {
   final String kidsMenu;
 
   const Restaurant({
+    this.airportCode = '',
     required this.name,
     required this.cuisine,
     required this.amenity,
