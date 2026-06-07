@@ -26,7 +26,6 @@ class RestaurantDetailScreen extends StatefulWidget {
 
 class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
     with SingleTickerProviderStateMixin {
-  late final TabController _tabCtrl;
   Color? _heroBgColor;
   Set<String> _favIds = {};
   StreamSubscription<Set<String>>? _favSub;
@@ -34,8 +33,6 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
   @override
   void initState() {
     super.initState();
-    _tabCtrl = TabController(length: 2, vsync: this);
-    _tabCtrl.addListener(() => setState(() {}));
     if (widget.restaurant.logoUrl.isNotEmpty) _extractPaletteColor();
     _setupFavStreams();
   }
@@ -88,7 +85,6 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
   @override
   void dispose() {
     _favSub?.cancel();
-    _tabCtrl.dispose();
     super.dispose();
   }
 
@@ -102,11 +98,6 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
             r.openingThursday, r.openingFriday, r.openingSaturday, r.openingSunday]
         .any((s) => s.isNotEmpty);
   }
-
-  bool get _hasFeatures =>
-      r.takeaway.isNotEmpty || r.delivery.isNotEmpty ||
-      r.reservable.isNotEmpty || r.wheelchairAccessible.isNotEmpty ||
-      r.kidsMenu.isNotEmpty;
 
   List<(String, IconData)> get _featureLabels {
     final labels = <(String, IconData)>[];
@@ -276,37 +267,44 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                           // Name + cuisine overlay (fades on collapse)
                           if (textOpacity > 0)
                             Positioned(
-                              bottom: 16, left: 24, right: 24,
+                              bottom: 16, left: 16, right: 16,
                               child: Opacity(
                                 opacity: textOpacity,
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Text(
-                                            r.name,
-                                            style: GoogleFonts.cormorant(fontSize: 24, fontWeight: FontWeight.w600, color: context.appOnSurface, letterSpacing: 0.2, height: 1.15),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(4),
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                                    color: Colors.black.withValues(alpha: 0.40),
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              Text(
+                                                r.name,
+                                                style: GoogleFonts.cormorant(fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white, letterSpacing: 0.2, height: 1.15),
+                                              ),
+                                              if (r.cuisine.isNotEmpty) ...[
+                                                const SizedBox(height: 2),
+                                                Text(
+                                                  r.cuisine,
+                                                  style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 1.4, color: Colors.white.withValues(alpha: 0.60)),
+                                                ),
+                                              ],
+                                            ],
                                           ),
-                                          if (r.cuisine.isNotEmpty) ...[
-                                            const SizedBox(height: 2),
-                                            Text(
-                                              r.cuisine,
-                                              style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 1.4, color: context.appMutedFg(0.42)),
-                                            ),
-                                          ],
-                                        ],
-                                      ),
+                                        ),
+                                        if (terminalName.isNotEmpty)
+                                          Text(
+                                            terminalName,
+                                            style: GoogleFonts.cormorant(fontSize: 16, fontWeight: FontWeight.w400, color: kTeal, letterSpacing: 0.6),
+                                          ),
+                                      ],
                                     ),
-                                    if (terminalName.isNotEmpty)
-                                      Text(
-                                        terminalName,
-                                        style: GoogleFonts.cormorant(fontSize: 16, fontWeight: FontWeight.w400, color: kTeal, letterSpacing: 0.6),
-                                      ),
-                                  ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -376,41 +374,11 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                   ),
                 ),
 
-                // ── Pinned tab bar ────────────────────────────
-                SliverPersistentHeader(
-                  pinned: true,
-                  delegate: _StickyHeaderDelegate(
-                    minHeight: 62,
-                    maxHeight: 62,
-                    child: Container(
-                      color: bg,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(24, 12, 24, 0),
-                            child: Row(
-                              children: [
-                                Expanded(child: _TabSegment(label: 'Info', icon: Icons.info_outline_rounded, index: 0, ctrl: _tabCtrl)),
-                                const SizedBox(width: 10),
-                                Expanded(child: _TabSegment(label: 'Reviews', icon: Icons.rate_review_outlined, index: 1, ctrl: _tabCtrl)),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(height: 12),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-
-                // ── Tab content ───────────────────────────────
+                // ── Info content ──────────────────────────────
                 SliverToBoxAdapter(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(24, 20, 24, 48),
-                    child: _tabCtrl.index == 0
-                        ? _buildInfoTab(context)
-                        : _buildReviewsTab(context),
+                    padding: const EdgeInsets.fromLTRB(24, 4, 24, 48),
+                    child: _buildInfoTab(context),
                   ),
                 ),
               ],
@@ -421,27 +389,115 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
     );
   }
 
-  // ── Info tab ──────────────────────────────────────────────────
+  // ── Info ──────────────────────────────────────────────────────
   Widget _buildInfoTab(BuildContext context) {
+    final days = [
+      ('Mon', r.openingMonday), ('Tue', r.openingTuesday),
+      ('Wed', r.openingWednesday), ('Thu', r.openingThursday),
+      ('Fri', r.openingFriday), ('Sat', r.openingSaturday),
+      ('Sun', r.openingSunday),
+    ];
+    final hasDayHours = days.any((d) => d.$2.isNotEmpty);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _SectionHeader(title: r.outlets.length > 1 ? 'Locations' : 'Location'),
-        const SizedBox(height: 12),
-        ...r.outlets.map((outlet) => Padding(
-          padding: const EdgeInsets.only(bottom: 10),
-          child: _OutletCard(outlet: outlet),
-        )),
-
-        if (_hasOpeningHours) ...[
-          const SizedBox(height: 24),
-          const _SectionHeader(title: 'Opening Hours'),
-          const SizedBox(height: 12),
-          _OpeningHoursCard(restaurant: r),
+        // Description
+        if (r.description.isNotEmpty) ...[
+          const SizedBox(height: 8),
+          Text(
+            r.description,
+            style: GoogleFonts.jost(fontSize: 14, height: 1.7, color: context.appOnSurface.withValues(alpha: 0.78)),
+          ),
+          _sectionDivider(context),
         ],
 
-        if (_hasFeatures) ...[
-          const SizedBox(height: 24),
+        // Location
+        _SectionHeader(title: r.outlets.length > 1 ? 'Locations' : 'Location'),
+        const SizedBox(height: 14),
+        ...r.outlets.asMap().entries.expand<Widget>((entry) {
+          final i = entry.key;
+          final outlet = entry.value;
+          final security = _airsideLabel(outlet.airside);
+          final hasDetails = security.isNotEmpty || outlet.level.isNotEmpty || outlet.locationNotes.isNotEmpty;
+          final multipleOutlets = r.outlets.length > 1;
+
+          return [
+            // Divider between outlets
+            if (i > 0) ...[
+              const SizedBox(height: 14),
+              Container(height: 1, color: kGoldLight.withValues(alpha: 0.18)),
+              const SizedBox(height: 14),
+            ],
+            // Numbered badge + gate area label (only when multiple outlets)
+            if (multipleOutlets)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 22, height: 22,
+                      decoration: BoxDecoration(
+                        color: kTeal.withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(3),
+                      ),
+                      child: Center(
+                        child: Text('${i + 1}', style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w600, color: kTeal)),
+                      ),
+                    ),
+                    if (outlet.gateArea.isNotEmpty) ...[
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Text(outlet.gateArea, style: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w500, color: context.appOnSurface.withValues(alpha: 0.85))),
+                      ),
+                    ],
+                  ],
+                ),
+              )
+            else if (outlet.gateArea.isNotEmpty) ...[
+              _detailRow(context, Icons.location_on_rounded, outlet.gateArea),
+              const SizedBox(height: 10),
+            ],
+            if (hasDetails) ...[
+              if (security.isNotEmpty) ...[_detailRow(context, Icons.security_rounded, security), const SizedBox(height: 10)],
+              if (outlet.level.isNotEmpty) ...[_detailRow(context, Icons.layers_rounded, outlet.level), const SizedBox(height: 10)],
+              if (outlet.locationNotes.isNotEmpty) ...[_detailRow(context, Icons.directions_rounded, outlet.locationNotes), const SizedBox(height: 10)],
+            ],
+          ];
+        }),
+
+        // Hours
+        if (_hasOpeningHours) ...[
+          _sectionDivider(context),
+          const _SectionHeader(title: 'Hours'),
+          const SizedBox(height: 14),
+          if (r.open247)
+            _detailRow(context, Icons.access_time_rounded, 'Open 24 / 7')
+          else if (!hasDayHours)
+            _detailRow(context, Icons.access_time_rounded, r.openingHours)
+          else
+            ...days.map((d) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 40,
+                    child: Text(d.$1, style: GoogleFonts.jost(fontSize: 12, letterSpacing: 0.3, color: context.appMutedFg(0.42))),
+                  ),
+                  Expanded(
+                    child: Text(
+                      d.$2.isEmpty ? '—' : d.$2,
+                      style: GoogleFonts.jost(fontSize: 13, color: d.$2.isEmpty ? context.appMutedFg(0.28) : context.appOnSurface.withValues(alpha: 0.80)),
+                    ),
+                  ),
+                ],
+              ),
+            )),
+        ],
+
+        // Features
+        if (_featureLabels.isNotEmpty) ...[
+          _sectionDivider(context),
           const _SectionHeader(title: 'Features'),
           const SizedBox(height: 12),
           Wrap(
@@ -451,40 +507,44 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
           ),
         ],
 
-        if (widget.airportName.isNotEmpty || r.phone.isNotEmpty || r.website.isNotEmpty) ...[
-          const SizedBox(height: 24),
-          const _SectionHeader(title: 'Details'),
-          const SizedBox(height: 12),
-          if (widget.airportName.isNotEmpty) ...[
-            _InfoCard(icon: Icons.flight_rounded, label: 'Airport', value: widget.airportName),
-            const SizedBox(height: 10),
-          ],
-          if (r.phone.isNotEmpty) ...[
-            _InfoCard(icon: Icons.phone_rounded, label: 'Phone', value: r.phone),
-            const SizedBox(height: 10),
-          ],
-          if (r.website.isNotEmpty)
-            _InfoCard(icon: Icons.language_rounded, label: 'Website', value: r.website),
+        // Contact
+        if (r.phone.isNotEmpty || r.website.isNotEmpty) ...[
+          _sectionDivider(context),
+          const _SectionHeader(title: 'Contact'),
+          const SizedBox(height: 14),
+          if (r.phone.isNotEmpty) _detailRow(context, Icons.phone_outlined, r.phone),
+          if (r.phone.isNotEmpty && r.website.isNotEmpty) const SizedBox(height: 10),
+          if (r.website.isNotEmpty) _detailRow(context, Icons.language_outlined, r.website),
         ],
       ],
     );
   }
 
-  // ── Reviews tab ───────────────────────────────────────────────
-  Widget _buildReviewsTab(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const _SectionHeader(title: 'Reviews'),
-        const SizedBox(height: 14),
-        _PlaceholderCard(
-          icon: Icons.rate_review_outlined,
-          message: 'No reviews yet',
-          subtitle: 'Be the first to review this restaurant',
+  Widget _sectionDivider(BuildContext context) => Padding(
+    padding: const EdgeInsets.symmetric(vertical: 20),
+    child: Container(
+      height: 1,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Colors.transparent, kGoldLight.withValues(alpha: 0.25), Colors.transparent],
         ),
-      ],
-    );
-  }
+      ),
+    ),
+  );
+
+  Widget _detailRow(BuildContext context, IconData icon, String text) => Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Padding(
+        padding: const EdgeInsets.only(top: 1),
+        child: Icon(icon, size: 14, color: kTeal.withValues(alpha: 0.75)),
+      ),
+      const SizedBox(width: 12),
+      Expanded(
+        child: Text(text, style: GoogleFonts.jost(fontSize: 13, height: 1.45, color: context.appOnSurface.withValues(alpha: 0.80))),
+      ),
+    ],
+  );
 
   // ── Shared helpers ────────────────────────────────────────────
   Widget _backButton(BuildContext context) {
@@ -536,72 +596,6 @@ class _GridPainter extends CustomPainter {
 }
 
 // ─────────────────────────────────────────────────────────────
-//  TAB SEGMENT
-// ─────────────────────────────────────────────────────────────
-class _TabSegment extends StatelessWidget {
-  final String label;
-  final IconData icon;
-  final int index;
-  final TabController ctrl;
-  const _TabSegment({required this.label, required this.icon, required this.index, required this.ctrl});
-
-  @override
-  Widget build(BuildContext context) {
-    final selected = ctrl.index == index;
-    return GestureDetector(
-      onTap: () => ctrl.animateTo(index),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        height: 38,
-        decoration: BoxDecoration(
-          color: appCardSurface(context),
-          borderRadius: BorderRadius.circular(4),
-          border: Border.all(
-            color: selected ? kTeal : kGoldLight.withValues(alpha: 0.28),
-            width: selected ? 1.5 : 1.0,
-          ),
-          boxShadow: selected
-              ? [BoxShadow(color: kTeal.withValues(alpha: 0.14), blurRadius: 8, offset: const Offset(0, 2))]
-              : [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.05), blurRadius: 5, offset: const Offset(0, 1))],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(icon, size: 14, color: selected ? kTeal : context.appMutedFg(0.42)),
-            const SizedBox(width: 6),
-            Text(
-              label,
-              style: GoogleFonts.jost(
-                fontSize: 12,
-                fontWeight: selected ? FontWeight.w500 : FontWeight.w400,
-                letterSpacing: 0.3,
-                color: selected ? kTeal : context.appMutedFg(0.42),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-// ─────────────────────────────────────────────────────────────
-//  STICKY HEADER DELEGATE
-// ─────────────────────────────────────────────────────────────
-class _StickyHeaderDelegate extends SliverPersistentHeaderDelegate {
-  final double minHeight;
-  final double maxHeight;
-  final Widget child;
-  const _StickyHeaderDelegate({required this.minHeight, required this.maxHeight, required this.child});
-
-  @override double get minExtent => minHeight;
-  @override double get maxExtent => maxHeight;
-  @override Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) => child;
-  @override bool shouldRebuild(_StickyHeaderDelegate old) =>
-      minHeight != old.minHeight || maxHeight != old.maxHeight || child != old.child;
-}
-
-// ─────────────────────────────────────────────────────────────
 //  LOCATION CHIP
 // ─────────────────────────────────────────────────────────────
 class _LocationChip extends StatelessWidget {
@@ -630,74 +624,6 @@ class _LocationChip extends StatelessWidget {
 }
 
 // ─────────────────────────────────────────────────────────────
-//  OUTLET CARD
-// ─────────────────────────────────────────────────────────────
-class _OutletCard extends StatelessWidget {
-  final RestaurantOutlet outlet;
-  const _OutletCard({required this.outlet});
-
-  String _airsideLabel(String a) => switch (a.toLowerCase()) {
-    'airside'  => 'After security',
-    'landside' => 'Before security',
-    'both'     => 'Airside & landside',
-    _          => '',
-  };
-
-  @override
-  Widget build(BuildContext context) {
-    final security = _airsideLabel(outlet.airside);
-    final subtitle = [security, outlet.level].where((s) => s.isNotEmpty).join(' · ');
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-      decoration: BoxDecoration(
-        color: appCardSurface(context),
-        borderRadius: BorderRadius.circular(3),
-        border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-        boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 38, height: 38,
-            decoration: BoxDecoration(color: kTeal.withValues(alpha: 0.10), borderRadius: BorderRadius.circular(3)),
-            child: const Icon(Icons.location_on_rounded, color: kTeal, size: 18),
-          ),
-          const SizedBox(width: 14),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (outlet.gateArea.isNotEmpty)
-                  Text(outlet.gateArea, style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w500, color: context.appOnSurface)),
-                if (subtitle.isNotEmpty) ...[
-                  SizedBox(height: outlet.gateArea.isNotEmpty ? 2 : 0),
-                  Text(subtitle, style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.3, color: context.appMutedFg(0.45))),
-                ],
-                if (outlet.locationNotes.isNotEmpty) ...[
-                  const SizedBox(height: 6),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(Icons.directions_rounded, size: 12, color: context.appMutedFg(0.40)),
-                      const SizedBox(width: 4),
-                      Expanded(
-                        child: Text(outlet.locationNotes, style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, color: context.appMutedFg(0.55), height: 1.4)),
-                      ),
-                    ],
-                  ),
-                ],
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// ─────────────────────────────────────────────────────────────
 //  DIETARY BADGE
 // ─────────────────────────────────────────────────────────────
 class _DietaryBadge extends StatelessWidget {
@@ -713,78 +639,6 @@ class _DietaryBadge extends StatelessWidget {
       border: Border.all(color: kTeal.withValues(alpha: 0.25)),
     ),
     child: Text(label, style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w400, letterSpacing: 0.5, color: kTeal)),
-  );
-}
-
-// ─────────────────────────────────────────────────────────────
-//  INFO CARD
-// ─────────────────────────────────────────────────────────────
-class _InfoCard extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final String value;
-  const _InfoCard({required this.icon, required this.label, required this.value});
-
-  @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-    decoration: BoxDecoration(
-      color: appCardSurface(context),
-      borderRadius: BorderRadius.circular(3),
-      border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-      boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
-    ),
-    child: Row(
-      children: [
-        Container(
-          width: 38, height: 38,
-          decoration: BoxDecoration(color: kTeal.withValues(alpha: 0.10), borderRadius: BorderRadius.circular(3)),
-          child: Icon(icon, color: kTeal, size: 18),
-        ),
-        const SizedBox(width: 14),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(label, style: GoogleFonts.jost(fontSize: 11, fontWeight: FontWeight.w400, letterSpacing: 1.8, color: context.appMutedFg(0.38))),
-              const SizedBox(height: 2),
-              Text(value, style: GoogleFonts.jost(fontSize: 14, fontWeight: FontWeight.w400, color: context.appOnSurface)),
-            ],
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
-// ─────────────────────────────────────────────────────────────
-//  PLACEHOLDER CARD
-// ─────────────────────────────────────────────────────────────
-class _PlaceholderCard extends StatelessWidget {
-  final IconData icon;
-  final String message;
-  final String subtitle;
-  const _PlaceholderCard({required this.icon, required this.message, required this.subtitle});
-
-  @override
-  Widget build(BuildContext context) => Container(
-    width: double.infinity,
-    padding: const EdgeInsets.all(24),
-    decoration: BoxDecoration(
-      color: appCardSurface(context),
-      borderRadius: BorderRadius.circular(3),
-      border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-      boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
-    ),
-    child: Column(
-      children: [
-        Icon(icon, size: 36, color: context.appMutedFg(0.28, relaxed: true)),
-        const SizedBox(height: 12),
-        Text(message, style: GoogleFonts.cormorant(fontSize: 18, fontWeight: FontWeight.w400, color: context.appMutedFg(0.44))),
-        const SizedBox(height: 4),
-        Text(subtitle, style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, color: context.appMutedFg(0.36), letterSpacing: 0.3), textAlign: TextAlign.center),
-      ],
-    ),
   );
 }
 
@@ -810,65 +664,6 @@ class _SectionHeader extends StatelessWidget {
       Transform.rotate(angle: math.pi / 4, child: Container(width: 4, height: 4, color: kGoldLight.withValues(alpha: 0.6))),
     ],
   );
-}
-
-// ─────────────────────────────────────────────────────────────
-//  OPENING HOURS CARD
-// ─────────────────────────────────────────────────────────────
-class _OpeningHoursCard extends StatelessWidget {
-  final Restaurant restaurant;
-  const _OpeningHoursCard({required this.restaurant});
-
-  @override
-  Widget build(BuildContext context) {
-    if (restaurant.open247) {
-      return const _InfoCard(icon: Icons.access_time_rounded, label: 'Hours', value: 'Open 24/7');
-    }
-
-    final days = [
-      ('Monday',    restaurant.openingMonday),
-      ('Tuesday',   restaurant.openingTuesday),
-      ('Wednesday', restaurant.openingWednesday),
-      ('Thursday',  restaurant.openingThursday),
-      ('Friday',    restaurant.openingFriday),
-      ('Saturday',  restaurant.openingSaturday),
-      ('Sunday',    restaurant.openingSunday),
-    ];
-
-    if (!days.any((d) => d.$2.isNotEmpty)) {
-      return _InfoCard(icon: Icons.access_time_rounded, label: 'Hours', value: restaurant.openingHours);
-    }
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-      decoration: BoxDecoration(
-        color: appCardSurface(context),
-        borderRadius: BorderRadius.circular(3),
-        border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
-        boxShadow: [BoxShadow(color: context.appOnSurface.withValues(alpha: 0.06), blurRadius: 8, offset: const Offset(0, 2))],
-      ),
-      child: Column(
-        children: days.map((d) => Padding(
-          padding: const EdgeInsets.symmetric(vertical: 3),
-          child: Row(
-            children: [
-              SizedBox(
-                width: 96,
-                child: Text(d.$1, style: GoogleFonts.jost(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0.3, color: context.appMutedFg(0.45))),
-              ),
-              Expanded(
-                child: Text(
-                  d.$2.isEmpty ? '—' : d.$2,
-                  style: GoogleFonts.jost(fontSize: 13, fontWeight: FontWeight.w400,
-                      color: d.$2.isEmpty ? context.appMutedFg(0.28) : context.appOnSurface),
-                ),
-              ),
-            ],
-          ),
-        )).toList(),
-      ),
-    );
-  }
 }
 
 // ─────────────────────────────────────────────────────────────
