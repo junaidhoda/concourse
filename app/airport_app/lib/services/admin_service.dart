@@ -79,6 +79,60 @@ class AdminService {
     }
   }
 
+  /// Turns 'South Terminal' → 'south_terminal' for use as a doc ID.
+  /// Mirrors the slug() helper in tools/scripts/firebase/upload_to_firestore.py.
+  static String terminalSlug(String name) => name
+      .toLowerCase()
+      .replaceAll(RegExp(r'[^a-z0-9]+'), '_')
+      .replaceAll(RegExp(r'^_+|_+$'), '');
+
+  /// Creates a terminal document. Returns the new doc ID, or null on failure.
+  /// Fails if a terminal with the same derived ID already exists.
+  static Future<String?> addTerminal(String airportSlug, String name) async {
+    final id = terminalSlug(name);
+    if (id.isEmpty) return null;
+    try {
+      final ref = _firestore
+          .collection('airports').doc(airportSlug)
+          .collection('terminals').doc(id);
+      final existing = await ref.get();
+      if (existing.exists) return null;
+      await ref.set({'name': name});
+      return id;
+    } catch (e) {
+      print('Error adding terminal: $e');
+      return null;
+    }
+  }
+
+  /// Deletes a terminal and every restaurant inside it.
+  static Future<bool> deleteTerminal(String airportSlug, String terminalId) async {
+    try {
+      final ref = _firestore
+          .collection('airports').doc(airportSlug)
+          .collection('terminals').doc(terminalId);
+
+      // Firestore does not cascade — clear the restaurants subcollection first,
+      // in batches, so the documents aren't orphaned.
+      while (true) {
+        final snap = await ref.collection('restaurants').limit(400).get();
+        if (snap.docs.isEmpty) break;
+        final batch = _firestore.batch();
+        for (final d in snap.docs) {
+          batch.delete(d.reference);
+        }
+        await batch.commit();
+        if (snap.docs.length < 400) break;
+      }
+
+      await ref.delete();
+      return true;
+    } catch (e) {
+      print('Error deleting terminal: $e');
+      return false;
+    }
+  }
+
   // ── Restaurants ─────────────────────────────────────────────
 
   static Future<List<Map<String, dynamic>>> getRestaurantsForTerminal(

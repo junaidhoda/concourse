@@ -157,7 +157,8 @@ class _AirportDetailScreenState extends State<AirportDetailScreen> {
           airside: map['airside'] as String? ?? '',
           level: additional['level'] as String? ??
               map['floor_level'] as String? ?? '',
-          locationNotes: additional['location_notes'] as String? ?? '',
+          locationNotes: additional['location_notes'] as String? ??
+              map['address'] as String? ?? '',
         ),
       ];
     }

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_map/flutter_map.dart' show LatLngBounds;
+import '../models/lat_lng_bounds.dart';
 import 'package:latlong2/latlong.dart';
 import '../theme/app_theme.dart';
 import '../services/firebase_service.dart';
@@ -62,17 +62,9 @@ class _AirportExploreScreenState extends State<AirportExploreScreen> with Ticker
   bool _isSwiping = false;
   bool _dragFromEdge = false;
 
-  /// Bounds fetched from Nominatim for the currently selected country.
-  /// Null while the request is in-flight; set once the response arrives.
   LatLngBounds? _countryMapBounds;
 
-  /// Actual border polygon rings for the mask (one list per polygon/island).
-  /// Each inner list is a ring of LatLng points tracing the country's border.
-  List<List<LatLng>>? _countryPolygons;
-
-  /// Session-level caches so we only call Nominatim once per country.
-  static final Map<String, LatLngBounds>      _boundsCache  = {};
-  static final Map<String, List<List<LatLng>>> _polygonCache = {};
+  static final Map<String, LatLngBounds> _boundsCache = {};
 
   late final AnimationController _headerCtrl;
   late final AnimationController _contentCtrl;
@@ -266,9 +258,7 @@ class _AirportExploreScreenState extends State<AirportExploreScreen> with Ticker
       _prevNavDepth     = _navDepth;
       _selectedCountry  = c;
       _navDepth         = 2;
-      // Use cached results immediately if available; otherwise null until fetched.
-      _countryMapBounds = _boundsCache[c];
-      _countryPolygons  = _polygonCache[c];
+      _countryMapBounds = _boundsCache[c] ?? _airportClusterBounds(c);
     });
     _loadCountryBounds(c);
   }
@@ -278,7 +268,6 @@ class _AirportExploreScreenState extends State<AirportExploreScreen> with Ticker
     if (_navDepth == 2) {
       _selectedCountry  = null;
       _countryMapBounds = null;
-      _countryPolygons  = null;
       _navDepth = 1;
     } else {
       _selectedContinent = null;
@@ -286,49 +275,93 @@ class _AirportExploreScreenState extends State<AirportExploreScreen> with Ticker
     }
   });
 
-  // ── Country bounds + polygon (Nominatim) ─────────────────
+  // ── Country bounds ────────────────────────────────────────
 
-  /// Fetches the geographic bounding box AND actual border polygon for
-  /// [country] from Nominatim, caches both, then updates the map.
   Future<void> _loadCountryBounds(String country) async {
-    // Already cached — just apply.
     if (_boundsCache.containsKey(country)) {
       if (mounted && _selectedCountry == country) {
-        setState(() {
-          _countryMapBounds = _boundsCache[country];
-          _countryPolygons  = _polygonCache[country];
-        });
+        setState(() => _countryMapBounds = _boundsCache[country]);
       }
       return;
     }
 
     final isoCode = _countryIso[country]?.toLowerCase() ?? '';
-    final (bounds, polygons) = await _fetchNominatimData(country, isoCode);
+    final cluster   = _airportClusterBounds(country);
+    final nominatim = await _fetchNominatimBounds(country, isoCode);
 
     if (!mounted || _selectedCountry != country) return;
 
-    final resolvedBounds = bounds ?? _airportFallbackBounds(country);
-    if (resolvedBounds != null) _boundsCache[country] = resolvedBounds;
-    if (polygons.isNotEmpty)    _polygonCache[country] = polygons;
-
-    setState(() {
-      _countryMapBounds = resolvedBounds;
-      _countryPolygons  = polygons.isEmpty ? null : polygons;
-    });
+    final resolved = _intersectBounds(nominatim, cluster);
+    if (resolved != null) _boundsCache[country] = resolved;
+    setState(() => _countryMapBounds = resolved);
   }
 
-  /// Calls Nominatim with `polygon_geojson=1` to get both the bounding box
-  /// and the actual country border geometry in one request.
-  /// Returns (null, []) on any error so the caller falls back gracefully.
-  Future<(LatLngBounds?, List<List<LatLng>>)> _fetchNominatimData(
-      String country, String isoCode) async {
+  /// Raw airport cluster bounds (outlier-filtered). Used as an immediate
+  /// placeholder while Nominatim loads, and as input to [_intersectBounds].
+  LatLngBounds? _airportClusterBounds(String country) {
+    final all = (_airportsByContinent[_selectedContinent] ?? [])
+        .where((a) => a.country == country && a.lat != null && a.lon != null)
+        .toList();
+    if (all.isEmpty) return null;
+
+    final cLat = all.map((a) => a.lat!).reduce((a, b) => a + b) / all.length;
+    final cLon = all.map((a) => a.lon!).reduce((a, b) => a + b) / all.length;
+
+    var cluster = all
+        .where((a) => (a.lat! - cLat).abs() < 20 && (a.lon! - cLon).abs() < 30)
+        .toList();
+    if (cluster.isEmpty) cluster = all;
+
+    double s = cluster.first.lat!, n = cluster.first.lat!;
+    double w = cluster.first.lon!, e = cluster.first.lon!;
+    for (final a in cluster) {
+      if (a.lat! < s) s = a.lat!;
+      if (a.lat! > n) n = a.lat!;
+      if (a.lon! < w) w = a.lon!;
+      if (a.lon! > e) e = a.lon!;
+    }
+    return LatLngBounds(LatLng(s, w), LatLng(n, e));
+  }
+
+  /// Intersects the Nominatim country bbox with the airport cluster bounds
+  /// expanded by a generous fixed padding. This shows the whole metropolitan
+  /// territory (Nominatim provides the correct outer border) while clipping
+  /// out overseas territories whose bounds blow up the Nominatim box.
+  LatLngBounds? _intersectBounds(LatLngBounds? nominatim, LatLngBounds? cluster) {
+    if (nominatim == null && cluster == null) return null;
+    if (cluster == null) return nominatim;
+    if (nominatim == null) {
+      const pad = 2.0;
+      return LatLngBounds(
+        LatLng((cluster.south - pad).clamp(-85.0, 85.0), (cluster.west - pad).clamp(-180.0, 180.0)),
+        LatLng((cluster.north + pad).clamp(-85.0, 85.0), (cluster.east + pad).clamp(-180.0, 180.0)),
+      );
+    }
+    // Expand the airport cluster by 8° in every direction, then intersect
+    // with Nominatim. For countries like France this clips French Guiana
+    // (>40° from the Paris cluster) while still revealing all of metro France.
+    const pad = 8.0;
+    final exS = (cluster.south - pad).clamp(-85.0, 85.0);
+    final exN = (cluster.north + pad).clamp(-85.0, 85.0);
+    final exW = (cluster.west  - pad).clamp(-180.0, 180.0);
+    final exE = (cluster.east  + pad).clamp(-180.0, 180.0);
+
+    final s = nominatim.south > exS ? nominatim.south : exS;
+    final n = nominatim.north < exN ? nominatim.north : exN;
+    final w = nominatim.west  > exW ? nominatim.west  : exW;
+    final e = nominatim.east  < exE ? nominatim.east  : exE;
+
+    if (s >= n || w >= e) return nominatim; // degenerate — fall back
+    return LatLngBounds(LatLng(s, w), LatLng(n, e));
+  }
+
+  Future<LatLngBounds?> _fetchNominatimBounds(String country, String isoCode) async {
     try {
       final params = <String, String>{
-        'q':              country,
-        'format':         'json',
-        'limit':          '1',
-        'featuretype':    'country',
-        'polygon_geojson': '1',
+        'q':           country,
+        'format':      'json',
+        'limit':       '1',
+        'featuretype': 'country',
         if (isoCode.isNotEmpty) 'countrycodes': isoCode,
       };
       final uri    = Uri.https('nominatim.openstreetmap.org', '/search', params);
@@ -337,82 +370,21 @@ class _AirportExploreScreenState extends State<AirportExploreScreen> with Ticker
       req.headers.set(HttpHeaders.userAgentHeader, 'ConcourseAirportApp/1.0 (flutter)');
       final res    = await req.close();
       client.close();
-      if (res.statusCode != 200) return (null, <List<LatLng>>[]);
+      if (res.statusCode != 200) return null;
 
       final body    = await res.transform(utf8.decoder).join();
       final results = jsonDecode(body) as List;
-      if (results.isEmpty) return (null, <List<LatLng>>[]);
+      if (results.isEmpty) return null;
 
-      final first = results.first as Map<String, dynamic>;
-
-      // ── Bounding box ──────────────────────────────────────
-      LatLngBounds? bounds;
-      final bb = (first['boundingbox'] as List?)?.cast<String>();
-      if (bb != null && bb.length == 4) {
-        bounds = LatLngBounds(
-          LatLng(double.parse(bb[0]), double.parse(bb[2])), // SW
-          LatLng(double.parse(bb[1]), double.parse(bb[3])), // NE
-        );
-      }
-
-      // ── Border polygon ────────────────────────────────────
-      final polygons = <List<LatLng>>[];
-      final geoJson  = first['geojson'] as Map<String, dynamic>?;
-      if (geoJson != null) {
-        polygons.addAll(_parseGeoJsonPolygons(geoJson));
-      }
-
-      return (bounds, polygons);
+      final bb = ((results.first as Map<String, dynamic>)['boundingbox'] as List?)?.cast<String>();
+      if (bb == null || bb.length != 4) return null;
+      return LatLngBounds(
+        LatLng(double.parse(bb[0]), double.parse(bb[2])),
+        LatLng(double.parse(bb[1]), double.parse(bb[3])),
+      );
     } catch (_) {
-      return (null, <List<LatLng>>[]);
+      return null;
     }
-  }
-
-  /// Converts a GeoJSON Polygon or MultiPolygon into a list of coordinate rings.
-  /// Each ring becomes one hole in the world-mask polygon.
-  /// GeoJSON uses [longitude, latitude] order — we swap to LatLng(lat, lon).
-  List<List<LatLng>> _parseGeoJsonPolygons(Map<String, dynamic> geoJson) {
-    List<LatLng> parseRing(List ring) => ring
-        .map((c) => LatLng((c[1] as num).toDouble(), (c[0] as num).toDouble()))
-        .toList();
-
-    final type   = geoJson['type'] as String;
-    final coords = geoJson['coordinates'] as List;
-
-    if (type == 'Polygon') {
-      // coords[0] is the outer ring; we ignore inner rings (lakes, enclaves).
-      if (coords.isEmpty) return [];
-      return [parseRing(coords[0] as List)];
-    } else if (type == 'MultiPolygon') {
-      // Each element is a polygon; take its outer ring.
-      return coords
-          .map((poly) => parseRing((poly as List)[0] as List))
-          .toList();
-    }
-    return [];
-  }
-
-  /// Fallback: derive bounds from airport pin coordinates + 0.5° padding on
-  /// each side. Only used when the Nominatim fetch fails.
-  LatLngBounds? _airportFallbackBounds(String country) {
-    final located = (_airportsByContinent[_selectedContinent] ?? [])
-        .where((a) => a.country == country && a.lat != null && a.lon != null)
-        .toList();
-    if (located.isEmpty) return null;
-
-    double minLat = located.first.lat!, maxLat = located.first.lat!;
-    double minLon = located.first.lon!, maxLon = located.first.lon!;
-    for (final a in located) {
-      if (a.lat! < minLat) minLat = a.lat!;
-      if (a.lat! > maxLat) maxLat = a.lat!;
-      if (a.lon! < minLon) minLon = a.lon!;
-      if (a.lon! > maxLon) maxLon = a.lon!;
-    }
-    const pad = 0.5;
-    return LatLngBounds(
-      LatLng((minLat - pad).clamp(-85.0, 85.0), (minLon - pad).clamp(-180.0, 180.0)),
-      LatLng((maxLat + pad).clamp(-85.0, 85.0), (maxLon + pad).clamp(-180.0, 180.0)),
-    );
   }
 
 
@@ -430,7 +402,6 @@ class _AirportExploreScreenState extends State<AirportExploreScreen> with Ticker
         if (_navDepth == 2) {
           _selectedCountry  = null;
           _countryMapBounds = null;
-          _countryPolygons  = null;
           _navDepth = 1;
         } else {
           _selectedContinent = null;
@@ -779,7 +750,7 @@ class _AirportExploreScreenState extends State<AirportExploreScreen> with Ticker
               airports:        mapEntries,
               userLocation:    null,
               cameraBounds:    bounds,
-              countryPolygons: _countryPolygons,
+              countryIsoCode: _countryIso[_selectedCountry ?? ''],
               onAirportTapped: (entry) =>
                   context.push('/airport-detail/${entry.id}'),
             ),

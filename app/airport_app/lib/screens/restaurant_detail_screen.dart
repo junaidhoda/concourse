@@ -474,7 +474,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
           if (r.open247)
             _detailRow(context, Icons.access_time_rounded, 'Open 24 / 7')
           else if (!hasDayHours)
-            _detailRow(context, Icons.access_time_rounded, r.openingHours)
+            _detailRow(context, Icons.access_time_rounded, _formatHours(r.openingHours))
           else
             ...days.map((d) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 4),
@@ -486,7 +486,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
                   ),
                   Expanded(
                     child: Text(
-                      d.$2.isEmpty ? '—' : d.$2,
+                      d.$2.isEmpty ? '—' : _formatHours(d.$2),
                       style: GoogleFonts.jost(fontSize: 13, color: d.$2.isEmpty ? context.appMutedFg(0.28) : context.appOnSurface.withValues(alpha: 0.80)),
                     ),
                   ),
@@ -561,6 +561,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen>
       ),
     );
   }
+
+  String _formatHours(String raw) =>
+      raw.replaceAllMapped(RegExp(r'(\d{2}:\d{2})-(\d{2}:\d{2})'), (m) => '${m[1]} - ${m[2]}');
 
   Widget _rule(BuildContext context) => Container(
     height: 1,

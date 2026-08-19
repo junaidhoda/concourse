@@ -21,6 +21,7 @@ class _AdminAirportScreenState extends State<AdminAirportScreen> {
   Map<String, dynamic>? _airportDetails;
   bool _isLoading = true;
   String? _error;
+  String? _deletingTerminalId;
 
   @override
   void initState() {
@@ -232,6 +233,178 @@ class _AdminAirportScreenState extends State<AdminAirportScreen> {
     });
   }
 
+  void _toast(String message, {bool error = false}) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(message, style: GoogleFonts.jost(fontSize: 13)),
+      backgroundColor: error ? Colors.red.shade700 : kTeal,
+      duration: const Duration(seconds: 2),
+    ));
+  }
+
+  void _showAddTerminalSheet(BuildContext context) {
+    final nameCtrl = TextEditingController();
+    bool saving = false;
+    String? sheetError;
+
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (ctx) => StatefulBuilder(
+        builder: (ctx, setSheetState) {
+          Future<void> save() async {
+            final name = nameCtrl.text.trim();
+            if (name.isEmpty) {
+              setSheetState(() => sheetError = 'Enter a terminal name');
+              return;
+            }
+            final id = AdminService.terminalSlug(name);
+            if (id.isEmpty) {
+              setSheetState(() => sheetError = 'Name must contain letters or numbers');
+              return;
+            }
+            if (_terminalRestaurants.containsKey(id)) {
+              setSheetState(() => sheetError = 'A terminal with this name already exists');
+              return;
+            }
+
+            setSheetState(() { saving = true; sheetError = null; });
+            final newId = await AdminService.addTerminal(widget.airportCode, name);
+            if (!ctx.mounted) return;
+            if (newId == null) {
+              setSheetState(() { saving = false; sheetError = 'Could not create terminal'; });
+              return;
+            }
+            Navigator.of(ctx).pop();
+            setState(() {
+              _terminalNames[newId]       = name;
+              _terminalRestaurants[newId] = [];
+            });
+            _toast('Terminal added');
+          }
+
+          return Padding(
+            padding: EdgeInsets.only(bottom: MediaQuery.of(ctx).viewInsets.bottom),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(ctx).scaffoldBackgroundColor,
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(8)),
+                border: Border.all(color: kGoldLight.withValues(alpha: 0.28)),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Center(child: Container(
+                    margin: const EdgeInsets.only(top: 12, bottom: 8),
+                    width: 32, height: 3,
+                    decoration: BoxDecoration(color: kGoldLight.withValues(alpha: 0.4), borderRadius: BorderRadius.circular(2)),
+                  )),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 4, 24, 16),
+                    child: Text('Add Terminal', style: GoogleFonts.cormorant(
+                      fontSize: 22, fontWeight: FontWeight.w600,
+                      color: Theme.of(ctx).colorScheme.onSurface,
+                    )),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        _SheetField(label: 'Terminal Name', controller: nameCtrl),
+                        const SizedBox(height: 8),
+                        ValueListenableBuilder<TextEditingValue>(
+                          valueListenable: nameCtrl,
+                          builder: (_, value, __) {
+                            final id = AdminService.terminalSlug(value.text.trim());
+                            return Text('ID: ${id.isEmpty ? '—' : id}', style: GoogleFonts.jost(
+                              fontSize: 11, color: ctx.appMutedFg(0.40),
+                            ));
+                          },
+                        ),
+                        if (sheetError != null) ...[
+                          const SizedBox(height: 10),
+                          Text(sheetError!, style: GoogleFonts.jost(fontSize: 12, color: Colors.red.shade400)),
+                        ],
+                        const SizedBox(height: 24),
+                        GestureDetector(
+                          onTap: saving ? null : save,
+                          child: Container(
+                            height: 46,
+                            decoration: BoxDecoration(
+                              color: saving ? kTeal.withValues(alpha: 0.5) : kTeal,
+                              borderRadius: BorderRadius.circular(3),
+                            ),
+                            child: Center(child: saving
+                              ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 1.5))
+                              : Text('Create Terminal', style: GoogleFonts.jost(fontSize: 14, color: Colors.white, letterSpacing: 0.5)),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
+    ).whenComplete(() {
+      WidgetsBinding.instance.addPostFrameCallback((_) => nameCtrl.dispose());
+    });
+  }
+
+  Future<void> _deleteTerminal(String terminalId) async {
+    final name  = _terminalNames[terminalId] ?? terminalId;
+    final count = _terminalRestaurants[terminalId]?.length ?? 0;
+
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: appCardSurface(ctx),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(3),
+          side: BorderSide(color: kGoldLight.withValues(alpha: 0.28)),
+        ),
+        title: Text('Delete $name', style: GoogleFonts.cormorant(
+          fontSize: 22, fontWeight: FontWeight.w500, color: ctx.appOnSurface,
+        )),
+        content: Text(
+          count == 0
+              ? 'This cannot be undone.'
+              : 'This will also delete $count venue${count == 1 ? '' : 's'} in this terminal. This cannot be undone.',
+          style: GoogleFonts.jost(fontSize: 13, color: ctx.appMutedFg(0.55)),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(false),
+            child: Text('Cancel', style: GoogleFonts.jost(fontSize: 13, color: ctx.appMutedFg(0.55))),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(true),
+            child: Text('Delete', style: GoogleFonts.jost(fontSize: 13, color: Colors.red.shade400)),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true) return;
+
+    setState(() => _deletingTerminalId = terminalId);
+    final ok = await AdminService.deleteTerminal(widget.airportCode, terminalId);
+    if (!mounted) return;
+    setState(() {
+      _deletingTerminalId = null;
+      if (ok) {
+        _terminalRestaurants.remove(terminalId);
+        _terminalNames.remove(terminalId);
+      }
+    });
+    _toast(ok ? 'Terminal deleted' : 'Failed to delete terminal', error: !ok);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -313,17 +486,25 @@ class _AdminAirportScreenState extends State<AdminAirportScreen> {
                           ? _ErrorState(message: _error!, onRetry: _load)
                           : ListView.builder(
                               padding: const EdgeInsets.fromLTRB(24, 12, 24, 40),
-                              itemCount: _terminalRestaurants.length + 1,
+                              itemCount: _terminalRestaurants.length + 2,
                               itemBuilder: (context, i) {
                                 if (i == 0) return _AirportDetailsCard(details: _airportDetails);
+                                if (i == _terminalRestaurants.length + 1) {
+                                  return _AddTerminalButton(
+                                    isEmpty: _terminalRestaurants.isEmpty,
+                                    onTap: () => _showAddTerminalSheet(context),
+                                  );
+                                }
                                 final terminalId   = _terminalRestaurants.keys.elementAt(i - 1);
                                 final terminalName = _terminalNames[terminalId] ?? terminalId;
                                 final restaurants  = _terminalRestaurants[terminalId]!;
                                 return _TerminalSection(
                                   terminalName: terminalName,
                                   restaurants: restaurants,
+                                  isDeleting: _deletingTerminalId == terminalId,
                                   onAdd: () => context.go('/admin/restaurant/${widget.airportCode}/$terminalId/new'),
                                   onEdit: (r) => context.go('/admin/restaurant/${widget.airportCode}/$terminalId/${r['id']}'),
+                                  onDelete: () => _deleteTerminal(terminalId),
                                 );
                               },
                             ),
@@ -343,14 +524,18 @@ class _AdminAirportScreenState extends State<AdminAirportScreen> {
 class _TerminalSection extends StatelessWidget {
   final String terminalName;
   final List<Map<String, dynamic>> restaurants;
+  final bool isDeleting;
   final VoidCallback onAdd;
   final void Function(Map<String, dynamic>) onEdit;
+  final VoidCallback onDelete;
 
   const _TerminalSection({
     required this.terminalName,
     required this.restaurants,
+    required this.isDeleting,
     required this.onAdd,
     required this.onEdit,
+    required this.onDelete,
   });
 
   IconData _icon(String amenity) {
@@ -392,6 +577,21 @@ class _TerminalSection extends StatelessWidget {
                     Text('Add', style: GoogleFonts.jost(fontSize: 11, color: kTeal, letterSpacing: 0.3)),
                   ],
                 ),
+              ),
+            ),
+            const SizedBox(width: 6),
+            GestureDetector(
+              onTap: isDeleting ? null : onDelete,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                decoration: BoxDecoration(
+                  color: Colors.red.shade400.withValues(alpha: 0.08),
+                  borderRadius: BorderRadius.circular(3),
+                  border: Border.all(color: Colors.red.shade400.withValues(alpha: 0.28)),
+                ),
+                child: isDeleting
+                    ? SizedBox(width: 13, height: 13, child: CircularProgressIndicator(color: Colors.red.shade400, strokeWidth: 1.5))
+                    : Icon(Icons.delete_outline_rounded, size: 14, color: Colors.red.shade400),
               ),
             ),
           ],
@@ -469,6 +669,48 @@ class _TerminalSection extends StatelessWidget {
           }),
 
         const SizedBox(height: 16),
+      ],
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  ADD TERMINAL BUTTON
+// ─────────────────────────────────────────────────────────────
+class _AddTerminalButton extends StatelessWidget {
+  final bool isEmpty;
+  final VoidCallback onTap;
+  const _AddTerminalButton({required this.isEmpty, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (isEmpty)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12),
+            child: Text('No terminals yet', style: GoogleFonts.jost(fontSize: 12, color: context.appMutedFg(0.38))),
+          ),
+        GestureDetector(
+          onTap: onTap,
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 13),
+            decoration: BoxDecoration(
+              color: kTeal.withValues(alpha: 0.08),
+              borderRadius: BorderRadius.circular(3),
+              border: Border.all(color: kTeal.withValues(alpha: 0.30)),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.add, size: 15, color: kTeal),
+                const SizedBox(width: 6),
+                Text('Add Terminal', style: GoogleFonts.jost(fontSize: 13, color: kTeal, letterSpacing: 0.4)),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }

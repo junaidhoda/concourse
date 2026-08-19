@@ -50,3 +50,4 @@ app/airport_app/build/
 # Environment variables
 .env
 .env.*
+!.env.example

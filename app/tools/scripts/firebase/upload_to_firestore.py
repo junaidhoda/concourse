@@ -13,6 +13,7 @@ import re
 import firebase_admin
 from firebase_admin import credentials, firestore
 
+import os
 import os as _os
 _SCRIPT_DIR     = _os.path.dirname(_os.path.abspath(__file__))
 _TOOLS_DIR      = _os.path.join(_SCRIPT_DIR, '..', '..')
@@ -22,9 +23,8 @@ HELPER_DIR      = _os.path.join(_TOOLS_DIR, 'data', 'helper_data')
 IMAGES_DIR      = _os.path.join(_TOOLS_DIR, 'airport_images')
 
 
-SERVICE_ACCOUNT = "/Users/mustafakhan/Documents/Dev/concourse/airport-app-20516-firebase-adminsdk-fbsvc-5e55cc718c.json"
+SERVICE_ACCOUNT = os.path.expanduser("~/.firebase/airport-app-20516-firebase-adminsdk-fbsvc-96d88f4ebf.json")
 
-GATWICK_CSV  = _os.path.join(RESTAURANTS_DIR, "gatwick_restaurants.csv")
 HEATHROW_CSV = _os.path.join(RESTAURANTS_DIR, "heathrow_restaurants.csv")
 BHX_CSV      = _os.path.join(RESTAURANTS_DIR, "bhx_restaurants.csv")
 MAN_CSV      = _os.path.join(RESTAURANTS_DIR, "man_restaurants.csv")
@@ -154,25 +154,6 @@ def main():
     firebase_admin.initialize_app(cred)
     db = firestore.client()
 
-    # ── Gatwick ───────────────────────────────────────────────────────
-    print("Uploading Gatwick …")
-    gatwick_meta = {
-        "name":      "London Gatwick Airport",
-        "code":      "LGW",
-        "city":      "London",
-        "country":   "UK",
-        "continent": "Europe",
-        "lat":       51.1537,
-        "lon":       -0.1821,
-    }
-    with open(GATWICK_CSV, encoding="utf-8") as f:
-        gatwick_rows = list(csv.DictReader(f))
-
-    for terminal_name in ["North Terminal", "South Terminal"]:
-        rows = [r for r in gatwick_rows if r["terminal"] == terminal_name]
-        docs = [clean(r, {"airport": "Gatwick"}) for r in rows]
-        upload(db, "gatwick", gatwick_meta, terminal_name, docs)
-
     # ── Heathrow ──────────────────────────────────────────────────────
     print("Uploading Heathrow …")
     heathrow_meta = {
@@ -190,7 +171,7 @@ def main():
     for terminal_name in ["Terminal 2", "Terminal 3", "Terminal 4", "Terminal 5"]:
         rows = [r for r in heathrow_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Heathrow"}) for r in rows]
-        upload(db, "heathrow", heathrow_meta, terminal_name, docs)
+        upload(db, "lhr", heathrow_meta, terminal_name, docs)
 
     # ── Birmingham ────────────────────────────────────────────────────
     print("Uploading Birmingham …")
@@ -209,7 +190,7 @@ def main():
     for terminal_name in ["Main Terminal", "Lounges"]:
         rows = [r for r in bhx_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Birmingham"}) for r in rows]
-        upload(db, "birmingham", bhx_meta, terminal_name, docs)
+        upload(db, "bhx", bhx_meta, terminal_name, docs)
 
     # ── Manchester ───────────────────────────────────────────────────
     print("Uploading Manchester …")
@@ -228,7 +209,7 @@ def main():
     for terminal_name in ["Terminal 2", "Terminal 3", "Lounges"]:
         rows = [r for r in man_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Manchester"}) for r in rows]
-        upload(db, "manchester", man_meta, terminal_name, docs)
+        upload(db, "man", man_meta, terminal_name, docs)
 
     # ── CDG ──────────────────────────────────────────────────────────
     print("Uploading CDG …")
@@ -293,7 +274,7 @@ def main():
     for terminal_name in ["Main Terminal"]:
         rows = [r for r in ist_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Istanbul"}) for r in rows]
-        upload(db, "istanbul", ist_meta, terminal_name, docs)
+        upload(db, "ist", ist_meta, terminal_name, docs)
 
     # ── JFK ───────────────────────────────────────────────────────────────────
     print("Uploading JFK …")
@@ -329,7 +310,7 @@ def main():
     for terminal_name in ["Terminal 1", "Terminal 2", "Terminal 3", "Terminal 4", "Jewel Changi Airport"]:
         rows = [r for r in sin_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Singapore Changi"}) for r in rows]
-        upload(db, "changi", sin_meta, terminal_name, docs)
+        upload(db, "sin", sin_meta, terminal_name, docs)
 
     # ── LAX ───────────────────────────────────────────────────────────────────
     print("Uploading LAX …")
@@ -369,7 +350,7 @@ def main():
     for terminal_name in ["Main Terminal"]:
         rows = [r for r in bkk_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Bangkok Suvarnabhumi"}) for r in rows]
-        upload(db, "suvarnabhumi", bkk_meta, terminal_name, docs)
+        upload(db, "bkk", bkk_meta, terminal_name, docs)
 
     # ── Dubai ─────────────────────────────────────────────────────────────────
     print("Uploading Dubai …")
@@ -387,10 +368,10 @@ def main():
     for terminal_name in ["Terminal 1", "Terminal 2", "Terminal 3"]:
         rows = [r for r in dxb_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Dubai"}) for r in rows]
-        upload(db, "dubai", dxb_meta, terminal_name, docs)
+        upload(db, "dxb", dxb_meta, terminal_name, docs)
 
-    # ── London Gatwick (lgw) ──────────────────────────────────────────────────
-    print("Uploading London Gatwick (lgw) …")
+    # ── London Gatwick ────────────────────────────────────────────────────────
+    print("Uploading London Gatwick …")
     lgw_meta = {
         "name":      "London Gatwick Airport",
         "code":      "LGW",
@@ -423,7 +404,7 @@ def main():
     for terminal_name in ["Main Terminal"]:
         rows = [r for r in pkx_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Beijing Daxing"}) for r in rows]
-        upload(db, "daxing", pkx_meta, terminal_name, docs)
+        upload(db, "pkx", pkx_meta, terminal_name, docs)
 
     # ── Guangzhou Baiyun ─────────────────────────────────────────────────────
     print("Uploading Guangzhou Baiyun …")
@@ -441,7 +422,7 @@ def main():
     for terminal_name in ["Terminal 1", "Terminal 2"]:
         rows = [r for r in can_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Guangzhou Baiyun"}) for r in rows]
-        upload(db, "baiyun", can_meta, terminal_name, docs)
+        upload(db, "can", can_meta, terminal_name, docs)
 
     # ── Hong Kong ─────────────────────────────────────────────────────────────
     print("Uploading Hong Kong …")
@@ -495,7 +476,7 @@ def main():
     for terminal_name in ["Terminal 1", "Terminal 2", "Concourse"]:
         rows = [r for r in icn_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Incheon"}) for r in rows]
-        upload(db, "incheon", icn_meta, terminal_name, docs)
+        upload(db, "icn", icn_meta, terminal_name, docs)
 
     # ── Narita ────────────────────────────────────────────────────────────────
     print("Uploading Narita …")
@@ -513,7 +494,7 @@ def main():
     for terminal_name in ["Terminal 1", "Terminal 2", "Terminal 3"]:
         rows = [r for r in nrt_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Narita"}) for r in rows]
-        upload(db, "narita", nrt_meta, terminal_name, docs)
+        upload(db, "nrt", nrt_meta, terminal_name, docs)
 
     # ── Rio Galeão ────────────────────────────────────────────────────────────
     print("Uploading Rio Galeão …")
@@ -531,7 +512,7 @@ def main():
     for terminal_name in ["Main Terminal", "Terminal 2"]:
         rows = [r for r in gig_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Rio Galeão"}) for r in rows]
-        upload(db, "galeao", gig_meta, terminal_name, docs)
+        upload(db, "gig", gig_meta, terminal_name, docs)
 
     # ── Lima ──────────────────────────────────────────────────────────────────
     print("Uploading Lima …")
@@ -549,7 +530,7 @@ def main():
     for terminal_name in ["Main Terminal"]:
         rows = [r for r in lim_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Lima"}) for r in rows]
-        upload(db, "lima", lim_meta, terminal_name, docs)
+        upload(db, "lim", lim_meta, terminal_name, docs)
 
     # ── Lagos ─────────────────────────────────────────────────────────────────
     print("Uploading Lagos …")
@@ -567,7 +548,7 @@ def main():
     for terminal_name in ["Main Terminal"]:
         rows = [r for r in los_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Lagos"}) for r in rows]
-        upload(db, "lagos", los_meta, terminal_name, docs)
+        upload(db, "los", los_meta, terminal_name, docs)
 
     # ── Johannesburg OR Tambo ─────────────────────────────────────────────────
     print("Uploading Johannesburg OR Tambo …")
@@ -582,10 +563,11 @@ def main():
     }
     with open(JNB_CSV, encoding="utf-8") as f:
         jnb_rows = list(csv.DictReader(f))
-    for terminal_name in ["International Terminal", "Domestic Terminal", "Main Terminal"]:
+    for terminal_name in ["International Terminal", "Domestic Terminal"]:
         rows = [r for r in jnb_rows if r["terminal"] == terminal_name]
-        docs = [clean(r, {"airport": "OR Tambo"}) for r in rows]
-        upload(db, "ortambo", jnb_meta, terminal_name, docs)
+        if rows:
+            docs = [clean(r, {"airport": "OR Tambo"}) for r in rows]
+            upload(db, "ortambo", jnb_meta, terminal_name, docs)
 
     # ── Wellington ────────────────────────────────────────────────────────────
     print("Uploading Wellington …")
@@ -603,7 +585,7 @@ def main():
     for terminal_name in ["Main Terminal", "International Departures"]:
         rows = [r for r in wlg_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Wellington"}) for r in rows]
-        upload(db, "wellington", wlg_meta, terminal_name, docs)
+        upload(db, "wlg", wlg_meta, terminal_name, docs)
 
     # ── Sydney ────────────────────────────────────────────────────────────────
     print("Uploading Sydney …")
@@ -621,7 +603,7 @@ def main():
     for terminal_name in ["T1 International", "T2 Domestic", "T3 Domestic"]:
         rows = [r for r in syd_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Sydney"}) for r in rows]
-        upload(db, "sydney", syd_meta, terminal_name, docs)
+        upload(db, "syd", syd_meta, terminal_name, docs)
 
     # ── Melbourne ─────────────────────────────────────────────────────────────
     print("Uploading Melbourne …")
@@ -636,10 +618,11 @@ def main():
     }
     with open(MEL_CSV, encoding="utf-8") as f:
         mel_rows = list(csv.DictReader(f))
-    for terminal_name in ["Main Terminal"]:
+    for terminal_name in ["T1", "T2", "T3", "T4"]:
         rows = [r for r in mel_rows if r["terminal"] == terminal_name]
-        docs = [clean(r, {"airport": "Melbourne"}) for r in rows]
-        upload(db, "melbourne", mel_meta, terminal_name, docs)
+        if rows:
+            docs = [clean(r, {"airport": "Melbourne"}) for r in rows]
+            upload(db, "mel", mel_meta, terminal_name, docs)
 
     # ── Kansai ────────────────────────────────────────────────────────────────
     print("Uploading Kansai …")
@@ -657,7 +640,7 @@ def main():
     for terminal_name in ["Terminal 1", "Terminal 2", "Aeroplaza"]:
         rows = [r for r in kix_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Kansai"}) for r in rows]
-        upload(db, "kansai", kix_meta, terminal_name, docs)
+        upload(db, "kix", kix_meta, terminal_name, docs)
 
     # ── Kuala Lumpur ──────────────────────────────────────────────────────────
     print("Uploading Kuala Lumpur …")
@@ -675,7 +658,7 @@ def main():
     for terminal_name in ["Main Terminal Building", "Satellite Building", "Contact Pier International", "Contact Pier Domestic"]:
         rows = [r for r in kul_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Kuala Lumpur"}) for r in rows]
-        upload(db, "klia", kul_meta, terminal_name, docs)
+        upload(db, "kul", kul_meta, terminal_name, docs)
 
     # ── Manila NAIA ───────────────────────────────────────────────────────────
     print("Uploading Manila NAIA …")
@@ -693,7 +676,7 @@ def main():
     for terminal_name in ["Terminal 1", "Terminal 2", "Terminal 3"]:
         rows = [r for r in mnl_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Manila NAIA"}) for r in rows]
-        upload(db, "naia", mnl_meta, terminal_name, docs)
+        upload(db, "mnl", mnl_meta, terminal_name, docs)
 
     # ── Delhi ─────────────────────────────────────────────────────────────────
     print("Uploading Delhi …")
@@ -712,7 +695,7 @@ def main():
         rows = [r for r in del_rows if r["terminal"] == terminal_name]
         if rows:
             docs = [clean(r, {"airport": "Delhi"}) for r in rows]
-            upload(db, "delhi", del_meta, terminal_name, docs)
+            upload(db, "del", del_meta, terminal_name, docs)
 
     # ── Mumbai ────────────────────────────────────────────────────────────────
     print("Uploading Mumbai …")
@@ -730,7 +713,7 @@ def main():
     for terminal_name in ["Terminal 1", "Terminal 2"]:
         rows = [r for r in bom_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Mumbai"}) for r in rows]
-        upload(db, "mumbai", bom_meta, terminal_name, docs)
+        upload(db, "bom", bom_meta, terminal_name, docs)
 
     # ── Colombo ───────────────────────────────────────────────────────────────
     print("Uploading Colombo …")
@@ -748,7 +731,7 @@ def main():
     for terminal_name in ["Main Terminal"]:
         rows = [r for r in cmb_rows if r["terminal"] == terminal_name]
         docs = [clean(r, {"airport": "Colombo"}) for r in rows]
-        upload(db, "colombo", cmb_meta, terminal_name, docs)
+        upload(db, "cmb", cmb_meta, terminal_name, docs)
 
     # ── Hanoi Noi Bai ─────────────────────────────────────────────────────────
     # han_restaurants.csv is empty (no listings on airport website)

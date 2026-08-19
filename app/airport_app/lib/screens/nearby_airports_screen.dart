@@ -4,7 +4,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_map/flutter_map.dart' show LatLngBounds;
+import '../models/lat_lng_bounds.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -94,12 +94,9 @@ class _NearbyAirportsScreenState extends State<NearbyAirportsScreen> {
   double?              _userLon;
   String?              _userCountryIso; // 2-letter lowercase, e.g. "gb"
   List<_Airport>       _airports       = [];
-  LatLngBounds?        _bounds;
-  List<List<LatLng>>?  _polygons;
+  LatLngBounds? _bounds;
 
-  // Session caches shared with airport_search_screen
-  static final Map<String, LatLngBounds>       _boundsCache   = {};
-  static final Map<String, List<List<LatLng>>> _polygonCache  = {};
+  static final Map<String, LatLngBounds> _boundsCache = {};
 
   @override
   void initState() {
@@ -218,25 +215,18 @@ class _NearbyAirportsScreenState extends State<NearbyAirportsScreen> {
   // ── Country polygon (Nominatim) ────────────────────────────
 
   Future<void> _loadCountryGeo(String isoCode) async {
-    // Use cache if available
     if (_boundsCache.containsKey(isoCode)) {
-      if (mounted) {
-        setState(() {
-          _bounds   = _boundsCache[isoCode];
-          _polygons = _polygonCache[isoCode];
-        });
-      }
+      if (mounted) setState(() => _bounds = _boundsCache[isoCode]);
       return;
     }
 
     try {
       final uri = Uri.https('nominatim.openstreetmap.org', '/search', {
-        'format':          'json',
-        'limit':           '1',
-        'featuretype':     'country',
-        'countrycodes':    isoCode,
-        'polygon_geojson': '1',
-        'q':               isoCode,
+        'format':       'json',
+        'limit':        '1',
+        'featuretype':  'country',
+        'countrycodes': isoCode,
+        'q':            isoCode,
       });
       final client = HttpClient()..connectionTimeout = const Duration(seconds: 12);
       final req    = await client.getUrl(uri);
@@ -249,47 +239,18 @@ class _NearbyAirportsScreenState extends State<NearbyAirportsScreen> {
       final results = jsonDecode(body) as List;
       if (results.isEmpty) return;
 
-      final first = results.first as Map<String, dynamic>;
+      final bb = ((results.first as Map<String, dynamic>)['boundingbox'] as List?)
+          ?.cast<String>();
+      if (bb == null || bb.length != 4) return;
 
-      // Bounding box
-      LatLngBounds? bounds;
-      final bb = (first['boundingbox'] as List?)?.cast<String>();
-      if (bb != null && bb.length == 4) {
-        bounds = LatLngBounds(
-          LatLng(double.parse(bb[0]), double.parse(bb[2])),
-          LatLng(double.parse(bb[1]), double.parse(bb[3])),
-        );
-      }
+      final bounds = LatLngBounds(
+        LatLng(double.parse(bb[0]), double.parse(bb[2])),
+        LatLng(double.parse(bb[1]), double.parse(bb[3])),
+      );
+      _boundsCache[isoCode] = bounds;
 
-      // Polygon
-      final polygons  = <List<LatLng>>[];
-      final geoJson   = first['geojson'] as Map<String, dynamic>?;
-      if (geoJson != null) polygons.addAll(_parsePolygons(geoJson));
-
-      if (bounds   != null) _boundsCache[isoCode]  = bounds;
-      if (polygons.isNotEmpty) _polygonCache[isoCode] = polygons;
-
-      if (mounted) {
-        setState(() {
-          _bounds   = bounds;
-          _polygons = polygons.isEmpty ? null : polygons;
-        });
-      }
-    } catch (_) { /* silently use null — map still works without polygon */ }
-  }
-
-  List<List<LatLng>> _parsePolygons(Map<String, dynamic> geoJson) {
-    List<LatLng> ring(List r) =>
-        r.map((c) => LatLng((c[1] as num).toDouble(), (c[0] as num).toDouble()))
-         .toList();
-
-    final type   = geoJson['type'] as String;
-    final coords = geoJson['coordinates'] as List;
-    if (type == 'Polygon')      return [ring(coords[0] as List)];
-    if (type == 'MultiPolygon') {
-      return coords.map((p) => ring((p as List)[0] as List)).toList();
-    }
-    return [];
+      if (mounted) setState(() => _bounds = bounds);
+    } catch (_) {}
   }
 
   // ── Haversine ──────────────────────────────────────────────
@@ -410,7 +371,6 @@ class _NearbyAirportsScreenState extends State<NearbyAirportsScreen> {
               airports:        mapEntries,
               userLocation:    userLatLng,
               cameraBounds:    _bounds,
-              countryPolygons: _polygons,
               onAirportTapped: (entry) =>
                   context.push('/airport-detail/${entry.id}'),
             ),

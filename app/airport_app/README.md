@@ -61,9 +61,16 @@ The app includes:
    flutter pub get
    ```
 
-4. Run the app:
+4. Set up your Mapbox token (the map renders blank without it):
    ```bash
-   flutter run
+   cp .env.example .env
+   # then edit .env and paste your Mapbox public (pk.) token
+   ```
+   `.env` is gitignored — never commit your token.
+
+5. Run the app:
+   ```bash
+   flutter run --dart-define-from-file=.env
    ```
 
 ## Project Structure
